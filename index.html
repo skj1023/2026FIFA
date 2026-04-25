@@ -24,7 +24,6 @@
     --white-10: rgba(255,255,255,0.1);
     --card-bg: rgba(255,255,255,0.06);
     --card-border: rgba(255,255,255,0.12);
-    --max-content-width: 1100px;
   }
 
   * {
@@ -96,10 +95,9 @@
   .page-wrapper {
     position: relative;
     z-index: 1;
-    width: 100%;
-    max-width: var(--max-content-width);
+    max-width: 480px;
     margin: 0 auto;
-    padding: 0 16px 80px;
+    padding: 0 0 60px;
   }
 
   /* ===== Hero Section ===== */
@@ -108,8 +106,6 @@
     padding: 60px 24px 50px;
     text-align: center;
     overflow: hidden;
-    max-width: 800px;
-    margin: 0 auto;
   }
   .hero::before {
     content: '';
@@ -145,7 +141,7 @@
     font-size: 28px;
     font-weight: 700;
     line-height: 1.3;
-    margin-bottom: 12px;
+    margin-bottom: 8px;
     background: linear-gradient(135deg, #ffffff 0%, #c4d4ff 50%, #a5b4fc 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -175,37 +171,43 @@
     color: var(--white);
     animation: fadeInUp 0.8s ease-out 0.6s both;
   }
+  .hero-date .icon {
+    font-size: 20px;
+  }
   .hero-welcome {
     margin-top: 32px;
     padding: 0 8px;
-    font-size: 15px;
+    font-size: 14px;
     line-height: 1.9;
-    color: var(--white-80);
+    color: var(--white-60);
     font-weight: 300;
     animation: fadeInUp 0.8s ease-out 0.8s both;
   }
 
-  /* ===== 响应式栅格系统 ===== */
-  .grid-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 24px;
+  /* ===== Divider ===== */
+  .section-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 0 24px;
+    margin: 8px 0;
   }
-
-  @media (min-width: 992px) {
-    .grid-container-2col {
-      grid-template-columns: 1.2fr 0.8fr;
-    }
-    .grid-container-3col {
-      grid-template-columns: repeat(3, 1fr);
-    }
-    .hero-title { font-size: 42px; }
-    .hero-welcome { font-size: 17px; }
+  .section-divider .line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--white-20), transparent);
+  }
+  .section-divider .diamond {
+    width: 6px; height: 6px;
+    background: var(--primary);
+    transform: rotate(45deg);
+    box-shadow: 0 0 8px rgba(26,109,255,0.5);
   }
 
   /* ===== Section ===== */
   .section {
-    padding: 32px 0;
+    padding: 32px 20px;
   }
   .section-header {
     display: flex;
@@ -226,7 +228,7 @@
     box-shadow: 0 4px 16px rgba(26,109,255,0.3);
   }
   .section-title {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 700;
     letter-spacing: 0.5px;
     background: linear-gradient(135deg, #fff 0%, #c4d4ff 100%);
@@ -258,7 +260,7 @@
     padding: 8px 16px;
     margin-bottom: 16px;
     margin-left: -2px;
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
     color: var(--gold);
     letter-spacing: 0.5px;
@@ -281,8 +283,9 @@
     gap: 6px;
     margin-left: 14px;
     margin-bottom: 14px;
-    font-size: 13px;
+    font-size: 12px;
     color: var(--white-60);
+    line-height: 1.5;
   }
 
   .timeline-item {
@@ -294,11 +297,8 @@
     border: 1px solid var(--card-border);
     border-radius: 16px;
     backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
     transition: all 0.3s ease;
-  }
-  .timeline-item:hover {
-    transform: translateX(5px);
-    background: rgba(255,255,255,0.08);
   }
   .timeline-item::before {
     content: '';
@@ -328,15 +328,21 @@
     font-weight: 600;
     color: var(--white);
     margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+  .highlight .time-badge {
+    background: linear-gradient(135deg, rgba(240,194,127,0.25), rgba(240,194,127,0.15));
+    color: var(--gold);
   }
   .timeline-item-title {
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
     color: var(--white);
     margin-bottom: 4px;
+    line-height: 1.5;
   }
   .timeline-item-desc {
-    font-size: 13px;
+    font-size: 12.5px;
     color: var(--white-60);
     line-height: 1.7;
     font-weight: 300;
@@ -349,23 +355,24 @@
     padding: 4px 10px;
     background: var(--white-10);
     border-radius: 8px;
-    font-size: 12px;
+    font-size: 11.5px;
     color: var(--white-60);
   }
 
   /* ===== 信息卡片 ===== */
   .info-card {
-    padding: 24px;
+    padding: 20px;
     background: var(--card-bg);
     border: 1px solid var(--card-border);
     border-radius: 20px;
     backdrop-filter: blur(8px);
-    height: 100%;
+    -webkit-backdrop-filter: blur(8px);
+    margin-bottom: 14px;
   }
   .info-card-title {
-    font-size: 16px;
+    font-size: 15px;
     font-weight: 600;
-    margin-bottom: 18px;
+    margin-bottom: 14px;
     color: var(--white);
     display: flex;
     align-items: center;
@@ -376,132 +383,301 @@
     padding: 2px 8px;
     background: linear-gradient(135deg, var(--primary), var(--accent));
     border-radius: 6px;
+    font-weight: 500;
   }
 
   .info-row {
     display: flex;
-    gap: 12px;
-    margin-bottom: 12px;
-    font-size: 14px;
+    gap: 8px;
+    margin-bottom: 10px;
+    font-size: 13.5px;
+    line-height: 1.6;
     align-items: flex-start;
   }
   .info-row .label {
     flex-shrink: 0;
     color: var(--white-40);
-    min-width: 65px;
+    font-weight: 400;
+    min-width: 60px;
   }
   .info-row .value {
     color: var(--white-80);
+    font-weight: 400;
   }
 
   /* ===== 路线步骤 ===== */
+  .route-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
   .route-step {
     display: flex;
     gap: 14px;
-    padding: 16px 0;
+    align-items: flex-start;
+    padding: 14px 0;
+  }
+  .route-step:not(:last-child) {
     border-bottom: 1px solid var(--white-10);
   }
-  .route-step:last-child { border-bottom: none; }
   .route-step-num {
-    width: 32px; height: 32px;
-    display: flex; align-items: center; justify-content: center;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, var(--primary), var(--accent));
     border-radius: 10px;
-    font-size: 14px; font-weight: 700; flex-shrink: 0;
+    font-size: 14px;
+    font-weight: 700;
+    flex-shrink: 0;
   }
-  .route-step-label { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
-  .route-step-desc { font-size: 13px; color: var(--white-60); font-weight: 300; }
+  .route-step-content {
+    flex: 1;
+  }
+  .route-step-label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 2px;
+  }
+  .route-step-desc {
+    font-size: 12px;
+    color: var(--white-60);
+    font-weight: 300;
+    line-height: 1.6;
+  }
 
   /* ===== WiFi 卡片 ===== */
   .wifi-card {
-    padding: 32px 24px;
+    padding: 24px;
     background: linear-gradient(135deg, rgba(26,109,255,0.12), rgba(108,92,231,0.12));
     border: 1px solid rgba(26,109,255,0.2);
     border-radius: 20px;
     text-align: center;
   }
-  .wifi-name { font-size: 24px; font-weight: 700; margin: 12px 0 6px; letter-spacing: 1px; }
+  .wifi-icon {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+  .wifi-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .wifi-hint {
+    font-size: 13px;
+    color: var(--white-60);
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
   .wifi-detail {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 10px 20px; background: var(--white-10);
-    border-radius: 12px; font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px 16px;
+    background: var(--white-10);
+    border-radius: 12px;
+    font-size: 12.5px;
+    color: var(--white-80);
   }
 
-  /* ===== 联系人/提示网格 ===== */
-  .contact-grid, .tips-grid {
-    display: grid;
-    gap: 12px;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  /* ===== 联系人卡片 ===== */
+  .contact-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
   }
   .contact-card {
-    display: flex; align-items: center; gap: 14px;
-    padding: 16px 18px; background: var(--card-bg);
-    border: 1px solid var(--card-border); border-radius: 16px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px 18px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    transition: all 0.3s ease;
   }
   .contact-avatar {
-    width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, var(--primary), var(--accent));
-    border-radius: 50%; font-size: 18px;
+    border-radius: 50%;
+    font-size: 18px;
+    flex-shrink: 0;
   }
-  .contact-info { flex: 1; }
-  .contact-name { font-size: 16px; font-weight: 600; }
+  .contact-info {
+    flex: 1;
+  }
+  .contact-role {
+    font-size: 11.5px;
+    color: var(--white-40);
+    font-weight: 400;
+    margin-bottom: 2px;
+  }
+  .contact-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
   .contact-phone {
-    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
-    background: var(--white-10); border-radius: 50%; text-decoration: none;
-    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: linear-gradient(135deg, rgba(26,109,255,0.25), rgba(108,92,231,0.25));
+    border-radius: 50%;
+    font-size: 16px;
+    text-decoration: none;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
   }
-  .contact-phone:hover { background: var(--primary); }
+  .contact-phone:active {
+    transform: scale(0.92);
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+  }
 
-  .tip-card {
-    padding: 24px 16px; background: var(--card-bg);
-    border: 1px solid var(--card-border); border-radius: 16px; text-align: center;
-    transition: 0.3s;
+  /* ===== 提示标签 ===== */
+  .tips-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
   }
-  .tip-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-  .tip-icon { font-size: 32px; margin-bottom: 12px; }
-  .tip-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; }
-  .tip-desc { font-size: 13px; color: var(--white-60); font-weight: 300; }
+  .tip-card {
+    padding: 16px 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    text-align: center;
+  }
+  .tip-icon {
+    font-size: 28px;
+    margin-bottom: 8px;
+  }
+  .tip-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .tip-desc {
+    font-size: 11.5px;
+    color: var(--white-60);
+    font-weight: 300;
+    line-height: 1.5;
+  }
 
   /* ===== Footer ===== */
-  .footer { text-align: center; padding: 60px 24px; max-width: 700px; margin: 0 auto; }
-  .footer-title { font-size: 26px; font-weight: 700; margin-bottom: 16px; background: linear-gradient(135deg, var(--gold), #ffecd2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-  .footer-company { margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--white-10); font-size: 13px; color: var(--white-40); }
+  .footer {
+    text-align: center;
+    padding: 48px 24px 32px;
+  }
+  .footer-title {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--gold), #ffecd2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .footer-desc {
+    font-size: 14px;
+    color: var(--white-60);
+    line-height: 1.8;
+    font-weight: 300;
+    margin-bottom: 32px;
+  }
+  .footer-company {
+    font-size: 12px;
+    color: var(--white-40);
+    font-weight: 400;
+    padding-top: 24px;
+    border-top: 1px solid var(--white-10);
+  }
+  .footer-company span {
+    display: block;
+    margin-top: 4px;
+    font-size: 11px;
+  }
 
   /* ===== 动画 ===== */
-  @keyframes fadeInDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes fadeInUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  .animate-on-scroll { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.22, 1, 0.36, 1); }
-  .animate-on-scroll.visible { opacity: 1; transform: translateY(0); }
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .animate-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 
   /* ===== 底部悬浮条 ===== */
   .floating-bar {
     position: fixed;
-    bottom: 24px;
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: calc(100% - 40px);
-    max-width: 400px;
+    width: 100%;
+    max-width: 480px;
     z-index: 100;
-    background: rgba(26, 109, 255, 0.2);
+    padding: 12px 20px;
+    padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px));
+    background: rgba(10, 14, 39, 0.85);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255,255,255,0.2);
-    border-radius: 100px;
-    padding: 8px;
+    border-top: 1px solid var(--white-10);
     display: flex;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
   }
   .floating-bar a {
-    flex: 1; display: flex; align-items: center; justify-content: center; gap: 8px;
-    padding: 12px; background: linear-gradient(135deg, var(--primary), var(--accent));
-    border-radius: 100px; color: var(--white); text-decoration: none;
-    font-size: 15px; font-weight: 600; transition: 0.3s;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    padding: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    border-radius: 14px;
+    color: var(--white);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: all 0.3s ease;
+  }
+  .floating-bar a:active {
+    transform: scale(0.96);
+    opacity: 0.9;
   }
 
-  /* PC 端特殊处理 */
-  @media (min-width: 1200px) {
-    .page-wrapper { padding-top: 40px; }
-    .floating-bar { bottom: 40px; }
+  /* ===== 响应式 ===== */
+  @media (max-width: 360px) {
+    .hero-title { font-size: 24px; }
+    .section { padding: 28px 16px; }
+    .tips-grid { grid-template-columns: 1fr; }
+  }
+  @media (min-width: 481px) {
+    .page-wrapper { padding: 20px 0 80px; }
+    .hero { padding: 80px 32px 60px; }
+    .hero-title { font-size: 34px; }
   }
 </style>
 </head>
@@ -511,7 +687,9 @@
 <div class="global-bg"></div>
 <div class="stars-bg" id="starsBg"></div>
 
+<!-- 页面主体 -->
 <div class="page-wrapper">
+
   <!-- ===== Hero ===== -->
   <section class="hero">
     <div class="hero-logo">
@@ -521,223 +699,352 @@
     <h1 class="hero-title">信达生物雪松班来访<br>温馨提示</h1>
     <p class="hero-subtitle">莅 临 参 访 交 流</p>
     <div class="hero-date">
-      <span>📅 2026年4月27日（周一）全天</span>
+      <span class="icon">📅</span>
+      <span>2026年4月27日（周一）全天</span>
     </div>
     <p class="hero-welcome">
-      尊敬的信达生物各位领导、嘉宾：欢迎您莅临阿里巴巴、钉钉总部参访交流！为确保您此行顺畅舒适，我们特别准备了以下温馨提示。
+      尊敬的信达生物各位领导、嘉宾：<br>
+      欢迎您莅临阿里巴巴、钉钉总部参访交流！为确保您此行顺畅舒适，我们特别准备了以下温馨提示。
     </p>
   </section>
 
-  <!-- ===== 核心议程 & 路线 (PC端并排) ===== -->
-  <div class="grid-container grid-container-2col animate-on-scroll">
-    <!-- 议程 -->
-    <section class="section">
-      <div class="section-header">
-        <div class="section-icon">📋</div>
-        <h2 class="section-title">核心议程概览</h2>
-      </div>
-
-      <div class="timeline">
-        <div class="timeline-group">
-          <div class="timeline-group-title">上午 · 文化与战略签约</div>
-          <div class="timeline-group-location">📍 西溪园区九号馆 → 钉钉园区</div>
-          
-          <div class="timeline-item">
-            <div class="time-badge">10:00 - 10:40</div>
-            <div class="timeline-item-title">参访阿里巴巴九号馆</div>
-            <div class="timeline-item-desc">感受阿里发展历程与业务全景</div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="time-badge">11:00 - 12:00</div>
-            <div class="timeline-item-title">无招分享：AI时代的机遇与变革</div>
-            <div class="timeline-item-speaker">👤 钉钉创始人 · 悟空事业部总裁</div>
-          </div>
-
-          <div class="timeline-item highlight">
-            <div class="time-badge">12:00 - 12:15</div>
-            <div class="timeline-item-title">🎉 战略签约仪式</div>
-            <div class="timeline-item-desc">信达生物 & 钉钉 深度合作启航</div>
-          </div>
-        </div>
-
-        <div class="timeline-group">
-          <div class="timeline-group-title">下午 · AI驱动与行业创新</div>
-          <div class="timeline-group-location">📍 钉钉园区 220巴颜喀拉</div>
-
-          <div class="timeline-item">
-            <div class="time-badge">13:30 - 15:30</div>
-            <div class="timeline-item-title">AI时代的组织变革与创新</div>
-            <div class="timeline-item-speaker">👤 金牡丹 · 阿里巴巴组织发展专家</div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="time-badge">16:00 - 16:40</div>
-            <div class="timeline-item-title">企业级智能体趋势</div>
-            <div class="timeline-item-speaker">👤 朱鸿 · 钉钉联合创始人 & CTO</div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="time-badge">16:40 - 17:00</div>
-            <div class="timeline-item-title">医药行业AI落地场景</div>
-            <div class="timeline-item-speaker">👤 韦亚伟 · 大健康行业负责人</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 侧边辅助信息 (路线+WiFi) -->
-    <div class="side-content">
-      <section class="section">
-        <div class="section-header">
-          <div class="section-icon">🏢</div>
-          <h2 class="section-title">参访路线</h2>
-        </div>
-        <div class="info-card">
-          <div class="route-step">
-            <div class="route-step-num">1</div>
-            <div class="route-step-content">
-              <div class="route-step-label">上午 · 九号馆</div>
-              <div class="route-step-desc">文化参访与战略签约环节</div>
-            </div>
-          </div>
-          <div class="route-step">
-            <div class="route-step-num">2</div>
-            <div class="route-step-content">
-              <div class="route-step-label">中午 · 钉钉餐厅</div>
-              <div class="route-step-desc">品尝阿里特色健康餐饮</div>
-            </div>
-          </div>
-          <div class="route-step">
-            <div class="route-step-num">3</div>
-            <div class="route-step-content">
-              <div class="route-step-label">下午 · 220会议室</div>
-              <div class="route-step-desc">深度交流与行业私享会</div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section class="section">
-        <div class="section-header">
-          <div class="section-icon">📶</div>
-          <h2 class="section-title">网络连接</h2>
-        </div>
-        <div class="wifi-card">
-          <div class="wifi-name">DingTalk_Guest</div>
-          <p style="color: var(--white-40); font-size: 13px; margin-bottom: 15px;">手机号验证即可高速上网</p>
-          <div class="wifi-detail">
-            <span>📱 覆盖全园区及会议室</span>
-          </div>
-        </div>
-      </section>
-    </div>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
   </div>
 
-  <!-- ===== 交通安排 (PC并排) ===== -->
+  <!-- ===== 核心议程 ===== -->
+  <section class="section animate-on-scroll">
+    <div class="section-header">
+      <div class="section-icon">📋</div>
+      <h2 class="section-title">核心议程概览</h2>
+    </div>
+
+    <div class="timeline">
+      <!-- 上午场 -->
+      <div class="timeline-group">
+        <div class="timeline-group-title">上午场 · 阿里文化与战略签约</div>
+        <div class="timeline-group-location">📍 阿里巴巴西溪园区A区九号馆 → 钉钉园区</div>
+
+        <div class="timeline-item">
+          <div class="time-badge">10:00 - 10:40</div>
+          <div class="timeline-item-title">参访阿里巴巴九号馆</div>
+          <div class="timeline-item-desc">感受阿里发展历程与业务全景，体验阿里文化深厚底蕴</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-badge">10:40 - 11:00</div>
+          <div class="timeline-item-title">驱车前往钉钉新园区</div>
+          <div class="timeline-item-desc">距离钉钉新园区仅需10分钟</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-badge">11:00 - 12:00</div>
+          <div class="timeline-item-title">无招分享：AI时代的机遇与变革</div>
+          <div class="timeline-item-desc">AI时代的机会洞察、业务与管理变革思考</div>
+          <div class="timeline-item-speaker">👤 阿里ATH悟空事业部总裁、钉钉创始人</div>
+        </div>
+
+        <div class="timeline-item highlight">
+          <div class="time-badge">12:00 - 12:15</div>
+          <div class="timeline-item-title">🎉 信达生物 & 钉钉战略签约仪式</div>
+          <div class="timeline-item-desc">共同推进集团应用推广与AI转型全面赋能</div>
+        </div>
+      </div>
+
+      <!-- 午间 -->
+      <div class="timeline-group">
+        <div class="timeline-group-title">午间时光 · 阿里特色餐饮体验</div>
+
+        <div class="timeline-item">
+          <div class="time-badge">12:15 - 13:30</div>
+          <div class="timeline-item-title">钉钉餐厅用餐</div>
+          <div class="timeline-item-desc">品尝阿里特色健康菜品，体验阿里人日常餐饮文化</div>
+        </div>
+      </div>
+
+      <!-- 下午场 -->
+      <div class="timeline-group">
+        <div class="timeline-group-title">下午场 · AI驱动的组织变革与创新</div>
+        <div class="timeline-group-location">📍 阿里中心未科钉钉园区 220巴颜喀拉</div>
+
+        <div class="timeline-item">
+          <div class="time-badge">13:30 - 15:30</div>
+          <div class="timeline-item-title">AI时代的组织变革与创新</div>
+          <div class="timeline-item-desc">数字化工具支撑战略同频、组织创新方法论、AI驱动的管理范式变革</div>
+          <div class="timeline-item-speaker">👤 金牡丹 · 阿里巴巴组织发展专家</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-badge">15:30 - 16:00</div>
+          <div class="timeline-item-title">自由交流与探讨</div>
+          <div class="timeline-item-desc">围绕组织变革、AI战略、企业文化深度对话</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-badge">16:00 - 16:40</div>
+          <div class="timeline-item-title">企业级智能体趋势</div>
+          <div class="timeline-item-desc">AI技术发展、智能体带来的生产力变革、企业落地路径建议</div>
+          <div class="timeline-item-speaker">👤 朱鸿 · ATH悟空事业部CTO、钉钉联合创始人</div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="time-badge">16:40 - 17:00</div>
+          <div class="timeline-item-title">医药行业AI落地场景分享</div>
+          <div class="timeline-item-desc">大健康行业最新智能体典型场景分享、信达共创计划</div>
+          <div class="timeline-item-speaker">👤 韦亚伟 · ATH悟空事业部大健康行业负责人</div>
+        </div>
+
+        <div class="timeline-item" style="text-align: center;">
+          <div class="time-badge">17:00</div>
+          <div class="timeline-item-title">🏠 返程</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
+  </div>
+
+  <!-- ===== 参访路线 ===== -->
+  <section class="section animate-on-scroll">
+    <div class="section-header">
+      <div class="section-icon">🏢</div>
+      <h2 class="section-title">参访路线概览</h2>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">
+        轻松便捷的参观体验
+        <span class="tag">全程专人引导</span>
+      </div>
+      <div class="route-steps">
+        <div class="route-step">
+          <div class="route-step-num">1</div>
+          <div class="route-step-content">
+            <div class="route-step-label">上午 · 文化参访+签约</div>
+            <div class="route-step-desc">阿里西溪园区A区九号馆 → 钉钉园区</div>
+          </div>
+        </div>
+        <div class="route-step">
+          <div class="route-step-num">2</div>
+          <div class="route-step-content">
+            <div class="route-step-label">中午 · 特色餐饮</div>
+            <div class="route-step-desc">钉钉园区餐厅用餐</div>
+          </div>
+        </div>
+        <div class="route-step">
+          <div class="route-step-num">3</div>
+          <div class="route-step-content">
+            <div class="route-step-label">下午 · 深度分享+交流</div>
+            <div class="route-step-desc">阿里中心未科钉钉园区220巴颜喀拉</div>
+          </div>
+        </div>
+      </div>
+      <p style="font-size: 12px; color: var(--white-40); margin-top: 14px; text-align: center;">每个环节之间预留了充足的转场和休息时间</p>
+    </div>
+  </section>
+
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
+  </div>
+
+  <!-- ===== 交通接驳 ===== -->
   <section class="section animate-on-scroll">
     <div class="section-header">
       <div class="section-icon">🚗</div>
       <h2 class="section-title">交通接驳安排</h2>
     </div>
-    <div class="grid-container" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
-      <div class="info-card">
-        <div class="info-card-title">上午场入口 <span class="tag">AM</span></div>
-        <div class="info-row"><span class="label">园区名称</span><span class="value">西溪园区A区A3北门</span></div>
-        <div class="info-row"><span class="label">详细地址</span><span class="value">余杭区文一西路969号</span></div>
-        <div class="info-row"><span class="label">停车指引</span><span class="value">专人引导至九号馆门口</span></div>
+
+    <div class="info-card" style="margin-bottom: 14px;">
+      <div class="info-card-title">
+        上午行程
+        <span class="tag">AM</span>
       </div>
-      <div class="info-card">
-        <div class="info-card-title">下午场入口 <span class="tag">PM</span></div>
-        <div class="info-row"><span class="label">园区名称</span><span class="value">未科中心钉钉园区D2北门</span></div>
-        <div class="info-row"><span class="label">详细地址</span><span class="value">向往街与景腾路交叉口</span></div>
-        <div class="info-row"><span class="label">停车指引</span><span class="value">入库后按指引停放</span></div>
+      <div class="info-row">
+        <span class="label">入园地点</span>
+        <span class="value">阿里巴巴西溪园区A区A3北门</span>
+      </div>
+      <div class="info-row">
+        <span class="label">地　　址</span>
+        <span class="value">杭州市余杭区文一西路969号</span>
+      </div>
+      <div class="info-row">
+        <span class="label">停车指引</span>
+        <span class="value">入园后专人指引停靠九号馆门口</span>
+      </div>
+    </div>
+
+    <div class="info-card">
+      <div class="info-card-title">
+        下午行程
+        <span class="tag">PM</span>
+      </div>
+      <div class="info-row">
+        <span class="label">入园地点</span>
+        <span class="value">阿里未科中心钉钉园区D2北门</span>
+      </div>
+      <div class="info-row">
+        <span class="label">地　　址</span>
+        <span class="value">杭州市余杭区向往街与景腾路交叉口</span>
+      </div>
+      <div class="info-row">
+        <span class="label">停车指引</span>
+        <span class="value">入园后按现场指引停放</span>
+      </div>
+    </div>
+
+    <p style="font-size: 12.5px; color: var(--white-40); text-align: center; margin-top: 12px;">
+      车牌已提前报备 · 全程专人引导
+    </p>
+  </section>
+
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
+  </div>
+
+  <!-- ===== WiFi ===== -->
+  <section class="section animate-on-scroll">
+    <div class="section-header">
+      <div class="section-icon">📶</div>
+      <h2 class="section-title">网络与通讯</h2>
+    </div>
+
+    <div class="wifi-card">
+      <div class="wifi-icon">📶</div>
+      <div class="wifi-name">DingTalk_Guest</div>
+      <div class="wifi-hint">通过手机号验证即可连接</div>
+      <div class="wifi-detail">
+        <span>📱</span>
+        <span>覆盖整个办公区域及会议室</span>
       </div>
     </div>
   </section>
 
-  <!-- ===== 服务团队 & 提示 (PC并排) ===== -->
-  <div class="grid-container grid-container-2col animate-on-scroll">
-    <section class="section">
-      <div class="section-header">
-        <div class="section-icon">👥</div>
-        <h2 class="section-title">专属服务团队</h2>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-card">
-          <div class="contact-avatar">🎯</div>
-          <div class="contact-info">
-            <div style="font-size:12px; color:var(--white-40)">总协调</div>
-            <div class="contact-name">远波</div>
-          </div>
-          <a href="tel:17681802362" class="contact-phone">📞</a>
-        </div>
-        <div class="contact-card">
-          <div class="contact-avatar">🤝</div>
-          <div class="contact-info">
-            <div style="font-size:12px; color:var(--white-40)">接待负责</div>
-            <div class="contact-name">峥尼</div>
-          </div>
-          <a href="tel:18657186711" class="contact-phone">📞</a>
-        </div>
-        <div class="contact-card">
-          <div class="contact-avatar">💻</div>
-          <div class="contact-info">
-            <div style="font-size:12px; color:var(--white-40)">技术支持</div>
-            <div class="contact-name">笙岚</div>
-          </div>
-          <a href="tel:15921211023" class="contact-phone">📞</a>
-        </div>
-      </div>
-    </section>
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
+  </div>
 
-    <section class="section">
-      <div class="section-header">
-        <div class="section-icon">💡</div>
-        <h2 class="section-title">温馨贴士</h2>
-      </div>
-      <div class="tips-grid">
-        <div class="tip-card">
-          <div class="tip-icon">👔</div>
-          <div class="tip-title">着装建议</div>
-          <div class="tip-desc">商务休闲即可</div>
+  <!-- ===== 服务团队 ===== -->
+  <section class="section animate-on-scroll">
+    <div class="section-header">
+      <div class="section-icon">👥</div>
+      <h2 class="section-title">专属服务团队</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-avatar">🎯</div>
+        <div class="contact-info">
+          <div class="contact-role">总协调</div>
+          <div class="contact-name">远波</div>
         </div>
-        <div class="tip-card">
-          <div class="tip-icon">☕</div>
-          <div class="tip-title">休息区</div>
-          <div class="tip-desc">蝴蝶谷会见室</div>
-        </div>
+        <a href="tel:17681802362" class="contact-phone">📞</a>
       </div>
-    </section>
+
+      <div class="contact-card">
+        <div class="contact-avatar">🤝</div>
+        <div class="contact-info">
+          <div class="contact-role">接待负责</div>
+          <div class="contact-name">峥尼</div>
+        </div>
+        <a href="tel:18657186711" class="contact-phone">📞</a>
+      </div>
+
+      <div class="contact-card">
+        <div class="contact-avatar">💻</div>
+        <div class="contact-info">
+          <div class="contact-role">技术支持</div>
+          <div class="contact-name">笙岚</div>
+        </div>
+        <a href="tel:15921211023" class="contact-phone">📞</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
+  </div>
+
+  <!-- ===== 其他提示 ===== -->
+  <section class="section animate-on-scroll">
+    <div class="section-header">
+      <div class="section-icon">💡</div>
+      <h2 class="section-title">其他温馨提示</h2>
+    </div>
+
+    <div class="tips-grid">
+      <div class="tip-card">
+        <div class="tip-icon">👔</div>
+        <div class="tip-title">着装建议</div>
+        <div class="tip-desc">商务休闲即可<br>会议室空调温度适宜</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">☕</div>
+        <div class="tip-title">休息区域</div>
+        <div class="tip-desc">提前到达可至<br>九号馆"蝴蝶谷"会见室</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🏥</div>
+        <div class="tip-title">医疗支持</div>
+        <div class="tip-desc">如您需要可协助<br>联系附近医疗机构</div>
+      </div>
+      <div class="tip-card">
+        <div class="tip-icon">🌤️</div>
+        <div class="tip-title">天气提醒</div>
+        <div class="tip-desc">关注杭州当地天气<br>合理安排出行</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider">
+    <span class="line"></span>
+    <span class="diamond"></span>
+    <span class="line"></span>
   </div>
 
   <!-- ===== Footer ===== -->
   <section class="footer animate-on-scroll">
     <h3 class="footer-title">🌟 期待与您相聚</h3>
-    <p style="color:var(--white-60); margin-bottom: 24px;">
-      相信通过此次参访，我们能建立更加紧密的合作关系，共创美好未来。
+    <p class="footer-desc">
+      我们非常期待与信达生物的各位领导深入交流，共同探讨合作机遇。相信通过此次参访，我们能建立更加紧密的合作关系，共创美好未来。
+    </p>
+    <p class="footer-desc" style="font-size: 15px; color: var(--gold-light);">
+      再次欢迎您的到来！<br>祝您在杭州度过愉快而充实的时光！
     </p>
     <div class="footer-company">
       钉钉（中国）信息技术有限公司
-      <div style="margin-top:5px; font-size:11px; opacity:0.6">2026年4月 · 杭州</div>
+      <span>2026年4月</span>
     </div>
   </section>
+
 </div>
 
-<!-- ===== 悬浮按钮 ===== -->
+<!-- ===== 底部悬浮条 ===== -->
 <div class="floating-bar">
-  <a href="tel:17681802362">📞 呼叫服务团队 (远波)</a>
+  <a href="tel:17681802362">📞 联系服务团队</a>
 </div>
 
 <script>
-// 星空背景逻辑
+// 星空背景
 (function createStars() {
-  const bg = document.getElementById('starsBg');
-  const count = window.innerWidth > 768 ? 100 : 50;
-  for (let i = 0; i < count; i++) {
-    const star = document.createElement('div');
+  var bg = document.getElementById('starsBg');
+  for (var i = 0; i < 60; i++) {
+    var star = document.createElement('div');
     star.className = 'star';
-    const size = Math.random() * 2 + 1;
+    var size = Math.random() * 2 + 1;
     star.style.width = size + 'px';
     star.style.height = size + 'px';
     star.style.left = Math.random() * 100 + '%';
@@ -748,17 +1055,20 @@
   }
 })();
 
-// 滚动观察器
+// 滚动动画
 (function scrollAnimate() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  var elems = document.querySelectorAll('.animate-on-scroll');
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.animate-on-scroll').forEach(el => observer.observe(el));
+  elems.forEach(function(el) {
+    observer.observe(el);
+  });
 })();
 </script>
 
