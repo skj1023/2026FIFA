@@ -123,7 +123,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .nx-vs{color:var(--text-dim);font-weight:400;font-size:.8rem}
 .nx-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-left:auto}
 .nx-time{display:flex;flex-direction:column;align-items:center;min-width:80px}
-.nx-time .num{font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.02em;background:linear-gradient(135deg,var(--accent),#66bbff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.nx-time .num{font-size:1.4rem;font-weight:800;font-variant-numeric:tabular-nums;letter-spacing:.02em;background:linear-gradient(135deg,var(--accent),#66bbff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}.nx-time .num.live{background:linear-gradient(135deg,var(--red),#ff6961);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .nx-time .lbl{font-size:.6rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.04em;margin-top:-2px}
 .nx-extra{font-size:.72rem;color:var(--text-dim)}
 @media(max-width:640px){.nx-inner{flex-direction:column;align-items:flex-start;padding:14px 16px;gap:8px}.nx-meta{margin-left:0;width:100%;justify-content:space-between}.nx-teams{font-size:.88rem}.nx-time .num{font-size:1.15rem}}
@@ -515,6 +515,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
         <p>这里记录页面内容、数据、规则说明和自动化任务的关键变更。日志保持简短，便于回看，不展开技术细节。</p>
       </div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time" id="logTimePlaceholder">2026-06-14 23:50</div>
+          <div class="log-content"><span class="log-tag ui">页面</span><strong>首页倒计时改为比赛进行中正计时</strong>：开赛后显示「比赛进行中」+ 已进行 HH:MM:SS 正计时，数字变红色渐变。</div>
+        </div>
         <div class="log-item">
           <div class="log-time" id="logTimePlaceholder">2026-06-14 23:35</div>
           <div class="log-content"><span class="log-tag ui">页面</span><strong>2022八强排名标签 + 赛果页排序优化</strong>：首页和赛程页中，22年世界杯8强队伍名旁显示低调排名标签（22🏆/🥈/🥉/四强/八强）；赛果Tab改为日期降序、同天最晚比赛置顶。</div>
@@ -980,14 +984,18 @@ function renderNextMatch(){
   t.innerHTML=hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+' · '+nx.g+'组';
   e.textContent=matchStoryline(nx)||('第'+nx.r+'轮');
   let diff=nx.dt-now;
+  let nm=document.querySelector('.nx-time .num');
   if(diff<=0){
-    l.innerHTML='🔴 进行中';
+    l.innerHTML='<span class="pulse-dot" style="background:var(--red)"></span>比赛进行中';
     let elapsed=Math.floor(-diff/1000);
     let eh=Math.floor(elapsed/3600);
     let em=Math.floor((elapsed%3600)/60);
-    c.textContent='已开赛 '+eh+'h'+String(em).padStart(2,'0')+'m';
+    let es=elapsed%60;
+    if(nm)nm.classList.add('live');
+    c.textContent=String(eh).padStart(2,'0')+':'+String(em).padStart(2,'0')+':'+String(es).padStart(2,'0');
     return;
   }
+  if(nm)nm.classList.remove('live');
   l.innerHTML='<span class="pulse-dot"></span>下一场';
   let s=Math.floor(diff/1000);
   let hh=Math.floor(s/3600);
