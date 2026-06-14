@@ -243,6 +243,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .player-card .pn{font-size:.82rem;font-weight:600;line-height:1.2}
 .player-card .pp{font-size:.68rem;color:var(--text-dim)}
 .player-card:hover .pn{color:var(--accent)}
+/* 2022 RANKING TAG */
+.r22{display:inline-flex;align-items:center;font-size:.6rem;font-weight:600;padding:1px 6px;border-radius:6px;background:rgba(255,215,0,.08);border:1px solid rgba(255,215,0,.15);color:var(--text-dim);line-height:1.3;margin-left:3px;vertical-align:middle;letter-spacing:.02em;opacity:.75}.light .r22{background:rgba(255,215,0,.1);border-color:rgba(255,215,0,.25);color:var(--text-sec)}
 /* TEAM HISTORY */
 .team-history{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 14px}
 .hist-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 12px;min-height:72px}
@@ -862,6 +864,13 @@ const ALL_MATCHES = [
   {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",st:"upcoming"}
 ];
 
+// 2022 World Cup top 8 rankings (for teams participating in 2026)
+const RANK2022 = {
+  "阿根廷": "🏆", "法国": "🥈", "克罗地亚": "🥉",
+  "摩洛哥": "四强", "荷兰": "八强", "英格兰": "八强",
+  "巴西": "八强", "葡萄牙": "八强"
+};
+
 // Team display: map short name → { flag, name } from GROUPS
 function td(n){
   for(let g of Object.values(GROUPS)){
@@ -1295,12 +1304,14 @@ function mc(m,isUpcoming=false){
   let story=matchStoryline(m);
   let ex=story?`<span class="hl">${story}</span>`:'<span></span>';
   let hd=td(m.h),ad=td(m.a);
+  let hr=RANK2022[hd.nm]?`<span class="r22">22${RANK2022[hd.nm]}</span>`:'';
+  let ar=RANK2022[ad.nm]?`<span class="r22">22${RANK2022[ad.nm]}</span>`:'';
   return `<div class="match-card ${m.st} fade-in">
     <div class="match-meta"><span class="tag ${t}">${tl}</span><span>${m.g}组 第${m.r}轮</span><span>·</span><span>${m.t}</span></div>
     <div class="match-vs">
-      <div class="team home"><span class="flag">${hd.fl}</span><span class="name">${hd.nm}</span></div>
+      <div class="team home"><span class="flag">${hd.fl}</span><span class="name">${hd.nm}</span>${hr}</div>
       ${sc}
-      <div class="team away"><span class="name">${ad.nm}</span><span class="flag">${ad.fl}</span></div>
+      <div class="team away">${ar}<span class="name">${ad.nm}</span><span class="flag">${ad.fl}</span></div>
     </div>
     <div class="match-bottom"><span>📍 ${lo}</span>${ex}</div>
   </div>`;
