@@ -160,6 +160,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .footer a{color:var(--accent);text-decoration:none;transition:color .2s}
 .footer a:hover{color:#66bbff}
 .footer .cr{margin-top:4px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.footer .pv{display:flex;justify-content:center;gap:8px;margin-top:2px;font-size:.68rem;color:var(--text-dim);opacity:.7}
 /* MILESTONE */
 .milestone{display:flex;flex-wrap:wrap;gap:0;margin-bottom:8px;border-radius:var(--radius-sm);overflow:hidden;border:1px solid var(--border)}
 .milestone-item{flex:1;min-width:100px;padding:14px 14px;text-align:center;background:var(--bg-card);border-right:1px solid var(--border);transition:background .2s}
@@ -698,6 +699,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 <button class="top-btn" id="topBtn" title="回到顶部">↑</button>
 <footer class="footer">
   <p>由 Hermes Agent · 福福 自动维护 · 每场比赛后自动更新数据</p>
+  <div class="pv">👁️ 被浏览 <span id="busuanzi_value_site_pv">0</span> 次 · 🧑 <span id="busuanzi_value_site_uv">0</span> 位访客</div>
   <div class="cr"><a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank">📺 CCTV5 直播</a><a href="https://www.miguvideo.com/" target="_blank">咪咕视频</a><a href="https://www.douyin.com/" target="_blank">抖音</a></div>
 </footer>
 <script>
@@ -1625,5 +1627,6 @@ document.querySelectorAll('.tab-link').forEach(a=>{
   btn.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'})});
 })();
 </script>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 </body>
 </html>
