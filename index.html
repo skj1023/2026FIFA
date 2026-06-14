@@ -514,6 +514,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-14 21:59</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>澳大利亚 2-0 土耳其 确认完赛</strong>：伊兰昆达首开纪录，澳大利亚2-0完胜；D组积分榜、最佳第3名、首页同步联动更新。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-14 11:05</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>海地 0-1 苏格兰 确认完赛</strong>：麦金28分钟制胜球，苏格兰28年重返世界杯首胜；C组积分榜、最佳第3名、首页同步联动。</div>
         </div>
@@ -718,8 +722,8 @@ const MATCH_STORYLINES = {
   "荷兰vs日本":"🇳🇱 荷兰整体推进 vs 日本高节奏反击，技术流对话。",
   "西班牙vs佛得角":"🇪🇸 西班牙控球体系首秀，佛得角寻找反击机会。",
   "美国vs澳大利亚":"🇺🇸 东道主关键战：美国速度与澳大利亚身体对抗。",
+  "澳大利亚vs土耳其":"🇦🇺 土耳其24年后重返世界杯首秀，澳大利亚力争小组出线关键分，伊兰昆达成亮点。",
   "墨西哥vs韩国":"🇲🇽 东道主遇上韩国快节奏，A组榜首走势关键战。",
-  "澳大利亚vs土耳其":"🇦🇺 土耳其24年后重返世界杯首秀，澳大利亚力争小组出线关键分。",
   "海地vs苏格兰":"🏴󠁧󠁢󠁳󠁣󠁴󠁿 苏格兰28年后再战世界杯，海地52年后重返首秀！",
 };
 function matchStoryline(m){
@@ -776,7 +780,7 @@ const ALL_MATCHES = [
   {id:"C6",g:"C",r:3,t:"6/25 06:00",h:"摩洛哥",a:"海地",st:"upcoming"},
   // D组
   {id:"D1",g:"D",r:1,t:"6/13 09:00",h:"美国",a:"巴拉圭",s:"4-1",st:"done",hl:"🏆 巴洛贡梅开二度 · 东道主4-1大胜"},
-  {id:"D2",g:"D",r:1,t:"6/14 12:00",h:"澳大利亚",a:"土耳其",st:"upcoming"},
+  {id:"D2",g:"D",r:1,t:"6/14 12:00",h:"澳大利亚",a:"土耳其",s:"2-0",st:"done",hl:"⚽ 伊兰昆达首开纪录 · 澳大利亚2-0完胜土耳其，土耳其24年后重返世界杯首战告负"},
   {id:"D3",g:"D",r:2,t:"6/20 11:00",h:"土耳其",a:"巴拉圭",st:"upcoming"},
   {id:"D4",g:"D",r:2,t:"6/20 03:00",h:"美国",a:"澳大利亚",st:"upcoming"},
   {id:"D5",g:"D",r:3,t:"6/26 10:00",h:"土耳其",a:"美国",st:"upcoming"},
