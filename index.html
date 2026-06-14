@@ -89,7 +89,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .team .flag{font-size:1.3rem;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}.team .name{font-size:.95rem;font-weight:600;vertical-align:middle}
 .team.home .flag{order:-1}.team.away .flag{order:1}.team.away .name{order:-1}
 .score{font-size:1.3rem;font-weight:800;text-align:center;min-width:48px;letter-spacing:.02em}
-.score.result{color:#fff}.score.live-score{color:var(--red);display:flex;align-items:center;justify-content:center;gap:6px}.score.pre{color:var(--text-dim);font-weight:500;font-size:.95rem}
+.score.result{color:var(--text)}.light .score.result{color:var(--text)}.score.live-score{color:var(--red);display:flex;align-items:center;justify-content:center;gap:6px}.score.pre{color:var(--text-dim);font-weight:500;font-size:.95rem}
 .match-bottom{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:4px;margin-top:8px;padding-top:8px;border-top:1px solid rgba(255,255,255,.04);font-size:.72rem;color:var(--text-dim)}
 .match-bottom .hl{color:var(--accent);font-weight:500}
 /* GROUP STANDINGS */
@@ -187,7 +187,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 @media(max-width:500px){
 .milestone-item{min-width:50%;border-right:none;border-bottom:1px solid var(--border)}
 .milestone-item:nth-child(odd){border-right:1px solid var(--border)}
-.milestone-item:nth-last-child(-n+2){border-bottom:none}
 .bracket-stages{grid-template-columns:repeat(3,1fr)}
 }
 /* GROUP STANDINGS */
