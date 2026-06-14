@@ -1414,10 +1414,20 @@ function render(){
   doneSorted.sort((a,b)=>{
     let [ma,da]=a.split("/").map(Number);
     let [mb,db]=b.split("/").map(Number);
-    return ma!==mb?ma-mb:da-db;
+    return ma!==mb?mb-ma:db-da;
   });
   
-  let lastDoneDate=doneSorted.length?doneSorted[doneSorted.length-1]:null;
+  // Sort matches within each date by time descending (newest first)
+  for(let d in doneByDate){
+    doneByDate[d].sort((a,b)=>{
+      let ta=a.t.split(" ")[1], tb=b.t.split(" ")[1];
+      let [ha,hma]=ta.split(":").map(Number);
+      let [hb,hmb]=tb.split(":").map(Number);
+      return ha!==hb?hb-ha:hmb-hma;
+    });
+  }
+  
+  let lastDoneDate=doneSorted.length?doneSorted[0]:null;
   
   // Results pill select handler
   rds._onPillSelect=function(date){
