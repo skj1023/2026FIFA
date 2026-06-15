@@ -1020,10 +1020,14 @@ function renderNextMatch(){
     let es=elapsed%60;
     if(nm)nm.classList.add('live');
     c.textContent=String(eh).padStart(2,'0')+':'+String(em).padStart(2,'0')+':'+String(es).padStart(2,'0');
+    let lbl=document.querySelector('.nx-time .lbl');
+    if(lbl)lbl.textContent='已进行';
     return;
   }
   if(nm)nm.classList.remove('live');
   l.innerHTML='<span class="pulse-dot"></span>下一场';
+  let lbl=document.querySelector('.nx-time .lbl');
+  if(lbl)lbl.textContent='倒计时';
   let s=Math.floor(diff/1000);
   let hh=Math.floor(s/3600);
   let mm=Math.floor((s%3600)/60);
