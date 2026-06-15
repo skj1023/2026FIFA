@@ -517,6 +517,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-15 14:57</div>
+          <div class="log-content"><span class="log-tag auto">数据修正</span><strong>修正瑞典vs突尼斯亮点</strong>：此前误标"各队均取1分"(瑞典5-1胜全取3分)，已修正亮点文字及故事线数据。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-15 12:55</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>瑞典 5-1 突尼斯 完赛确认</strong>：阿亚里双响 · 伊萨克、哲凯赖什建功；F组积分榜/最佳第3名/首页同步更新。</div>
         </div>
@@ -792,7 +796,7 @@ const MATCH_STORYLINES = {
   "乌兹别克vs哥伦比亚":"🇺🇿 乌兹别克斯坦历史首秀，哥伦比亚J罗最后一届机会。",
   "加纳vs巴拿马":"🇬🇭 加纳青春风暴，巴拿马中北美代表寻求突破。",
   "荷兰vs瑞典":"🇳🇱 荷兰vs瑞典技术流对话，中场控制权将决定比赛走向。",
-  "瑞典vs突尼斯":"🇸🇪 瑞典5-1大胜突尼斯：阿亚里双响、伊萨克、哲凯赖什建功；F组首轮各队均积1分。",
+  "瑞典vs突尼斯":"🇸🇪 瑞典5-1大胜突尼斯：阿亚里双响、伊萨克、哲凯赖什建功；瑞典3分领跑F组。",
   "西班牙vs沙特":"🇪🇸 西班牙传控体系 vs 沙特快速反击，H组出线卡位战。",
 };
 function matchStoryline(m){
@@ -863,8 +867,7 @@ const ALL_MATCHES = [
   {id:"E6",g:"E",r:3,t:"6/26 04:00",h:"库拉索",a:"科特迪瓦",st:"upcoming"},
   // F组
   {id:"F1",g:"F",r:1,t:"6/15 04:00",h:"荷兰",a:"日本",s:"2-2",st:"done",hl:"⚽ 范迪克51'首开纪录 · 中村敬斗57'扳平 · 萨默维尔64'再度领先 · 鎌田大地88'绝平！荷兰2-2日本各取1分"},
-  {id:"F2",g:"F",r:1,t:"6/15 10:00",h:"瑞典",a:"突尼斯",s:"5-1",st:"done",hl:"⚽ 阿亚里双响 · 伊萨克、哲凯赖什建功 · 瑞典5-1大胜突尼斯，F组首轮各队均取1分" 
-},
+  {id:"F2",g:"F",r:1,t:"6/15 10:00",h:"瑞典",a:"突尼斯",s:"5-1",st:"done",hl:"⚽ 阿亚里双响 · 伊萨克、哲凯赖什建功 · 瑞典5-1大胜突尼斯全取3分"},
   {id:"F3",g:"F",r:2,t:"6/21 12:00",h:"突尼斯",a:"日本",st:"upcoming"},
   {id:"F4",g:"F",r:2,t:"6/21 01:00",h:"荷兰",a:"瑞典",st:"upcoming"},
   {id:"F5",g:"F",r:3,t:"6/26 07:00",h:"日本",a:"瑞典",st:"upcoming"},
