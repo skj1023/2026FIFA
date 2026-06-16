@@ -1534,6 +1534,8 @@ function renderTeam(teamName){
   }
   
   list.innerHTML=html;
+  // Trigger fade-in for newly rendered cards
+  requestAnimationFrame(()=>{list.querySelectorAll('.fade-in').forEach(el=>el.classList.add('vis'))});
 }
 
 function setContinent(continent){
