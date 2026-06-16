@@ -305,7 +305,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <span>👥 <strong>48</strong> 球队 · <strong>104</strong> 场</span>
       <span>🏆 <strong>32</strong> 队晋级淘汰赛</span>
     </div>
-    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">8</strong> 场</div>
+    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">16</strong> 场</div>
     <a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" class="hero-live-btn">📺 CCTV5 直播</a>
   </div>
   <div class="hero-flag-bar"><div class="bar usa"></div><div class="bar canada"></div><div class="bar mexico"></div></div>
@@ -335,7 +335,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     <div class="milestone-item"><div class="num">48</div><div class="lbl">参赛球队</div></div>
     <div class="milestone-item"><div class="num">72</div><div class="lbl">小组赛</div></div>
     <div class="milestone-item"><div class="num">32</div><div class="lbl">淘汰赛</div></div>
-    <div class="milestone-item"><div class="num" id="playedCount">8</div><div class="lbl">已完赛</div></div>
+    <div class="milestone-item"><div class="num" id="playedCount">16</div><div class="lbl">已完赛</div></div>
     <div class="milestone-item"><div class="num">🏆</div><div class="lbl">7.19 决赛</div></div>
   </div>
   <div class="live-banner" id="liveBanner">
@@ -516,6 +516,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
         <p>这里记录页面内容、数据、规则说明和自动化任务的关键变更。日志保持简短，便于回看，不展开技术细节。</p>
       </div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time">2026-06-16 20:36</div>
+          <div class="log-content"><span class="log-tag">赛程</span><strong>同步场馆信息</strong>：按 ESPN 赛程校正小组赛场馆，并更新首页完赛计数底值。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-16 14:04</div>
           <div class="log-content"><span class="log-tag auto">赛程</span><strong>同步ESPN赛程校验</strong>：修正乌兹别克vs哥伦比亚、约旦vs阿根廷和阿尔及利亚vs奥地利的北京时间/主客顺序。</div>
@@ -852,21 +856,42 @@ function matchStoryline(m){
   return `👀 ${hd.fl}${hd.nm} vs ${ad.fl}${ad.nm}：关注小组排名与临场状态变化。`;
 }
 const LOCATIONS={
-  "墨西哥vs南非":"墨西哥城·阿兹特克体育场","韩国vs捷克":"瓜达拉哈拉·阿克伦体育场",
-  "加拿大vs波黑":"多伦多·BMO球场","卡塔尔vs瑞士":"旧金山湾区·李维斯体育场",
-  "瑞士vs波黑":"洛杉矶·SoFi体育场","加拿大vs卡塔尔":"温哥华·BC Place",
-  "瑞士vs加拿大":"温哥华·BC Place","波黑vs卡塔尔":"西雅图·流明体育场",
-  "巴西vs摩洛哥":"纽约/新泽西·大都会人寿体育场","海地vs苏格兰":"波士顿·吉列体育场",
-  "苏格兰vs摩洛哥":"波士顿·吉列体育场","苏格兰vs巴西":"迈阿密·硬石体育场",
-  "美国vs巴拉圭":"洛杉矶·SoFi体育场","澳大利亚vs土耳其":"温哥华·BC Place","土耳其vs巴拉圭":"温哥华·BC Place",
-  "德国vs库拉索":"休斯顿·NRG体育场","科特迪瓦vs厄瓜多尔":"费城·林肯金融体育场",
-  "荷兰vs日本":"达拉斯·AT&T体育场","瑞典vs突尼斯":"蒙特雷·BBVA体育场",
-  "伊朗vs新西兰":"洛杉矶·SoFi体育场","比利时vs埃及":"西雅图·流明体育场",
-  "西班牙vs佛得角":"亚特兰大·梅赛德斯奔驰体育场","沙特vs乌拉圭":"迈阿密·硬石体育场",
-  "法国vs塞内加尔":"纽约/新泽西·大都会人寿体育场","伊拉克vs挪威":"休斯顿·NRG体育场",
-  "阿根廷vs阿尔及利亚":"堪萨斯城·箭头体育场","阿尔及利亚vs奥地利":"旧金山湾区·李维斯体育场","奥地利vs约旦":"旧金山湾区·李维斯体育场","阿根廷vs奥地利":"达拉斯·AT&T体育场","约旦vs阿根廷":"多伦多·BMO球场",
-  "葡萄牙vs刚果(金)":"迈阿密·硬石体育场","乌兹别克vs哥伦比亚":"西雅图·流明体育场",
-  "英格兰vs克罗地亚":"达拉斯·AT&T体育场","加纳vs巴拿马":"多伦多·BMO球场","英格兰vs加纳":"费城·林肯金融体育场","巴拿马vs克罗地亚":"多伦多·BMO球场"
+  "墨西哥vs南非":"墨西哥城·班诺特体育场", "韩国vs捷克":"瓜达拉哈拉·阿克伦体育场",
+  "加拿大vs波黑":"多伦多·BMO球场", "美国vs巴拉圭":"洛杉矶·SoFi体育场",
+  "卡塔尔vs瑞士":"旧金山湾区·李维斯体育场", "巴西vs摩洛哥":"纽约/新泽西·大都会人寿体育场",
+  "海地vs苏格兰":"波士顿·吉列体育场", "澳大利亚vs土耳其":"温哥华·BC Place",
+  "德国vs库拉索":"休斯顿·NRG体育场", "荷兰vs日本":"达拉斯·AT&T体育场",
+  "科特迪瓦vs厄瓜多尔":"费城·林肯金融体育场", "瑞典vs突尼斯":"蒙特雷·BBVA体育场",
+  "西班牙vs佛得角":"亚特兰大·梅赛德斯奔驰体育场", "比利时vs埃及":"西雅图·流明体育场",
+  "沙特vs乌拉圭":"迈阿密·硬石体育场", "伊朗vs新西兰":"洛杉矶·SoFi体育场",
+  "法国vs塞内加尔":"纽约/新泽西·大都会人寿体育场", "伊拉克vs挪威":"波士顿·吉列体育场",
+  "阿根廷vs阿尔及利亚":"堪萨斯城·箭头体育场", "奥地利vs约旦":"旧金山湾区·李维斯体育场",
+  "葡萄牙vs刚果(金)":"休斯顿·NRG体育场", "英格兰vs克罗地亚":"达拉斯·AT&T体育场",
+  "加纳vs巴拿马":"多伦多·BMO球场", "乌兹别克vs哥伦比亚":"墨西哥城·班诺特体育场",
+  "捷克vs南非":"亚特兰大·梅赛德斯奔驰体育场", "瑞士vs波黑":"洛杉矶·SoFi体育场",
+  "加拿大vs卡塔尔":"温哥华·BC Place", "墨西哥vs韩国":"瓜达拉哈拉·阿克伦体育场",
+  "美国vs澳大利亚":"西雅图·流明体育场", "苏格兰vs摩洛哥":"波士顿·吉列体育场",
+  "巴西vs海地":"费城·林肯金融体育场", "土耳其vs巴拉圭":"旧金山湾区·李维斯体育场",
+  "荷兰vs瑞典":"休斯顿·NRG体育场", "德国vs科特迪瓦":"多伦多·BMO球场",
+  "厄瓜多尔vs库拉索":"堪萨斯城·箭头体育场", "突尼斯vs日本":"蒙特雷·BBVA体育场",
+  "西班牙vs沙特":"亚特兰大·梅赛德斯奔驰体育场", "比利时vs伊朗":"洛杉矶·SoFi体育场",
+  "乌拉圭vs佛得角":"迈阿密·硬石体育场", "新西兰vs埃及":"温哥华·BC Place",
+  "阿根廷vs奥地利":"达拉斯·AT&T体育场", "法国vs伊拉克":"费城·林肯金融体育场",
+  "挪威vs塞内加尔":"纽约/新泽西·大都会人寿体育场", "约旦vs阿尔及利亚":"旧金山湾区·李维斯体育场",
+  "葡萄牙vs乌兹别克":"休斯顿·NRG体育场", "英格兰vs加纳":"波士顿·吉列体育场",
+  "巴拿马vs克罗地亚":"多伦多·BMO球场", "哥伦比亚vs刚果(金)":"瓜达拉哈拉·阿克伦体育场",
+  "波黑vs卡塔尔":"西雅图·流明体育场", "瑞士vs加拿大":"温哥华·BC Place",
+  "摩洛哥vs海地":"亚特兰大·梅赛德斯奔驰体育场", "苏格兰vs巴西":"迈阿密·硬石体育场",
+  "捷克vs墨西哥":"墨西哥城·班诺特体育场", "南非vs韩国":"蒙特雷·BBVA体育场",
+  "库拉索vs科特迪瓦":"费城·林肯金融体育场", "厄瓜多尔vs德国":"纽约/新泽西·大都会人寿体育场",
+  "日本vs瑞典":"达拉斯·AT&T体育场", "突尼斯vs荷兰":"堪萨斯城·箭头体育场",
+  "巴拉圭vs澳大利亚":"旧金山湾区·李维斯体育场", "土耳其vs美国":"洛杉矶·SoFi体育场",
+  "挪威vs法国":"波士顿·吉列体育场", "塞内加尔vs伊拉克":"多伦多·BMO球场",
+  "佛得角vs沙特":"休斯顿·NRG体育场", "乌拉圭vs西班牙":"瓜达拉哈拉·阿克伦体育场",
+  "埃及vs伊朗":"西雅图·流明体育场", "新西兰vs比利时":"温哥华·BC Place",
+  "克罗地亚vs加纳":"费城·林肯金融体育场", "巴拿马vs英格兰":"纽约/新泽西·大都会人寿体育场",
+  "哥伦比亚vs葡萄牙":"迈阿密·硬石体育场", "刚果(金)vs乌兹别克":"亚特兰大·梅赛德斯奔驰体育场",
+  "阿尔及利亚vs奥地利":"堪萨斯城·箭头体育场", "约旦vs阿根廷":"达拉斯·AT&T体育场"
 };
 // All group matches
 const ALL_MATCHES = [
