@@ -254,6 +254,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .player-card .pn{font-size:.82rem;font-weight:600;line-height:1.2}
 .player-card .pp{font-size:.68rem;color:var(--text-dim)}
 .player-card:hover .pn{color:var(--accent)}
+/* Coach card - gold accent */
+.player-card.coach-card{background:linear-gradient(135deg,var(--bg-card),rgba(255,215,0,.06));border-color:rgba(255,215,0,.3)}
+.player-card.coach-card:hover{border-color:gold;background:linear-gradient(135deg,var(--bg-card-hover),rgba(255,215,0,.1))}
+.player-card.coach-card .pn{font-size:.95rem}
+.player-card.coach-card .pp{font-size:.72rem}
 /* POSITION GROUP COLLAPSIBLE */
 .pos-group{margin-bottom:10px;overflow:hidden}.pos-group:last-child{margin-bottom:0}
 .pos-header{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;user-select:none;transition:all .2s;font-size:.82rem;font-weight:700}
@@ -1271,7 +1276,10 @@ const SQUADS = {
   ]
 };
 
-// Final rankings from the previous three FIFA World Cups (2022 Qatar, 2018 Russia, 2014 Brazil).
+// Team coaches (2026 FIFA World Cup)
+const COACHES = {"墨西哥":"哈维尔·阿吉雷","韩国":"洪明甫","南非":"雨果·布罗斯","捷克":"伊万·哈谢克","加拿大":"杰西·马什","波黑":"谢尔盖·巴尔巴雷兹","卡塔尔":"廷廷·马克斯","瑞士":"穆拉特·雅金","巴西":"多里瓦尔·儒尼奥尔","摩洛哥":"瓦利德·雷格拉吉","海地":"塞巴斯蒂安·米涅","苏格兰":"史蒂夫·克拉克","美国":"毛里西奥·波切蒂诺","巴拉圭":"古斯塔沃·阿尔法罗","澳大利亚":"托尼·波波维奇","土耳其":"文森佐·蒙特拉","德国":"尤利安·纳格尔斯曼","库拉索":"迪克·艾德沃卡特","科特迪瓦":"埃默斯·法埃","厄瓜多尔":"费利克斯·桑切斯","荷兰":"罗纳德·科曼","日本":"森保一","瑞典":"容·达尔·托马森","突尼斯":"蒙塔塞尔·卢希奇","比利时":"多梅尼科·特德斯科","埃及":"霍萨姆·哈桑","伊朗":"阿米尔·加莱诺伊","新西兰":"达伦·巴泽利","西班牙":"路易斯·德拉富恩特","佛得角":"布比斯塔","沙特":"埃尔韦·勒纳尔","乌拉圭":"马塞洛·贝尔萨","法国":"迪迪埃·德尚","塞内加尔":"阿利乌·西塞","伊拉克":"赫苏斯·卡萨斯","挪威":"斯托莱·索尔巴肯","阿根廷":"莱昂内尔·斯卡洛尼","阿尔及利亚":"弗拉基米尔·佩特科维奇","奥地利":"拉尔夫·朗尼克","约旦":"侯赛因·阿穆塔","葡萄牙":"罗伯托·马丁内斯","刚果(金)":"塞巴斯蒂安·德萨布雷","乌兹别克斯坦":"斯雷奇科·卡塔内茨","哥伦比亚":"内斯托尔·洛伦佐","英格兰":"托马斯·图赫尔","克罗地亚":"兹拉特科·达利奇","加纳":"奥托·阿多","巴拿马":"托马斯·克里斯蒂安森"};
+
+// Final rankings from the previous three FIFA World Cups
 // null means the team did not reach that tournament's finals.
 const TEAM_WORLD_CUP_HISTORY = {
   "墨西哥": {2022:22, 2018:12, 2014:10},
@@ -1392,8 +1400,15 @@ function renderTeam(teamName){
   if(!players){list.innerHTML='<div style="color:var(--text-dim);text-align:center;padding:20px">暂无该队球员数据</div>';return}
   
   // Build header
-  let html='<div style="margin-bottom:12px;font-size:1rem;font-weight:700"><span style="font-size:1.5rem">'+flag+'</span> '+nm+' · '+players.length+'名球员</div>';
+  let html='<div style="margin-bottom:12px;font-size:1rem;font-weight:700"><span style="font-size:1.5rem">'+flag+'</span> '+nm+' · '+players.length+'名球员';
+  let coach=COACHES[teamName];if(coach)html+=' · 🎯 1名教练';
+  html+='</div>';
   html+=renderTeamHistory(teamName);
+  
+  // Coach card (always first, always expanded)
+  if(coach){
+    html+='<div class="pos-group"><div class="pos-header"><span>🎯 教练</span></div><div class="pos-grid"><a class="player-card coach-card" target="_blank"><div class="pa" style="font-size:1.5rem">🎯</div><div><div class="pn">'+coach+'</div><div class="pp">主教练</div></div><span class="pp">🧢</span></a></div></div>';
+  }
   
   // Group players by position
   let posOrder=['前锋','中场','后卫','门将'];
