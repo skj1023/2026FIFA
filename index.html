@@ -1042,6 +1042,10 @@ const RANK2022 = {
 
 // Team display: map short name → { flag, name } from GROUPS
 function td(n){
+  // Check TM alias mapping first
+  for(let [full,alias] of Object.entries(TM)){
+    if(alias===n)return teamMeta(full);
+  }
   for(let g of Object.values(GROUPS)){
     for(let t of g.teams){
       let nn=stripFlag(t);
