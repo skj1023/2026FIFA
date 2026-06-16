@@ -1052,11 +1052,11 @@ const RANK2022 = {
   "巴西": "八强", "葡萄牙": "八强"
 };
 
-// Team display: map short name → { flag, name } from GROUPS
+// Team display: map short name → {fl, nm} from GROUPS
 function td(n){
-  // Check TM alias mapping first
+  // Check TM alias mapping first. teamMeta() returns {flag,name}, so normalize it to td()'s {fl,nm} contract.
   for(let [full,alias] of Object.entries(TM)){
-    if(alias===n)return teamMeta(full);
+    if(alias===n){let m=teamMeta(full);return{fl:m.flag,nm:m.name};}
   }
   for(let g of Object.values(GROUPS)){
     for(let t of g.teams){
@@ -1467,29 +1467,7 @@ function renderTeam(teamName){
   // Find team's group and matches
   let group=grp(teamName);
   if(group){
-    // Team matches
-    let mn=TM[teamName]||teamName;let teamMatches=ALL_MATCHES.filter(m=>m.h===mn||m.a===mn);
-    let doneMs=teamMatches.filter(m=>m.st==='done');
-    let upMs=teamMatches.filter(m=>m.st==='upcoming');
-    
-    if(doneMs.length||upMs.length){
-      html+='<div class="team-detail-section"><div class="section-title">📋 球队赛程</div>';
-      if(doneMs.length){
-        html+='<div style="font-size:.72rem;color:var(--text-dim);margin-bottom:6px">✅ 已完赛 ('+doneMs.length+')</div>';
-        for(let m of doneMs.sort((a,b)=>parseMatchTime(b.t)-parseMatchTime(a.t))){
-          html+=mc(m);
-        }
-      }
-      if(upMs.length){
-        html+='<div style="font-size:.72rem;color:var(--text-dim);margin-bottom:6px;margin-top:10px">📅 未赛 ('+upMs.length+')</div>';
-        for(let m of upMs.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t))){
-          html+=mc(m);
-        }
-      }
-      html+='</div>';
-    }
-    
-    // Team standing in group
+    // Team standing in group — placed before team schedule so teams with mostly unplayed matches don't push the useful ranking too far down.
     let stData={};
     let teams=GROUPS[group].teams;
     stData[group]=teams.map(()=>({p:0,w:0,d:0,l:0,gf:0,ga:0,pts:0}));
@@ -1523,7 +1501,29 @@ function renderTeam(teamName){
       return '<tr class="'+(isSelected?'highlight':'')+'"><td class="rk">'+(i+1)+'</td><td><div class="tc"><span>'+teamFlag+'</span>'+teamName2+qual+'</div></td><td>'+info.p+'</td><td>'+info.w+'</td><td>'+info.d+'</td><td>'+info.l+'</td><td>'+info.gf+'/'+info.ga+'</td><td>'+gdS+'</td><td class="pts">'+info.pts+'</td></tr>';
     }).join('');
     
-    html+='<div class="team-detail-section"><div class="section-title">🏆 '+group+'组积分</div><div class="team-st-block"><table><thead><tr><th></th><th>球队</th><th>赛</th><th>胜</th><th>平</th><th>负</th><th>进/失</th><th>净胜</th><th>积分</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+    html+='<div class="team-detail-section team-standing-section"><div class="section-title">🏆 '+group+'组积分</div><div class="team-st-block"><table><thead><tr><th></th><th>球队</th><th>赛</th><th>胜</th><th>平</th><th>负</th><th>进/失</th><th>净胜</th><th>积分</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+
+    // Team matches
+    let mn=TM[teamName]||teamName;let teamMatches=ALL_MATCHES.filter(m=>m.h===mn||m.a===mn);
+    let doneMs=teamMatches.filter(m=>m.st==='done');
+    let upMs=teamMatches.filter(m=>m.st==='upcoming'||m.st==='live');
+    
+    if(doneMs.length||upMs.length){
+      html+='<div class="team-detail-section team-schedule-section"><div class="section-title">📋 球队赛程</div>';
+      if(doneMs.length){
+        html+='<div style="font-size:.72rem;color:var(--text-dim);margin-bottom:6px">✅ 已完赛 ('+doneMs.length+')</div>';
+        for(let m of doneMs.sort((a,b)=>parseMatchTime(b.t)-parseMatchTime(a.t))){
+          html+=mc(m);
+        }
+      }
+      if(upMs.length){
+        html+='<div style="font-size:.72rem;color:var(--text-dim);margin-bottom:6px;margin-top:10px">📅 未赛/进行中 ('+upMs.length+')</div>';
+        for(let m of upMs.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t))){
+          html+=mc(m);
+        }
+      }
+      html+='</div>';
+    }
   }
   
   list.innerHTML=html;
