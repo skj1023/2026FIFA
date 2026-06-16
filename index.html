@@ -153,7 +153,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .log-head{padding:16px 18px;border-bottom:1px solid var(--border);background:linear-gradient(135deg,rgba(0,113,227,.08),rgba(255,255,255,.02))}
 .log-head h3{font-size:1rem;font-weight:800;margin-bottom:3px}.log-head p{font-size:.76rem;color:var(--text-sec);line-height:1.6}
 .log-list{display:flex;flex-direction:column}.log-item{display:grid;grid-template-columns:128px 1fr;gap:14px;padding:13px 18px;border-bottom:1px solid rgba(255,255,255,.035);transition:background .18s}.log-item:last-child{border-bottom:none}.log-item:hover{background:rgba(255,255,255,.025)}
-.log-time{font-size:.72rem;color:var(--text-dim);font-variant-numeric:tabular-nums}.log-content{font-size:.82rem;color:var(--text-sec);line-height:1.55}.log-content strong{color:var(--text);font-weight:700}.log-tag{display:inline-flex;align-items:center;margin-right:7px;padding:2px 8px;border-radius:999px;font-size:.66rem;font-weight:650;background:rgba(0,113,227,.1);color:#66bbff;border:1px solid rgba(0,113,227,.18)}.log-tag.auto{background:rgba(52,199,89,.1);color:var(--green);border-color:rgba(52,199,89,.2)}.log-tag.ui{background:rgba(255,159,10,.1);color:var(--orange);border-color:rgba(255,159,10,.2)}
+.log-tag.auto{background:rgba(52,199,89,.1);color:var(--green);border-color:rgba(52,199,89,.2)}
+.log-tag.ui{background:rgba(255,159,10,.1);color:var(--orange);border-color:rgba(255,159,10,.2)}
+.log-tag.info{background:rgba(0,113,227,.1);color:#66bbff;border-color:rgba(0,113,227,.18)}
+.log-tag.fix{background:rgba(255,69,58,.1);color:#ff6961;border-color:rgba(255,69,58,.2)}
+/* LOG FILTER PILLS */
+.log-filter{display:flex;gap:6px;padding:10px 18px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.log-pill{padding:5px 12px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:.72rem;font-weight:600;cursor:pointer;transition:all .2s;white-space:nowrap}
+.log-pill:hover{border-color:var(--accent);color:var(--text)}
+.log-pill.active{background:var(--accent);color:#fff;border-color:var(--accent)}
+/* PLAYER POPULARITY */
+.pp{font-size:.95rem;letter-spacing:-.04em;margin-left:auto;flex-shrink:0}
 @media(max-width:640px){.log-item{grid-template-columns:1fr;gap:4px}.log-time{font-size:.68rem}}
 /* FOOTER */
 .footer{text-align:center;padding:28px 20px;font-size:.72rem;color:var(--text-dim);border-top:1px solid var(--border)}
@@ -406,10 +416,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <h2 class="section-title">📅 完整赛程</h2>
       <span class="section-sub">北京时间 · 小组赛 72 场</span>
     </div>
-    <div class="search-wrap">
-      <span class="si">🔍</span>
-      <input type="text" placeholder="搜索球队..." oninput="searchMatches(this.value)">
-    </div>
     <div class="date-slider" id="dateSlider"></div>
     <div id="scheduleList"></div>
   </section>
@@ -536,7 +542,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
         <h3>业务更新记录</h3>
         <p>这里记录页面内容、数据、规则说明和自动化任务的关键变更。日志保持简短，便于回看，不展开技术细节。</p>
       </div>
+      <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time">2026-06-17 03:00</div>
+          <div class="log-content"><span class="log-tag ui">页面</span><strong>球员热度评价+UI优化</strong>：球员卡片增加🔥热度评级；球队详情修复乌兹别克斯坦比赛空白；赛程Tab移除无效搜索框；日志Tab增加分类筛选。</div>
+        </div>
+        <div class="log-item">
+          <div class="log-time">2026-06-17 02:00</div>
+          <div class="log-content"><span class="log-tag ui">页面</span><strong>导航菜单重排</strong>：球队移至积分榜之前，优化浏览动线。</div>
+        </div>
+        <div class="log-item">
+          <div class="log-time">2026-06-17 01:30</div>
+          <div class="log-content"><span class="log-tag ui">页面</span><strong>球队详情大升级</strong>：球员改为按位置分组折叠展示；球队详情增加已完赛/未赛赛程+所在小组积分榜。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-16 20:36</div>
           <div class="log-content"><span class="log-tag">赛程</span><strong>同步场馆信息</strong>：按 ESPN 赛程校正小组赛场馆，并更新首页完赛计数底值。</div>
@@ -1092,6 +1111,9 @@ function renderMatchList(container,dateKeys,dateData,filterDate,isUpcoming){
   }
   if(!sHTML)sHTML='<div style="color:var(--text-dim);padding:16px;text-align:center">该日期暂无比赛</div>';
   container.innerHTML=sHTML;
+  // Log filter
+  initLogFilter();
+  
   // Fade-in
   document.querySelectorAll('.fade-in').forEach((el,i)=>{
     setTimeout(()=>el.classList.add('vis'),i*60);
@@ -1301,6 +1323,22 @@ const TEAM_WORLD_CUP_HISTORY = {
   "加纳": {2022:24, 2018:null, 2014:25},
   "巴拿马": {2022:null, 2018:32, 2014:null}
 };
+// Player popularity (emoji, Chinese audience perspective)
+const PP = {
+  "梅西":5,"C罗":5,"姆巴佩":5,"内马尔":5,"哈兰德":5,"萨拉赫":5,"德布劳内":5,"维尼修斯":5,"孙兴慜":5,"莱万":5,"贝尔":5,
+  "穆西亚拉":4,"贝林厄姆":4,"格瓦迪奥尔":4,"凯恩":4,"福登":4,"罗德里":4,"萨卡":4,"赖斯":4,"厄德高":4,
+  "莫德里奇":4,"佩德里":4,"加维":4,"巴尔韦德":4,"罗德里戈":4,"恩德里克":4,"拉菲尼亚":4,"帕尔默":4,
+  "阿尔瓦雷斯":4,"劳塔罗":4,"恩佐":4,"麦卡利斯特":4,"维尔茨":4,"哈弗茨":4,"穆勒":4,"京多安":4,"诺伊尔":4,
+  "克罗斯":4,"格列兹曼":4,"登贝莱":4,"阿什拉夫":4,"范迪克":4,"加克波":4,"基米希":4,
+  "奥乔亚":3,"洛萨诺":3,"金玟哉":3,"李刚仁":3,"黄喜灿":3,"希克":3,"曹法尔":3,"哲科":3,
+  "皮亚尼奇":3,"扎卡":3,"沙奇里":3,"阿坎吉":3,"普利西奇":3,"麦肯尼":3,"雷纳":3,"巴洛贡":3,
+  "罗伯逊":3,"蒂尔尼":3,"麦克托米奈":3,"麦金":3,"戴维斯":3,"乔纳森·戴维":3,"伊兰昆达":3,
+  "冈萨雷斯":3,"小西蒙尼":3,"阿尔米隆":3,"久保建英":3,"堂安律":3,"伊东纯也":3,"三笘薰":3,
+  "伊萨克":3,"哲凯赖什":3,"库卢":3,"恩博洛":3,"巴尔加斯":3,"阿姆杜尼":3,"B费":3,"B席":3,"莱奥":3,"迪亚斯":3,"坎塞洛":3,
+  "弗拉霍维奇":3,"科斯蒂奇":3,"米林科维奇":3,"塔迪奇":3,"米特罗维奇":3,"日夫科维奇":3
+};
+const TM = {"乌兹别克斯坦":"乌兹别克"};
+
 
 // ===== PLAYER / TEAM FUNCTIONS =====
 function stripFlag(s){
@@ -1378,7 +1416,8 @@ function renderTeam(teamName){
       let google='https://cn.bing.com/search?q='+encodeURIComponent(pl.n+'+football');
       let avatar=pl.img?'<img src="'+pl.img+'" alt="'+pl.n+'" loading="lazy" onerror="this.parentNode.textContent=\''+icon+'\'">':icon;
       let cardCls=pl.img?'player-card photo':'player-card';
-      html+='<a class="'+cardCls+'" href="'+google+'" target="_blank"><div class="pa">'+avatar+'</div><div><div class="pn">'+pl.n+'</div><div class="pp">'+pl.p+'</div></div></a>';
+      let pop=PP[pl.n]||2;let heat='🔥'.repeat(pop)+'<span style="opacity:.25">'+'🔥'.repeat(5-pop)+'</span>';
+      html+='<a class="'+cardCls+'" href="'+google+'" target="_blank"><div class="pa">'+avatar+'</div><div><div class="pn">'+pl.n+'</div><div class="pp">'+pl.p+'</div></div><span class="pp">'+heat+'</span></a>';
     }
     html+='</div></div>';
   }
@@ -1387,7 +1426,7 @@ function renderTeam(teamName){
   let group=grp(teamName);
   if(group){
     // Team matches
-    let teamMatches=ALL_MATCHES.filter(m=>m.h===teamName||m.a===teamName);
+    let mn=TM[teamName]||teamName;let teamMatches=ALL_MATCHES.filter(m=>m.h===mn||m.a===mn);
     let doneMs=teamMatches.filter(m=>m.st==='done');
     let upMs=teamMatches.filter(m=>m.st==='upcoming');
     
@@ -1491,6 +1530,37 @@ function searchMatches(keyword){
   let html='<div style="font-size:.82rem;color:var(--text-sec);margin-bottom:8px">🔍 找到 '+matches.length+' 场包含 "'+keyword+'" 的比赛</div>';
   html+=matches.map(m=>mc(m,m.st==='upcoming')).join('');
   sl.innerHTML=html;
+}
+
+// Log filter function
+function initLogFilter(){
+  let f=document.getElementById("logFilter");if(!f)return;
+  let tags=[{k:"all",l:"全部"},{k:"ui",l:"UI更新"},{k:"fix",l:"修复"},{k:"auto",l:"自动更新"}];
+  f.innerHTML=tags.map(t=>'<span class="log-pill" data-fl="'+t.k+'">'+t.l+'</span>').join("");
+  document.querySelectorAll(".log-pill").forEach(p=>p.classList.remove("active"));
+  let all=f.querySelector('[data-fl="all"]');if(all)all.classList.add("active");
+  f.addEventListener("click",function(e){
+    let p=e.target.closest(".log-pill");
+    if(!p)return;
+    let tag=p.dataset.fl;
+    document.querySelectorAll(".log-pill").forEach(p=>p.classList.toggle("active",p.dataset.fl===tag));
+    document.querySelectorAll(".log-item").forEach(item=>{
+      if(tag==="all"){item.style.display="";return}
+      let t=item.querySelector(".log-tag");
+      if(!t){item.style.display=(tag==="info")?"":"none";return}
+      let cls=t.className.split(" ")[1]||"";
+      item.style.display=(cls===tag||(!cls&&tag==="info"))?"":"none";
+    });
+  });
+}
+function filterLog(tag){
+  document.querySelectorAll(".log-pill").forEach(p=>p.classList.toggle("active",p.dataset.fl===tag));
+  document.querySelectorAll(".log-item").forEach(item=>{
+    let t=item.querySelector(".log-tag");
+    if(tag==="all"||!t){item.style.display="";return}
+    let cls=t.className.split(" ")[1]||"";
+    item.style.display=(cls===tag||(!cls&&tag==="info"))?"":"none";
+  });
 }
 
 // Render best 3rd place ranking
