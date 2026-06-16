@@ -1396,12 +1396,16 @@ function renderTeam(teamName){
   html+=renderTeamHistory(teamName);
   
   // Group players by position
-  let posOrder=['门将','后卫','中场','前锋'];
+  let posOrder=['前锋','中场','后卫','门将'];
   let posIcon={门将:'🧤',后卫:'🛡️',中场:'⚡',前锋:'⚽'};
   let grouped={};
   for(let p of players){
     if(!grouped[p.p])grouped[p.p]=[];
     grouped[p.p].push(p);
+  }
+  // Sort players within each position by heat (descending)
+  for(let pos in grouped){
+    grouped[pos].sort((a,b)=>(PP[b.n]||2)-(PP[a.n]||2));
   }
   
   // Render each position group as collapsible section
