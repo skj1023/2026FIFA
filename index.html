@@ -51,7 +51,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .tv-btn{position:fixed;top:62px;right:16px;z-index:999;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,69,58,.3);background:rgba(255,69,58,.12);color:var(--red);font-size:.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.3);backdrop-filter:blur(12px);text-decoration:none}.tv-btn:hover{background:rgba(255,69,58,.25);border-color:var(--red);transform:scale(1.08)}
 .fs-btn{position:fixed;bottom:24px;right:24px;z-index:999;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:rgba(20,20,30,.7);color:var(--text);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.3);backdrop-filter:blur(12px)}.fs-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);transform:scale(1.08)}
 .top-btn{position:fixed;bottom:70px;right:24px;z-index:999;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:rgba(20,20,30,.7);color:var(--text);font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.3);backdrop-filter:blur(12px)}.top-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);transform:scale(1.08)}
-@media(max-width:640px){.tm-btn{width:34px;height:34px;top:10px;right:10px;font-size:.8rem}.tv-btn{width:34px;height:34px;top:50px;right:10px;font-size:.78rem}.fs-btn{width:34px;height:34px;font-size:.85rem;bottom:16px;right:16px}.top-btn{width:34px;height:34px;font-size:.9rem;bottom:56px;right:16px}}
+@media(max-width:640px){.tm-btn,.tv-btn{display:none}.fs-btn{width:34px;height:34px;font-size:.85rem;bottom:16px;right:16px}.top-btn{width:34px;height:34px;font-size:.9rem;bottom:56px;right:16px}}
 .pulse-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(52,199,89,.5)}50%{box-shadow:0 0 0 8px rgba(52,199,89,0)}}
 /* NAV */
@@ -59,6 +59,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .nav::-webkit-scrollbar{display:none}
 .nav a{display:block;padding:12px 14px;font-size:.8rem;font-weight:500;color:var(--text-sec);text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;flex-shrink:0}
 .nav a:hover{color:var(--text)}.nav a.active{color:#fff;border-bottom-color:var(--accent)}
+/* Nav utility icons (mobile: replace floating buttons) */
+.nav-utils{display:flex;align-items:center;gap:2px;position:sticky;right:0;z-index:2;background:rgba(10,10,15,.85);padding-left:4px;margin-left:auto;backdrop-filter:blur(20px) saturate(1.4)}
+.nav-utils::before{content:'';width:1px;height:20px;background:var(--border);margin-right:4px}
+.nav-util{display:block;padding:12px 10px;font-size:.82rem;cursor:pointer;text-decoration:none;color:var(--text-sec);transition:all .2s;white-space:nowrap;flex-shrink:0;line-height:1;border-bottom:2px solid transparent}
+.nav-util:hover{color:var(--text);transform:scale(1.1)}
+@media(min-width:641px){.nav-utils{display:none}} /* Desktop: use floating buttons instead */
 /* TAB SYSTEM */
 .tab-content{display:none;animation:tabFade .3s ease}
 .tab-content.active{display:block}
@@ -326,6 +332,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <a href='#' data-tab='third'>📊 第3名</a>
   <a href='#' data-tab='info'>ℹ️ 信息</a>
   <a href='#' data-tab='log'>📝 日志</a>
+  <span class="nav-utils"><a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播" class="nav-util" id="navTv">📺</a><a href="#" class="nav-util" id="navTheme" title="切换背景">🌙</a></span>
 </nav>
 <div class="tab-content active" id="tab-home">
 <div class="hero">
@@ -1915,14 +1922,20 @@ document.querySelectorAll('.tab-link').forEach(a=>{
 // Theme toggle
 (function(){
   let btn=document.getElementById('tmBtn');
+  let navBtn=document.getElementById('navTheme');
   let html=document.documentElement;
-  if(!btn)return;
+  function updateUI(light){
+    if(btn){btn.textContent=light?'☀️':'🌙';btn.title=light?'切换为深色':'切换为浅色'}
+    if(navBtn){navBtn.textContent=light?'☀️':'🌙';navBtn.title=light?'切换为深色':'切换为浅色'}
+  }
   function setTheme(light){
-    if(light){html.classList.add('light');btn.textContent='☀️';btn.title='切换为深色';localStorage.setItem('wc_theme','light')}
-    else{html.classList.remove('light');btn.textContent='🌙';btn.title='切换为浅色';localStorage.setItem('wc_theme','dark')}
+    if(light){html.classList.add('light')}else{html.classList.remove('light')}
+    updateUI(light);
+    localStorage.setItem('wc_theme',light?'light':'dark');
   }
   if(localStorage.getItem('wc_theme')==='light')setTheme(true);
-  btn.addEventListener('click',function(){setTheme(!html.classList.contains('light'))});
+  if(btn)btn.addEventListener('click',function(){setTheme(!html.classList.contains('light'))});
+  if(navBtn)navBtn.addEventListener('click',function(e){e.preventDefault();setTheme(!html.classList.contains('light'))});
 })();
 
 // Back to top
