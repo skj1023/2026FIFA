@@ -1488,8 +1488,14 @@ function renderTeam(teamName){
     let arr=stData[group].map((d,i)=>({...d,idx:i}));
     arr.sort((a,b)=>{if(b.pts!==a.pts)return b.pts-a.pts;let gdA=a.gf-a.ga,gdB=b.gf-b.ga;if(gdB!==gdA)return gdB-gdA;return b.gf-a.gf;});
     
-    let groupComplete=ALL_MATCHES.filter(m=>m.g===group).length===6&&ALL_MATCHES.filter(m=>m.g===group).every(m=>m.st==='done');
-    let rows=arr.map((info,i)=>{
+    let groupDoneCount=ALL_MATCHES.filter(m=>m.g===group&&m.st==='done').length;
+    let groupComplete=ALL_MATCHES.filter(m=>m.g===group).length===6&&groupDoneCount===6;
+    
+    // Only show standings table when group has meaningful data (>=1 match completed)
+    if(groupDoneCount===0){
+      html+='<div class="team-detail-section team-standing-section" style="margin-bottom:4px"><div class="section-title" style="font-size:.78rem;font-weight:400;color:var(--text-dim)">⏳ '+group+'组比赛尚未开始 · 6场比赛待赛</div></div>';
+    } else {
+      let rows=arr.map((info,i)=>{
       let t=teams[info.idx];let gd=info.gf-info.ga;let gdS=gd>0?'+'+gd:(gd<0?gd:'0');
       let isSelected=t.includes(teamName);
       let qual='';
@@ -1502,6 +1508,7 @@ function renderTeam(teamName){
     }).join('');
     
     html+='<div class="team-detail-section team-standing-section"><div class="section-title">🏆 '+group+'组积分</div><div class="team-st-block"><table><thead><tr><th></th><th>球队</th><th>赛</th><th>胜</th><th>平</th><th>负</th><th>进/失</th><th>净胜</th><th>积分</th></tr></thead><tbody>'+rows+'</tbody></table></div></div>';
+    }
 
     // Team matches
     let mn=TM[teamName]||teamName;let teamMatches=ALL_MATCHES.filter(m=>m.h===mn||m.a===mn);
@@ -1517,7 +1524,7 @@ function renderTeam(teamName){
         }
       }
       if(upMs.length){
-        html+='<div style="font-size:.72rem;color:var(--text-dim);margin-bottom:6px;margin-top:10px">📅 未赛/进行中 ('+upMs.length+')</div>';
+        html+='<div style="font-size:.72rem;color:var(--text-dim);margin-bottom:6px'+(doneMs.length?';margin-top:10px':'')+'">📅 未赛/进行中 ('+upMs.length+')</div>';
         for(let m of upMs.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t))){
           html+=mc(m);
         }
