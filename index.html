@@ -1789,28 +1789,19 @@ function renderPredictionBox(m){
 }
 function renderHomePredictions(){
   let el=document.getElementById('homePredBox');if(!el)return;
-  let today=new Date();
-  // Build date strings for next 3 days
-  let dates=[];let dateSet=new Set();
-  for(let i=1;i<=3;i++){
-    let d=new Date(today.getFullYear(),today.getMonth(),today.getDate()+i);
-    let ds=String(d.getMonth()+1)+'/'+String(d.getDate());
-    dates.push(ds);dateSet.add(ds);
-  }
-  let allPreds=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done"&&m.t&&dateSet.has(m.t.split(' ')[0])).sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
-  if(!allPreds.length)allPreds=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done").sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t)).slice(0,6);
-  // Split: tomorrow vs later days
-  let tomorrow=allPreds.filter(m=>m.t.split(' ')[0]===dates[0]);
-  let later=allPreds.filter(m=>m.t.split(' ')[0]!==dates[0]);
+  // All upcoming/live matches that have locked predictions, sorted by time (earliest first)
+  let allPreds=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done"&&m.t).sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
+  // First 4 = main display, rest = collapsible
+  let main=allPreds.slice(0,4);
+  let more=allPreds.slice(4);
   let stat=predSummary();
   function cardHTML(m){let p=predOf(m),hd=td(m.h),ad=td(m.a);return '<div class="pred-mini"><div class="teams">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="pick">预测：<strong>'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm+'</strong> · '+p.tag+' · '+p.confidence+'%</div></div>';}
-  let mainCards=(tomorrow.length?tomorrow:allPreds).map(cardHTML).join('');
+  let mainCards=main.map(cardHTML).join('');
   let moreHTML='';
-  if(later.length){
-    moreHTML='<div class="pred-more"><button class="pred-more-btn" onclick="this.classList.toggle(\'open\');var b=this.nextElementSibling;if(b)b.classList.toggle(\'open\')"><span>查看更远预测 ('+later.length+' 场)</span><span class="arrow">▼</span></button><div class="pred-more-body"><div class="pred-grid">'+later.map(cardHTML).join('')+'</div></div></div>';
+  if(more.length){
+    moreHTML='<div class="pred-more"><button class="pred-more-btn" onclick="this.classList.toggle(\'open\');var b=this.nextElementSibling;if(b)b.classList.toggle(\'open\')"><span>查看更远预测 ('+more.length+' 场)</span><span class="arrow">▼</span></button><div class="pred-more-body"><div class="pred-grid">'+more.map(cardHTML).join('')+'</div></div></div>';
   }
-  let subtitle=tomorrow.length?'默认展示次日预测，展开查看更远比赛':'每天 00:05 预测未来3天比赛；生成后锁定，赛后自动复盘。足球是圆的，福福也会翻车。';
-  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 赛前预言</div><div class="pred-sub">'+subtitle+'</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(mainCards||'<div class="pred-mini"><div class="teams">暂无近期预测</div><div class="pick">下一批预测将在 00:05 后生成。</div></div>')+'</div>'+moreHTML+'<div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
+  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 赛前预言</div><div class="pred-sub">展示最近4场未赛预测；已赛比赛自动复盘。足球是圆的，福福也会翻车。</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(mainCards||'<div class="pred-mini"><div class="teams">暂无近期预测</div><div class="pick">下一批预测将在 00:05 后生成。</div></div>')+'</div>'+moreHTML+'<div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
 }
 
 // Render group standings
