@@ -332,8 +332,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 <body>
 <nav class="nav" id="nav">
   <a href='#' class='active' data-tab='home'>🏠 首页</a>
-  <a href='#' data-tab='results'>📋 赛果</a>
   <a href='#' data-tab='schedule'>📅 赛程</a>
+  <a href='#' data-tab='results'>📋 赛果</a>
   <a href='#' data-tab='teams'>👥 球队</a>
   <a href='#' data-tab='standings'>🏆 积分榜</a>
   <a href='#' data-tab='bracket'>🏅 淘汰赛</a>
@@ -419,19 +419,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 </div>
 </div>
 
-<div class="tab-content" id="tab-results">
-<div class="container tab-main">
-  <section class="section" id="results">
-    <div class="section-header">
-      <h2 class="section-title">📋 已完赛</h2>
-      <span class="section-sub" id="updateStamp">更新中…</span>
-    </div>
-    <div class="date-slider" id="resultsDateSlider"></div>
-    <div id="resultsList"></div>
-  </section>
-</div>
-</div>
-
 <div class="tab-content" id="tab-schedule">
 <div class="container tab-main">
   <section class="section" id="schedule">
@@ -441,6 +428,19 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     </div>
     <div class="date-slider" id="dateSlider"></div>
     <div id="scheduleList"></div>
+  </section>
+</div>
+</div>
+
+<div class="tab-content" id="tab-results">
+<div class="container tab-main">
+  <section class="section" id="results">
+    <div class="section-header">
+      <h2 class="section-title">📋 已完赛</h2>
+      <span class="section-sub" id="updateStamp">更新中…</span>
+    </div>
+    <div class="date-slider" id="resultsDateSlider"></div>
+    <div id="resultsList"></div>
   </section>
 </div>
 </div>
@@ -1797,13 +1797,17 @@ function renderPredictionBox(m){
 function renderHomePredictions(){
   let el=document.getElementById('homePredBox');if(!el)return;
   let today=new Date();
-  let tomorrow=new Date(today.getFullYear(),today.getMonth(),today.getDate()+1);
-  let md=String(tomorrow.getMonth()+1)+'/'+String(tomorrow.getDate());
-  let upcoming=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done"&&m.t&&m.t.split(' ')[0]===md).sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
-  if(!upcoming.length)upcoming=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done").sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t)).slice(0,4);
+  // Build set of date strings for next 3 days
+  let dateSet=new Set();
+  for(let i=1;i<=3;i++){
+    let d=new Date(today.getFullYear(),today.getMonth(),today.getDate()+i);
+    dateSet.add(String(d.getMonth()+1)+'/'+String(d.getDate()));
+  }
+  let upcoming=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done"&&m.t&&dateSet.has(m.t.split(' ')[0])).sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
+  if(!upcoming.length)upcoming=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done").sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t)).slice(0,6);
   let stat=predSummary();
   let cards=upcoming.map(m=>{let p=predOf(m),hd=td(m.h),ad=td(m.a);return '<div class="pred-mini"><div class="teams">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="pick">预测：<strong>'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm+'</strong> · '+p.tag+' · '+p.confidence+'%</div></div>';}).join('');
-  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 赛前预言</div><div class="pred-sub">每天 00:05 预测次日比赛；生成后锁定，赛后自动复盘。足球是圆的，福福也会翻车。</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(cards||'<div class="pred-mini"><div class="teams">暂无次日预测</div><div class="pick">下一批预测将在 00:05 后生成。</div></div>')+'</div><div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
+  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 赛前预言</div><div class="pred-sub">每天 00:05 预测未来3天比赛；生成后锁定，赛后自动复盘。足球是圆的，福福也会翻车。</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(cards||'<div class="pred-mini"><div class="teams">暂无近期预测</div><div class="pick">下一批预测将在 00:05 后生成。</div></div>')+'</div><div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
 }
 
 // Render group standings
