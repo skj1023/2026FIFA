@@ -171,6 +171,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 /* PLAYER POPULARITY */
 .pp{font-size:.95rem;letter-spacing:-.04em;margin-left:auto;flex-shrink:0}
 @media(max-width:640px){.log-item{grid-template-columns:1fr;gap:4px}.log-time{font-size:.68rem}}
+
+/* AI PREDICTION */
+.pred-home{margin-bottom:22px;background:linear-gradient(135deg,rgba(139,92,246,.12),rgba(59,130,246,.06));border:1px solid rgba(139,92,246,.24);border-radius:var(--radius);padding:16px 18px;position:relative;overflow:hidden}
+.pred-home::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8b5cf6,#3b82f6,#8b5cf6);background-size:200% 100%;animation:nxBar 4s ease-in-out infinite}
+.pred-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}.pred-title{font-size:1rem;font-weight:850}.pred-sub{font-size:.74rem;color:var(--text-sec);line-height:1.55;margin-top:2px}.pred-disclaimer{font-size:.66rem;color:#b794ff;border:1px solid rgba(139,92,246,.28);background:rgba(139,92,246,.1);border-radius:999px;padding:4px 10px;white-space:nowrap}.pred-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}.pred-mini{background:rgba(255,255,255,.035);border:1px solid rgba(139,92,246,.18);border-radius:var(--radius-sm);padding:10px 12px}.light .pred-mini{background:rgba(255,255,255,.68)}.pred-mini .teams{font-size:.84rem;font-weight:750;margin-bottom:4px}.pred-mini .pick{font-size:.78rem;color:var(--text-sec)}.pred-mini strong{color:#b794ff}.pred-stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.pred-stat{font-size:.7rem;color:var(--text-sec);background:rgba(0,0,0,.16);border:1px solid rgba(139,92,246,.16);border-radius:999px;padding:4px 9px}.light .pred-stat{background:rgba(255,255,255,.55)}
+.pred-box{margin-top:10px;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid rgba(139,92,246,.22);background:linear-gradient(135deg,rgba(139,92,246,.10),rgba(59,130,246,.05));font-size:.74rem}.pred-box .pred-line{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px}.pred-box .pred-name{font-weight:800;color:#c4b5fd}.pred-box .pred-score{font-weight:850;color:var(--text)}.pred-conf{height:4px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin:6px 0}.pred-conf span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#8b5cf6,#3b82f6)}.pred-reason{color:var(--text-sec);line-height:1.55}.pred-basis{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.pred-chip{font-size:.62rem;color:#c4b5fd;border:1px solid rgba(139,92,246,.22);background:rgba(139,92,246,.08);border-radius:999px;padding:2px 7px}.pred-review{margin-top:8px;padding-top:8px;border-top:1px solid rgba(139,92,246,.18);display:flex;gap:8px;flex-wrap:wrap;align-items:center;color:var(--text-sec)}.pred-level{font-weight:800;color:var(--text)}.pred-score-badge{font-weight:850;color:#c4b5fd}.pred-note{font-size:.64rem;color:var(--text-dim);margin-top:7px}
+@media(max-width:640px){.pred-home{padding:14px}.pred-disclaimer{white-space:normal}.pred-grid{grid-template-columns:1fr}.pred-box .pred-line{align-items:flex-start}}
+
 /* FOOTER */
 .footer{text-align:center;padding:28px 20px;font-size:.72rem;color:var(--text-dim);border-top:1px solid var(--border)}
 .footer a{color:var(--accent);text-decoration:none;transition:color .2s}
@@ -386,6 +394,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     <span id="liveBannerText">🔴 当前有比赛进行中</span>
     <a href="#" class="tab-link" data-tab="schedule">去看 →</a>
   </div>
+  <section class="section" id="homePredictions">
+    <div id="homePredBox"></div>
+  </section>
   <section class="section" id="homeResults">
     <div class="section-header">
       <h2 class="section-title">📋 最新赛果</h2>
@@ -556,6 +567,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time">2026-06-18 15:00</div>
+          <div class="log-content"><span class="log-tag ui">页面</span><strong>上线 AI 赛前预言 V1</strong>：未赛卡片显示锁定预测、信心值与理由；完赛后自动计算准确度复盘；首页新增 AI 预测战绩，预测仅供娱乐不构成投注建议。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-18 14:18</div>
           <div class="log-content"><span class="log-tag auto">数据</span><strong>静态计数更新 22→24</strong>：全站所有24场小组赛确认完赛（ESPN交叉验证），硬编码已完赛计数同步更新为24。</div>
@@ -1034,15 +1049,15 @@ const ALL_MATCHES = [
   // A组
   {id:"A1",g:"A",r:1,t:"6/12 03:00",h:"墨西哥",a:"南非",s:"2-0",st:"done",hl:"🏟️ 东道主揭幕战开门红"},
   {id:"A2",g:"A",r:1,t:"6/12 10:00",h:"韩国",a:"捷克",s:"2-1",st:"done",hl:"⚽ 黄仁范传射 · 韩国2-1逆转捷克"},
-  {id:"A3",g:"A",r:2,t:"6/19 00:00",h:"捷克",a:"南非",st:"upcoming",hl:"⚔️ A组第2轮 · 捷克与南非首战均告负，谁能拿下首胜？"},
-  {id:"A4",g:"A",r:2,t:"6/19 09:00",h:"墨西哥",a:"韩国",st:"upcoming",hl:"🔥 A组头名之争 · 墨西哥与韩国首轮双双取胜，胜者出线在望"},
+  {id:"A3",g:"A",r:2,t:"6/19 00:00",h:"捷克",a:"南非",st:"upcoming",hl:"⚔️ A组第2轮 · 捷克与南非首战均告负，谁能拿下首胜？",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:61,tag:"谨慎看平",basis:["首轮均败","捷克定位球","南非速度反击"],reason:"两队首轮都需要止血，捷克整体组织和定位球更稳，南非反击速度有威胁，预计会踢得谨慎。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"A4",g:"A",r:2,t:"6/19 09:00",h:"墨西哥",a:"韩国",st:"upcoming",hl:"🔥 A组头名之争 · 墨西哥与韩国首轮双双取胜，胜者出线在望",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:66,tag:"墨西哥小胜",basis:["东道主气势","主场环境","韩国快节奏"],reason:"墨西哥有主场环境和揭幕战胜势加成，韩国转换速度很强但客场消耗更大，倾向墨西哥小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"A5",g:"A",r:3,t:"6/25 09:00",h:"捷克",a:"墨西哥",st:"upcoming",hl:"⚔️ A组收官战 · 捷克力争出线末班车"},
   {id:"A6",g:"A",r:3,t:"6/25 09:00",h:"南非",a:"韩国",st:"upcoming",hl:"⚔️ A组收官战 · 南非荣誉之战，韩国盼锁定晋级"},
   // B组
   {id:"B1",g:"B",r:1,t:"6/13 03:00",h:"加拿大",a:"波黑",s:"1-1",st:"done",hl:"⚽ 拉林替补112秒扳平"},
   {id:"B2",g:"B",r:1,t:"6/14 03:00",h:"卡塔尔",a:"瑞士",s:"1-1",st:"done",hl:"⚽ 胡赫90+4'绝平 · 恩博洛17'点球破门"},
-  {id:"B3",g:"B",r:2,t:"6/19 03:00",h:"瑞士",a:"波黑",st:"upcoming",hl:"⚔️ B组第2轮 · 瑞士与波黑均首轮战平，谁能拿下首胜？"},
-  {id:"B4",g:"B",r:2,t:"6/19 06:00",h:"加拿大",a:"卡塔尔",st:"upcoming",hl:"🏠 B组第2轮 · 东道主加拿大迎战卡塔尔，主场冲击首胜"},
+  {id:"B3",g:"B",r:2,t:"6/19 03:00",h:"瑞士",a:"波黑",st:"upcoming",hl:"⚔️ B组第2轮 · 瑞士与波黑均首轮战平，谁能拿下首胜？",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:68,tag:"瑞士小胜",basis:["阵容均衡","大赛经验","波黑锋线威胁"],reason:"瑞士阵容结构更均衡，比赛管理能力更强；波黑有哲科支点和反击机会，但稳定性略逊。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"B4",g:"B",r:2,t:"6/19 06:00",h:"加拿大",a:"卡塔尔",st:"upcoming",hl:"🏠 B组第2轮 · 东道主加拿大迎战卡塔尔，主场冲击首胜",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:64,tag:"加拿大小胜",basis:["东道主主场","边路速度","卡塔尔杯赛韧性"],reason:"加拿大边路冲击和主场氛围更占优，卡塔尔杯赛经验不错但防线面对速度型打法压力较大。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"B5",g:"B",r:3,t:"6/25 03:00",h:"瑞士",a:"加拿大",st:"upcoming",hl:"⚔️ B组收官战 · 瑞士 vs 加拿大，出线关键对决"},
   {id:"B6",g:"B",r:3,t:"6/25 03:00",h:"波黑",a:"卡塔尔",st:"upcoming",hl:"⚔️ B组收官战 · 波黑 vs 卡塔尔，为出线而战"},
   // C组
@@ -1737,7 +1752,58 @@ function mc(m,isUpcoming=false){
       <div class="team away">${ar}<span class="name">${ad.nm}</span><span class="flag">${ad.fl}</span></div>
     </div>
     <div class="match-bottom"><span>📍 ${lo}</span>${ex}</div>
+    ${renderPredictionBox(m)}
   </div>`;
+}
+
+
+// ===== AI PREDICTION FUNCTIONS =====
+function predOf(m){return m&&m.pred&&m.pred.locked?m.pred:null}
+function outcome(h,a){return h>a?'h':(h<a?'a':'d')}
+function predReview(m){
+  let p=predOf(m);if(!p||m.st!=="done"||!m.s)return null;
+  let [ah,aa]=m.s.split('-').map(Number);
+  let score=0;
+  let predOut=outcome(p.ph,p.pa), actualOut=outcome(ah,aa);
+  let resultHit=predOut===actualOut;
+  let exactHit=p.ph===ah&&p.pa===aa;
+  if(resultHit)score+=40;
+  score+=Math.max(0,20-Math.abs(p.ph-ah)*10);
+  score+=Math.max(0,20-Math.abs(p.pa-aa)*10);
+  if(outcome(p.ph-p.pa,0)===outcome(ah-aa,0))score+=10;
+  if(Math.abs((p.ph+p.pa)-(ah+aa))<=1)score+=10;
+  let level= exactHit?'🏆 神预测':(score>=80?'🎯 很接近':(resultHit?'✅ 方向正确':(score>=45?'🟡 有点道理':'🤡 AI 翻车')));
+  return {actualH:ah,actualA:aa,score,resultHit,exactHit,level};
+}
+function predSummary(){
+  let ms=ALL_MATCHES.filter(m=>predOf(m));
+  let reviewed=ms.map(m=>predReview(m)).filter(Boolean);
+  let avg=reviewed.length?Math.round(reviewed.reduce((a,r)=>a+r.score,0)/reviewed.length):0;
+  let dir=reviewed.length?Math.round(reviewed.filter(r=>r.resultHit).length/reviewed.length*100):0;
+  let exact=reviewed.filter(r=>r.exactHit).length;
+  return {total:ms.length,reviewed:reviewed.length,avg,dir,exact};
+}
+function renderPredictionBox(m){
+  let p=predOf(m);if(!p)return '';
+  let hd=td(m.h),ad=td(m.a),rv=predReview(m);
+  let out='<div class="pred-box"><div class="pred-line"><span class="pred-name">🔮 AI 赛前预言</span><span class="pred-score">'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm+' · 信心 '+p.confidence+'%</span></div>';
+  out+='<div class="pred-conf"><span style="width:'+Math.max(5,Math.min(100,p.confidence))+'%"></span></div>';
+  out+='<div class="pred-reason"><strong>'+p.tag+'</strong>：'+p.reason+'</div>';
+  if(p.basis&&p.basis.length)out+='<div class="pred-basis">'+p.basis.map(x=>'<span class="pred-chip">'+x+'</span>').join('')+'</div>';
+  if(rv)out+='<div class="pred-review"><span>实际：'+hd.nm+' '+m.s+' '+ad.nm+'</span><span class="pred-level">'+rv.level+'</span><span class="pred-score-badge">准确度 '+rv.score+'%</span></div>';
+  out+='<div class="pred-note">仅供娱乐，不构成投注建议。预测生成后锁定，赛后只做复盘。</div></div>';
+  return out;
+}
+function renderHomePredictions(){
+  let el=document.getElementById('homePredBox');if(!el)return;
+  let today=new Date();
+  let tomorrow=new Date(today.getFullYear(),today.getMonth(),today.getDate()+1);
+  let md=String(tomorrow.getMonth()+1)+'/'+String(tomorrow.getDate());
+  let upcoming=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done"&&m.t&&m.t.split(' ')[0]===md).sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
+  if(!upcoming.length)upcoming=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done").sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t)).slice(0,4);
+  let stat=predSummary();
+  let cards=upcoming.map(m=>{let p=predOf(m),hd=td(m.h),ad=td(m.a);return '<div class="pred-mini"><div class="teams">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="pick">预测：<strong>'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm+'</strong> · '+p.tag+' · '+p.confidence+'%</div></div>';}).join('');
+  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 赛前预言</div><div class="pred-sub">每天 00:05 预测次日比赛；生成后锁定，赛后自动复盘。足球是圆的，福福也会翻车。</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(cards||'<div class="pred-mini"><div class="teams">暂无次日预测</div><div class="pick">下一批预测将在 00:05 后生成。</div></div>')+'</div><div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
 }
 
 // Render group standings
@@ -1871,6 +1937,9 @@ function render(){
     if(act)act.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
   };
   rds._onPillSelect(lastDoneDate);
+  
+  // Home AI predictions
+  renderHomePredictions();
   
   // Home results: latest 3 completed matches by kickoff time
   let hrl=document.getElementById("homeResultsList");
