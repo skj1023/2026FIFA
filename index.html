@@ -2053,9 +2053,8 @@ function switchTab(tabId){
 }
 document.querySelectorAll('.nav a').forEach(a=>{
   a.addEventListener('click',function(e){
-    e.preventDefault();
     let tab=this.dataset.tab;
-    if(tab)switchTab(tab);
+    if(tab){e.preventDefault();switchTab(tab);}
   });
 });
 document.querySelectorAll('.tab-link').forEach(a=>{
