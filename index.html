@@ -177,6 +177,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .pred-home::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,#8b5cf6,#3b82f6,#8b5cf6);background-size:200% 100%;animation:nxBar 4s ease-in-out infinite}
 .pred-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:10px;flex-wrap:wrap}.pred-title{font-size:1rem;font-weight:850}.pred-sub{font-size:.74rem;color:var(--text-sec);line-height:1.55;margin-top:2px}.pred-disclaimer{font-size:.66rem;color:#b794ff;border:1px solid rgba(139,92,246,.28);background:rgba(139,92,246,.1);border-radius:999px;padding:4px 10px;white-space:nowrap}.pred-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:8px}.pred-mini{background:rgba(255,255,255,.035);border:1px solid rgba(139,92,246,.18);border-radius:var(--radius-sm);padding:10px 12px}.light .pred-mini{background:rgba(255,255,255,.68)}.pred-mini .teams{font-size:.84rem;font-weight:750;margin-bottom:4px}.pred-mini .pick{font-size:.78rem;color:var(--text-sec)}.pred-mini strong{color:#b794ff}.pred-stats{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.pred-stat{font-size:.7rem;color:var(--text-sec);background:rgba(0,0,0,.16);border:1px solid rgba(139,92,246,.16);border-radius:999px;padding:4px 9px}.light .pred-stat{background:rgba(255,255,255,.55)}
 .pred-box{margin-top:10px;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid rgba(139,92,246,.22);background:linear-gradient(135deg,rgba(139,92,246,.10),rgba(59,130,246,.05));font-size:.74rem}.pred-box .pred-line{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-bottom:6px}.pred-box .pred-name{font-weight:800;color:#c4b5fd}.pred-box .pred-score{font-weight:850;color:var(--text)}.pred-conf{height:4px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;margin:6px 0}.pred-conf span{display:block;height:100%;border-radius:inherit;background:linear-gradient(90deg,#8b5cf6,#3b82f6)}.pred-reason{color:var(--text-sec);line-height:1.55}.pred-basis{display:flex;gap:5px;flex-wrap:wrap;margin-top:7px}.pred-chip{font-size:.62rem;color:#c4b5fd;border:1px solid rgba(139,92,246,.22);background:rgba(139,92,246,.08);border-radius:999px;padding:2px 7px}.pred-review{margin-top:8px;padding-top:8px;border-top:1px solid rgba(139,92,246,.18);display:flex;gap:8px;flex-wrap:wrap;align-items:center;color:var(--text-sec)}.pred-level{font-weight:800;color:var(--text)}.pred-score-badge{font-weight:850;color:#c4b5fd}.pred-note{font-size:.64rem;color:var(--text-dim);margin-top:7px}
+.pred-more{margin-top:10px;padding:6px 0 0;border-top:1px solid rgba(139,92,246,.12)}.pred-more-btn{display:flex;align-items:center;justify-content:center;gap:6px;padding:7px;border-radius:999px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:.72rem;cursor:pointer;transition:all .2s;width:100%;font-weight:600}.pred-more-btn:hover{background:var(--bg-card-hover);color:var(--text);border-color:var(--accent)}.pred-more-btn .arrow{transition:transform .25s;font-size:.6rem}.pred-more-btn.open .arrow{transform:rotate(180deg)}.pred-more-body{overflow:hidden;max-height:0;transition:max-height .35s cubic-bezier(.4,0,.2,1)}.pred-more-body.open{max-height:2000px}.pred-more-body .pred-grid{padding-top:8px}
 @media(max-width:640px){.pred-home{padding:14px}.pred-disclaimer{white-space:normal}.pred-grid{grid-template-columns:1fr}.pred-box .pred-line{align-items:flex-start}}
 
 /* FOOTER */
@@ -1801,17 +1802,27 @@ function renderPredictionBox(m){
 function renderHomePredictions(){
   let el=document.getElementById('homePredBox');if(!el)return;
   let today=new Date();
-  // Build set of date strings for next 3 days
-  let dateSet=new Set();
+  // Build date strings for next 3 days
+  let dates=[];let dateSet=new Set();
   for(let i=1;i<=3;i++){
     let d=new Date(today.getFullYear(),today.getMonth(),today.getDate()+i);
-    dateSet.add(String(d.getMonth()+1)+'/'+String(d.getDate()));
+    let ds=String(d.getMonth()+1)+'/'+String(d.getDate());
+    dates.push(ds);dateSet.add(ds);
   }
-  let upcoming=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done"&&m.t&&dateSet.has(m.t.split(' ')[0])).sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
-  if(!upcoming.length)upcoming=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done").sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t)).slice(0,6);
+  let allPreds=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done"&&m.t&&dateSet.has(m.t.split(' ')[0])).sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
+  if(!allPreds.length)allPreds=ALL_MATCHES.filter(m=>predOf(m)&&m.st!=="done").sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t)).slice(0,6);
+  // Split: tomorrow vs later days
+  let tomorrow=allPreds.filter(m=>m.t.split(' ')[0]===dates[0]);
+  let later=allPreds.filter(m=>m.t.split(' ')[0]!==dates[0]);
   let stat=predSummary();
-  let cards=upcoming.map(m=>{let p=predOf(m),hd=td(m.h),ad=td(m.a);return '<div class="pred-mini"><div class="teams">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="pick">预测：<strong>'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm+'</strong> · '+p.tag+' · '+p.confidence+'%</div></div>';}).join('');
-  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 赛前预言</div><div class="pred-sub">每天 00:05 预测未来3天比赛；生成后锁定，赛后自动复盘。足球是圆的，福福也会翻车。</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(cards||'<div class="pred-mini"><div class="teams">暂无近期预测</div><div class="pick">下一批预测将在 00:05 后生成。</div></div>')+'</div><div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
+  function cardHTML(m){let p=predOf(m),hd=td(m.h),ad=td(m.a);return '<div class="pred-mini"><div class="teams">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="pick">预测：<strong>'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm+'</strong> · '+p.tag+' · '+p.confidence+'%</div></div>';}
+  let mainCards=(tomorrow.length?tomorrow:allPreds).map(cardHTML).join('');
+  let moreHTML='';
+  if(later.length){
+    moreHTML='<div class="pred-more"><button class="pred-more-btn" onclick="this.classList.toggle(\'open\');var b=this.nextElementSibling;if(b)b.classList.toggle(\'open\')"><span>查看更远预测 ('+later.length+' 场)</span><span class="arrow">▼</span></button><div class="pred-more-body"><div class="pred-grid">'+later.map(cardHTML).join('')+'</div></div></div>';
+  }
+  let subtitle=tomorrow.length?'默认展示次日预测，展开查看更远比赛':'每天 00:05 预测未来3天比赛；生成后锁定，赛后自动复盘。足球是圆的，福福也会翻车。';
+  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 赛前预言</div><div class="pred-sub">'+subtitle+'</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(mainCards||'<div class="pred-mini"><div class="teams">暂无近期预测</div><div class="pick">下一批预测将在 00:05 后生成。</div></div>')+'</div>'+moreHTML+'<div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
 }
 
 // Render group standings
