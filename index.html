@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-19 00:25</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>捷克 vs 南非 开赛</strong>：A组第2轮于00:00开球，捷克vs南非进行中（ESPN确认）；新增4场6月22日AI预测（比利时vs伊朗、新西兰vs埃及、西班牙vs沙特、乌拉圭vs佛得角）。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-18 15:00</div>
           <div class="log-content"><span class="log-tag ui">页面</span><strong>上线 AI 赛前预言 V1</strong>：未赛卡片显示锁定预测、信心值与理由；完赛后自动计算准确度复盘；首页新增 AI 预测战绩，预测仅供娱乐不构成投注建议。</div>
         </div>
@@ -1042,7 +1046,7 @@ const ALL_MATCHES = [
   // A组
   {id:"A1",g:"A",r:1,t:"6/12 03:00",h:"墨西哥",a:"南非",s:"2-0",st:"done",hl:"🏟️ 东道主揭幕战开门红"},
   {id:"A2",g:"A",r:1,t:"6/12 10:00",h:"韩国",a:"捷克",s:"2-1",st:"done",hl:"⚽ 黄仁范传射 · 韩国2-1逆转捷克"},
-  {id:"A3",g:"A",r:2,t:"6/19 00:00",h:"捷克",a:"南非",st:"upcoming",hl:"⚔️ A组第2轮 · 捷克与南非首战均告负，谁能拿下首胜？",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:61,tag:"谨慎看平",basis:["首轮均败","捷克定位球","南非速度反击"],reason:"两队首轮都需要止血，捷克整体组织和定位球更稳，南非反击速度有威胁，预计会踢得谨慎。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"A3",g:"A",r:2,t:"6/19 00:00",h:"捷克",a:"南非",st:"live",hl:"🔴 A组第2轮 · 捷克 vs 南非 进行中 · 双方首战均告负，谁能拿下首胜？",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:61,tag:"谨慎看平",basis:["首轮均败","捷克定位球","南非速度反击"],reason:"两队首轮都需要止血，捷克整体组织和定位球更稳，南非反击速度有威胁，预计会踢得谨慎。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"A4",g:"A",r:2,t:"6/19 09:00",h:"墨西哥",a:"韩国",st:"upcoming",hl:"🔥 A组头名之争 · 墨西哥与韩国首轮双双取胜，胜者出线在望",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:66,tag:"墨西哥小胜",basis:["东道主气势","主场环境","韩国快节奏"],reason:"墨西哥有主场环境和揭幕战胜势加成，韩国转换速度很强但客场消耗更大，倾向墨西哥小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"A5",g:"A",r:3,t:"6/25 09:00",h:"捷克",a:"墨西哥",st:"upcoming",hl:"⚔️ A组收官战 · 捷克力争出线末班车"},
   {id:"A6",g:"A",r:3,t:"6/25 09:00",h:"南非",a:"韩国",st:"upcoming",hl:"⚔️ A组收官战 · 南非荣誉之战，韩国盼锁定晋级"},
@@ -1084,15 +1088,15 @@ const ALL_MATCHES = [
   // G组
   {id:"G1",g:"G",r:1,t:"6/16 03:00",h:"比利时",a:"埃及",s:"1-1",st:"done",hl:"⚽ 比利时1-1埃及 · 双方握手言和各取1分"},
   {id:"G2",g:"G",r:1,t:"6/16 09:00",h:"伊朗",a:"新西兰",s:"2-2",st:"done",hl:"⚽ 贾斯特双响 · 雷扎扬&莫赫比破门，伊朗2-2新西兰上演进球大战"},
-  {id:"G3",g:"G",r:2,t:"6/22 03:00",h:"比利时",a:"伊朗",st:"upcoming",hl:"⚔️ G组第2轮 · 比利时与伊朗首轮均战平，谁能先抢到首胜？"},
-  {id:"G4",g:"G",r:2,t:"6/22 09:00",h:"新西兰",a:"埃及",st:"upcoming",hl:"⚔️ G组第2轮 · 新西兰盼创历史，埃及全力争胜"},
+  {id:"G3",g:"G",r:2,t:"6/22 03:00",h:"比利时",a:"伊朗",st:"upcoming",hl:"⚔️ G组第2轮 · 比利时与伊朗首轮均战平，谁能先抢到首胜？",pred:{date:"2026-06-19",ph:2,pa:0,winner:"h",confidence:67,tag:"比利时胜",basis:["阵容实力优势","伊朗防守铁血","比利时经验丰富"],reason:"比利时整体实力在伊朗之上，德布劳内和卢卡库的配合足以破解伊朗铁桶阵，伊朗首轮2-2虽展现韧性但防守漏洞也被新西兰抓住，比利时更有把握拿下首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"G4",g:"G",r:2,t:"6/22 09:00",h:"新西兰",a:"埃及",st:"upcoming",hl:"⚔️ G组第2轮 · 新西兰盼创历史，埃及全力争胜",pred:{date:"2026-06-19",ph:0,pa:2,winner:"a",confidence:70,tag:"埃及取胜",basis:["埃及进攻火力","新西兰大赛经验不足","萨拉赫核心作用"],reason:"埃及首轮1-1逼平比利时展现出不俗韧性，萨拉赫领衔的攻击线对新西兰防线构成持续威胁；新西兰首轮2-2战平伊朗虽可圈可点但防守专注度不足，面对埃及技术型进攻恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"G5",g:"G",r:3,t:"6/27 11:00",h:"埃及",a:"伊朗",st:"upcoming",hl:"⚔️ G组收官战 · 埃及 vs 伊朗，出线生死战"},
   {id:"G6",g:"G",r:3,t:"6/27 11:00",h:"新西兰",a:"比利时",st:"upcoming",hl:"⚔️ G组收官战 · 新西兰为出线而战"},
   // H组
   {id:"H1",g:"H",r:1,t:"6/16 00:00",h:"西班牙",a:"佛得角",s:"0-0",st:"done",hl:"⚽ 西班牙0-0佛得角 · 斗牛士全场控球压制但久攻不下，首轮互交白卷"},
   {id:"H2",g:"H",r:1,t:"6/16 06:00",h:"沙特",a:"乌拉圭",s:"1-1",st:"done",hl:"⚽ 沙特1-1乌拉圭：阿姆里41'先拔头筹，乌拉圭终场前扳平，两队各取1分"},
-  {id:"H3",g:"H",r:2,t:"6/22 00:00",h:"西班牙",a:"沙特",st:"upcoming",hl:"⚔️ H组第2轮 · 西班牙与沙特首轮均战平，抢首胜也抢出线主动权"},
-  {id:"H4",g:"H",r:2,t:"6/22 06:00",h:"乌拉圭",a:"佛得角",st:"upcoming",hl:"⚔️ H组第2轮 · 乌拉圭与佛得角首轮均战平，胜者将占据出线先机"},
+  {id:"H3",g:"H",r:2,t:"6/22 00:00",h:"西班牙",a:"沙特",st:"upcoming",hl:"⚔️ H组第2轮 · 西班牙与沙特首轮均战平，抢首胜也抢出线主动权",pred:{date:"2026-06-19",ph:2,pa:0,winner:"h",confidence:75,tag:"西班牙胜",basis:["控球压制","沙特首轮消耗大","西班牙调整空间"],reason:"西班牙首轮0-0闷平佛得角虽未进球但全场控球压制效果明显，射门转化率偏低是偶然因素；沙特首轮1-1战平乌拉圭场面被动消耗巨大，面对西班牙传控体系难以持续高强度防守。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"H4",g:"H",r:2,t:"6/22 06:00",h:"乌拉圭",a:"佛得角",st:"upcoming",hl:"⚔️ H组第2轮 · 乌拉圭与佛得角首轮均战平，胜者将占据出线先机",pred:{date:"2026-06-19",ph:2,pa:0,winner:"h",confidence:68,tag:"乌拉圭小胜",basis:["乌拉圭经验实力","佛得角防守韧性","乌拉圭首轮未达最佳"],reason:"乌拉圭首轮1-1平沙特场面占优但效率不足，巴尔韦德和努涅斯的配合仍在磨合；佛得角首轮0-0逼平西班牙防守纪律性出众，但进攻端缺乏威胁难以牵制乌拉圭，乌拉圭实力面优势应能转化为胜势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"H5",g:"H",r:3,t:"6/27 08:00",h:"佛得角",a:"沙特",st:"upcoming",hl:"⚔️ H组收官战 · 佛得角荣誉之战"},
   {id:"H6",g:"H",r:3,t:"6/27 08:00",h:"乌拉圭",a:"西班牙",st:"upcoming",hl:"🔥 H组收官焦点 · 乌拉圭 vs 西班牙，出线关键对决"},
   // I组
