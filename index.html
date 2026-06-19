@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-20 03:37</div>
+          <div class="log-content"><span class="log-tag auto">比分</span><strong>🇺🇸 美国 vs 🇦🇺 澳大利亚 进行中</strong> — ESPN API确认美国1-0领先（42'），Burgess 11'乌龙送礼。D4状态已更新为live。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-19 17:29</div>
           <div class="log-content"><span class="log-tag auto">验真</span><strong>6/19 末轮验真：ESPN API 确认4场赛果无误</strong> — 捷克1-1南非、瑞士4-1波黑、加拿大6-0卡塔尔、墨西哥1-0韩国，比分与原文数据完全一致，无需修正。全站已完赛28场，积分/进度/排名正确，所有符合条件比赛均有锁定预测。</div>
         </div>
@@ -1128,7 +1132,7 @@ const ALL_MATCHES = [
   {id:"D1",g:"D",r:1,t:"6/13 09:00",h:"美国",a:"巴拉圭",s:"4-1",st:"done",hl:"🏆 巴洛贡梅开二度 · 东道主4-1大胜"},
   {id:"D2",g:"D",r:1,t:"6/14 12:00",h:"澳大利亚",a:"土耳其",s:"2-0",st:"done",hl:"⚽ 伊兰昆达首开纪录 · 澳大利亚2-0完胜土耳其，土耳其24年后重返世界杯首战告负"},
   {id:"D3",g:"D",r:2,t:"6/20 11:00",h:"土耳其",a:"巴拉圭",st:"upcoming",hl:"⚔️ D组第2轮 · 土耳其与巴拉圭首战均告负，背水一战",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:58,tag:"背水言和",basis:["双方都需要积分","防守谨慎","锋线效率待考"],reason:"两队首轮均告负，第二场不容有失。土耳其24年后重返世界杯仍需适应，巴拉圭整体防守仍稳，主动冒险可能性不高，平局是偏稳妥的结果。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"D4",g:"D",r:2,t:"6/20 03:00",h:"美国",a:"澳大利亚",st:"upcoming",hl:"🔥 D组头名之争 · 美国与澳大利亚首轮双双取胜，胜者出线在望",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:70,tag:"美国小胜",basis:["东道主状态火热","巴洛贡双响","澳大利亚防反"],reason:"美国首轮4-1大胜展现攻击力，主场氛围加持明显；澳大利亚首胜士气高昂但防守压力更大，美国更可能延续胜势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"D4",g:"D",r:2,t:"6/20 03:00",h:"美国",a:"澳大利亚",s:"1-0",st:"live",hl:"🔥 D组头名之争 · 美国1-0领先澳大利亚（38'），珀斯光荣旧将乌龙送礼",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:70,tag:"美国小胜",basis:["东道主状态火热","巴洛贡双响","澳大利亚防反"],reason:"美国首轮4-1大胜展现攻击力，主场氛围加持明显；澳大利亚首胜士气高昂但防守压力更大，美国更可能延续胜势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"D5",g:"D",r:3,t:"6/26 10:00",h:"土耳其",a:"美国",st:"upcoming",hl:"⚔️ D组收官战 · 土耳其后路未绝，力拼东道主"},
   {id:"D6",g:"D",r:3,t:"6/26 10:00",h:"巴拉圭",a:"澳大利亚",st:"upcoming",hl:"⚔️ D组收官战 · 巴拉圭为出线名额而战"},
   // E组
