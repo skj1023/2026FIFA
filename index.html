@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-20 06:54</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🇸🇨 苏格兰 0-1 🇲🇦 摩洛哥 半场更新</strong> — BBC Sport确认苏格兰vs摩洛哥半场0-1（摩洛哥领先45'），C3状态已从upcoming更新为live，比分0-1同步写入。全站赛程/首页状态联动更新。其他已完赛比分均与BBC/ESPN一致无需修正。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-19 21:50</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>🇺🇸 美国 2-0 🇦🇺 澳大利亚 完赛确认</strong> — ESPN/BBC确认FT 2-0：Burgess 11'乌龙 · Freeman 43'头槌 · 美国2连胜积6分提前出线！D4状态更新为done。全站积分/进度/排名已联动更新。AI预测✅方向命中（美国小胜2-1→实际2-0，比分基本准确）。</div>
         </div>
@@ -1132,7 +1136,7 @@ const ALL_MATCHES = [
   // C组
   {id:"C1",g:"C",r:1,t:"6/14 06:00",h:"巴西",a:"摩洛哥",s:"1-1",st:"done",hl:"⚽ 维尼修斯扳平 · 巴西1-1摩洛哥，首轮各取1分"},
   {id:"C2",g:"C",r:1,t:"6/14 09:00",h:"海地",a:"苏格兰",s:"0-1",st:"done",hl:"🏴󠁧󠁢󠁳󠁣󠁴󠁿 麦金28分钟制胜球，苏格兰28年首胜"},
-  {id:"C3",g:"C",r:2,t:"6/20 06:00",h:"苏格兰",a:"摩洛哥",st:"upcoming",hl:"⚔️ C组第2轮 · 苏格兰首战告捷，力争连胜锁定出线",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:60,tag:"势均力敌",basis:["苏格兰三军用命","摩洛哥组织更强","防守均稳固"],reason:"苏格兰时隔28年世界杯首胜后士气高涨，摩洛哥首轮战平巴西展现韧性，两队都更倾向稳守反击，平局概率较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"C3",g:"C",r:2,t:"6/20 06:00",h:"苏格兰",a:"摩洛哥",s:"0-1",st:"live",hl:"🔴 C组第2轮 · 苏格兰0-1摩洛哥（半场）：摩洛哥上半场1-0领先，苏格兰首战告捷后陷入苦战，下半场悬念十足（BBC Sport确认HT 0-1）",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:60,tag:"势均力敌",basis:["苏格兰三军用命","摩洛哥组织更强","防守均稳固"],reason:"苏格兰时隔28年世界杯首胜后士气高涨，摩洛哥首轮战平巴西展现韧性，两队都更倾向稳守反击，平局概率较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"C4",g:"C",r:2,t:"6/20 08:30",h:"巴西",a:"海地",st:"upcoming",hl:"🇧🇷 C组第2轮 · 巴西首轮憾平，全力争首胜",pred:{date:"2026-06-18",ph:3,pa:0,winner:"h",confidence:78,tag:"巴西大胜",basis:["实力碾压","首轮憋着一股劲","海地经验不足"],reason:"巴西首轮被摩洛哥逼平后急需3分，面对首战失利的海地优势明显，内马尔和维尼修斯足以撕开防线，看好巴西以较大优势取胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"C5",g:"C",r:3,t:"6/25 06:00",h:"苏格兰",a:"巴西",st:"upcoming",hl:"🔥 C组收官焦点 · 苏格兰 vs 巴西，出线生死战"},
   {id:"C6",g:"C",r:3,t:"6/25 06:00",h:"摩洛哥",a:"海地",st:"upcoming",hl:"⚔️ C组收官战 · 摩洛哥力争出线名额"},
