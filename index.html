@@ -2017,6 +2017,11 @@ function render(){
     let [mb,db]=b.split("/").map(Number);
     return ma!==mb?ma-mb:da-db;
   });
+
+  // Sort each day's schedule by kickoff time (earliest at top, latest at bottom)
+  for(let d in byDate){
+    byDate[d].sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
+  }
   
   // Find first upcoming date
   let now=new Date();
