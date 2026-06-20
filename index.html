@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-21 03:25</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>🇳🇱 荷兰 5-1 🇸🇪 瑞典 完赛确认</strong> — ESPN API确认FT 5-1：布罗比5'17'梅开二度、加克波47'54'双响、萨默维尔89'破门，荷兰5-1大胜瑞典登顶F组，瑞典埃兰加59'扳回一城。F4状态从live更新为done，全站积分/进度/排名已联动更新。全站已完赛33场。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-21 02:01</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🇳🇱 荷兰 2-0 🇸🇪 瑞典（半场）进行中</strong> — ESPN确认F4荷兰2-0瑞典半场：布罗比5'17'梅开二度，荷兰半场领先。F4状态从upcoming更新为live，比分2-0同步写入。全站赛程/首页状态联动更新。</div>
         </div>
@@ -1198,7 +1202,7 @@ const ALL_MATCHES = [
   {id:"F1",g:"F",r:1,t:"6/15 04:00",h:"荷兰",a:"日本",s:"2-2",st:"done",hl:"⚽ 范迪克51'首开纪录 · 中村敬斗57'扳平 · 萨默维尔64'再度领先 · 鎌田大地88'绝平！荷兰2-2日本各取1分"},
   {id:"F2",g:"F",r:1,t:"6/15 10:00",h:"瑞典",a:"突尼斯",s:"5-1",st:"done",hl:"⚽ 阿亚里双响 · 伊萨克、哲凯赖什建功 · 瑞典5-1大胜突尼斯全取3分"},
   {id:"F3",g:"F",r:2,t:"6/21 12:00",h:"突尼斯",a:"日本",st:"upcoming",hl:"⚔️ F组第2轮 · 突尼斯首战惨败，日本盼拿下首胜",pred:{date:"2026-06-18",ph:0,pa:1,winner:"a",confidence:63,tag:"日本小胜",basis:["突尼斯防守崩盘","日本控制力","日本经验"],reason:"突尼斯首轮1-5惨败瑞典暴露出防守体系问题；日本首轮2-2绝平荷兰展现顽强斗志和技术能力，久保建英和三笘薰的速度对突尼斯防线构成持续威胁，日本更可能拿下首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"F4",g:"F",r:2,t:"6/21 01:00",h:"荷兰",a:"瑞典",s:"2-0",st:"live",hl:"🔴 半场2-0 · 布罗比5'17'梅开二度，荷兰半场2-0领先瑞典（ESPN确认HT）",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:65,tag:"荷兰险胜",basis:["荷兰中场控制力","瑞典伊萨克威胁","阵容厚度"],reason:"荷兰整体阵容更为均衡，首轮2-2绝平日本展现韧性；瑞典首轮5-1大胜攻击力恐怖，但荷兰的防守组织更为严谨，橙衣军团有望在主场式氛围中小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"F4",g:"F",r:2,t:"6/21 01:00",h:"荷兰",a:"瑞典",s:"5-1",st:"done",hl:"⚽ 荷兰5-1瑞典：布罗比5'17'梅开二度、加克波47'54'双响、萨默维尔89'锦上添花，瑞典埃兰加59'扳回一城，荷兰5-1大胜登顶F组（ESPN确认FT）",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:65,tag:"荷兰险胜",basis:["荷兰中场控制力","瑞典伊萨克威胁","阵容厚度"],reason:"荷兰整体阵容更为均衡，首轮2-2绝平日本展现韧性；瑞典首轮5-1大胜攻击力恐怖，但荷兰的防守组织更为严谨，橙衣军团有望在主场式氛围中小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"F5",g:"F",r:3,t:"6/26 07:00",h:"日本",a:"瑞典",st:"upcoming",hl:"⚔️ F组收官战 · 日本全力争出线"},
   {id:"F6",g:"F",r:3,t:"6/26 07:00",h:"突尼斯",a:"荷兰",st:"upcoming",hl:"⚔️ F组收官战 · 突尼斯荣誉之战"},
   // G组
