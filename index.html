@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-20 10:11</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🇧🇷 巴西 3-0 🇭🇹 海地（77'）进行中</strong> — ESPN Gamecast确认巴西3-0领先海地（77'），库尼亚梅开二度，巴西大比分领先。C4比分实时更新至3-0，保持live状态。全站赛程/首页状态联动更新。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-20 09:02</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🇧🇷 巴西 1-0 🇭🇹 海地（34'）进行中</strong> — ESPN确认巴西1-0领先海地（上半场34'），C4状态已从upcoming更新为live，比分1-0同步写入。全站赛程/首页状态联动更新。其他已完赛比分均与ESPN一致无需修正。</div>
         </div>
@@ -1145,7 +1149,7 @@ const ALL_MATCHES = [
   {id:"C1",g:"C",r:1,t:"6/14 06:00",h:"巴西",a:"摩洛哥",s:"1-1",st:"done",hl:"⚽ 维尼修斯扳平 · 巴西1-1摩洛哥，首轮各取1分"},
   {id:"C2",g:"C",r:1,t:"6/14 09:00",h:"海地",a:"苏格兰",s:"0-1",st:"done",hl:"🏴󠁧󠁢󠁳󠁣󠁴󠁿 麦金28分钟制胜球，苏格兰28年首胜"},
   {id:"C3",g:"C",r:2,t:"6/20 06:00",h:"苏格兰",a:"摩洛哥",s:"0-1",st:"done",hl:"⚽ 摩洛哥1-0苏格兰：摩洛哥全场压制，第27分钟突袭破门，苏格兰首战告捷后0-1小负，摩洛哥2轮不败积4分领跑C组（ESPN API确认FT 0-1）",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:60,tag:"势均力敌",basis:["苏格兰三军用命","摩洛哥组织更强","防守均稳固"],reason:"苏格兰时隔28年世界杯首胜后士气高涨，摩洛哥首轮战平巴西展现韧性，两队都更倾向稳守反击，平局概率较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"C4",g:"C",r:2,t:"6/20 08:30",h:"巴西",a:"海地",st:"live",hl:"🔴 巴西1-0海地（34'）· ESPN确认进行中，巴西上半场1-0领先海地",pred:{date:"2026-06-18",ph:3,pa:0,winner:"h",confidence:78,tag:"巴西大胜",basis:["实力碾压","首轮憋着一股劲","海地经验不足"],reason:"巴西首轮被摩洛哥逼平后急需3分，面对首战失利的海地优势明显，内马尔和维尼修斯足以撕开防线，看好巴西以较大优势取胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"C4",g:"C",r:2,t:"6/20 08:30",h:"巴西",a:"海地",st:"live",hl:"🔴 巴西3-0海地（77'）· 库尼亚梅开二度，巴西3-0领先海地，ESPN确认进行中",pred:{date:"2026-06-18",ph:3,pa:0,winner:"h",confidence:78,tag:"巴西大胜",basis:["实力碾压","首轮憋着一股劲","海地经验不足"],reason:"巴西首轮被摩洛哥逼平后急需3分，面对首战失利的海地优势明显，内马尔和维尼修斯足以撕开防线，看好巴西以较大优势取胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"C5",g:"C",r:3,t:"6/25 06:00",h:"苏格兰",a:"巴西",st:"upcoming",hl:"🔥 C组收官焦点 · 苏格兰 vs 巴西，出线生死战"},
   {id:"C6",g:"C",r:3,t:"6/25 06:00",h:"摩洛哥",a:"海地",st:"upcoming",hl:"⚔️ C组收官战 · 摩洛哥力争出线名额"},
   // D组
