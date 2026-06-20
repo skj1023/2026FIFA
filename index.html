@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-21 06:39</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>🇩🇪 德国 2-1 🇨🇮 科特迪瓦 完赛确认</strong> — ESPN API确认FT 2-1：Undav 68'90+4'替补梅开二度上演绝杀逆转，Kessié 30'首开纪录！德国补时绝杀2连胜积6分提前晋级32强，科特迪瓦积3分仍保留出线希望。E3状态更新为done，全站积分/进度/排名已联动更新。全站已完赛34场。AI预测✅方向命中（德国胜出）。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-21 05:32</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 德国 1-1 科特迪瓦（73'）</strong> — BBC Sport/ESPN确认GER 1-1 CIV · 73'：科特迪瓦先拔头筹，德国迅速扳平，双方陷入缠斗。比分1-1同步写入，E3保持live状态待完赛。🇳🇱 荷兰 5-1 🇸🇪 瑞典完赛确认（F4）。</div>
         </div>
@@ -1202,7 +1206,7 @@ const ALL_MATCHES = [
   // E组
   {id:"E1",g:"E",r:1,t:"6/15 01:00",h:"德国",a:"库拉索",s:"7-1",st:"done",hl:"⚽ 哈弗茨双响 · 内梅查6'、施洛特贝克38'、哈弗茨45+5'(点)、穆西亚拉47'、布朗68'、昂达夫78'、哈弗茨88'破门 · 德国7-1大胜库拉索，库拉索科梅嫩西亚21'一度扳平！诺伊尔40岁79天成德国大赛最年长出场球员"},
   {id:"E2",g:"E",r:1,t:"6/15 07:00",h:"科特迪瓦",a:"厄瓜多尔",s:"1-0",st:"done",hl:"⚽ 阿马德·迪亚洛89'绝杀 · 科特迪瓦1-0开门红"},
-  {id:"E3",g:"E",r:2,t:"6/21 04:00",h:"德国",a:"科特迪瓦",st:"live",hl:"🔴 德国 1-1 科特迪瓦 · 73' 进行中 · 科特迪瓦先拔头筹，德国迅速扳平，双方陷入缠斗",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:72,tag:"德国胜出",basis:["德国7-1狂胜气势正盛","科特迪瓦首轮1-0","德国攻击群"],reason:"德国首轮7-1大胜库拉索状态极佳，哈弗茨双响、穆西亚拉多点开花；科特迪瓦首轮1-0绝杀厄瓜多尔展现韧性，但面对德国攻击群恐难守住，看好德国延续强势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"E3",g:"E",r:2,t:"6/21 04:00",h:"德国",a:"科特迪瓦",s:"2-1",st:"done",hl:"⚽ 德国2-1科特迪瓦：Undav 68'90+4'替补梅开二度逆转，Kessié 30'首开纪录，德国补时绝杀2连胜积6分提前晋级32强！",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:72,tag:"德国胜出",basis:["德国7-1狂胜气势正盛","科特迪瓦首轮1-0","德国攻击群"],reason:"德国首轮7-1大胜库拉索状态极佳，哈弗茨双响、穆西亚拉多点开花；科特迪瓦首轮1-0绝杀厄瓜多尔展现韧性，但面对德国攻击群恐难守住，看好德国延续强势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"E4",g:"E",r:2,t:"6/21 08:00",h:"厄瓜多尔",a:"库拉索",st:"upcoming",hl:"⚔️ E组第2轮 · 厄瓜多尔首战小负，盼取首胜",pred:{date:"2026-06-18",ph:2,pa:0,winner:"h",confidence:75,tag:"厄瓜多尔胜",basis:["实力差距","库拉索防守脆弱","厄瓜多尔急需3分"],reason:"厄瓜多尔首战0-1小负科特迪瓦，整体表现并非不堪一击；库拉索首轮被德国7-1击溃防守暴露出严重问题，厄瓜多尔攻击线有望迎来爆发。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"E5",g:"E",r:3,t:"6/26 04:00",h:"厄瓜多尔",a:"德国",st:"upcoming",hl:"⚔️ E组收官战 · 厄瓜多尔迎战德国，全力争取出线"},
   {id:"E6",g:"E",r:3,t:"6/26 04:00",h:"库拉索",a:"科特迪瓦",st:"upcoming",hl:"⚔️ E组收官战 · 库拉索荣誉之战，科特迪瓦力争出线"},
