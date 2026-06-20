@@ -357,7 +357,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <span>👥 <strong>48</strong> 球队 · <strong>104</strong> 场</span>
       <span>🏆 <strong>32</strong> 队晋级淘汰赛</span>
     </div>
-    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">28</strong> 场</div>
+    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">29</strong> 场</div>
     <a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" class="hero-live-btn">📺 CCTV5 直播</a>
   </div>
   <div class="hero-flag-bar"><div class="bar usa"></div><div class="bar canada"></div><div class="bar mexico"></div></div>
@@ -556,6 +556,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time">2026-06-20 08:00</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>🇸🇨 苏格兰 0-1 🇲🇦 摩洛哥 完赛确认</strong> — ESPN API确认FT 0-1：摩洛哥全场压制突袭破门，苏格兰首战告捷后0-1小负；摩洛哥2轮不败积4分领跑C组！C3状态更新为done。全站积分/进度/排名已联动更新。AI预测方向未中（预测平局，实际摩洛哥胜）。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-20 06:54</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🇸🇨 苏格兰 0-1 🇲🇦 摩洛哥 半场更新</strong> — BBC Sport确认苏格兰vs摩洛哥半场0-1（摩洛哥领先45'），C3状态已从upcoming更新为live，比分0-1同步写入。全站赛程/首页状态联动更新。其他已完赛比分均与BBC/ESPN一致无需修正。</div>
@@ -1136,7 +1140,7 @@ const ALL_MATCHES = [
   // C组
   {id:"C1",g:"C",r:1,t:"6/14 06:00",h:"巴西",a:"摩洛哥",s:"1-1",st:"done",hl:"⚽ 维尼修斯扳平 · 巴西1-1摩洛哥，首轮各取1分"},
   {id:"C2",g:"C",r:1,t:"6/14 09:00",h:"海地",a:"苏格兰",s:"0-1",st:"done",hl:"🏴󠁧󠁢󠁳󠁣󠁴󠁿 麦金28分钟制胜球，苏格兰28年首胜"},
-  {id:"C3",g:"C",r:2,t:"6/20 06:00",h:"苏格兰",a:"摩洛哥",s:"0-1",st:"live",hl:"🔴 C组第2轮 · 苏格兰0-1摩洛哥（半场）：摩洛哥上半场1-0领先，苏格兰首战告捷后陷入苦战，下半场悬念十足（BBC Sport确认HT 0-1）",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:60,tag:"势均力敌",basis:["苏格兰三军用命","摩洛哥组织更强","防守均稳固"],reason:"苏格兰时隔28年世界杯首胜后士气高涨，摩洛哥首轮战平巴西展现韧性，两队都更倾向稳守反击，平局概率较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"C3",g:"C",r:2,t:"6/20 06:00",h:"苏格兰",a:"摩洛哥",s:"0-1",st:"done",hl:"⚽ 摩洛哥1-0苏格兰：摩洛哥全场压制，第27分钟突袭破门，苏格兰首战告捷后0-1小负，摩洛哥2轮不败积4分领跑C组（ESPN API确认FT 0-1）",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:60,tag:"势均力敌",basis:["苏格兰三军用命","摩洛哥组织更强","防守均稳固"],reason:"苏格兰时隔28年世界杯首胜后士气高涨，摩洛哥首轮战平巴西展现韧性，两队都更倾向稳守反击，平局概率较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"C4",g:"C",r:2,t:"6/20 08:30",h:"巴西",a:"海地",st:"upcoming",hl:"🇧🇷 C组第2轮 · 巴西首轮憾平，全力争首胜",pred:{date:"2026-06-18",ph:3,pa:0,winner:"h",confidence:78,tag:"巴西大胜",basis:["实力碾压","首轮憋着一股劲","海地经验不足"],reason:"巴西首轮被摩洛哥逼平后急需3分，面对首战失利的海地优势明显，内马尔和维尼修斯足以撕开防线，看好巴西以较大优势取胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"C5",g:"C",r:3,t:"6/25 06:00",h:"苏格兰",a:"巴西",st:"upcoming",hl:"🔥 C组收官焦点 · 苏格兰 vs 巴西，出线生死战"},
   {id:"C6",g:"C",r:3,t:"6/25 06:00",h:"摩洛哥",a:"海地",st:"upcoming",hl:"⚔️ C组收官战 · 摩洛哥力争出线名额"},
