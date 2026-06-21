@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-22 02:21</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ 西班牙4-0沙特完赛确认</strong> — ESPN API确认FT 4-0：亚马尔10'首开纪录，奥亚萨瓦尔21'24'梅开二度，坦巴基49'乌龙，西班牙4-0轻取沙特取得首胜。H3状态从live更新为done，全站H组积分/进度/排名已联动更新。全站已完赛37场。AI预测✅方向命中（西班牙胜，实际4-0完胜）。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-22 01:12</div>
           <div class="log-content"><span class="log-tag auto">赛况+预测</span><strong>🔴 西班牙3-0沙特(半场) · 🤖 生成6场6/25比赛AI预测</strong> — BBC确认西班牙3-0沙特领先（半场），HL已更新比分。北京时间01:12在预测窗口内，为6月25日6场收官战生成AI预测：瑞士vs加拿大（谨慎看平）、波黑vs卡塔尔（波黑胜）、苏格兰vs巴西（巴西大胜）、摩洛哥vs海地（摩洛哥取胜）、捷克vs墨西哥（平局）、南非vs韩国（韩国取胜）。现有已锁定预测均保留。全站数据一致。</div>
         </div>
@@ -1259,7 +1263,7 @@ const ALL_MATCHES = [
   // H组
   {id:"H1",g:"H",r:1,t:"6/16 00:00",h:"西班牙",a:"佛得角",s:"0-0",st:"done",hl:"⚽ 西班牙0-0佛得角 · 斗牛士全场控球压制但久攻不下，首轮互交白卷"},
   {id:"H2",g:"H",r:1,t:"6/16 06:00",h:"沙特",a:"乌拉圭",s:"1-1",st:"done",hl:"⚽ 沙特1-1乌拉圭：阿姆里41'先拔头筹，乌拉圭终场前扳平，两队各取1分"},
-  {id:"H3",g:"H",r:2,t:"6/22 00:00",h:"西班牙",a:"沙特",st:"live",hl:"🔴 西班牙3-0沙特(半场) · 亚马尔12'首开纪录，莫拉塔27'45+1'梅开二度，西班牙半场3-0领先沙特，控球率超75%全面压制",pred:{date:"2026-06-19",ph:2,pa:0,winner:"h",confidence:75,tag:"西班牙胜",basis:["控球压制","沙特首轮消耗大","西班牙调整空间"],reason:"西班牙首轮0-0闷平佛得角虽未进球但全场控球压制效果明显，射门转化率偏低是偶然因素；沙特首轮1-1战平乌拉圭场面被动消耗巨大，面对西班牙传控体系难以持续高强度防守。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"H3",g:"H",r:2,t:"6/22 00:00",h:"西班牙",a:"沙特",s:"4-0",st:"done",hl:"⚽ 西班牙4-0沙特：亚马尔10'首开纪录，奥亚萨瓦尔21'24'梅开二度，坦巴基49'乌龙，西班牙4-0轻取沙特取得首胜",pred:{date:"2026-06-19",ph:2,pa:0,winner:"h",confidence:75,tag:"西班牙胜",basis:["控球压制","沙特首轮消耗大","西班牙调整空间"],reason:"西班牙首轮0-0闷平佛得角虽未进球但全场控球压制效果明显，射门转化率偏低是偶然因素；沙特首轮1-1战平乌拉圭场面被动消耗巨大，面对西班牙传控体系难以持续高强度防守。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"H4",g:"H",r:2,t:"6/22 06:00",h:"乌拉圭",a:"佛得角",st:"upcoming",hl:"⚔️ H组第2轮 · 乌拉圭与佛得角首轮均战平，胜者将占据出线先机",pred:{date:"2026-06-19",ph:2,pa:0,winner:"h",confidence:68,tag:"乌拉圭小胜",basis:["乌拉圭经验实力","佛得角防守韧性","乌拉圭首轮未达最佳"],reason:"乌拉圭首轮1-1平沙特场面占优但效率不足，巴尔韦德和努涅斯的配合仍在磨合；佛得角首轮0-0逼平西班牙防守纪律性出众，但进攻端缺乏威胁难以牵制乌拉圭，乌拉圭实力面优势应能转化为胜势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"H5",g:"H",r:3,t:"6/27 08:00",h:"佛得角",a:"沙特",st:"upcoming",hl:"⚔️ H组收官战 · 佛得角荣誉之战"},
   {id:"H6",g:"H",r:3,t:"6/27 08:00",h:"乌拉圭",a:"西班牙",st:"upcoming",hl:"🔥 H组收官焦点 · 乌拉圭 vs 西班牙，出线关键对决"},
