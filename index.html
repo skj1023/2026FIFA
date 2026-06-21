@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-22 04:33</div>
+          <div class="log-content"><span class="log-tag auto">验真</span><strong>🔍 全站数据校验通过 · G3比利时vs伊朗战至70'仍0-0</strong> — ESPN API确认G3比利时0-0伊朗下半场70'进行中，比利时控球占优但伊朗密集防守顽强。HL已从28'更新至70'。其他比赛状态正常：H3西班牙4-0沙特已确认完赛，H4乌拉圭vs佛得角（06:00开球）和G4新西兰vs埃及（09:00开球）均在待赛状态。全站已完赛37场积分/排名/进度均正确，无需修正。不在预测窗口内（04:33），跳过AI预测生成。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-22 03:30</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 比利时 vs 伊朗开赛（28'）进行中</strong> — ESPN确认G3比利时vs伊朗于19:00 UTC开球，目前28'进行中，双方0-0暂未破门，伊朗开场反客为主率先打出威胁。G3状态从upcoming更新为live，全站赛程/首页联动更新。其他6/21-6/22赛果均已ESPN API验真无误。</div>
         </div>
@@ -1260,7 +1264,7 @@ const ALL_MATCHES = [
   // G组
   {id:"G1",g:"G",r:1,t:"6/16 03:00",h:"比利时",a:"埃及",s:"1-1",st:"done",hl:"⚽ 比利时1-1埃及 · 双方握手言和各取1分"},
   {id:"G2",g:"G",r:1,t:"6/16 09:00",h:"伊朗",a:"新西兰",s:"2-2",st:"done",hl:"⚽ 贾斯特双响 · 雷扎扬&莫赫比破门，伊朗2-2新西兰上演进球大战"},
-  {id:"G3",g:"G",r:2,t:"6/22 03:00",h:"比利时",a:"伊朗",st:"live",hl:"🔴 G组第2轮 · 比利时0-0伊朗 · 比赛进行中（28'），伊朗开局反客为主威胁不小",pred:{date:"2026-06-19",ph:2,pa:0,winner:"h",confidence:67,tag:"比利时胜",basis:["阵容实力优势","伊朗防守铁血","比利时经验丰富"],reason:"比利时整体实力在伊朗之上，德布劳内和卢卡库的配合足以破解伊朗铁桶阵，伊朗首轮2-2虽展现韧性但防守漏洞也被新西兰抓住，比利时更有把握拿下首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"G3",g:"G",r:2,t:"6/22 03:00",h:"比利时",a:"伊朗",st:"live",hl:"🔴 G组第2轮 · 比利时0-0伊朗 · 比赛进行中（70'），双方仍僵持不下，比利时占据控球优势但伊朗密集防守顽强",pred:{date:"2026-06-19",ph:2,pa:0,winner:"h",confidence:67,tag:"比利时胜",basis:["阵容实力优势","伊朗防守铁血","比利时经验丰富"],reason:"比利时整体实力在伊朗之上，德布劳内和卢卡库的配合足以破解伊朗铁桶阵，伊朗首轮2-2虽展现韧性但防守漏洞也被新西兰抓住，比利时更有把握拿下首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"G4",g:"G",r:2,t:"6/22 09:00",h:"新西兰",a:"埃及",st:"upcoming",hl:"⚔️ G组第2轮 · 新西兰盼创历史，埃及全力争胜",pred:{date:"2026-06-19",ph:0,pa:2,winner:"a",confidence:70,tag:"埃及取胜",basis:["埃及进攻火力","新西兰大赛经验不足","萨拉赫核心作用"],reason:"埃及首轮1-1逼平比利时展现出不俗韧性，萨拉赫领衔的攻击线对新西兰防线构成持续威胁；新西兰首轮2-2战平伊朗虽可圈可点但防守专注度不足，面对埃及技术型进攻恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"G5",g:"G",r:3,t:"6/27 11:00",h:"埃及",a:"伊朗",st:"upcoming",hl:"⚔️ G组收官战 · 埃及 vs 伊朗，出线生死战"},
   {id:"G6",g:"G",r:3,t:"6/27 11:00",h:"新西兰",a:"比利时",st:"upcoming",hl:"⚔️ G组收官战 · 新西兰为出线而战"},
