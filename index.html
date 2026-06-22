@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-23 06:07</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>⛈️ 法国1-0伊拉克进入天气延迟</strong> — ESPN比赛页确认I3法国vs伊拉克半场暂为1-0：姆巴佩14'左脚爆射破门，费城暴雨导致比赛在中场进入天气延迟（页面状态显示Delay）。I3保留live状态并将s字段从0-0更新为1-0，hl同步补写半场延迟信息；全站首页/赛程/下一场卡片将随数据联动刷新。北京时间06:07不在预测窗口内，本轮未生成新预测。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-23 05:03</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 法国0-0伊拉克（4'）开赛更新</strong> — BBC Sport实时比分确认I3法国vs伊拉克已于北京时间05:00开球，当前4'仍为0-0。I3状态从upcoming更新为live并补写实时比分，全站首页/赛程/下一场卡片已联动刷新。北京时间05:03不在预测窗口内，本轮未生成新预测。</div>
         </div>
@@ -1313,7 +1317,7 @@ const ALL_MATCHES = [
   {id:"H6",g:"H",r:3,t:"6/27 08:00",h:"乌拉圭",a:"西班牙",st:"upcoming",hl:"🔥 H组收官焦点 · 乌拉圭 vs 西班牙，出线关键对决"},
   {id:"I1",g:"I",r:1,t:"6/17 03:00",h:"法国",a:"塞内加尔",s:"3-1",st:"done",hl:"⚽ 姆巴佩66'、90+6'双响 · 巴尔科拉82'建功，法国3-1击败塞内加尔"},
   {id:"I2",g:"I",r:1,t:"6/17 06:00",h:"伊拉克",a:"挪威",s:"1-4",st:"done",hl:"⚽ 哈兰德双响 · 伊拉克1-4挪威，侯赛因39'破门后90+6'乌龙"},
-  {id:"I3",g:"I",r:2,t:"6/23 05:00",h:"法国",a:"伊拉克",s:"0-0",st:"live",hl:"🔴 法国0-0伊拉克（4'）进行中 · BBC Sport实时比分确认开赛",pred:{date:"2026-06-20",ph:3,pa:0,winner:"h",confidence:78,tag:"法国大胜",basis:["姆巴佩双响状态火热","伊拉克防线脆弱","法国卫冕冠军底蕴"],reason:"法国首轮3-1击败塞内加尔，姆巴佩双响状态爆棚；伊拉克首轮1-4惨败挪威防线漏洞百出，面对法国的技术+速度冲击恐难抵挡。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"I3",g:"I",r:2,t:"6/23 05:00",h:"法国",a:"伊拉克",s:"1-0",st:"live",hl:"⛈️ 法国1-0伊拉克（半场延迟）· 姆巴佩14'左脚爆射破门，费城暴雨导致比赛在中场进入天气延迟",pred:{date:"2026-06-20",ph:3,pa:0,winner:"h",confidence:78,tag:"法国大胜",basis:["姆巴佩双响状态火热","伊拉克防线脆弱","法国卫冕冠军底蕴"],reason:"法国首轮3-1击败塞内加尔，姆巴佩双响状态爆棚；伊拉克首轮1-4惨败挪威防线漏洞百出，面对法国的技术+速度冲击恐难抵挡。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"I4",g:"I",r:2,t:"6/23 08:00",h:"挪威",a:"塞内加尔",st:"upcoming",hl:"🇳🇴 I组第2轮 · 哈兰德领衔挪威战塞内加尔，出线关键战",pred:{date:"2026-06-20",ph:2,pa:1,winner:"h",confidence:67,tag:"挪威险胜",basis:["哈兰德双响","塞内加尔身体对抗","非洲冠军韧性"],reason:"挪威首轮4-1大胜伊拉克，哈兰德双响状态火热；塞内加尔首轮1-3负法国但展现出一定韧性，非洲冠军的身体对抗会给挪威制造麻烦，但哈兰德终结能力是胜负手。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"I5",g:"I",r:3,t:"6/27 03:00",h:"挪威",a:"法国",st:"upcoming",hl:"💥 I组焦点 · 挪威 vs 法国，头名之争提前上演"},
   {id:"I6",g:"I",r:3,t:"6/27 03:00",h:"塞内加尔",a:"伊拉克",st:"upcoming",hl:"⚔️ I组收官战 · 塞内加尔与伊拉克首轮均告负，为荣誉与出线而战"},
