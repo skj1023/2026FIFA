@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
           <div class="log-item">
+            <div class="log-time">2026-06-22 11:17</div>
+            <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ 埃及3-1新西兰完赛确认</strong> — ESPN确认FT 1-3：Finn Surman 15'头槌首开纪录，Mostafa Zico 58'头球扳平，Mohamed Salah 67'低射反超，Trézéguet 82'头槌锁定胜局！埃及让一追三3-1逆转新西兰，萨拉赫传射建功，埃及2轮1胜1平积4分暂居G组榜首。G4状态从live更新为done，全站G组积分/进度/排名已联动更新。全站已完赛40场。AI预测✅方向命中（预测埃及胜，实际3-1逆转取胜）。不在预测窗口内（11:17），跳过AI预测生成。</div>
+          </div>
+          <div class="log-item">
             <div class="log-time">2026-06-22 10:03</div>
             <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 新西兰1-0埃及（半场）进行中</strong> — ESPN确认G4新西兰vs埃及半场1-0：Finn Surman 15'头槌破门首开纪录，新西兰防守纪律性出众，埃及萨拉赫领衔进攻线尚未找到突破口。G4状态从upcoming更新为live，比分1-0已同步写入。全站赛程/首页联动更新。不在预测窗口内（10:03），跳过AI预测生成。</div>
           </div>
@@ -1285,7 +1289,7 @@ const ALL_MATCHES = [
   {id:"G1",g:"G",r:1,t:"6/16 03:00",h:"比利时",a:"埃及",s:"1-1",st:"done",hl:"⚽ 比利时1-1埃及 · 双方握手言和各取1分"},
   {id:"G2",g:"G",r:1,t:"6/16 09:00",h:"伊朗",a:"新西兰",s:"2-2",st:"done",hl:"⚽ 贾斯特双响 · 雷扎扬&莫赫比破门，伊朗2-2新西兰上演进球大战"},
   {id:"G3",g:"G",r:2,t:"6/22 03:00",h:"比利时",a:"伊朗",s:"0-0",st:"done",hl:"⚽ 比利时0-0伊朗：全场比赛结束，双方90分钟均无建树互交白卷。比利时全场控球占优却未能破门得分，伊朗顽强的密集防守收获宝贵1分，出线悬念留至末轮（BBC确认FT 0-0）",pred:{date:"2026-06-19",ph:2,pa:0,winner:"h",confidence:67,tag:"比利时胜",basis:["阵容实力优势","伊朗防守铁血","比利时经验丰富"],reason:"比利时整体实力在伊朗之上，德布劳内和卢卡库的配合足以破解伊朗铁桶阵，伊朗首轮2-2虽展现韧性但防守漏洞也被新西兰抓住，比利时更有把握拿下首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"G4",g:"G",r:2,t:"6/22 09:00",h:"新西兰",a:"埃及",st:"live",s:"1-0",hl:"🔴 G组第2轮 · 新西兰1-0埃及（半场）：Finn Surman 15'头槌破门，新西兰半场领先！埃及萨拉赫领衔进攻线半场仅1次射正，新西兰防守纪律性出众（ESPN确认HT）",pred:{date:"2026-06-19",ph:0,pa:2,winner:"a",confidence:70,tag:"埃及取胜",basis:["埃及进攻火力","新西兰大赛经验不足","萨拉赫核心作用"],reason:"埃及首轮1-1逼平比利时展现出不俗韧性，萨拉赫领衔的攻击线对新西兰防线构成持续威胁；新西兰首轮2-2战平伊朗虽可圈可点但防守专注度不足，面对埃及技术型进攻恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"G4",g:"G",r:2,t:"6/22 09:00",h:"新西兰",a:"埃及",s:"1-3",st:"done",hl:"⚽ 埃及3-1新西兰：Finn Surman 15'头槌首开纪录，Mostafa Zico 58'头球扳平，Mohamed Salah 67'反超，Trézéguet 82'头槌锁定胜局！埃及让一追三3-1逆转新西兰，萨拉赫传射建功，埃及2轮1胜1平积4分暂居G组榜首（ESPN确认FT 1-3）",pred:{date:"2026-06-19",ph:0,pa:2,winner:"a",confidence:70,tag:"埃及取胜",basis:["埃及进攻火力","新西兰大赛经验不足","萨拉赫核心作用"],reason:"埃及首轮1-1逼平比利时展现出不俗韧性，萨拉赫领衔的攻击线对新西兰防线构成持续威胁；新西兰首轮2-2战平伊朗虽可圈可点但防守专注度不足，面对埃及技术型进攻恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"G5",g:"G",r:3,t:"6/27 11:00",h:"埃及",a:"伊朗",st:"upcoming",hl:"⚔️ G组收官战 · 埃及 vs 伊朗，出线生死战"},
   {id:"G6",g:"G",r:3,t:"6/27 11:00",h:"新西兰",a:"比利时",st:"upcoming",hl:"⚔️ G组收官战 · 新西兰为出线而战"},
   // H组
