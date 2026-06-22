@@ -357,7 +357,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <span>👥 <strong>48</strong> 球队 · <strong>104</strong> 场</span>
       <span>🏆 <strong>32</strong> 队晋级淘汰赛</span>
     </div>
-    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">33</strong> 场</div>
+    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">41</strong> 场</div>
     <a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" class="hero-live-btn">📺 CCTV5 直播</a>
   </div>
   <div class="hero-flag-bar"><div class="bar usa"></div><div class="bar canada"></div><div class="bar mexico"></div></div>
@@ -387,7 +387,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     <div class="milestone-item"><div class="num">48</div><div class="lbl">参赛球队</div></div>
     <div class="milestone-item"><div class="num">72</div><div class="lbl">小组赛</div></div>
     <div class="milestone-item"><div class="num">32</div><div class="lbl">淘汰赛</div></div>
-    <div class="milestone-item"><div class="num" id="playedCount">33</div><div class="lbl">已完赛</div></div>
+    <div class="milestone-item"><div class="num" id="playedCount">41</div><div class="lbl">已完赛</div></div>
     <div class="milestone-item"><div class="num">🏆</div><div class="lbl">7.19 决赛</div></div>
   </div>
   <div class="live-banner" id="liveBanner">
@@ -556,6 +556,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time">2026-06-23 03:53</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ 阿根廷2-0奥地利完赛确认</strong> — BBC Sport确认J3 FT 2-0：梅西38'、90+5'双响，超越克洛泽独享世界杯历史射手王；阿根廷两连胜提前晋级32强。J3状态从live更新为done，全站J组积分/最佳第3名/首页进度已联动刷新。当前小组赛已完赛41场。北京时间03:53不在预测窗口内，本轮未生成新预测。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-23 01:41</div>
           <div class="log-content"><span class="log-tag auto">预测</span><strong>🔮 已生成未来3天末端赛程AI预测</strong> — 当前北京时间处于预测窗口（00:05-02:00），按规则为未来3天内尚未锁定的比赛补全6场预测：D5土耳其vs美国、D6巴拉圭vs澳大利亚、E5厄瓜多尔vs德国、E6库拉索vs科特迪瓦、F5日本vs瑞典、F6突尼斯vs荷兰。已写入pred对象并锁定，保留既有预测代码与前端结构不变。</div>
@@ -1311,7 +1315,7 @@ const ALL_MATCHES = [
   {id:"I6",g:"I",r:3,t:"6/27 03:00",h:"塞内加尔",a:"伊拉克",st:"upcoming",hl:"⚔️ I组收官战 · 塞内加尔与伊拉克首轮均告负，为荣誉与出线而战"},
   {id:"J1",g:"J",r:1,t:"6/17 09:00",h:"阿根廷",a:"阿尔及利亚",s:"3-0",st:"done",hl:"🐐 梅西戴帽之夜 · 追平世界杯历史总进球纪录 · 阿根廷3-0完胜阿尔及利亚"},
   {id:"J2",g:"J",r:1,t:"6/17 12:00",h:"奥地利",a:"约旦",s:"3-1",st:"done",hl:"⚽ 奥地利3-1约旦：施密德21'首开纪录 · 奥尔万50'扳平 · 阿拉布76'乌龙 · 奥地利终场前再入一球锁定胜局，J组首轮全取3分"},
-  {id:"J3",g:"J",r:2,t:"6/23 01:00",h:"阿根廷",a:"奥地利",s:"1-0",st:"live",hl:"🔴 阿根廷1-0奥地利（41'）· BBC实时比分显示阿根廷取得领先",pred:{date:"2026-06-20",ph:2,pa:0,winner:"h",confidence:73,tag:"阿根廷胜",basis:["梅西戴帽状态神勇","奥地利中场硬朗","卫冕冠军控制力"],reason:"阿根廷首轮梅西戴帽3-0完胜阿尔及利亚，卫冕冠军攻防俱佳；奥地利首轮3-1击败约旦展现欧战级硬度，但面对阿根廷的传控体系和梅西的个人能力仍处于下风，看好阿根廷稳取2连胜提前出线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"J3",g:"J",r:2,t:"6/23 01:00",h:"阿根廷",a:"奥地利",s:"2-0",st:"done",hl:"⚽ 阿根廷2-0奥地利：梅西38'、90+5'双响，超越克洛泽独享世界杯历史射手王；阿根廷两连胜提前晋级32强（BBC确认FT）",pred:{date:"2026-06-20",ph:2,pa:0,winner:"h",confidence:73,tag:"阿根廷胜",basis:["梅西戴帽状态神勇","奥地利中场硬朗","卫冕冠军控制力"],reason:"阿根廷首轮梅西戴帽3-0完胜阿尔及利亚，卫冕冠军攻防俱佳；奥地利首轮3-1击败约旦展现欧战级硬度，但面对阿根廷的传控体系和梅西的个人能力仍处于下风，看好阿根廷稳取2连胜提前出线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"J4",g:"J",r:2,t:"6/23 11:00",h:"约旦",a:"阿尔及利亚",st:"upcoming",hl:"⚔️ J组第2轮 · 约旦 vs 阿尔及利亚，亚洲劲旅之争",pred:{date:"2026-06-20",ph:0,pa:2,winner:"a",confidence:65,tag:"阿尔及利亚胜",basis:["非洲冠军底蕴","约旦首轮消耗大","阿尔及利亚经验"],reason:"阿尔及利亚首轮0-3负阿根廷但场面并非一边倒，非洲冠军经验丰富调整能力强；约旦首轮1-3负奥地利暴露防守漏洞，面对阿尔及利亚的技术型攻击线恐难守住，看好北非之狐取首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"J5",g:"J",r:3,t:"6/28 10:00",h:"约旦",a:"阿根廷",st:"upcoming",hl:"🐐 J组收官 · 梅西最后一届世界杯小组赛谢幕，约旦力争制造惊喜"},
   {id:"J6",g:"J",r:3,t:"6/28 10:00",h:"阿尔及利亚",a:"奥地利",st:"upcoming",hl:"⚔️ J组收官战 · 阿尔及利亚与奥地利争夺出线主动权"},
