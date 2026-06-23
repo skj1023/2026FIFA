@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-23 14:55</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ 阿尔及利亚2-1约旦完赛确认</strong> — ESPN World Cup scoreboard/summary 与 BBC Scores &amp; Fixtures 最新一致确认：J4约旦vs阿尔及利亚已FT 1-2。Nizar Al-Rashdan 36'先拔头筹，但阿尔及利亚下半场凭借 Nadhir Benbouali 69' 头球与 Amine Gouiri 82' 门前补射连入两球完成逆转。福福已将J4从live切换为done，并同步更新比分与亮点；首页最新赛果、下一场倒计时、赛事进度、J组积分榜与最佳第3名将随脚本联动刷新。北京时间14:55不在预测窗口内，本轮未生成新预测。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-23 12:49</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>⚽ 挪威3-2塞内加尔完赛 · 🔴 约旦1-2阿尔及利亚进入尾声</strong> — ESPN World Cup scoreboard/summary 最新确认：I4挪威vs塞内加尔已FT 3-2，Marcus Pedersen 43'首开纪录，哈兰德48'、58'双响，伊斯梅拉·萨尔53'、90+3'梅开二度；挪威两连胜积6分提前锁定32强。J4约旦vs阿尔及利亚当前87'为1-2，Nizar Al-Rashdan 36'破门后，Benbouali 69'头球扳平，Gouiri 82'补射反超。福福已将I4从live切换为done，并把J4从upcoming切换为live同步比分与亮点；首页最新赛果/下一场/进度条/积分榜/最佳第3名将随脚本联动刷新。北京时间12:49不在预测窗口内，本轮未生成新预测。</div>
         </div>
@@ -1336,7 +1340,7 @@ const ALL_MATCHES = [
   {id:"J1",g:"J",r:1,t:"6/17 09:00",h:"阿根廷",a:"阿尔及利亚",s:"3-0",st:"done",hl:"🐐 梅西戴帽之夜 · 追平世界杯历史总进球纪录 · 阿根廷3-0完胜阿尔及利亚"},
   {id:"J2",g:"J",r:1,t:"6/17 12:00",h:"奥地利",a:"约旦",s:"3-1",st:"done",hl:"⚽ 奥地利3-1约旦：施密德21'首开纪录 · 奥尔万50'扳平 · 阿拉布76'乌龙 · 奥地利终场前再入一球锁定胜局，J组首轮全取3分"},
   {id:"J3",g:"J",r:2,t:"6/23 01:00",h:"阿根廷",a:"奥地利",s:"2-0",st:"done",hl:"⚽ 阿根廷2-0奥地利：梅西38'、90+5'双响，超越克洛泽独享世界杯历史射手王；阿根廷两连胜提前晋级32强（BBC确认FT）",pred:{date:"2026-06-20",ph:2,pa:0,winner:"h",confidence:73,tag:"阿根廷胜",basis:["梅西戴帽状态神勇","奥地利中场硬朗","卫冕冠军控制力"],reason:"阿根廷首轮梅西戴帽3-0完胜阿尔及利亚，卫冕冠军攻防俱佳；奥地利首轮3-1击败约旦展现欧战级硬度，但面对阿根廷的传控体系和梅西的个人能力仍处于下风，看好阿根廷稳取2连胜提前出线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"J4",g:"J",r:2,t:"6/23 11:00",h:"约旦",a:"阿尔及利亚",s:"1-2",st:"live",hl:"🔴 约旦1-2阿尔及利亚（87'）· Nizar Al-Rashdan 36'先拔头筹，Benbouali 69'头球扳平，Gouiri 82'门前补射反超",pred:{date:"2026-06-20",ph:0,pa:2,winner:"a",confidence:65,tag:"阿尔及利亚胜",basis:["非洲冠军底蕴","约旦首轮消耗大","阿尔及利亚经验"],reason:"阿尔及利亚首轮0-3负阿根廷但场面并非一边倒，非洲冠军经验丰富调整能力强；约旦首轮1-3负奥地利暴露防守漏洞，面对阿尔及利亚的技术型攻击线恐难守住，看好北非之狐取首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"J4",g:"J",r:2,t:"6/23 11:00",h:"约旦",a:"阿尔及利亚",s:"1-2",st:"done",hl:"⚽ 阿尔及利亚2-1约旦：Nizar Al-Rashdan 36'先拔头筹，Nadhir Benbouali 69'头球扳平，Amine Gouiri 82'门前补射反超；阿尔及利亚下半场连追两球逆转拿下关键3分（ESPN/BBC确认FT）",pred:{date:"2026-06-20",ph:0,pa:2,winner:"a",confidence:65,tag:"阿尔及利亚胜",basis:["非洲冠军底蕴","约旦首轮消耗大","阿尔及利亚经验"],reason:"阿尔及利亚首轮0-3负阿根廷但场面并非一边倒，非洲冠军经验丰富调整能力强；约旦首轮1-3负奥地利暴露防守漏洞，面对阿尔及利亚的技术型攻击线恐难守住，看好北非之狐取首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"J5",g:"J",r:3,t:"6/28 10:00",h:"约旦",a:"阿根廷",st:"upcoming",hl:"🐐 J组收官 · 梅西最后一届世界杯小组赛谢幕，约旦力争制造惊喜"},
   {id:"J6",g:"J",r:3,t:"6/28 10:00",h:"阿尔及利亚",a:"奥地利",st:"upcoming",hl:"⚔️ J组收官战 · 阿尔及利亚与奥地利争夺出线主动权"},
   {id:"K1",g:"K",r:1,t:"6/18 01:00",h:"葡萄牙",a:"刚果(金)",s:"1-1",st:"done",hl:"⚽ 葡萄牙1-1刚果(金)：内维斯6'首开纪录，维萨45+5'头球扳平，C罗第六届世界杯首秀双方握手言和各取1分"},
