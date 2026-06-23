@@ -1730,7 +1730,8 @@ function renderTeam(teamName){
   
   // Coach card (always first, always expanded)
   if(coach){
-    html+='<div class="pos-group"><div class="pos-header"><span>🎯 教练</span></div><div class="pos-grid"><a class="player-card coach-card" target="_blank"><div class="pa" style="font-size:1.5rem">🎯</div><div><div class="pn">'+coach+'</div><div class="pp">主教练</div></div><span class="pp">🧢</span></a></div></div>';
+    let coachSearch='https://cn.bing.com/search?q='+encodeURIComponent(coach+' football');
+    html+='<div class="pos-group"><div class="pos-header"><span>🎯 教练</span></div><div class="pos-grid"><a class="player-card coach-card" href="'+coachSearch+'" target="_blank"><div class="pa" style="font-size:1.5rem">🎯</div><div><div class="pn">'+coach+'</div><div class="pp">主教练</div></div><span class="pp">🧢</span></a></div></div>';
   }
   
   // Group players by position
