@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-24 05:53</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 英格兰0-0加纳进入尾声（88'/89'）</strong> — FIFA World Cup 2026™ Match Fixtures 页面显示L3英格兰vs加纳已到89'仍为0-0，BBC Scores &amp; Fixtures 同步显示88'仍互交白卷；福福据此保持L3为live并把实时简述从半场进度刷新到比赛尾声。其余K3葡萄牙5-0乌兹别克已完赛、L4巴拿马vs克罗地亚与K4哥伦比亚vs刚果(金)仍按北京时间07:00/10:00待赛，全站首页最新赛况/下一场倒计时/积分榜/最佳第3名将继续随脚本联动。北京时间05:53不在预测窗口内，本轮未生成新预测。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-24 04:44</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ 葡萄牙5-0乌兹别克完赛 · 🔴 英格兰0-0加纳半场</strong> — ESPN World Cup scoreboard/report、FIFA Scores &amp; Fixtures 与 BBC Scores &amp; Fixtures 最新交叉确认：K3葡萄牙vs乌兹别克已FT 5-0，C罗6'、39'双响，努诺·门德斯17'破门，A. Nematov 60'乌龙，莱奥87'锦上添花；L3英格兰vs加纳当前45+1'仍为0-0。福福已将K3从upcoming切换为done并补写比分亮点，同时把L3从upcoming切换为live并写入实时比分；首页最新赛果、下一场倒计时、赛事进度、K/L组积分榜与最佳第3名将随脚本联动刷新。北京时间04:44不在预测窗口内，本轮未生成新预测。</div>
         </div>
@@ -1355,7 +1359,7 @@ const ALL_MATCHES = [
   {id:"K6",g:"K",r:3,t:"6/28 07:30",h:"刚果(金)",a:"乌兹别克",st:"upcoming",hl:"⚔️ K组收官战 · 刚果(金)荣誉之战"},
   {id:"L1",g:"L",r:1,t:"6/18 04:00",h:"英格兰",a:"克罗地亚",s:"4-2",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰4-2克罗地亚：凯恩12'(点)42'双响、贝林厄姆47'破门、赖斯89'锁定胜局；巴图里纳36'、穆萨45+5'两度追分，英格兰4-2开门红"},
   {id:"L2",g:"L",r:1,t:"6/18 07:00",h:"加纳",a:"巴拿马",s:"1-0",st:"done",hl:"⚽ 加纳1-0巴拿马：加纳1-0击败巴拿马，抓住关键机会破门全取3分，L组首轮完赛"},
-  {id:"L3",g:"L",r:2,t:"6/24 04:00",h:"英格兰",a:"加纳",s:"0-0",st:"live",hl:"🔴 英格兰0-0加纳：BBC/ESPN最新显示45+1'仍互交白卷，英格兰控场但加纳防线守住半场",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:72,tag:"英格兰取胜",basis:["凯恩双响状态佳","加纳首轮苦胜","英格兰进攻火力"],reason:"英格兰首轮4-2力克克罗地亚展现强大攻击力，凯恩双响贝林厄姆破门状态火热；加纳首轮1-0小胜巴拿马场面不占明显优势，面对三狮军团恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"L3",g:"L",r:2,t:"6/24 04:00",h:"英格兰",a:"加纳",s:"0-0",st:"live",hl:"🔴 英格兰0-0加纳：FIFA赛程页显示89'、BBC实时比分显示88'仍互交白卷，英格兰持续控场但加纳防线顶住末段压力",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:72,tag:"英格兰取胜",basis:["凯恩双响状态佳","加纳首轮苦胜","英格兰进攻火力"],reason:"英格兰首轮4-2力克克罗地亚展现强大攻击力，凯恩双响贝林厄姆破门状态火热；加纳首轮1-0小胜巴拿马场面不占明显优势，面对三狮军团恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L4",g:"L",r:2,t:"6/24 07:00",h:"巴拿马",a:"克罗地亚",st:"upcoming",hl:"⚔️ L组第2轮 · 巴拿马 vs 克罗地亚，格子军团盼首胜",pred:{date:"2026-06-21",ph:0,pa:3,winner:"a",confidence:74,tag:"克罗地亚大胜",basis:["克罗地亚经验碾压","巴拿马首轮告负","格子军团需抢分"],reason:"克罗地亚虽首轮2-4负于英格兰但整体实力远超巴拿马，莫德里奇领衔的中场对巴拿马形成绝对控制；巴拿马首轮0-1负加纳进攻乏力，面对克罗地亚技术流打法恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L5",g:"L",r:3,t:"6/28 05:00",h:"巴拿马",a:"英格兰",st:"upcoming",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 L组收官 · 巴拿马 vs 英格兰"},
   {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",st:"upcoming",hl:"⚔️ L组收官战 · 克罗地亚力争出线名额"}
