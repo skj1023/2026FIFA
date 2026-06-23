@@ -357,7 +357,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <span>👥 <strong>48</strong> 球队 · <strong>104</strong> 场</span>
       <span>🏆 <strong>32</strong> 队晋级淘汰赛</span>
     </div>
-    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">42</strong> 场</div>
+    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">45</strong> 场</div>
     <a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" class="hero-live-btn">📺 CCTV5 直播</a>
   </div>
   <div class="hero-flag-bar"><div class="bar usa"></div><div class="bar canada"></div><div class="bar mexico"></div></div>
@@ -387,7 +387,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     <div class="milestone-item"><div class="num">48</div><div class="lbl">参赛球队</div></div>
     <div class="milestone-item"><div class="num">72</div><div class="lbl">小组赛</div></div>
     <div class="milestone-item"><div class="num">32</div><div class="lbl">淘汰赛</div></div>
-    <div class="milestone-item"><div class="num" id="playedCount">42</div><div class="lbl">已完赛</div></div>
+    <div class="milestone-item"><div class="num" id="playedCount">45</div><div class="lbl">已完赛</div></div>
     <div class="milestone-item"><div class="num">🏆</div><div class="lbl">7.19 决赛</div></div>
   </div>
   <div class="live-banner" id="liveBanner">
@@ -556,6 +556,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time">2026-06-24 04:44</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ 葡萄牙5-0乌兹别克完赛 · 🔴 英格兰0-0加纳半场</strong> — ESPN World Cup scoreboard/report、FIFA Scores &amp; Fixtures 与 BBC Scores &amp; Fixtures 最新交叉确认：K3葡萄牙vs乌兹别克已FT 5-0，C罗6'、39'双响，努诺·门德斯17'破门，A. Nematov 60'乌龙，莱奥87'锦上添花；L3英格兰vs加纳当前45+1'仍为0-0。福福已将K3从upcoming切换为done并补写比分亮点，同时把L3从upcoming切换为live并写入实时比分；首页最新赛果、下一场倒计时、赛事进度、K/L组积分榜与最佳第3名将随脚本联动刷新。北京时间04:44不在预测窗口内，本轮未生成新预测。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-23 14:55</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ 阿尔及利亚2-1约旦完赛确认</strong> — ESPN World Cup scoreboard/summary 与 BBC Scores &amp; Fixtures 最新一致确认：J4约旦vs阿尔及利亚已FT 1-2。Nizar Al-Rashdan 36'先拔头筹，但阿尔及利亚下半场凭借 Nadhir Benbouali 69' 头球与 Amine Gouiri 82' 门前补射连入两球完成逆转。福福已将J4从live切换为done，并同步更新比分与亮点；首页最新赛果、下一场倒计时、赛事进度、J组积分榜与最佳第3名将随脚本联动刷新。北京时间14:55不在预测窗口内，本轮未生成新预测。</div>
@@ -1345,13 +1349,13 @@ const ALL_MATCHES = [
   {id:"J6",g:"J",r:3,t:"6/28 10:00",h:"阿尔及利亚",a:"奥地利",st:"upcoming",hl:"⚔️ J组收官战 · 阿尔及利亚与奥地利争夺出线主动权"},
   {id:"K1",g:"K",r:1,t:"6/18 01:00",h:"葡萄牙",a:"刚果(金)",s:"1-1",st:"done",hl:"⚽ 葡萄牙1-1刚果(金)：内维斯6'首开纪录，维萨45+5'头球扳平，C罗第六届世界杯首秀双方握手言和各取1分"},
   {id:"K2",g:"K",r:1,t:"6/18 10:00",h:"乌兹别克",a:"哥伦比亚",s:"1-3",st:"done",hl:"⚽ 乌兹别克1-3哥伦比亚：哥伦比亚3-1击败乌兹别克斯坦，中亚新军首秀1-3告负"},
-  {id:"K3",g:"K",r:2,t:"6/24 01:00",h:"葡萄牙",a:"乌兹别克",st:"upcoming",hl:"🇵🇹 K组第2轮 · 葡萄牙盼连胜锁定出线",pred:{date:"2026-06-21",ph:3,pa:0,winner:"h",confidence:76,tag:"葡萄牙大胜",basis:["C罗领衔","乌兹别克首战惨败","葡萄牙求胜心切"],reason:"葡萄牙首轮1-1意外被刚果(金)逼平，此战面对首轮1-3负哥伦比亚的中亚新军乌兹别克斯坦，实力和经验优势明显，C罗率领的攻击线有望迎来爆发。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"K3",g:"K",r:2,t:"6/24 01:00",h:"葡萄牙",a:"乌兹别克",s:"5-0",st:"done",hl:"⚽ 葡萄牙5-0乌兹别克：C罗6'、39'双响，努诺·门德斯17'建功，Nematov 60'乌龙，莱奥87'破门；葡萄牙大胜升至K组前列（ESPN/FIFA/BBC确认FT）",pred:{date:"2026-06-21",ph:3,pa:0,winner:"h",confidence:76,tag:"葡萄牙大胜",basis:["C罗领衔","乌兹别克首战惨败","葡萄牙求胜心切"],reason:"葡萄牙首轮1-1意外被刚果(金)逼平，此战面对首轮1-3负哥伦比亚的中亚新军乌兹别克斯坦，实力和经验优势明显，C罗率领的攻击线有望迎来爆发。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"K4",g:"K",r:2,t:"6/24 10:00",h:"哥伦比亚",a:"刚果(金)",st:"upcoming",hl:"⚔️ K组第2轮 · 哥伦比亚力争首胜",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:65,tag:"哥伦比亚小胜",basis:["哥伦比亚首轮大胜","刚果(金)逼平葡萄牙","南美技术优势"],reason:"哥伦比亚首轮3-1击败乌兹别克斯坦展现南美技术优势；刚果(金)首轮1-1逼平葡萄牙展现不俗韧性但整体实力仍逊于哥伦比亚，看好南美劲旅小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"K5",g:"K",r:3,t:"6/28 07:30",h:"哥伦比亚",a:"葡萄牙",st:"upcoming",hl:"🔥 K组收官 · 哥伦比亚 vs 葡萄牙，出线关键战"},
   {id:"K6",g:"K",r:3,t:"6/28 07:30",h:"刚果(金)",a:"乌兹别克",st:"upcoming",hl:"⚔️ K组收官战 · 刚果(金)荣誉之战"},
   {id:"L1",g:"L",r:1,t:"6/18 04:00",h:"英格兰",a:"克罗地亚",s:"4-2",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰4-2克罗地亚：凯恩12'(点)42'双响、贝林厄姆47'破门、赖斯89'锁定胜局；巴图里纳36'、穆萨45+5'两度追分，英格兰4-2开门红"},
   {id:"L2",g:"L",r:1,t:"6/18 07:00",h:"加纳",a:"巴拿马",s:"1-0",st:"done",hl:"⚽ 加纳1-0巴拿马：加纳1-0击败巴拿马，抓住关键机会破门全取3分，L组首轮完赛"},
-  {id:"L3",g:"L",r:2,t:"6/24 04:00",h:"英格兰",a:"加纳",st:"upcoming",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 L组第2轮 · 英格兰再迎战，盼连胜",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:72,tag:"英格兰取胜",basis:["凯恩双响状态佳","加纳首轮苦胜","英格兰进攻火力"],reason:"英格兰首轮4-2力克克罗地亚展现强大攻击力，凯恩双响贝林厄姆破门状态火热；加纳首轮1-0小胜巴拿马场面不占明显优势，面对三狮军团恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"L3",g:"L",r:2,t:"6/24 04:00",h:"英格兰",a:"加纳",s:"0-0",st:"live",hl:"🔴 英格兰0-0加纳：BBC/ESPN最新显示45+1'仍互交白卷，英格兰控场但加纳防线守住半场",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:72,tag:"英格兰取胜",basis:["凯恩双响状态佳","加纳首轮苦胜","英格兰进攻火力"],reason:"英格兰首轮4-2力克克罗地亚展现强大攻击力，凯恩双响贝林厄姆破门状态火热；加纳首轮1-0小胜巴拿马场面不占明显优势，面对三狮军团恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L4",g:"L",r:2,t:"6/24 07:00",h:"巴拿马",a:"克罗地亚",st:"upcoming",hl:"⚔️ L组第2轮 · 巴拿马 vs 克罗地亚，格子军团盼首胜",pred:{date:"2026-06-21",ph:0,pa:3,winner:"a",confidence:74,tag:"克罗地亚大胜",basis:["克罗地亚经验碾压","巴拿马首轮告负","格子军团需抢分"],reason:"克罗地亚虽首轮2-4负于英格兰但整体实力远超巴拿马，莫德里奇领衔的中场对巴拿马形成绝对控制；巴拿马首轮0-1负加纳进攻乏力，面对克罗地亚技术流打法恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L5",g:"L",r:3,t:"6/28 05:00",h:"巴拿马",a:"英格兰",st:"upcoming",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 L组收官 · 巴拿马 vs 英格兰"},
   {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",st:"upcoming",hl:"⚔️ L组收官战 · 克罗地亚力争出线名额"}
