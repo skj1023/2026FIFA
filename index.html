@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-25 03:26</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 B组两场收官战已开赛并同步切换 live</strong> — ESPN World Cup scoreboard API 与 BBC Scores &amp; Fixtures 最新一致显示：B5瑞士vs加拿大、B6波黑vs卡塔尔均已于北京时间03:00开球，当前约26&#39;且两场都还是0-0。福福已将两场从upcoming切换为live，并补写实时比分与简述；由于开球未满120分钟，本站不提前标记完赛。首页最新赛况、下一场倒计时、赛事进度以及后续积分联动继续沿用现有逻辑刷新。当前北京时间03:26不在预测窗口内，本轮未生成新预测。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-25 01:16</div>
           <div class="log-content"><span class="log-tag auto">预测</span><strong>🔮 已补全未来3天未锁定赛程AI预测</strong> — 当前北京时间处于预测窗口（00:05-02:00），福福先用 ESPN World Cup scoreboard API 与 BBC Scores &amp; Fixtures 复核今日赛程，确认6/25本地时间待赛场次仍为 Scheduled，暂无新赛果需要改写；随后按规则仅为未来3天内尚未锁定的比赛补全预测。新增 12 场 locked 预测：G5/G6、H5/H6、I5/I6、J5/J6、K5/K6、L5/L6；其中6/26的D/E/F组六场既有预测已保留不覆盖。全站仅更新数据对象与日志，AI预测相关前端代码和现有已锁定pred字段均保持不变。</div>
         </div>
@@ -1329,8 +1333,8 @@ const ALL_MATCHES = [
   {id:"B2",g:"B",r:1,t:"6/14 03:00",h:"卡塔尔",a:"瑞士",s:"1-1",st:"done",hl:"⚽ 胡赫90+4'绝平 · 恩博洛17'点球破门"},
   {id:"B3",g:"B",r:2,t:"6/19 03:00",h:"瑞士",a:"波黑",s:"4-1",st:"done",hl:"⚽ 瑞士4-1波黑：BBC报道4-1大胜，瑞士两轮1胜1平积4分领跑B组",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:68,tag:"瑞士小胜",basis:["阵容均衡","大赛经验","波黑锋线威胁"],reason:"瑞士阵容结构更均衡，比赛管理能力更强；波黑有哲科支点和反击机会，但稳定性略逊。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"B4",g:"B",r:2,t:"6/19 06:00",h:"加拿大",a:"卡塔尔",s:"6-0",st:"done",hl:"⚽ 加拿大6-0卡塔尔：拉林16'首开纪录，戴维29'45+3'梅开二度，Ahmed33'染红，加拿大下半场再入3球，6-0碾压10人卡塔尔（ESPN确认FT）",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:64,tag:"加拿大小胜",basis:["东道主主场","边路速度","卡塔尔杯赛韧性"],reason:"加拿大边路冲击和主场氛围更占优，卡塔尔杯赛经验不错但防线面对速度型打法压力较大。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"B5",g:"B",r:3,t:"6/25 03:00",h:"瑞士",a:"加拿大",st:"upcoming",hl:"⚔️ B组收官战 · 瑞士 vs 加拿大，出线关键对决",pred:{date:"2026-06-22",ph:1,pa:1,winner:"d",confidence:60,tag:"小组头名之争",basis:["瑞士大赛经验","加拿大主场","进攻火力相当"],reason:"瑞士和加拿大同积4分，这是B组头名之争。瑞士大赛经验丰富且整体纪律性强；加拿大主场作战，6-0大胜卡塔尔气势正盛。双方进攻端都有足够威胁，谁都不愿冒险输球，平局是双方都能接受的结果。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"B6",g:"B",r:3,t:"6/25 03:00",h:"波黑",a:"卡塔尔",st:"upcoming",hl:"⚔️ B组收官战 · 波黑 vs 卡塔尔，为出线而战",pred:{date:"2026-06-22",ph:2,pa:1,winner:"h",confidence:65,tag:"波黑胜出",basis:["哲科支点作用","卡塔尔防线崩盘","欧洲经验"],reason:"波黑和卡塔尔均积1分，这场必须赢才有出线可能。波黑有哲科和皮亚尼奇等经验丰富的老将坐镇，面对亚洲球队仍占个人能力优势；卡塔尔两轮丢7球防守问题严重，0-6惨败后士气受创，波黑更有希望拿下世界杯首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"B5",g:"B",r:3,t:"6/25 03:00",h:"瑞士",a:"加拿大",s:"0-0",st:"live",hl:"🔴 瑞士0-0加拿大（26'）：ESPN World Cup scoreboard API 与 BBC Scores & Fixtures 同步显示比赛已进入上半场中段，双方暂时互交白卷，B组头名之争仍在拉扯。",pred:{date:"2026-06-22",ph:1,pa:1,winner:"d",confidence:60,tag:"小组头名之争",basis:["瑞士大赛经验","加拿大主场","进攻火力相当"],reason:"瑞士和加拿大同积4分，这是B组头名之争。瑞士大赛经验丰富且整体纪律性强；加拿大主场作战，6-0大胜卡塔尔气势正盛。双方进攻端都有足够威胁，谁都不愿冒险输球，平局是双方都能接受的结果。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"B6",g:"B",r:3,t:"6/25 03:00",h:"波黑",a:"卡塔尔",s:"0-0",st:"live",hl:"🔴 波黑0-0卡塔尔（26'）：ESPN World Cup scoreboard API 与 BBC Scores & Fixtures 最新都显示比赛正在进行，上半场前段双方暂未打破僵局，出线希望仍悬而未决。",pred:{date:"2026-06-22",ph:2,pa:1,winner:"h",confidence:65,tag:"波黑胜出",basis:["哲科支点作用","卡塔尔防线崩盘","欧洲经验"],reason:"波黑和卡塔尔均积1分，这场必须赢才有出线可能。波黑有哲科和皮亚尼奇等经验丰富的老将坐镇，面对亚洲球队仍占个人能力优势；卡塔尔两轮丢7球防守问题严重，0-6惨败后士气受创，波黑更有希望拿下世界杯首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"C1",g:"C",r:1,t:"6/14 06:00",h:"巴西",a:"摩洛哥",s:"1-1",st:"done",hl:"⚽ 维尼修斯扳平 · 巴西1-1摩洛哥，首轮各取1分"},
   {id:"C2",g:"C",r:1,t:"6/14 09:00",h:"海地",a:"苏格兰",s:"0-1",st:"done",hl:"🏴󠁧󠁢󠁳󠁣󠁴󠁿 麦金28分钟制胜球，苏格兰28年首胜"},
   {id:"C3",g:"C",r:2,t:"6/20 06:00",h:"苏格兰",a:"摩洛哥",s:"0-1",st:"done",hl:"⚽ 摩洛哥1-0苏格兰：摩洛哥全场压制，第27分钟突袭破门，苏格兰首战告捷后0-1小负，摩洛哥2轮不败积4分领跑C组（ESPN API确认FT 0-1）",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:60,tag:"势均力敌",basis:["苏格兰三军用命","摩洛哥组织更强","防守均稳固"],reason:"苏格兰时隔28年世界杯首胜后士气高涨，摩洛哥首轮战平巴西展现韧性，两队都更倾向稳守反击，平局概率较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
