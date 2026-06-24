@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-24 10:15</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 哥伦比亚0-0刚果(金)开赛确认（14'）</strong> — BBC Scores &amp; Fixtures 与 FIFA World Cup 2026™ Match Fixtures 最新同步显示：K4哥伦比亚vs刚果(金)已于北京时间10:00开球，当前约14'仍为0-0。福福已将K4从upcoming切换为live并补写实时比分与简述；首页最新赛况、下一场倒计时、赛事进度、K组积分榜与最佳第3名排名将继续随脚本联动刷新。当前北京时间10:15不在预测窗口内，本轮未生成新预测。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-24 09:10</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ 巴拿马0-1克罗地亚完赛确认</strong> — ESPN World Cup scoreboard/summary 与 BBC Scores &amp; Fixtures 最新一致确认：L4巴拿马vs克罗地亚已FT 0-1，Ante Budimir 54'接应 Josip Stanišić 传中门前包抄打入全场唯一进球；克罗地亚保住出线希望，巴拿马提前出局。福福已将L4从live切换为done并同步补写比分与亮点；首页最新赛果、下一场倒计时、赛事进度、L组积分榜与最佳第3名排名将继续随脚本联动刷新。当前北京时间09:10不在预测窗口内，本轮未生成新预测。</div>
         </div>
@@ -1366,7 +1370,7 @@ const ALL_MATCHES = [
   {id:"K1",g:"K",r:1,t:"6/18 01:00",h:"葡萄牙",a:"刚果(金)",s:"1-1",st:"done",hl:"⚽ 葡萄牙1-1刚果(金)：内维斯6'首开纪录，维萨45+5'头球扳平，C罗第六届世界杯首秀双方握手言和各取1分"},
   {id:"K2",g:"K",r:1,t:"6/18 10:00",h:"乌兹别克",a:"哥伦比亚",s:"1-3",st:"done",hl:"⚽ 乌兹别克1-3哥伦比亚：哥伦比亚3-1击败乌兹别克斯坦，中亚新军首秀1-3告负"},
   {id:"K3",g:"K",r:2,t:"6/24 01:00",h:"葡萄牙",a:"乌兹别克",s:"5-0",st:"done",hl:"⚽ 葡萄牙5-0乌兹别克：C罗6'、39'双响，努诺·门德斯17'建功，Nematov 60'乌龙，莱奥87'破门；葡萄牙大胜升至K组前列（ESPN/FIFA/BBC确认FT）",pred:{date:"2026-06-21",ph:3,pa:0,winner:"h",confidence:76,tag:"葡萄牙大胜",basis:["C罗领衔","乌兹别克首战惨败","葡萄牙求胜心切"],reason:"葡萄牙首轮1-1意外被刚果(金)逼平，此战面对首轮1-3负哥伦比亚的中亚新军乌兹别克斯坦，实力和经验优势明显，C罗率领的攻击线有望迎来爆发。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"K4",g:"K",r:2,t:"6/24 10:00",h:"哥伦比亚",a:"刚果(金)",st:"upcoming",hl:"⚔️ K组第2轮 · 哥伦比亚力争首胜",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:65,tag:"哥伦比亚小胜",basis:["哥伦比亚首轮大胜","刚果(金)逼平葡萄牙","南美技术优势"],reason:"哥伦比亚首轮3-1击败乌兹别克斯坦展现南美技术优势；刚果(金)首轮1-1逼平葡萄牙展现不俗韧性但整体实力仍逊于哥伦比亚，看好南美劲旅小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"K4",g:"K",r:2,t:"6/24 10:00",h:"哥伦比亚",a:"刚果(金)",s:"0-0",st:"live",hl:"🔴 哥伦比亚0-0刚果(金)：BBC与FIFA最新同步显示比赛已进行约14'，双方开局仍在试探与拉扯，K组第2轮实时战况待继续更新",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:65,tag:"哥伦比亚小胜",basis:["哥伦比亚首轮大胜","刚果(金)逼平葡萄牙","南美技术优势"],reason:"哥伦比亚首轮3-1击败乌兹别克斯坦展现南美技术优势；刚果(金)首轮1-1逼平葡萄牙展现不俗韧性但整体实力仍逊于哥伦比亚，看好南美劲旅小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"K5",g:"K",r:3,t:"6/28 07:30",h:"哥伦比亚",a:"葡萄牙",st:"upcoming",hl:"🔥 K组收官 · 哥伦比亚 vs 葡萄牙，出线关键战"},
   {id:"K6",g:"K",r:3,t:"6/28 07:30",h:"刚果(金)",a:"乌兹别克",st:"upcoming",hl:"⚔️ K组收官战 · 刚果(金)荣誉之战"},
   {id:"L1",g:"L",r:1,t:"6/18 04:00",h:"英格兰",a:"克罗地亚",s:"4-2",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰4-2克罗地亚：凯恩12'(点)42'双响、贝林厄姆47'破门、赖斯89'锁定胜局；巴图里纳36'、穆萨45+5'两度追分，英格兰4-2开门红"},
