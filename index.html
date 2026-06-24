@@ -357,7 +357,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <span>👥 <strong>48</strong> 球队 · <strong>104</strong> 场</span>
       <span>🏆 <strong>32</strong> 队晋级淘汰赛</span>
     </div>
-    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">45</strong> 场</div>
+    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">48</strong> 场</div>
     <a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" class="hero-live-btn">📺 CCTV5 直播</a>
   </div>
   <div class="hero-flag-bar"><div class="bar usa"></div><div class="bar canada"></div><div class="bar mexico"></div></div>
@@ -387,7 +387,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     <div class="milestone-item"><div class="num">48</div><div class="lbl">参赛球队</div></div>
     <div class="milestone-item"><div class="num">72</div><div class="lbl">小组赛</div></div>
     <div class="milestone-item"><div class="num">32</div><div class="lbl">淘汰赛</div></div>
-    <div class="milestone-item"><div class="num" id="playedCount">45</div><div class="lbl">已完赛</div></div>
+    <div class="milestone-item"><div class="num" id="playedCount">48</div><div class="lbl">已完赛</div></div>
     <div class="milestone-item"><div class="num">🏆</div><div class="lbl">7.19 决赛</div></div>
   </div>
   <div class="live-banner" id="liveBanner">
@@ -556,6 +556,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time">2026-06-24 12:23</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ 哥伦比亚1-0刚果(金)完赛确认</strong> — FIFA World Cup 2026™ Match Fixtures、ESPN World Cup scoreboard/summary 与 BBC Scores &amp; Fixtures 最新一致确认：K4哥伦比亚vs刚果(金)已FT 1-0，Daniel Muñoz 76'打入全场唯一进球。福福已将K4从live切换为done并补写比分与亮点；首页最新赛果、下一场倒计时、赛事进度、K组积分榜与最佳第3名排名将继续随脚本联动刷新。当前北京时间12:23不在预测窗口内，本轮未生成新预测。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-24 11:16</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 哥伦比亚0-0刚果(金)实时进度刷新（57'）</strong> — BBC Scores &amp; Fixtures 最新公开比分页显示：K4哥伦比亚vs刚果(金)当前已到57'仍为0-0，哥伦比亚场面压制更多但尚未兑现进球，刚果(金)继续靠身体对抗与低位防守守住平局。福福已同步刷新K4实时简述；由于比赛开球未满120分钟，本站仍保持其状态为live，首页最新赛况、下一场倒计时、赛事进度、K组积分榜与最佳第3名排名继续按现有逻辑联动。当前北京时间11:16不在预测窗口内，本轮未生成新预测。</div>
@@ -1374,7 +1378,7 @@ const ALL_MATCHES = [
   {id:"K1",g:"K",r:1,t:"6/18 01:00",h:"葡萄牙",a:"刚果(金)",s:"1-1",st:"done",hl:"⚽ 葡萄牙1-1刚果(金)：内维斯6'首开纪录，维萨45+5'头球扳平，C罗第六届世界杯首秀双方握手言和各取1分"},
   {id:"K2",g:"K",r:1,t:"6/18 10:00",h:"乌兹别克",a:"哥伦比亚",s:"1-3",st:"done",hl:"⚽ 乌兹别克1-3哥伦比亚：哥伦比亚3-1击败乌兹别克斯坦，中亚新军首秀1-3告负"},
   {id:"K3",g:"K",r:2,t:"6/24 01:00",h:"葡萄牙",a:"乌兹别克",s:"5-0",st:"done",hl:"⚽ 葡萄牙5-0乌兹别克：C罗6'、39'双响，努诺·门德斯17'建功，Nematov 60'乌龙，莱奥87'破门；葡萄牙大胜升至K组前列（ESPN/FIFA/BBC确认FT）",pred:{date:"2026-06-21",ph:3,pa:0,winner:"h",confidence:76,tag:"葡萄牙大胜",basis:["C罗领衔","乌兹别克首战惨败","葡萄牙求胜心切"],reason:"葡萄牙首轮1-1意外被刚果(金)逼平，此战面对首轮1-3负哥伦比亚的中亚新军乌兹别克斯坦，实力和经验优势明显，C罗率领的攻击线有望迎来爆发。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"K4",g:"K",r:2,t:"6/24 10:00",h:"哥伦比亚",a:"刚果(金)",s:"0-0",st:"live",hl:"🔴 哥伦比亚0-0刚果(金)：BBC Scores & Fixtures 最新公开比分页显示比赛来到57'仍互交白卷，哥伦比亚控场与压迫更多，刚果(金)继续靠身体对抗与回收防守硬扛，K组实时出线形势仍在拉锯",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:65,tag:"哥伦比亚小胜",basis:["哥伦比亚首轮大胜","刚果(金)逼平葡萄牙","南美技术优势"],reason:"哥伦比亚首轮3-1击败乌兹别克斯坦展现南美技术优势；刚果(金)首轮1-1逼平葡萄牙展现不俗韧性但整体实力仍逊于哥伦比亚，看好南美劲旅小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"K4",g:"K",r:2,t:"6/24 10:00",h:"哥伦比亚",a:"刚果(金)",s:"1-0",st:"done",hl:"⚽ 哥伦比亚1-0刚果(金)：Daniel Muñoz 76'打入全场唯一进球，哥伦比亚两轮1胜1平积4分暂时升至K组头名，刚果(金)末轮仍需抢分争出线",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:65,tag:"哥伦比亚小胜",basis:["哥伦比亚首轮大胜","刚果(金)逼平葡萄牙","南美技术优势"],reason:"哥伦比亚首轮3-1击败乌兹别克斯坦展现南美技术优势；刚果(金)首轮1-1逼平葡萄牙展现不俗韧性但整体实力仍逊于哥伦比亚，看好南美劲旅小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"K5",g:"K",r:3,t:"6/28 07:30",h:"哥伦比亚",a:"葡萄牙",st:"upcoming",hl:"🔥 K组收官 · 哥伦比亚 vs 葡萄牙，出线关键战"},
   {id:"K6",g:"K",r:3,t:"6/28 07:30",h:"刚果(金)",a:"乌兹别克",st:"upcoming",hl:"⚔️ K组收官战 · 刚果(金)荣誉之战"},
   {id:"L1",g:"L",r:1,t:"6/18 04:00",h:"英格兰",a:"克罗地亚",s:"4-2",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰4-2克罗地亚：凯恩12'(点)42'双响、贝林厄姆47'破门、赖斯89'锁定胜局；巴图里纳36'、穆萨45+5'两度追分，英格兰4-2开门红"},
