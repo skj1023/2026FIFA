@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-24 08:03</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 巴拿马0-0克罗地亚半场</strong> — ESPN World Cup scoreboard 最新显示：L4巴拿马vs克罗地亚在45+3'进入HT，比分仍为0-0；K4哥伦比亚vs刚果(金)仍按北京时间10:00待赛。福福已将L4从upcoming切换为live并补写实时比分与半场简述；首页最新赛况、下一场倒计时、赛事进度、L组积分榜与最佳第3名排名将继续随脚本联动更新。当前北京时间08:03不在预测窗口内，本轮未生成新预测。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-24 06:56</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ 英格兰0-0加纳完赛确认</strong> — FIFA World Cup 2026™ Match Fixtures 页面与 ESPN World Cup scoreboard 最新一致显示：L3英格兰vs加纳已FT 0-0。英格兰全场占优但始终未能攻破加纳防线，加纳拿到关键1分。福福已将L3从live切换为done并刷新赛果简述；首页最新赛果、下一场倒计时、赛事进度、L组积分榜与最佳第3名排名将继续随脚本联动更新。当前北京时间06:56不在预测窗口内，本轮未生成新预测。</div>
         </div>
@@ -1364,7 +1368,7 @@ const ALL_MATCHES = [
   {id:"L1",g:"L",r:1,t:"6/18 04:00",h:"英格兰",a:"克罗地亚",s:"4-2",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰4-2克罗地亚：凯恩12'(点)42'双响、贝林厄姆47'破门、赖斯89'锁定胜局；巴图里纳36'、穆萨45+5'两度追分，英格兰4-2开门红"},
   {id:"L2",g:"L",r:1,t:"6/18 07:00",h:"加纳",a:"巴拿马",s:"1-0",st:"done",hl:"⚽ 加纳1-0巴拿马：加纳1-0击败巴拿马，抓住关键机会破门全取3分，L组首轮完赛"},
   {id:"L3",g:"L",r:2,t:"6/24 04:00",h:"英格兰",a:"加纳",s:"0-0",st:"done",hl:"⚽ 英格兰0-0加纳：FIFA与ESPN最新均显示FT 0-0，英格兰控球与压制更足但迟迟无法破门，加纳顽强守住关键1分",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:72,tag:"英格兰取胜",basis:["凯恩双响状态佳","加纳首轮苦胜","英格兰进攻火力"],reason:"英格兰首轮4-2力克克罗地亚展现强大攻击力，凯恩双响贝林厄姆破门状态火热；加纳首轮1-0小胜巴拿马场面不占明显优势，面对三狮军团恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"L4",g:"L",r:2,t:"6/24 07:00",h:"巴拿马",a:"克罗地亚",st:"upcoming",hl:"⚔️ L组第2轮 · 巴拿马 vs 克罗地亚，格子军团盼首胜",pred:{date:"2026-06-21",ph:0,pa:3,winner:"a",confidence:74,tag:"克罗地亚大胜",basis:["克罗地亚经验碾压","巴拿马首轮告负","格子军团需抢分"],reason:"克罗地亚虽首轮2-4负于英格兰但整体实力远超巴拿马，莫德里奇领衔的中场对巴拿马形成绝对控制；巴拿马首轮0-1负加纳进攻乏力，面对克罗地亚技术流打法恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"L4",g:"L",r:2,t:"6/24 07:00",h:"巴拿马",a:"克罗地亚",s:"0-0",st:"live",hl:"🔴 半场 0-0：ESPN World Cup scoreboard 显示巴拿马vs克罗地亚45+3'进入中场休息，双方暂时互交白卷",pred:{date:"2026-06-21",ph:0,pa:3,winner:"a",confidence:74,tag:"克罗地亚大胜",basis:["克罗地亚经验碾压","巴拿马首轮告负","格子军团需抢分"],reason:"克罗地亚虽首轮2-4负于英格兰但整体实力远超巴拿马，莫德里奇领衔的中场对巴拿马形成绝对控制；巴拿马首轮0-1负加纳进攻乏力，面对克罗地亚技术流打法恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L5",g:"L",r:3,t:"6/28 05:00",h:"巴拿马",a:"英格兰",st:"upcoming",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 L组收官 · 巴拿马 vs 英格兰"},
   {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",st:"upcoming",hl:"⚔️ L组收官战 · 克罗地亚力争出线名额"}
 ];
