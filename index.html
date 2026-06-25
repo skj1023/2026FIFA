@@ -557,6 +557,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-25 10:58</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ A组收官两战完赛：墨西哥3-0捷克、南非1-0韩国</strong> — FIFA World Cup 2026™ Match Fixtures、ESPN World Cup scoreboard API 与 BBC Sport Scores &amp; Fixtures 最新一致确认：A5捷克vs墨西哥已FT 0-3，墨西哥3战全胜以9分锁定A组头名；A6南非vs韩国已FT 1-0，南非末轮抢下关键3分后以4分反超拿到A组第二。福福已将A5/A6从live切换为done，并同步刷新比分、简述、首页最新赛果、下一场倒计时、赛事进度以及A组积分/最佳第3名联动数据。当前北京时间10:58不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-25 09:54</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 A组两场收官战已同步切换 live（半场0-0 / 0-0）</strong> — ESPN World Cup scoreboard API 最新显示：A5捷克vs墨西哥、A6南非vs韩国均已到HT且同为0-0；BBC Sport Scores &amp; Fixtures 页面也同步显示两场约40&#39;+后进入中场。福福已将A5/A6从upcoming切换为live并写入实时比分与简述；由于两场比赛开球未满120分钟，本站继续保持 live，不提前改写为 done。首页最新赛况、下一场倒计时、赛事进度以及A组积分/最佳第3名联动继续按现有逻辑刷新。当前北京时间09:54不在预测窗口内，本轮无需新增预测，既有 locked 预测全部保留。</div>
         </div>
@@ -1351,8 +1355,8 @@ const ALL_MATCHES = [
   {id:"A2",g:"A",r:1,t:"6/12 10:00",h:"韩国",a:"捷克",s:"2-1",st:"done",hl:"⚽ 黄仁范传射 · 韩国2-1逆转捷克"},
   {id:"A3",g:"A",r:2,t:"6/19 00:00",h:"捷克",a:"南非",s:"1-1",st:"done",hl:"⚽ 捷克1-1南非：Sadílek 6'首开纪录，Mokoena 83'点球绝平，南非客场逼平捷克各取1分",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:61,tag:"谨慎看平",basis:["首轮均败","捷克定位球","南非速度反击"],reason:"两队首轮都需要止血，捷克整体组织和定位球更稳，南非反击速度有威胁，预计会踢得谨慎。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"A4",g:"A",r:2,t:"6/19 09:00",h:"墨西哥",a:"韩国",s:"1-0",st:"done",hl:"⚽ 墨西哥1-0韩国：Luis Romo 50'低射破门，墨西哥2连胜积6分成为首支晋级淘汰赛的球队！",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:66,tag:"墨西哥小胜",basis:["东道主气势","主场环境","韩国快节奏"],reason:"墨西哥有主场环境和揭幕战胜势加成，韩国转换速度很强但客场消耗更大，倾向墨西哥小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"A5",g:"A",r:3,t:"6/25 09:00",h:"捷克",a:"墨西哥",s:"0-0",st:"live",hl:"🔴 半场0-0：ESPN 与 BBC 最新均显示A组收官战已到HT，捷克与墨西哥暂互交白卷",pred:{date:"2026-06-22",ph:1,pa:1,winner:"d",confidence:62,tag:"墨西哥稳健",basis:["墨西哥已出线","捷克背水一战","墨西哥可能轮换"],reason:"捷克积1分仍有理论出线希望；墨西哥已提前出线可能轮换阵容为淘汰赛留力，但东道主替补阵容仍然实力占优。捷克借主场之势有望拼下一分，但墨西哥即便轮换也不会轻易缴械，平局是合理结果。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"A6",g:"A",r:3,t:"6/25 09:00",h:"南非",a:"韩国",s:"0-0",st:"live",hl:"🔴 半场0-0：ESPN 与 BBC 最新均显示A组另一场收官战已到HT，南非与韩国暂时僵持",pred:{date:"2026-06-22",ph:0,pa:2,winner:"a",confidence:68,tag:"韩国取胜",basis:["韩国实力占优","孙兴慜核心","南非进攻无力"],reason:"韩国积3分排名小组第二，只要取胜就锁定出线；南非仅积1分必须赢球还要看他人脸色。韩国整体实力和大赛经验都在南非之上，孙兴慜和李刚仁的配合是破局关键，看好韩国全取3分出线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"A5",g:"A",r:3,t:"6/25 09:00",h:"捷克",a:"墨西哥",s:"0-3",st:"done",hl:"⚽ 墨西哥3-0捷克：FIFA、ESPN 与 BBC 最新一致确认FT，东道主3战全胜轰下9分强势锁定A组第一，捷克1平2负出局。",pred:{date:"2026-06-22",ph:1,pa:1,winner:"d",confidence:62,tag:"墨西哥稳健",basis:["墨西哥已出线","捷克背水一战","墨西哥可能轮换"],reason:"捷克积1分仍有理论出线希望；墨西哥已提前出线可能轮换阵容为淘汰赛留力，但东道主替补阵容仍然实力占优。捷克借主场之势有望拼下一分，但墨西哥即便轮换也不会轻易缴械，平局是合理结果。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"A6",g:"A",r:3,t:"6/25 09:00",h:"南非",a:"韩国",s:"1-0",st:"done",hl:"⚽ 南非1-0韩国：FIFA、ESPN 与 BBC 最新一致确认FT，南非末轮抢下生死战后升至4分反超晋级，韩国停在3分遗憾出局。",pred:{date:"2026-06-22",ph:0,pa:2,winner:"a",confidence:68,tag:"韩国取胜",basis:["韩国实力占优","孙兴慜核心","南非进攻无力"],reason:"韩国积3分排名小组第二，只要取胜就锁定出线；南非仅积1分必须赢球还要看他人脸色。韩国整体实力和大赛经验都在南非之上，孙兴慜和李刚仁的配合是破局关键，看好韩国全取3分出线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"B1",g:"B",r:1,t:"6/13 03:00",h:"加拿大",a:"波黑",s:"1-1",st:"done",hl:"⚽ 拉林替补112秒扳平"},
   {id:"B2",g:"B",r:1,t:"6/14 03:00",h:"卡塔尔",a:"瑞士",s:"1-1",st:"done",hl:"⚽ 胡赫90+4'绝平 · 恩博洛17'点球破门"},
   {id:"B3",g:"B",r:2,t:"6/19 03:00",h:"瑞士",a:"波黑",s:"4-1",st:"done",hl:"⚽ 瑞士4-1波黑：BBC报道4-1大胜，瑞士两轮1胜1平积4分领跑B组",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:68,tag:"瑞士小胜",basis:["阵容均衡","大赛经验","波黑锋线威胁"],reason:"瑞士阵容结构更均衡，比赛管理能力更强；波黑有哲科支点和反击机会，但稳定性略逊。",sources:["FIFA","ESPN","Bing News"],locked:true}},
