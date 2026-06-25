@@ -612,6 +612,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-26 06:04</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ E组收官两战完赛：厄瓜多尔2-1德国、科特迪瓦2-0库拉索</strong> — ESPN World Cup scoreboard/summary 与 BBC Sport Scores &amp; Fixtures 最新一致确认：E5厄瓜多尔vs德国已FT 2-1，Angulo 9'、Plata 77'建功，Sané 2'闪击难救主，德国仍以6分锁定E组头名；E6库拉索vs科特迪瓦已FT 0-2，Pépé 7'、64'梅开二度帮助科特迪瓦以6分拿到E组第二。两场比赛开球已超过120分钟，福福已将E5/E6从live切换为done，并同步刷新比分、简述、首页最新赛果、下一场倒计时、赛事进度以及E组积分/最佳第3名联动数据。当前北京时间06:04不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-26 05:00</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 E组两场收官战已同步切换 live（半场1-1 / 0-1）</strong> — FIFA World Cup 2026™ Match Fixtures、ESPN World Cup scoreboard API 与 BBC Sport Scores &amp; Fixtures 最新一致显示：E5厄瓜多尔vs德国已到HT 1-1，E6库拉索vs科特迪瓦已到HT 0-1。福福已将两场从upcoming切换为live，并补写实时比分与半场简述；由于两场比赛开球未满120分钟，本站继续保持 live，不提前改写为 done。首页最新赛况、下一场倒计时、赛事进度以及E组积分/最佳第3名联动继续按现有逻辑刷新。当前北京时间05:00不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
         </div>
@@ -1438,8 +1442,8 @@ const ALL_MATCHES = [
   {id:"E2",g:"E",r:1,t:"6/15 07:00",h:"科特迪瓦",a:"厄瓜多尔",s:"1-0",st:"done",hl:"⚽ 阿马德·迪亚洛89'绝杀 · 科特迪瓦1-0开门红"},
   {id:"E3",g:"E",r:2,t:"6/21 04:00",h:"德国",a:"科特迪瓦",s:"2-1",st:"done",hl:"⚽ 德国2-1科特迪瓦：Undav 68'90+4'替补梅开二度逆转，Kessié 30'首开纪录，德国补时绝杀2连胜积6分提前晋级32强！",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:72,tag:"德国胜出",basis:["德国7-1狂胜气势正盛","科特迪瓦首轮1-0","德国攻击群"],reason:"德国首轮7-1大胜库拉索状态极佳，哈弗茨双响、穆西亚拉多点开花；科特迪瓦首轮1-0绝杀厄瓜多尔展现韧性，但面对德国攻击群恐难守住，看好德国延续强势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"E4",g:"E",r:2,t:"6/21 08:00",h:"厄瓜多尔",a:"库拉索",s:"0-0",st:"done",hl:"⚽ 厄瓜多尔0-0库拉索：全场比赛结束，双方90分钟均无建树互交白卷。厄瓜多尔控球占优但未能破门，库拉索收获队史世界杯第一分！",pred:{date:"2026-06-18",ph:2,pa:0,winner:"h",confidence:75,tag:"厄瓜多尔胜",basis:["实力差距","库拉索防守脆弱","厄瓜多尔急需3分"],reason:"厄瓜多尔首战0-1小负科特迪瓦，整体表现并非不堪一击；库拉索首轮被德国7-1击溃防守暴露出严重问题，厄瓜多尔攻击线有望迎来爆发。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"E5",g:"E",r:3,t:"6/26 04:00",h:"厄瓜多尔",a:"德国",s:"1-1",st:"live",hl:"🔴 半场：厄瓜多尔1-1德国，FIFA、ESPN 与 BBC 最新同步显示 HT，德国已提前出线但收官战仍遭遇顽强阻击",pred:{date:"2026-06-23",ph:1,pa:2,winner:"a",confidence:71,tag:"德国取胜",basis:["阵容厚度","德国已连胜","厄瓜多尔需抢分"],reason:"德国前两轮已展现更强的阵容厚度与后程发力能力，厄瓜多尔必须争胜会留出身后空间，这更利于德国利用反击和个人能力拿下比赛。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"E6",g:"E",r:3,t:"6/26 04:00",h:"库拉索",a:"科特迪瓦",s:"0-1",st:"live",hl:"🔴 半场：库拉索0-1科特迪瓦，FIFA、ESPN 与 BBC 最新同步显示 HT，科特迪瓦暂时掌握E组出线主动权",pred:{date:"2026-06-23",ph:0,pa:2,winner:"a",confidence:67,tag:"科特迪瓦胜",basis:["身体对抗","库拉索火力弱","出线主动权"],reason:"科特迪瓦整体对抗能力和比赛经验更成熟，而库拉索前两轮进攻产出有限；在出线主动权刺激下，看好科特迪瓦更稳定地兑现优势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"E5",g:"E",r:3,t:"6/26 04:00",h:"厄瓜多尔",a:"德国",s:"2-1",st:"done",hl:"⚽ 厄瓜多尔2-1德国：Angulo 9'、Plata 77'建功，Sané 2'闪击难救主；厄瓜多尔收官战爆冷取胜，但德国仍以6分锁定E组头名。",pred:{date:"2026-06-23",ph:1,pa:2,winner:"a",confidence:71,tag:"德国取胜",basis:["阵容厚度","德国已连胜","厄瓜多尔需抢分"],reason:"德国前两轮已展现更强的阵容厚度与后程发力能力，厄瓜多尔必须争胜会留出身后空间，这更利于德国利用反击和个人能力拿下比赛。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"E6",g:"E",r:3,t:"6/26 04:00",h:"库拉索",a:"科特迪瓦",s:"0-2",st:"done",hl:"⚽ 科特迪瓦2-0库拉索：Pépé 7'、64'梅开二度，科特迪瓦收下关键3分后以6分锁定E组第二，库拉索1分垫底出局。",pred:{date:"2026-06-23",ph:0,pa:2,winner:"a",confidence:67,tag:"科特迪瓦胜",basis:["身体对抗","库拉索火力弱","出线主动权"],reason:"科特迪瓦整体对抗能力和比赛经验更成熟，而库拉索前两轮进攻产出有限；在出线主动权刺激下，看好科特迪瓦更稳定地兑现优势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"F1",g:"F",r:1,t:"6/15 04:00",h:"荷兰",a:"日本",s:"2-2",st:"done",hl:"⚽ 范迪克51'首开纪录 · 中村敬斗57'扳平 · 萨默维尔64'再度领先 · 鎌田大地88'绝平！荷兰2-2日本各取1分"},
   {id:"F2",g:"F",r:1,t:"6/15 10:00",h:"瑞典",a:"突尼斯",s:"5-1",st:"done",hl:"⚽ 阿亚里双响 · 伊萨克、哲凯赖什建功 · 瑞典5-1大胜突尼斯全取3分"},
   {id:"F3",g:"F",r:2,t:"6/21 12:00",h:"突尼斯",a:"日本",s:"0-4",st:"done",hl:"⚽ 日本4-0突尼斯：鎌田大地4'闪击、上田綺世31'83'梅开二度、伊東純也69'破门，日本4-0大胜创亚洲队世界杯最大胜分差纪录！突尼斯两连败出局",pred:{date:"2026-06-18",ph:0,pa:1,winner:"a",confidence:63,tag:"日本小胜",basis:["突尼斯防守崩盘","日本控制力","日本经验"],reason:"突尼斯首轮1-5惨败瑞典暴露出防守体系问题；日本首轮2-2绝平荷兰展现顽强斗志和技术能力，久保建英和三笘薰的速度对突尼斯防线构成持续威胁，日本更可能拿下首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
@@ -2259,8 +2263,7 @@ function getNextMatch(){
   let candidates=ALL_MATCHES.filter(m=>m.st!=='done'&&m.t).map(m=>({...m,dt:parseMatchTime(m.t)})).filter(m=>m.dt>now-grace);
   return candidates.length?candidates.reduce((a,b)=>a.dt<b.dt?a:b):null;
 }
-function icsEscape(s){return (s||'').replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n').replace(/
-/g,'')}
+function icsEscape(s){return (s||'').split(',').join('\,').split(';').join('\;').split(String.fromCharCode(10)).join('\n').split(String.fromCharCode(13)).join('')}
 function icsDate(dt){return dt.getFullYear()+('0'+(dt.getMonth()+1)).slice(-2)+('0'+dt.getDate()).slice(-2)+'T'+('0'+dt.getHours()).slice(-2)+('0'+dt.getMinutes()).slice(-2)+'00'}
 function generateICS(m){
   let hd=td(m.h),ad=td(m.a);
