@@ -65,6 +65,43 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .nav-util{display:block;padding:12px 10px;font-size:.82rem;cursor:pointer;text-decoration:none;color:var(--text-sec);transition:all .2s;white-space:nowrap;flex-shrink:0;line-height:1;border-bottom:2px solid transparent}
 .nav-util:hover{color:var(--text);transform:scale(1.1)}
 @media(min-width:641px){.nav-utils{display:none}} /* Desktop: use floating buttons instead */
+
+/* ===== CALENDAR BUTTON ===== */
+.cal-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1px solid var(--accent);background:rgba(0,113,227,.1);color:var(--accent);font-size:.75rem;font-weight:500;cursor:pointer;transition:all .25s;text-decoration:none;white-space:nowrap;line-height:1.3}
+.cal-btn:hover{background:rgba(0,113,227,.22);transform:scale(1.04);box-shadow:0 2px 12px rgba(0,113,227,.15)}
+.cal-btn:active{transform:scale(0.96)}
+.cal-btn.done{opacity:.4;pointer-events:none;cursor:default}
+.cal-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;font-size:.75rem;transition:all .2s;color:var(--text-dim);flex-shrink:0;position:relative}
+.cal-icon:hover{border-color:var(--accent);background:var(--bg-card-hover);color:var(--accent);transform:scale(1.08)}
+.cal-icon.sel{border-color:var(--accent);background:rgba(0,113,227,.15);color:var(--accent)}
+.cal-icon.sel::after{content:'✓';position:absolute;top:-6px;right:-6px;font-size:.55rem;background:var(--accent);color:#fff;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;line-height:1}
+
+/* ===== BATCH MODE ===== */
+.batch-bar{display:none;position:sticky;bottom:0;left:0;right:0;z-index:99;background:var(--bg-card);border-top:1px solid var(--border);padding:10px 16px;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);box-shadow:0 -4px 20px rgba(0,0,0,.3)}
+.batch-bar.show{display:flex}
+.batch-bar .count{font-size:.82rem;color:var(--text-sec)}
+.batch-bar .count strong{color:var(--text);font-weight:700}
+.batch-bar-actions{display:flex;gap:8px}
+.batch-cancel{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-sec);font-size:.75rem;cursor:pointer;transition:all .2s}
+.batch-cancel:hover{background:var(--bg-card-hover);color:var(--text)}
+.batch-download{padding:6px 16px;border-radius:20px;border:none;background:var(--accent);color:#fff;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s}
+.batch-download:hover{filter:brightness(1.15);transform:scale(1.03)}
+.batch-download:disabled{opacity:.4;cursor:default;transform:none;filter:none}
+.batch-toggle{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:16px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-sec);font-size:.7rem;cursor:pointer;transition:all .2s;white-space:nowrap}
+.batch-toggle:hover{border-color:var(--accent);color:var(--accent)}
+.batch-toggle.active{background:rgba(0,113,227,.12);border-color:var(--accent);color:var(--accent)}
+.batch-toggle .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5}
+.batch-toggle.active .dot{opacity:1}
+
+/* Calendar toast */
+.cal-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 20px;font-size:.82rem;color:var(--text);box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;backdrop-filter:blur(12px);white-space:nowrap}
+.cal-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.cal-toast .icon{margin-right:8px}
+
+/* Match card calendar icon placement */
+.match-card .match-top{display:flex;justify-content:space-between;align-items:center}
+.match-card .match-top .cal-icon-wrap{flex-shrink:0;margin-left:8px}
+
 /* TAB SYSTEM */
 .tab-content{display:none;animation:tabFade .3s ease}
 .tab-content.active{display:block}
@@ -373,9 +410,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <div class="lbl">倒计时</div>
         </div>
         <div class="nx-extra" id="nxExtra"></div>
-      </div>
-    </div>
-  </div>
+              </div>
+              <div style="margin-top:10px;display:flex;justify-content:center">
+                <span class="cal-btn" id="nxCalBtn" onclick="addToCalendar(getNextMatch())">📅 预约到系统日历</span>
+              </div>
+            </div>
+          </div>
   <div class="prog-wrap">
     <div class="prog-header">
       <span>🏟️ 赛事进度</span>
@@ -412,14 +452,29 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 <div class="container tab-main">
   <section class="section" id="schedule">
     <div class="section-header">
-      <h2 class="section-title">📅 完整赛程</h2>
-      <span class="section-sub">北京时间 · 小组赛 72 场</span>
+          <h2 class="section-title">📅 完整赛程</h2>
+          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
+            <span class="section-sub">北京时间 · 小组赛 72 场</span>
+            <span class="batch-toggle" id="batchToggle" onclick="toggleBatchMode()"><span class="dot"></span> 批量预约</span>
+          </div>
+        </div>
+        <div class="date-slider" id="dateSlider"></div>
+        <div id="scheduleList"></div>
+      </section>
     </div>
-    <div class="date-slider" id="dateSlider"></div>
-    <div id="scheduleList"></div>
-  </section>
-</div>
-</div>
+    </div>
+
+    <!-- Batch bar -->
+    <div class="batch-bar" id="batchBar">
+      <div class="count">已选 <strong id="batchCount">0</strong> 场比赛</div>
+      <div class="batch-bar-actions">
+        <button class="batch-cancel" onclick="toggleBatchMode()">取消</button>
+        <button class="batch-download" id="batchDownloadBtn" onclick="downloadBatchICS()" disabled>📅 添加到日历</button>
+      </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="cal-toast" id="calToast"><span class="icon">✅</span><span id="calToastText">已添加到日历</span></div>
 
 <div class="tab-content" id="tab-results">
 <div class="container tab-main">
@@ -2038,8 +2093,10 @@ function mc(m,isUpcoming=false){
   let hd=td(m.h),ad=td(m.a);
   let hr=RANK2022[hd.nm]?`<span class="r22">22${RANK2022[hd.nm]}</span>`:'';
   let ar=RANK2022[ad.nm]?`<span class="r22">22${RANK2022[ad.nm]}</span>`:'';
-  return `<div class="match-card ${m.st} fade-in">
-    <div class="match-meta"><span class="tag ${t}">${tl}</span><span>${m.g}组 第${m.r}轮</span><span>·</span><span>${m.t}</span></div>
+    let mid=m.id||m.g+m.r+'_'+m.h+'_'+m.a;
+    let calIcon=m.st!=='done'?`<span class="cal-icon" id="cal_${mid}" onclick="event.stopPropagation();addToCalendar('${mid}')" data-mid="${mid}" title="添加到系统日历">📅</span>`:'';
+    return `<div class="match-card ${m.st} fade-in" data-match-id="${mid}">
+    <div class="match-meta"><span class="tag ${t}">${tl}</span><span>${m.g}组 第${m.r}轮</span><span>·</span><span>${m.t}</span>${calIcon}</div>
     <div class="match-vs">
       <div class="team home"><span class="flag">${hd.fl}</span><span class="name">${hd.nm}</span>${hr}</div>
       ${sc}
@@ -2187,6 +2244,138 @@ function renderFinalCountdown(){
   if(main)main.textContent=days+' 天 '+String(hours).padStart(2,'0')+' 小时';
   if(units)units.innerHTML='<div class="fc-unit"><strong>'+days+'</strong><span>天</span></div><div class="fc-unit"><strong>'+String(hours).padStart(2,'0')+'</strong><span>小时</span></div><div class="fc-unit"><strong>'+String(mins).padStart(2,'0')+'</strong><span>分钟</span></div><div class="fc-unit"><strong>'+String(secs).padStart(2,'0')+'</strong><span>秒</span></div>';
 }
+
+// ===== CALENDAR FUNCTIONS =====
+function findMatchById(id){
+  return ALL_MATCHES.find(m=>m.id===id||(m.g+m.r+'_'+m.h+'_'+m.a)===id);
+}
+function getNextMatch(){
+  let now=new Date();
+  let grace=2.5*60*60*1000;
+  let candidates=ALL_MATCHES.filter(m=>m.st!=='done'&&m.t).map(m=>({...m,dt:parseMatchTime(m.t)})).filter(m=>m.dt>now-grace);
+  return candidates.length?candidates.reduce((a,b)=>a.dt<b.dt?a:b):null;
+}
+function icsEscape(s){return (s||'').replace(/,/g,'\\,').replace(/;/g,'\\;').replace(/\n/g,'\\n').replace(/
+/g,'')}
+function icsDate(dt){return dt.getFullYear()+('0'+(dt.getMonth()+1)).slice(-2)+('0'+dt.getDate()).slice(-2)+'T'+('0'+dt.getHours()).slice(-2)+('0'+dt.getMinutes()).slice(-2)+'00'}
+function generateICS(m){
+  let hd=td(m.h),ad=td(m.a);
+  let dt=parseMatchTime(m.t);
+  let end=new Date(dt.getTime()+2*60*60*1000);
+  let title=hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+' · 2026世界杯 '+m.g+'组';
+  let desc='2026 FIFA World Cup · '+m.g+'组 第'+m.r+'轮\n'+hd.nm+' vs '+ad.nm;
+  let p=predOf(m);
+  if(p)desc+='\n\n🔮 福福预测：'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm+'（'+p.tag+' · '+p.confidence+'%）';
+  let venue=loc(m.h,m.a);
+  let ics='BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//福福//FIFA Calendar//ZH\nBEGIN:VEVENT\n';
+  ics+='DTSTART:'+icsDate(dt)+'\nDTEND:'+icsDate(end)+'\n';
+  ics+='SUMMARY:'+icsEscape(title)+'\n';
+  ics+='DESCRIPTION:'+icsEscape(desc)+'\n';
+  ics+='LOCATION:'+icsEscape('📍 '+venue)+'\n';
+  ics+='BEGIN:VALARM\nTRIGGER:-PT15M\nACTION:DISPLAY\nDESCRIPTION:比赛即将开始\nEND:VALARM\n';
+  ics+='END:VEVENT\nEND:VCALENDAR';
+  return ics;
+}
+function downloadICS(ics,filename){
+  let blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
+  let url=URL.createObjectURL(blob);
+  let a=document.createElement('a');
+  a.href=url;a.download=filename+'.ics';
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
+}
+function showToast(msg,icon){
+  let el=document.getElementById('calToast');
+  let txt=document.getElementById('calToastText');
+  let ic=el.querySelector('.icon');
+  if(ic)ic.textContent=icon||'✅';
+  if(txt)txt.textContent=msg;
+  el.classList.add('show');
+  clearTimeout(el._t);
+  el._t=setTimeout(()=>el.classList.remove('show'),3000);
+}
+function addToCalendar(matchId){
+  let m=typeof matchId==='string'?findMatchById(matchId):matchId;
+  if(!m||m.st==='done')return;
+  let hd=td(m.h),ad=td(m.a);
+  let ics=generateICS(m);
+  let fn='FIFA2026_'+m.g+m.r+'_'+hd.nm+'_vs_'+ad.nm;
+  downloadICS(ics,fn);
+  showToast('已生成「'+hd.nm+' vs '+ad.nm+'」，请打开文件导入系统日历','📅');
+}
+// Batch mode
+let _batchMode=false;
+let _selected=new Set();
+function toggleBatchMode(){
+  _batchMode=!_batchMode;
+  let btn=document.getElementById('batchToggle');
+  let bar=document.getElementById('batchBar');
+  if(_batchMode){
+    btn.classList.add('active');
+    bar.classList.add('show');
+  }else{
+    btn.classList.remove('active');
+    bar.classList.remove('show');
+    _selected.clear();
+    document.querySelectorAll('.cal-icon.sel').forEach(el=>el.classList.remove('sel'));
+    updateBatchCount();
+  }
+}
+function toggleBatchSelect(mid){
+  if(!_batchMode)return;
+  let el=document.getElementById('cal_'+mid);
+  if(!el)return;
+  if(_selected.has(mid)){_selected.delete(mid);el.classList.remove('sel')}
+  else{_selected.add(mid);el.classList.add('sel')}
+  updateBatchCount();
+}
+function updateBatchCount(){
+  let el=document.getElementById('batchCount');
+  let btn=document.getElementById('batchDownloadBtn');
+  if(el)el.textContent=_selected.size;
+  if(btn)btn.disabled=_selected.size===0;
+}
+function downloadBatchICS(){
+  if(_selected.size===0)return;
+  let matches=[];
+  _selected.forEach(id=>{
+    let m=findMatchById(id);
+    if(m&&m.st!=='done')matches.push(m);
+  });
+  matches.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
+    let ics='BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//福福//FIFA Calendar//ZH\n';
+    for(let m of matches){
+      let hd=td(m.h),ad=td(m.a);
+      let dt=parseMatchTime(m.t);
+      let end=new Date(dt.getTime()+2*60*60*1000);
+      let title=hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+' · 2026世界杯 '+m.g+'组';
+      let desc='2026 FIFA World Cup · '+m.g+'组 第'+m.r+'轮\n'+hd.nm+' vs '+ad.nm;
+      let p=predOf(m);
+      if(p)desc+='\n\n🔮 福福预测：'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm;
+      ics+='BEGIN:VEVENT\n';
+      ics+='DTSTART:'+icsDate(dt)+'\nDTEND:'+icsDate(end)+'\n';
+      ics+='SUMMARY:'+icsEscape(title)+'\n';
+      ics+='DESCRIPTION:'+icsEscape(desc)+'\n';
+      ics+='LOCATION:'+icsEscape('📍 '+loc(m.h,m.a))+'\n';
+      ics+='BEGIN:VALARM\nTRIGGER:-PT15M\nACTION:DISPLAY\nDESCRIPTION:比赛即将开始\nEND:VALARM\n';
+      ics+='END:VEVENT\n';
+    }
+  ics+='END:VCALENDAR';
+  downloadICS(ics,'FIFA2026_批量预约_'+_selected.size+'场');
+  showToast('已生成 '+_selected.size+' 场比赛的日历文件，请打开导入','📅');
+  toggleBatchMode();
+}
+
+// Override cal-icon click in batch mode
+document.addEventListener('click',function(e){
+  let icon=e.target.closest('.cal-icon');
+  if(icon&&_batchMode){
+    e.stopPropagation();
+    let mid=icon.dataset.mid;
+    if(mid)toggleBatchSelect(mid);
+  }
+});
 
 // Main render
 function render(){
