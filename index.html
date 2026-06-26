@@ -81,6 +81,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 /* Calendar toast */
 .cal-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 20px;font-size:.82rem;color:var(--text);box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;backdrop-filter:blur(12px);white-space:nowrap}
 .cal-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+/* ===== SUBSCRIBE MODAL ===== */
+.sub-modal{display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
+.sub-modal.show{display:flex}
+.sub-modal-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-width:440px;width:100%;padding:28px 24px 20px;box-shadow:0 16px 48px rgba(0,0,0,.5);max-height:90vh;overflow-y:auto}
+.sub-modal-box h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.sub-modal-box .sub-meta{font-size:.78rem;color:var(--text-sec);margin-bottom:16px;line-height:1.5}
+.sub-modal-box .sub-url{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:.75rem;color:var(--text);word-break:break-all;margin-bottom:12px;font-family:monospace;user-select:all}
+.sub-modal-box .sub-steps{font-size:.78rem;color:var(--text-sec);margin-bottom:16px;line-height:1.7}
+.sub-modal-box .sub-steps li{margin-bottom:4px}
+.sub-modal-box .sub-btns{display:flex;gap:8px;flex-wrap:wrap}
+.sub-modal-box .sub-btns button,.sub-modal-box .sub-btns a{flex:1;min-width:100px;padding:10px 16px;border-radius:12px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;transition:all .2s}
+.sub-modal-box .btn-copy{background:var(--accent);color:#fff}
+.sub-modal-box .btn-copy:hover{filter:brightness(1.15)}
+.sub-modal-box .btn-copy.copied{background:var(--green)}
+.sub-modal-box .btn-dl{background:var(--bg-card-hover);color:var(--text);border:1px solid var(--border)}
+.sub-modal-box .btn-dl:hover{background:var(--border)}
+.sub-modal-box .btn-close{background:transparent;color:var(--text-dim);border:1px solid var(--border);min-width:auto;flex:0}
+.sub-modal-box .btn-close:hover{color:var(--text)}
 .cal-toast .icon{margin-right:8px}
 
 /* Match card calendar icon placement */
@@ -440,7 +458,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <h2 class="section-title">📅 完整赛程</h2>
           <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
             <span class="section-sub">北京时间 · 小组赛 72 场</span>
-            <a class="cal-btn" href="webcal://fifa.skj1023.top/calendar.ics" style="text-decoration:none;font-size:.7rem">📅 一键订阅全部</a>
+            <a class="cal-btn" href="javascript:openSubModal()" style="text-decoration:none;font-size:.7rem">📅 全部赛程到日历</a>
           </div>
         </div>
         <div class="date-slider" id="dateSlider"></div>
@@ -450,7 +468,28 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     </div>
 
     <!-- Toast -->
-    <div class="cal-toast" id="calToast"><span class="icon">✅</span><span id="calToastText">已添加到日历</span></div>
+        <div class="cal-toast" id="calToast"><span class="icon">✅</span><span id="calToastText">已添加到日历</span></div>
+
+        <!-- Subscribe Modal -->
+        <div class="sub-modal" id="subModal">
+          <div class="sub-modal-box">
+            <h3>📅 订阅全部赛程到手机日历</h3>
+            <div class="sub-meta">将下面链接复制到你的日历 app 中，通过「URL 订阅」或「添加日历」功能导入。之后赛程更新会自动同步。</div>
+            <div class="sub-url" id="subUrl">https://fifa.skj1023.top/calendar.ics</div>
+            <ol class="sub-steps">
+              <li>📋 点下方「复制链接」</li>
+              <li>📱 打开手机自带「日历」app</li>
+              <li>⚙️ 找「设置」→「订阅日历」/「添加日历」</li>
+              <li>📎 粘贴链接 → 点完成即可</li>
+            </ol>
+            <div class="sub-btns">
+              <button class="btn-copy" id="subCopyBtn" onclick="copySubUrl()">📋 复制链接</button>
+              <a class="btn-dl" href="https://fifa.skj1023.top/calendar.ics" download="calendar.ics">⬇️ 下载 ICS</a>
+              <button class="btn-close" onclick="closeSubModal()">✕</button>
+            </div>
+            <p style="font-size:.7rem;color:var(--text-dim);margin-top:12px;text-align:center">💡 iOS 用户：<a href="webcal://fifa.skj1023.top/calendar.ics" style="color:var(--accent)">点此用 webcal 一键订阅</a></p>
+          </div>
+        </div>
 
 <div class="tab-content" id="tab-results">
 <div class="container tab-main">
@@ -508,9 +547,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="info-item"><span class="ic">🕐</span><div><div class="il">时差</div><div class="iv">美东 = 京 −12h · 70% 场次 06–11点</div></div></div>
       <div class="info-item"><span class="ic">⚖️</span><div><div class="il">赛制</div><div class="iv">12组×4队 → 小组前2+8最佳第3 → 32强</div></div></div>
       <div class="info-item"><span class="ic">🎵</span><div><div class="il">主题曲</div><div class="iv">《Dai Dai》Shakira × Burna Boy</div></div></div>
-      <a class="info-item" href="webcal://fifa.skj1023.top/calendar.ics" style="text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(0,113,227,.08),rgba(52,199,89,.06));border:1px solid rgba(0,113,227,.2)"><span class="ic">📅</span><div><div class="il">一键订阅全部赛程</div><div class="iv" style="color:var(--accent)">点击即可添加到手机日历 · 自动更新</div></div></a>
+      <a class="info-item" href="javascript:openSubModal()" style="text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(0,113,227,.08),rgba(52,199,89,.06));border:1px solid rgba(0,113,227,.2);cursor:pointer"><span class="ic">📅</span><div><div class="il">全部赛程到手机日历</div><div class="iv" style="color:var(--accent)">📋 复制链接 → 日历粘贴即可 · 自动更新</div></div></a>
     </div>
-    <p style="text-align:center;font-size:.75rem;color:var(--text-dim);margin-top:-8px;margin-bottom:16px">💡 点击上方「一键订阅全部赛程」→ 手机日历自动弹出订阅确认 → 点「订阅」即可。之后赛程更新会自动同步到日历。</p>
+    <p style="text-align:center;font-size:.75rem;color:var(--text-dim);margin-top:-8px;margin-bottom:16px">💡 点「全部赛程到手机日历」→ 复制链接 → 去日历 app 粘贴订阅。之后赛程更新自动同步。</p>
     <div class="rules-guide">
       <div class="rules-head">
         <div>
@@ -2296,17 +2335,56 @@ function addToCalendar(matchId){
   if(!m||m.st==='done')return;
   let hd=td(m.h),ad=td(m.a);
   let ics=generateICS(m);
-  let uri='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
-  let isMobile=/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
-  if(isMobile){
-    window.location.href=uri;
-  }else{
-    let a=document.createElement('a');
-    a.href=uri;a.download='FIFA2026_'+m.g+m.r+'_'+hd.nm+'_vs_'+ad.nm+'.ics';
-    document.body.appendChild(a);a.click();
-    document.body.removeChild(a);
+  let fn='FIFA2026_'+m.g+m.r+'_'+hd.nm+'_vs_'+ad.nm+'.ics';
+  let blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
+  // Try Web Share API first (Android → share to calendar app)
+  if(navigator.share&&navigator.canShare){
+    let file=new File([blob],fn,{type:'text/calendar'});
+    if(navigator.canShare({files:[file]})){
+      navigator.share({files:[file],title:'2026世界杯 '+hd.nm+' vs '+ad.nm}).catch(()=>{});
+      showToast('✅ 已添加到日历','📅');
+      return;
+    }
   }
+  // Fallback: download
+  let url=URL.createObjectURL(blob);
+  let a=document.createElement('a');
+  a.href=url;a.download=fn;
+  document.body.appendChild(a);a.click();
+  document.body.removeChild(a);
+  setTimeout(()=>URL.revokeObjectURL(url),5000);
   showToast('✅ 已添加到日历','📅');
+}
+// ===== SUBSCRIBE MODAL =====
+function openSubModal(){
+  document.getElementById('subModal').classList.add('show');
+  let btn=document.getElementById('subCopyBtn');
+  btn.textContent='📋 复制链接';btn.classList.remove('copied');
+}
+function closeSubModal(){
+  document.getElementById('subModal').classList.remove('show');
+}
+function copySubUrl(){
+  let url=document.getElementById('subUrl').textContent;
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(url).then(()=>{
+      let btn=document.getElementById('subCopyBtn');
+      btn.textContent='✅ 已复制';btn.classList.add('copied');
+      setTimeout(()=>{btn.textContent='📋 复制链接';btn.classList.remove('copied');},2000);
+    }).catch(()=>fallbackCopy(url));
+  }else{
+    fallbackCopy(url);
+  }
+}
+function fallbackCopy(text){
+  let ta=document.createElement('textarea');
+  ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
+  document.body.appendChild(ta);ta.select();
+  try{document.execCommand('copy')}catch(e){}
+  document.body.removeChild(ta);
+  let btn=document.getElementById('subCopyBtn');
+  btn.textContent='✅ 已复制';btn.classList.add('copied');
+  setTimeout(()=>{btn.textContent='📋 复制链接';btn.classList.remove('copied');},2000);
 }
 // ===== NEXT MATCH & HELPERS =====
 function render(){
