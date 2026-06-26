@@ -612,6 +612,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-26 08:23</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 F组 live 比分已刷新：日本1-1瑞典、突尼斯1-3荷兰</strong> — ESPN World Cup scoreboard API 与 BBC Sport Scores &amp; Fixtures 最新一致显示：F5日本vs瑞典已到约65&#39;，前田大然56&#39;破门后，埃兰加62&#39;迅速扳平，场上回到1-1；F6突尼斯vs荷兰已到约67&#39;，斯希里3&#39;自摆乌龙、布罗贝7&#39;扩大优势，Mastouri 54&#39;追近后，范黑克62&#39;再度把比分拉开到1-3。FIFA 官方 Scores &amp; Fixtures 页面同步列出今日F组/D组赛程。福福已同步刷新F5/F6的 live 比分与简述；由于两场比赛开球未满120分钟，本站继续保持 live，不提前改写为 done。首页最新赛况、下一场倒计时、赛事进度以及F组积分/最佳第3名联动继续按现有逻辑刷新。当前北京时间08:23不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-26 07:19</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 F组两场收官战已同步切换 live：日本0-0瑞典、突尼斯0-2荷兰</strong> — BBC Sport Scores &amp; Fixtures 与 ESPN World Cup scoreboard 最新一致显示：F5日本vs瑞典约17-18&#39;仍为0-0，F6突尼斯vs荷兰约17-18&#39;荷兰2-0领先；FIFA 官方 Scores &amp; Fixtures 页面同步列出今日 F组 / D组赛程。福福已将F5/F6从upcoming切换为live，并补写实时比分与简述；由于两场比赛开球未满120分钟，本站继续保持 live，不提前改写为 done。首页最新赛况、下一场倒计时、赛事进度以及F组积分/最佳第3名联动继续按现有逻辑刷新。当前北京时间07:19不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
         </div>
@@ -1452,8 +1456,8 @@ const ALL_MATCHES = [
   {id:"F2",g:"F",r:1,t:"6/15 10:00",h:"瑞典",a:"突尼斯",s:"5-1",st:"done",hl:"⚽ 阿亚里双响 · 伊萨克、哲凯赖什建功 · 瑞典5-1大胜突尼斯全取3分"},
   {id:"F3",g:"F",r:2,t:"6/21 12:00",h:"突尼斯",a:"日本",s:"0-4",st:"done",hl:"⚽ 日本4-0突尼斯：鎌田大地4'闪击、上田綺世31'83'梅开二度、伊東純也69'破门，日本4-0大胜创亚洲队世界杯最大胜分差纪录！突尼斯两连败出局",pred:{date:"2026-06-18",ph:0,pa:1,winner:"a",confidence:63,tag:"日本小胜",basis:["突尼斯防守崩盘","日本控制力","日本经验"],reason:"突尼斯首轮1-5惨败瑞典暴露出防守体系问题；日本首轮2-2绝平荷兰展现顽强斗志和技术能力，久保建英和三笘薰的速度对突尼斯防线构成持续威胁，日本更可能拿下首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"F4",g:"F",r:2,t:"6/21 01:00",h:"荷兰",a:"瑞典",s:"5-1",st:"done",hl:"⚽ 荷兰5-1瑞典：布罗比5'17'梅开二度、加克波47'54'双响、萨默维尔89'锦上添花，瑞典埃兰加59'扳回一城，荷兰5-1大胜登顶F组（ESPN确认FT）",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:65,tag:"荷兰险胜",basis:["荷兰中场控制力","瑞典伊萨克威胁","阵容厚度"],reason:"荷兰整体阵容更为均衡，首轮2-2绝平日本展现韧性；瑞典首轮5-1大胜攻击力恐怖，但荷兰的防守组织更为严谨，橙衣军团有望在主场式氛围中小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"F5",g:"F",r:3,t:"6/26 07:00",h:"日本",a:"瑞典",s:"0-0",st:"live",hl:"🔴 约17-18'仍0-0：日本守住平局即可晋级，瑞典必须争胜抢32强门票",pred:{date:"2026-06-23",ph:1,pa:1,winner:"d",confidence:60,tag:"强强有平",basis:["日本组织度","瑞典冲击力","末轮谨慎"],reason:"日本的组织和瑞典的冲击都具备威胁，但末轮直接对话通常更重结果管理，双方各取一分并不意外，看平是更稳的选择。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"F6",g:"F",r:3,t:"6/26 07:00",h:"突尼斯",a:"荷兰",s:"0-2",st:"live",hl:"🔴 约17-18'荷兰2-0领先：橙衣军团开局强势，正朝F组头名稳步推进",pred:{date:"2026-06-23",ph:0,pa:3,winner:"a",confidence:74,tag:"荷兰大胜",basis:["进攻火力","突尼斯防线松动","荷兰控场"],reason:"荷兰前场连续制造高质量机会，突尼斯则连续暴露防线漏洞；只要荷兰维持控球压制和边路推进，赢面明显更大。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"F5",g:"F",r:3,t:"6/26 07:00",h:"日本",a:"瑞典",s:"1-1",st:"live",hl:"🔴 约65'战成1-1：前田大然56'破门、埃兰加62'迅速扳平，日本仍站在晋级线上，瑞典还得继续抢胜。",pred:{date:"2026-06-23",ph:1,pa:1,winner:"d",confidence:60,tag:"强强有平",basis:["日本组织度","瑞典冲击力","末轮谨慎"],reason:"日本的组织和瑞典的冲击都具备威胁，但末轮直接对话通常更重结果管理，双方各取一分并不意外，看平是更稳的选择。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"F6",g:"F",r:3,t:"6/26 07:00",h:"突尼斯",a:"荷兰",s:"1-3",st:"live",hl:"🔴 约67'荷兰3-1领先：斯希里开场乌龙、布罗贝与范黑克先后建功，Mastouri一度追近，橙衣军团正稳步冲向F组头名。",pred:{date:"2026-06-23",ph:0,pa:3,winner:"a",confidence:74,tag:"荷兰大胜",basis:["进攻火力","突尼斯防线松动","荷兰控场"],reason:"荷兰前场连续制造高质量机会，突尼斯则连续暴露防线漏洞；只要荷兰维持控球压制和边路推进，赢面明显更大。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"G1",g:"G",r:1,t:"6/16 03:00",h:"比利时",a:"埃及",s:"1-1",st:"done",hl:"⚽ 比利时1-1埃及 · 双方握手言和各取1分"},
   {id:"G2",g:"G",r:1,t:"6/16 09:00",h:"伊朗",a:"新西兰",s:"2-2",st:"done",hl:"⚽ 贾斯特双响 · 雷扎扬&莫赫比破门，伊朗2-2新西兰上演进球大战"},
   {id:"G3",g:"G",r:2,t:"6/22 03:00",h:"比利时",a:"伊朗",s:"0-0",st:"done",hl:"⚽ 比利时0-0伊朗：全场比赛结束，双方90分钟均无建树互交白卷。比利时全场控球占优却未能破门得分，伊朗顽强的密集防守收获宝贵1分，出线悬念留至末轮（BBC确认FT 0-0）",pred:{date:"2026-06-19",ph:2,pa:0,winner:"h",confidence:67,tag:"比利时胜",basis:["阵容实力优势","伊朗防守铁血","比利时经验丰富"],reason:"比利时整体实力在伊朗之上，德布劳内和卢卡库的配合足以破解伊朗铁桶阵，伊朗首轮2-2虽展现韧性但防守漏洞也被新西兰抓住，比利时更有把握拿下首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
