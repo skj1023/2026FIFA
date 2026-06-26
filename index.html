@@ -629,6 +629,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-27 06:56</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ I组收官两战完赛：法国4-1挪威、塞内加尔5-0伊拉克</strong> — ESPN World Cup scoreboard/summary 与 BBC Sport Scores &amp; Fixtures 最新一致确认：I5挪威vs法国已FT 1-4，登贝莱7&#39;20&#39;32&#39;帽子戏法，Aasgaard 21&#39;一度追回一球，Doué 90+4&#39;锁定胜局，法国3战全胜9分头名晋级、挪威6分第二出线；I6塞内加尔vs伊拉克已FT 5-0，Diarra 4&#39;首开纪录，Sulaka 13&#39;染红后伊拉克少打一人，Sarr、Pape Gueye（2球）与Ndiaye继续扩大比分。两场比赛开球均已超过120分钟，福福已将I5/I6从live切换为done，并同步刷新比分、简述、首页最新赛果、下一场倒计时、赛事进度以及I组积分/最佳第3名联动数据。当前北京时间06:56不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+        <div class="log-item">
+          <div class="log-time">2026-06-27 04:49</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 I组 live 比分已刷新：挪威1-3法国、塞内加尔4-0伊拉克</strong> — FIFA 官方 Scores &amp; Fixtures 页面与 ESPN World Cup scoreboard 最新同步显示：I5挪威vs法国已到约84&#39;仍为1-3，法国继续掌控头名对决；I6塞内加尔vs伊拉克已到约81&#39;扩大到4-0，比赛基本失去悬念。BBC Sport 26日赛程页此前也已确认两场进入 live。两场比赛开球均未满120分钟，福福继续保持 I5/I6 为 live，不提前改写为 done；首页最新赛况、下一场倒计时与 I 组联动展示将按现有逻辑自动刷新。当前北京时间04:49不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-27 03:39</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 I组两场收官战已同步切换 live：挪威1-3法国、塞内加尔1-0伊拉克</strong> — ESPN World Cup scoreboard API 与 BBC Sport Scores &amp; Fixtures 最新一致显示：I5挪威vs法国已到约38'-40'，法国暂时3-1领先；I6塞内加尔vs伊拉克已到约35'-39'，塞内加尔1-0占先。福福已将I5/I6从upcoming切换为live，并补写实时比分与简述；由于两场比赛开球未满120分钟，本站继续保持 live，不提前改写为 done。首页最新赛况、下一场倒计时、赛事进度以及 I 组联动展示将按现有逻辑自动刷新。当前北京时间03:39不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
         </div>
@@ -1507,8 +1515,8 @@ const ALL_MATCHES = [
   {id:"I2",g:"I",r:1,t:"6/17 06:00",h:"伊拉克",a:"挪威",s:"1-4",st:"done",hl:"⚽ 哈兰德双响 · 伊拉克1-4挪威，侯赛因39'破门后90+6'乌龙"},
   {id:"I3",g:"I",r:2,t:"6/23 05:00",h:"法国",a:"伊拉克",s:"3-0",st:"done",hl:"⚽ 法国3-0伊拉克：姆巴佩14'、54'双响，登贝莱66'破门，法国两连胜提前晋级32强（ESPN确认FT）",pred:{date:"2026-06-20",ph:3,pa:0,winner:"h",confidence:78,tag:"法国大胜",basis:["姆巴佩双响状态火热","伊拉克防线脆弱","法国卫冕冠军底蕴"],reason:"法国首轮3-1击败塞内加尔，姆巴佩双响状态爆棚；伊拉克首轮1-4惨败挪威防线漏洞百出，面对法国的技术+速度冲击恐难抵挡。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"I4",g:"I",r:2,t:"6/23 08:00",h:"挪威",a:"塞内加尔",s:"3-2",st:"done",hl:"⚽ 挪威3-2塞内加尔：Marcus Pedersen 43'首开纪录，哈兰德48'、58'双响，伊斯梅拉·萨尔53'、90+3'梅开二度；挪威两连胜积6分提前晋级32强（ESPN确认FT）",pred:{date:"2026-06-20",ph:2,pa:1,winner:"h",confidence:67,tag:"挪威险胜",basis:["哈兰德双响状态火热","塞内加尔身体对抗","非洲冠军韧性"],reason:"挪威首轮4-1大胜伊拉克，哈兰德双响状态火热；塞内加尔首轮1-3负法国但展现出一定韧性，非洲冠军的身体对抗会给挪威制造麻烦，但哈兰德终结能力是胜负手。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"I5",g:"I",r:3,t:"6/27 03:00",h:"挪威",a:"法国",s:"1-3",st:"live",hl:"🔴 挪威1-3法国（约40'）：法国上半场进攻效率更高，I组头名对决暂时被高卢军团掌控（ESPN/BBC实时比分）",pred:{date:"2026-06-25",ph:2,pa:2,winner:"d",confidence:64,tag:"强强有平",basis:["哈兰德状态","法国前场","头名之争"],reason:"挪威有哈兰德的终结与冲击，法国则拥有更完整的前场配置，头名之争双方都具备进球能力，也都不愿贸然失控，对攻后打平并不意外。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"I6",g:"I",r:3,t:"6/27 03:00",h:"塞内加尔",a:"伊拉克",s:"1-0",st:"live",hl:"🔴 塞内加尔1-0伊拉克（约39'）：塞内加尔率先兑现身体对抗与压迫优势，伊拉克仍在寻找反击破口（ESPN/BBC实时比分）",pred:{date:"2026-06-25",ph:2,pa:0,winner:"h",confidence:70,tag:"塞内加尔胜",basis:["身体对抗","伊拉克防线","经验优势"],reason:"塞内加尔整体身体对抗和比赛经验更成熟，伊拉克前两轮防线承压明显，只要塞内加尔提升终结效率，赢球概率更高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"I5",g:"I",r:3,t:"6/27 03:00",h:"挪威",a:"法国",s:"1-4",st:"done",hl:"⚽ 法国4-1挪威：登贝莱7'20'32'上演帽子戏法，Aasgaard 21'一度追到1-2，Doué 90+4'锁定胜局；法国3战全胜9分头名出线，挪威6分排名I组第二。",pred:{date:"2026-06-25",ph:2,pa:2,winner:"d",confidence:64,tag:"强强有平",basis:["哈兰德状态","法国前场","头名之争"],reason:"挪威有哈兰德的终结与冲击，法国则拥有更完整的前场配置，头名之争双方都具备进球能力，也都不愿贸然失控，对攻后打平并不意外。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"I6",g:"I",r:3,t:"6/27 03:00",h:"塞内加尔",a:"伊拉克",s:"5-0",st:"done",hl:"⚽ 塞内加尔5-0伊拉克：Diarra 4'首开纪录，Sulaka 13'染红后伊拉克少打一人，Sarr 56'、Pape Gueye 59'71'与Ndiaye 82'连下四城；塞内加尔收官取胜升至3分，伊拉克3战全败出局。",pred:{date:"2026-06-25",ph:2,pa:0,winner:"h",confidence:70,tag:"塞内加尔胜",basis:["身体对抗","伊拉克防线","经验优势"],reason:"塞内加尔整体身体对抗和比赛经验更成熟，伊拉克前两轮防线承压明显，只要塞内加尔提升终结效率，赢球概率更高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"J1",g:"J",r:1,t:"6/17 09:00",h:"阿根廷",a:"阿尔及利亚",s:"3-0",st:"done",hl:"🐐 梅西戴帽之夜 · 追平世界杯历史总进球纪录 · 阿根廷3-0完胜阿尔及利亚"},
   {id:"J2",g:"J",r:1,t:"6/17 12:00",h:"奥地利",a:"约旦",s:"3-1",st:"done",hl:"⚽ 奥地利3-1约旦：施密德21'首开纪录 · 奥尔万50'扳平 · 阿拉布76'乌龙 · 奥地利终场前再入一球锁定胜局，J组首轮全取3分"},
   {id:"J3",g:"J",r:2,t:"6/23 01:00",h:"阿根廷",a:"奥地利",s:"2-0",st:"done",hl:"⚽ 阿根廷2-0奥地利：梅西38'、90+5'双响，超越克洛泽独享世界杯历史射手王；阿根廷两连胜提前晋级32强（BBC确认FT）",pred:{date:"2026-06-20",ph:2,pa:0,winner:"h",confidence:73,tag:"阿根廷胜",basis:["梅西戴帽状态神勇","奥地利中场硬朗","卫冕冠军控制力"],reason:"阿根廷首轮梅西戴帽3-0完胜阿尔及利亚，卫冕冠军攻防俱佳；奥地利首轮3-1击败约旦展现欧战级硬度，但面对阿根廷的传控体系和梅西的个人能力仍处于下风，看好阿根廷稳取2连胜提前出线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
