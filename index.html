@@ -76,22 +76,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .cal-icon.sel{border-color:var(--accent);background:rgba(0,113,227,.15);color:var(--accent)}
 .cal-icon.sel::after{content:'✓';position:absolute;top:-6px;right:-6px;font-size:.55rem;background:var(--accent);color:#fff;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;line-height:1}
 
-/* ===== BATCH MODE ===== */
-.batch-bar{display:none;position:sticky;bottom:0;left:0;right:0;z-index:99;background:var(--bg-card);border-top:1px solid var(--border);padding:10px 16px;align-items:center;justify-content:space-between;backdrop-filter:blur(20px);box-shadow:0 -4px 20px rgba(0,0,0,.3)}
-.batch-bar.show{display:flex}
-.batch-bar .count{font-size:.82rem;color:var(--text-sec)}
-.batch-bar .count strong{color:var(--text);font-weight:700}
-.batch-bar-actions{display:flex;gap:8px}
-.batch-cancel{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text-sec);font-size:.75rem;cursor:pointer;transition:all .2s}
-.batch-cancel:hover{background:var(--bg-card-hover);color:var(--text)}
-.batch-download{padding:6px 16px;border-radius:20px;border:none;background:var(--accent);color:#fff;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s}
-.batch-download:hover{filter:brightness(1.15);transform:scale(1.03)}
-.batch-download:disabled{opacity:.4;cursor:default;transform:none;filter:none}
-.batch-toggle{display:inline-flex;align-items:center;gap:4px;padding:4px 12px;border-radius:16px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-sec);font-size:.7rem;cursor:pointer;transition:all .2s;white-space:nowrap}
-.batch-toggle:hover{border-color:var(--accent);color:var(--accent)}
-.batch-toggle.active{background:rgba(0,113,227,.12);border-color:var(--accent);color:var(--accent)}
-.batch-toggle .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5}
-.batch-toggle.active .dot{opacity:1}
+.cal-btn.done{opacity:.4;pointer-events:none;cursor:default}
 
 /* Calendar toast */
 .cal-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 20px;font-size:.82rem;color:var(--text);box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;backdrop-filter:blur(12px);white-space:nowrap}
@@ -455,22 +440,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <h2 class="section-title">📅 完整赛程</h2>
           <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
             <span class="section-sub">北京时间 · 小组赛 72 场</span>
-            <span class="batch-toggle" id="batchToggle" onclick="toggleBatchMode()"><span class="dot"></span> 批量预约</span>
+            <a class="cal-btn" href="webcal://fifa.skj1023.top/calendar.ics" style="text-decoration:none;font-size:.7rem">📅 一键订阅全部</a>
           </div>
         </div>
         <div class="date-slider" id="dateSlider"></div>
         <div id="scheduleList"></div>
       </section>
     </div>
-    </div>
-
-    <!-- Batch bar -->
-    <div class="batch-bar" id="batchBar">
-      <div class="count">已选 <strong id="batchCount">0</strong> 场比赛</div>
-      <div class="batch-bar-actions">
-        <button class="batch-cancel" onclick="toggleBatchMode()">取消</button>
-        <button class="batch-download" id="batchDownloadBtn" onclick="downloadBatchICS()" disabled>📅 添加到日历</button>
-      </div>
     </div>
 
     <!-- Toast -->
@@ -532,7 +508,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="info-item"><span class="ic">🕐</span><div><div class="il">时差</div><div class="iv">美东 = 京 −12h · 70% 场次 06–11点</div></div></div>
       <div class="info-item"><span class="ic">⚖️</span><div><div class="il">赛制</div><div class="iv">12组×4队 → 小组前2+8最佳第3 → 32强</div></div></div>
       <div class="info-item"><span class="ic">🎵</span><div><div class="il">主题曲</div><div class="iv">《Dai Dai》Shakira × Burna Boy</div></div></div>
+      <a class="info-item" href="webcal://fifa.skj1023.top/calendar.ics" style="text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(0,113,227,.08),rgba(52,199,89,.06));border:1px solid rgba(0,113,227,.2)"><span class="ic">📅</span><div><div class="il">一键订阅全部赛程</div><div class="iv" style="color:var(--accent)">点击即可添加到手机日历 · 自动更新</div></div></a>
     </div>
+    <p style="text-align:center;font-size:.75rem;color:var(--text-dim);margin-top:-8px;margin-bottom:16px">💡 点击上方「一键订阅全部赛程」→ 手机日历自动弹出订阅确认 → 点「订阅」即可。之后赛程更新会自动同步到日历。</p>
     <div class="rules-guide">
       <div class="rules-head">
         <div>
@@ -2303,15 +2281,6 @@ function generateICS(m){
   ics+='END:VEVENT\nEND:VCALENDAR';
   return ics;
 }
-function downloadICS(ics,filename){
-  let blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
-  let url=URL.createObjectURL(blob);
-  let a=document.createElement('a');
-  a.href=url;a.download=filename+'.ics';
-  document.body.appendChild(a);a.click();
-  document.body.removeChild(a);
-  setTimeout(()=>URL.revokeObjectURL(url),5000);
-}
 function showToast(msg,icon){
   let el=document.getElementById('calToast');
   let txt=document.getElementById('calToastText');
@@ -2327,84 +2296,19 @@ function addToCalendar(matchId){
   if(!m||m.st==='done')return;
   let hd=td(m.h),ad=td(m.a);
   let ics=generateICS(m);
-  let fn='FIFA2026_'+m.g+m.r+'_'+hd.nm+'_vs_'+ad.nm;
-  downloadICS(ics,fn);
-  showToast('已生成「'+hd.nm+' vs '+ad.nm+'」，请打开文件导入系统日历','📅');
-}
-// Batch mode
-let _batchMode=false;
-let _selected=new Set();
-function toggleBatchMode(){
-  _batchMode=!_batchMode;
-  let btn=document.getElementById('batchToggle');
-  let bar=document.getElementById('batchBar');
-  if(_batchMode){
-    btn.classList.add('active');
-    bar.classList.add('show');
+  let uri='data:text/calendar;charset=utf-8,'+encodeURIComponent(ics);
+  let isMobile=/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  if(isMobile){
+    window.location.href=uri;
   }else{
-    btn.classList.remove('active');
-    bar.classList.remove('show');
-    _selected.clear();
-    document.querySelectorAll('.cal-icon.sel').forEach(el=>el.classList.remove('sel'));
-    updateBatchCount();
+    let a=document.createElement('a');
+    a.href=uri;a.download='FIFA2026_'+m.g+m.r+'_'+hd.nm+'_vs_'+ad.nm+'.ics';
+    document.body.appendChild(a);a.click();
+    document.body.removeChild(a);
   }
+  showToast('✅ 已添加到日历','📅');
 }
-function toggleBatchSelect(mid){
-  if(!_batchMode)return;
-  let el=document.getElementById('cal_'+mid);
-  if(!el)return;
-  if(_selected.has(mid)){_selected.delete(mid);el.classList.remove('sel')}
-  else{_selected.add(mid);el.classList.add('sel')}
-  updateBatchCount();
-}
-function updateBatchCount(){
-  let el=document.getElementById('batchCount');
-  let btn=document.getElementById('batchDownloadBtn');
-  if(el)el.textContent=_selected.size;
-  if(btn)btn.disabled=_selected.size===0;
-}
-function downloadBatchICS(){
-  if(_selected.size===0)return;
-  let matches=[];
-  _selected.forEach(id=>{
-    let m=findMatchById(id);
-    if(m&&m.st!=='done')matches.push(m);
-  });
-  matches.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
-    let ics='BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//福福//FIFA Calendar//ZH\n';
-    for(let m of matches){
-      let hd=td(m.h),ad=td(m.a);
-      let dt=parseMatchTime(m.t);
-      let end=new Date(dt.getTime()+2*60*60*1000);
-      let title=hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+' · 2026世界杯 '+m.g+'组';
-      let desc='2026 FIFA World Cup · '+m.g+'组 第'+m.r+'轮\n'+hd.nm+' vs '+ad.nm;
-      let p=predOf(m);
-      if(p)desc+='\n\n🔮 福福预测：'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm;
-      ics+='BEGIN:VEVENT\n';
-      ics+='DTSTART:'+icsDate(dt)+'\nDTEND:'+icsDate(end)+'\n';
-      ics+='SUMMARY:'+icsEscape(title)+'\n';
-      ics+='DESCRIPTION:'+icsEscape(desc)+'\n';
-      ics+='LOCATION:'+icsEscape('📍 '+loc(m.h,m.a))+'\n';
-      ics+='BEGIN:VALARM\nTRIGGER:-PT15M\nACTION:DISPLAY\nDESCRIPTION:比赛即将开始\nEND:VALARM\n';
-      ics+='END:VEVENT\n';
-    }
-  ics+='END:VCALENDAR';
-  downloadICS(ics,'FIFA2026_批量预约_'+_selected.size+'场');
-  showToast('已生成 '+_selected.size+' 场比赛的日历文件，请打开导入','📅');
-  toggleBatchMode();
-}
-
-// Override cal-icon click in batch mode
-document.addEventListener('click',function(e){
-  let icon=e.target.closest('.cal-icon');
-  if(icon&&_batchMode){
-    e.stopPropagation();
-    let mid=icon.dataset.mid;
-    if(mid)toggleBatchSelect(mid);
-  }
-});
-
-// Main render
+// ===== NEXT MATCH & HELPERS =====
 function render(){
   let done=ALL_MATCHES.filter(m=>m.st==="done");
   let upc=ALL_MATCHES.filter(m=>m.st!=="done"&&m.t);
