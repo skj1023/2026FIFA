@@ -1695,6 +1695,9 @@ function renderMatchList(container,dateKeys,dateData,filterDate,isUpcoming){
   // Knockout bracket
   renderKnockoutMatches();
   
+  // Knockout bracket
+  renderKnockoutMatches();
+  
   // Fade-in
   document.querySelectorAll('.fade-in').forEach((el,i)=>{
     setTimeout(()=>el.classList.add('vis'),i*60);
@@ -2741,7 +2744,121 @@ function renderKnockoutMatches() {
   });
 }
 
+
+// ===== KNOCKOUT ROUND MATCH RENDERING =====
+function renderKnockoutMatches() {
+  let container = document.getElementById('knockoutMatchList');
+  if (!container) return;
+  let ko = ALL_MATCHES.filter(m => m.g === 'KO');
+  let rounds = {
+    4: {name:'32强', dates:'6.29-7.4', icon:'💥'},
+    5: {name:'16强', dates:'7.5-7.8', icon:'⚔️'},
+    6: {name:'1/4决赛', dates:'7.10-7.12', icon:'🔥'},
+    7: {name:'半决赛', dates:'7.15-7.16', icon:'💫'},
+    8: {name:'季军赛', dates:'7.19', icon:'🥉'},
+    9: {name:'🏆 决赛', dates:'7.20', icon:'🏆'}
+  };
+  let html = '';
+  let roundKeys = [4,5,6,7,8,9];
+  for (let rk of roundKeys) {
+    let info = rounds[rk];
+    let matches = ko.filter(m => m.r === rk);
+    if (!matches.length) continue;
+    html += '<div class="section-header" style="margin-top:12px"><h3 class="section-title" style="font-size:.95rem">'+info.icon+' '+info.name+' · '+info.dates+'</h3></div>';
+    html += '<div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">';
+    // Sort matches by time
+    matches.sort((a,b) => {
+      let ta = parseMatchTime(a.t), tb = parseMatchTime(b.t);
+      return ta - tb;
+    });
+    for (let m of matches) {
+      let hd = td(m.h), ad = td(m.a);
+      let isDone = m.st === 'done';
+      let scoreStr = isDone ? ('<span class="ms">'+m.s+'</span>') : '<span class="ms" style="color:var(--text-dim)">vs</span>';
+      let statusClass = isDone ? 'done' : 'upcoming';
+      let timeLabel = m.t + (isDone ? '' : '');
+      html += '<div class="match-card '+statusClass+' fade-in" style="padding:8px 12px;font-size:.75rem">';
+      html += '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
+      html += '<span style="color:var(--text-dim);font-size:.68rem;min-width:72px">'+timeLabel+'</span>';
+      html += '<span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">';
+      html += '<span class="tn">'+hd.fl+hd.nm+'</span>';
+      html += scoreStr;
+      html += '<span class="tn">'+ad.fl+ad.nm+'</span>';
+      html += '</span>';
+      html += '<a class="cal-icon" onclick="addToCalendar(\''+m.id+'\');event.stopPropagation();" title="添加到日历" style="flex-shrink:0">📅</a>';
+      html += '</div>';
+      if (m.hl && !isDone) {
+        html += '<div style="color:var(--text-dim);font-size:.65rem;margin-top:3px;padding-left:80px">'+m.hl+'</div>';
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+  container.innerHTML = html;
+  // Fade in
+  requestAnimationFrame(() => {
+    container.querySelectorAll('.fade-in').forEach(el => el.classList.add('vis'));
+  });
+}
+
 </script>
-<script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
+<script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer>
+// ===== KNOCKOUT ROUND MATCH RENDERING =====
+function renderKnockoutMatches() {
+  let container = document.getElementById('knockoutMatchList');
+  if (!container) return;
+  let ko = ALL_MATCHES.filter(m => m.g === 'KO');
+  let rounds = {
+    4: {name:'32强', dates:'6.29-7.4', icon:'💥'},
+    5: {name:'16强', dates:'7.5-7.8', icon:'⚔️'},
+    6: {name:'1/4决赛', dates:'7.10-7.12', icon:'🔥'},
+    7: {name:'半决赛', dates:'7.15-7.16', icon:'💫'},
+    8: {name:'季军赛', dates:'7.19', icon:'🥉'},
+    9: {name:'🏆 决赛', dates:'7.20', icon:'🏆'}
+  };
+  let html = '';
+  let roundKeys = [4,5,6,7,8,9];
+  for (let rk of roundKeys) {
+    let info = rounds[rk];
+    let matches = ko.filter(m => m.r === rk);
+    if (!matches.length) continue;
+    html += '<div class="section-header" style="margin-top:12px"><h3 class="section-title" style="font-size:.95rem">'+info.icon+' '+info.name+' · '+info.dates+'</h3></div>';
+    html += '<div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">';
+    // Sort matches by time
+    matches.sort((a,b) => {
+      let ta = parseMatchTime(a.t), tb = parseMatchTime(b.t);
+      return ta - tb;
+    });
+    for (let m of matches) {
+      let hd = td(m.h), ad = td(m.a);
+      let isDone = m.st === 'done';
+      let scoreStr = isDone ? ('<span class="ms">'+m.s+'</span>') : '<span class="ms" style="color:var(--text-dim)">vs</span>';
+      let statusClass = isDone ? 'done' : 'upcoming';
+      let timeLabel = m.t + (isDone ? '' : '');
+      html += '<div class="match-card '+statusClass+' fade-in" style="padding:8px 12px;font-size:.75rem">';
+      html += '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
+      html += '<span style="color:var(--text-dim);font-size:.68rem;min-width:72px">'+timeLabel+'</span>';
+      html += '<span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">';
+      html += '<span class="tn">'+hd.fl+hd.nm+'</span>';
+      html += scoreStr;
+      html += '<span class="tn">'+ad.fl+ad.nm+'</span>';
+      html += '</span>';
+      html += '<a class="cal-icon" onclick="addToCalendar(\''+m.id+'\');event.stopPropagation();" title="添加到日历" style="flex-shrink:0">📅</a>';
+      html += '</div>';
+      if (m.hl && !isDone) {
+        html += '<div style="color:var(--text-dim);font-size:.65rem;margin-top:3px;padding-left:80px">'+m.hl+'</div>';
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+  }
+  container.innerHTML = html;
+  // Fade in
+  requestAnimationFrame(() => {
+    container.querySelectorAll('.fade-in').forEach(el => el.classList.add('vis'));
+  });
+}
+
+</script>
 </body>
 </html>
