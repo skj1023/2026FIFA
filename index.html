@@ -57,8 +57,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 /* NAV */
 .nav{position:sticky;top:0;z-index:100;display:flex;gap:0;padding:0 12px;background:rgba(10,10,15,.85);backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .nav::-webkit-scrollbar{display:none}
-.nav a{display:block;padding:12px 14px;font-size:.8rem;font-weight:500;color:var(--text-sec);text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;white-space:nowrap;flex-shrink:0}
-.nav a:hover{color:var(--text)}.nav a.active{color:#fff;border-bottom-color:var(--accent)}
+.nav a{display:block;padding:12px 14px;font-size:.8rem;font-weight:500;color:var(--text-sec);text-decoration:none;white-space:nowrap;flex-shrink:0;position:relative;transition:color .25s}
+.nav a:hover{color:var(--text)}.nav a.active{color:#fff}
+.nav a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;border-radius:2px 2px 0 0;background:var(--accent);transition:all .3s cubic-bezier(.4,0,.2,1)}
+.nav a.active::after{left:8px;width:calc(100% - 16px)}
 /* Nav utility icons (mobile: replace floating buttons) */
 .nav-utils{display:flex;align-items:center;gap:2px;position:sticky;right:0;z-index:2;background:rgba(10,10,15,.85);padding-left:4px;margin-left:auto;backdrop-filter:blur(20px) saturate(1.4)}
 .nav-utils::before{content:'';width:1px;height:20px;background:var(--border);margin-right:4px}
@@ -117,8 +119,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .section-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px;flex-wrap:wrap;gap:6px}
 .section-title{font-size:1.2rem;font-weight:700;letter-spacing:-.01em}.section-sub{font-size:.78rem;color:var(--text-dim)}
 /* MATCH CARD */
-.match-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:8px;transition:all .25s cubic-bezier(.16,1,.3,1);cursor:default;position:relative;overflow:hidden}
-.match-card:hover{background:var(--bg-card-hover);border-color:#33335a;transform:translateY(-2px);box-shadow:var(--shadow)}
+.match-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:16px 20px;margin-bottom:8px;transition:all .3s cubic-bezier(.16,1,.3,1);cursor:default;position:relative;overflow:hidden}
+.match-card:hover{background:var(--bg-card-hover);border-color:var(--accent);transform:translateY(-3px) scale(1.01);box-shadow:0 8px 32px rgba(0,113,227,.12),var(--shadow)}
 .match-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:0 2px 2px 0}
 .match-card.done::before{background:var(--accent)}
 .match-card.live::before{background:var(--red);animation:liveBar 1.5s ease-in-out infinite}
@@ -257,7 +259,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 }
 /* GROUP STANDINGS */
 /* FADE IN */
-.fade-in{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.fade-in{opacity:0;transform:translateY(18px);transition:opacity .55s cubic-bezier(.16,1,.3,1),transform .55s cubic-bezier(.16,1,.3,1)}
 .fade-in.vis{opacity:1;transform:translateY(0)}
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px}
@@ -275,6 +277,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .date-pill-nav{flex-shrink:0;width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:.7rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;position:sticky;z-index:2}
 .date-pill-nav:hover{background:var(--bg-card-hover);border-color:var(--accent);color:var(--accent)}
 .date-pill-nav.l{left:0}.date-pill-nav.r{right:0}
+/* MATCH FILTER */
+.match-filter{display:flex;gap:6px;margin-bottom:10px;flex-wrap:wrap}
+.filter-pill{padding:6px 14px;border-radius:100px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-sec);font-size:.75rem;font-weight:600;cursor:pointer;transition:all .25s;user-select:none;white-space:nowrap}
+.filter-pill:hover{background:var(--bg-card-hover);border-color:var(--accent);color:var(--text)}
+.filter-pill.active{background:var(--accent);border-color:var(--accent);color:#fff}
 /* RESPONSIVE */
 @media(max-width:640px){
 .hero{min-height:45vh;padding:36px 14px 30px}.hero .hosts{font-size:1.4rem;gap:8px}
@@ -372,9 +379,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 </head>
 <body>
 <nav class="nav" id="nav">
-  <a href='#' class='active' data-tab='home'>🏠 首页</a>
-  <a href='#' data-tab='schedule'>📅 赛程</a>
-  <a href='#' data-tab='results'>📋 赛果</a>
+  <a href='#' data-tab='home'>🏠 首页</a>
+  <a href='#' data-tab='matches' class='active'>📅 比赛</a>
   <a href='#' data-tab='teams'>👥 球队</a>
   <a href='#' data-tab='standings'>🏆 积分榜</a>
   <a href='#' data-tab='bracket'>🏅 淘汰赛</a>
@@ -436,7 +442,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <div class="live-banner" id="liveBanner">
     <span class="lb-dot"></span>
     <span id="liveBannerText">🔴 当前有比赛进行中</span>
-    <a href="#" class="tab-link" data-tab="schedule">去看 →</a>
+    <a href="#" class="tab-link" data-tab="matches">去看 →</a>
   </div>
   <section class="section" id="homePredictions">
     <div id="homePredBox"></div>
@@ -444,25 +450,31 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <section class="section" id="homeResults">
     <div class="section-header">
       <h2 class="section-title">📋 最新赛果</h2>
-      <span class="section-sub"><a href="#" class="tab-link" data-tab="results" style="color:var(--accent);text-decoration:none">查看全部 →</a></span>
+      <span class="section-sub"><a href="#" class="tab-link" data-tab="matches" style="color:var(--accent);text-decoration:none">查看全部 →</a></span>
     </div>
     <div id="homeResultsList"></div>
   </section>
 </div>
 </div>
 
-<div class="tab-content" id="tab-schedule">
+<div class="tab-content" id="tab-matches">
 <div class="container tab-main">
-  <section class="section" id="schedule">
+  <section class="section" id="matches">
     <div class="section-header">
-          <h2 class="section-title">📅 完整赛程</h2>
+          <h2 class="section-title">📅 比赛</h2>
           <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-            <span class="section-sub">北京时间 · 小组赛 72 场</span>
+            <span class="section-sub">北京时间 · 共 104 场</span>
             <a class="cal-btn" href="javascript:openSubModal()" style="text-decoration:none;font-size:.7rem">📅 全部赛程到日历</a>
           </div>
         </div>
-        <div class="date-slider" id="dateSlider"></div>
-        <div id="scheduleList"></div>
+        <div class="match-filter" id="matchFilter">
+          <span class="filter-pill active" data-filter="upcoming">📅 未赛</span>
+          <span class="filter-pill" data-filter="live">🔴 进行中</span>
+          <span class="filter-pill" data-filter="done">✅ 已完赛</span>
+          <span class="filter-pill" data-filter="all">📋 全部</span>
+        </div>
+        <div class="date-slider" id="matchDateSlider"></div>
+        <div id="matchList"></div>
       </section>
     </div>
     </div>
@@ -490,19 +502,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
             <p style="font-size:.7rem;color:var(--text-dim);margin-top:12px;text-align:center">💡 iOS 用户：<a href="webcal://fifa.skj1023.top/calendar.ics" style="color:var(--accent)">点此用 webcal 一键订阅</a></p>
           </div>
         </div>
-
-<div class="tab-content" id="tab-results">
-<div class="container tab-main">
-  <section class="section" id="results">
-    <div class="section-header">
-      <h2 class="section-title">📋 已完赛</h2>
-      <span class="section-sub" id="updateStamp">更新中…</span>
-    </div>
-    <div class="date-slider" id="resultsDateSlider"></div>
-    <div id="resultsList"></div>
-  </section>
-</div>
-</div>
 
 <div class="tab-content" id="tab-standings">
 <div class="container tab-main">
@@ -2127,9 +2126,9 @@ function searchMatches(keyword){
   if(!keyword||keyword.length<2)return;
   keyword=keyword.toLowerCase();
   let matches=ALL_MATCHES.filter(m=>m.h.toLowerCase().includes(keyword)||m.a.toLowerCase().includes(keyword));
-  switchTab('schedule');
-  let sl=document.getElementById('scheduleList');
-  let ds=document.getElementById('dateSlider');
+  switchTab('matches');
+  let sl=document.getElementById('matchList');
+  let ds=document.getElementById('matchDateSlider');
   if(ds)ds.style.display='none';
   if(!matches.length){sl.innerHTML='<div style="color:var(--text-dim);padding:24px;text-align:center">未找到 "'+keyword+'" 的比赛</div>';return}
   let html='<div style="font-size:.82rem;color:var(--text-sec);margin-bottom:8px">🔍 找到 '+matches.length+' 场包含 "'+keyword+'" 的比赛</div>';
@@ -2470,43 +2469,102 @@ function render(){
   // Progress bar
   renderProgress();
   
-  let rl=document.getElementById("resultsList");
-  let rds=document.getElementById("resultsDateSlider");
+  // Matches filter state
+  let matchFilter = 'upcoming';
   
-  // Results date grouping
-  let doneByDate={};
-  let doneSorted=[];
-  for(let m of done){
-    let d=m.t.split(" ")[0];
-    if(!doneByDate[d]){doneByDate[d]=[];doneSorted.push(d)}
-    doneByDate[d].push(m);
+  function renderMatches(filter) {
+    let ml=document.getElementById('matchList');
+    let mds=document.getElementById('matchDateSlider');
+    if(!ml||!mds)return;
+    
+    let matched;
+    if(filter==='done'){
+      matched=ALL_MATCHES.filter(m=>m.st==='done');
+    }else if(filter==='live'){
+      matched=ALL_MATCHES.filter(m=>isLive(m)&&m.st!=='done');
+    }else if(filter==='all'){
+      matched=ALL_MATCHES;
+    }else{
+      matched=ALL_MATCHES.filter(m=>m.st!=='done'&&m.t);
+    }
+    
+    if(!matched.length){
+      ml.innerHTML='<div style="color:var(--text-dim);padding:24px;text-align:center">暂无比赛</div>';
+      mds.innerHTML='';
+      return;
+    }
+    
+    // Group by date
+    let byDate={};
+    let sortedDates=[];
+    for(let m of matched){
+      let d=m.t.split(" ")[0];
+      if(!byDate[d]){byDate[d]=[];sortedDates.push(d)}
+      byDate[d].push(m);
+    }
+    
+    // Sort dates
+    let isAsc=filter!=='done';
+    sortedDates.sort((a,b)=>{
+      let [ma,da]=a.split("/").map(Number);
+      let [mb,db]=b.split("/").map(Number);
+      return isAsc?(ma!==mb?ma-mb:da-db):(ma!==mb?mb-ma:db-da);
+    });
+    
+    // Sort matches per date
+    for(let d in byDate){
+      if(filter==='done'){
+        byDate[d].sort((a,b)=>{
+          let ta=a.t.split(" ")[1], tb=b.t.split(" ")[1];
+          let [ha,hma]=ta.split(":").map(Number);
+          let [hb,hmb]=tb.split(":").map(Number);
+          return ha!==hb?hb-ha:hmb-hma;
+        });
+      }else{
+        byDate[d].sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
+      }
+    }
+    
+    // Date pills
+    let firstDate=null;
+    if(filter==='done'){
+      firstDate=sortedDates.length?sortedDates[0]:null;
+    }else{
+      let now=new Date();
+      let todayStr=String(now.getMonth()+1)+'/'+String(now.getDate());
+      for(let d of sortedDates){
+        let [m,dm]=d.split("/").map(Number);
+        let dt=new Date(2026,m-1,dm);
+        if(dt>now||d===todayStr){firstDate=d;break}
+      }
+      if(!firstDate&&sortedDates.length)firstDate=sortedDates[0];
+    }
+    
+    let isUpcoming=filter!=='done';
+    
+    mds._onPillSelect=function(date){
+      buildPills(mds,sortedDates,byDate,date,matched.length);
+      renderMatchList(ml,sortedDates,byDate,date,isUpcoming);
+      let act=mds.querySelector('.date-pill.active');
+      if(act)act.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+    };
+    if(firstDate)mds._onPillSelect(firstDate);
+    else{ml.innerHTML='<div style="color:var(--text-dim);padding:24px;text-align:center">暂无比赛</div>';mds.innerHTML='';}
   }
-  doneSorted.sort((a,b)=>{
-    let [ma,da]=a.split("/").map(Number);
-    let [mb,db]=b.split("/").map(Number);
-    return ma!==mb?mb-ma:db-da;
-  });
   
-  // Sort matches within each date by time descending (newest first)
-  for(let d in doneByDate){
-    doneByDate[d].sort((a,b)=>{
-      let ta=a.t.split(" ")[1], tb=b.t.split(" ")[1];
-      let [ha,hma]=ta.split(":").map(Number);
-      let [hb,hmb]=tb.split(":").map(Number);
-      return ha!==hb?hb-ha:hmb-hma;
+  // Match filter click
+  let mf=document.getElementById('matchFilter');
+  if(mf){
+    mf.addEventListener('click',function(e){
+      let p=e.target.closest('.filter-pill');
+      if(!p||p.classList.contains('active'))return;
+      mf.querySelectorAll('.filter-pill').forEach(pp=>pp.classList.remove('active'));
+      p.classList.add('active');
+      matchFilter=p.dataset.filter;
+      renderMatches(matchFilter);
     });
   }
-  
-  let lastDoneDate=doneSorted.length?doneSorted[0]:null;
-  
-  // Results pill select handler
-  rds._onPillSelect=function(date){
-    buildPills(rds,doneSorted,doneByDate,date,done.length);
-    renderMatchList(rl,doneSorted,doneByDate,date,false);
-    let act=rds.querySelector('.date-pill.active');
-    if(act)act.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
-  };
-  rds._onPillSelect(lastDoneDate);
+  renderMatches(matchFilter);
   
   // Home AI predictions
   renderHomePredictions();
@@ -2517,46 +2575,6 @@ function render(){
     let homeDone=done.slice().sort((a,b)=>parseMatchTime(b.t)-parseMatchTime(a.t)).slice(0,3);
     hrl.innerHTML=homeDone.length?homeDone.map(m=>mc(m)).join(''):'<div style="color:var(--text-dim);padding:12px;text-align:center">暂无已完赛</div>';
   }
-  
-  let sl=document.getElementById("scheduleList");
-  let ds=document.getElementById("dateSlider");
-  
-  // Group by date
-  let byDate={};
-  for(let m of upc){
-    let d=m.t.split(" ")[0];
-    if(!byDate[d])byDate[d]=[];
-    byDate[d].push(m);
-  }
-  let sortedDates=Object.keys(byDate).sort((a,b)=>{
-    let [ma,da]=a.split("/").map(Number);
-    let [mb,db]=b.split("/").map(Number);
-    return ma!==mb?ma-mb:da-db;
-  });
-
-  // Sort each day's schedule by kickoff time (earliest at top, latest at bottom)
-  for(let d in byDate){
-    byDate[d].sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
-  }
-  
-  // Find first upcoming date
-  let now=new Date();
-  let todayStr=String(now.getMonth()+1)+'/'+String(now.getDate());
-  let firstUpcoming=null;
-  for(let d of sortedDates){
-    let [m,dm]=d.split("/").map(Number);
-    let dt=new Date(2026,m-1,dm);
-    if(dt>now||d===todayStr){firstUpcoming=d;break}
-  }
-  
-  // Schedule pill select handler
-  ds._onPillSelect=function(date){
-    buildPills(ds,sortedDates,byDate,date,upc.length,(d)=>d===todayStr?'today':'');
-    renderMatchList(sl,sortedDates,byDate,date,true);
-    let act=ds.querySelector('.date-pill.active');
-    if(act)act.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
-  };
-  ds._onPillSelect(firstUpcoming);
   
   // Standings
   let sd=computeStandings();
