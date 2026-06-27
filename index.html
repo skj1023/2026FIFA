@@ -375,19 +375,100 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .t3-team .flag{font-size:1.1rem;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
 .t3-stats{display:flex;gap:12px;color:var(--text-dim);font-size:.72rem}
 .t3-stats strong{color:var(--text)}
+
+
+/* SHARE BUTTON */
+.share-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:.65rem;cursor:pointer;transition:all .2s;flex-shrink:0}
+.share-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);color:var(--accent)}
+/* ELIMINATION MARKERS */
+.st .rk3{color:var(--orange);font-weight:700}.st .rk4{color:var(--red);font-weight:500}
+/* IMMERSIVE MODE */
+.immersive .nav,.immersive .footer,.immersive .tm-btn,.immersive .tv-btn,.immersive #topBtn{display:none!important}
+.immersive .match-card{padding:20px 24px}.immersive .team .name{font-size:1.15rem}.immersive .score{font-size:1.8rem}
+.immersive .hero{min-height:30vh;padding:20px}.immersive .hero h1{font-size:1.4rem}
+.immersive .info-grid,.immersive .rules-grid,.immersive .pred-home,.immersive .log-wrap{display:none}
+.imm-btn{position:fixed;bottom:60px;right:16px;z-index:999;width:36px;height:36px;border-radius:50%;border:1px solid var(--border);background:var(--bg-card);color:var(--text-dim);font-size:.8rem;cursor:pointer;transition:all .2s;display:flex;align-items:center;justify-content:center}
+.imm-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);color:var(--accent)}
+.immersive .imm-btn{bottom:16px}
+/* SHARE MODAL */
+.share-modal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
+.share-modal.show{display:flex}
+.share-modal-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-width:380px;width:100%;padding:24px;text-align:center}
+.share-modal-box .share-preview{margin:16px 0;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.share-modal-box .share-preview .sp-score{font-size:2rem;font-weight:850;margin:8px 0}
+.share-btns{display:flex;gap:8px;justify-content:center}
+.share-btns button{padding:10px 20px;border-radius:12px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s}
+.btn-share{background:var(--accent);color:#fff}.btn-share:hover{filter:brightness(1.15)}
+.btn-sclose{background:var(--bg-card-hover);color:var(--text-dim);border:1px solid var(--border)}
+/* DARK MODE ENHANCED */
+.deep-night{--bg:#000!important;--bg-card:#0d0d0d!important;--bg-card-hover:#151515!important;--border:#1a1a1a!important}
+.deep-night .nav{background:rgba(0,0,0,.92)!important}.deep-night .hero{background:linear-gradient(180deg,#05050a,#000)!important}
+/* LANG SWITCH */
+.lang-en .zh-only{display:none}.en-only{display:none}.lang-en .en-only{display:inline}
+.lang-btn{display:inline-flex;align-items:center;gap:4px;padding:3px 10px;border-radius:100px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:.65rem;cursor:pointer;transition:all .2s;flex-shrink:0}
+.lang-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);color:var(--text)}
+/* TIMELINE */
+.timeline-wrap{margin-bottom:18px;padding:12px 16px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);overflow-x:auto}
+.timeline{display:flex;gap:0;min-width:700px;padding:4px 0;position:relative}
+.timeline::before{content:'';position:absolute;top:50%;left:0;right:0;height:2px;background:var(--border);transform:translateY(-50%)}
+.tl-node{flex:1;text-align:center;position:relative;z-index:1;cursor:pointer;transition:all .2s}
+.tl-node:hover{transform:scale(1.05)}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--bg-card);border:2px solid var(--border);margin:0 auto 4px;transition:all .3s}
+.tl-node.active .tl-dot{background:var(--accent);border-color:var(--accent);box-shadow:0 0 0 3px rgba(0,113,227,.2)}
+.tl-node.past .tl-dot{background:var(--green);border-color:var(--green)}
+.tl-label{font-size:.6rem;color:var(--text-dim);font-weight:600;white-space:nowrap}
+.tl-node.active .tl-label{color:var(--accent)}.tl-node.past .tl-label{color:var(--text-sec)}
+/* BRACKET TREE */
+.bracket-tree{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;overflow-x:auto;padding:8px 4px;min-width:680px}
+.bracket-col{display:flex;flex-direction:column;gap:2px}
+.bracket-col .bc-title{font-size:.55rem;text-transform:uppercase;letter-spacing:.04em;color:var(--text-dim);text-align:center;padding:3px 0;margin-bottom:4px}
+.bc-node{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:4px 6px;font-size:.58rem;text-align:center;transition:all .15s;min-height:28px;display:flex;align-items:center;justify-content:center;gap:3px}
+.bc-node.confirmed{border-color:var(--accent);background:rgba(0,113,227,.06)}
+.bc-node.tbd{color:var(--text-dim);border-style:dashed;opacity:.6}
+.bc-node .bf{font-size:.7rem}
+/* COMPARE */
+.compare-pickers{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.compare-pickers select{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:.8rem;outline:none;flex:1;min-width:120px}
+.cp-vs{font-size:.85rem;font-weight:700;color:var(--text-dim)}
+.compare-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:6px 12px;font-size:.78rem}
+.cg-label{text-align:center;color:var(--text-dim);font-size:.68rem;grid-column:1/-1;margin:6px 0 2px;font-weight:600}
+.cg-left{text-align:right;font-weight:600}.cg-center{text-align:center;color:var(--text-dim);min-width:30px}.cg-right{font-weight:600}
+.cg-bar{height:4px;border-radius:4px;grid-column:1/-1;background:var(--border);overflow:hidden}
+.cg-bar .cg-fill{height:100%;border-radius:4px;transition:width .4s}
+.cg-bar .cg-fill.l{background:var(--accent);float:left}.cg-bar .cg-fill.r{background:var(--orange);float:right}
+/* DETAIL OVERLAY */
+.detail-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
+.detail-overlay.show{display:flex}
+.detail-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-width:520px;width:100%;max-height:85vh;overflow-y:auto;padding:24px}
+.detail-box .dt-close{float:right;background:none;border:none;color:var(--text-dim);font-size:1.1rem;cursor:pointer;padding:4px}
+.detail-box .dt-header{font-size:1.1rem;font-weight:700;margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.detail-box .dt-meta{font-size:.75rem;color:var(--text-sec);margin-bottom:12px}
+.detail-box .dt-section{margin:10px 0;padding:10px 12px;background:rgba(255,255,255,.025);border:1px solid var(--border);border-radius:var(--radius-sm)}
+.detail-box .dt-section-title{font-size:.72rem;font-weight:600;color:var(--text-sec);margin-bottom:5px;text-transform:uppercase;letter-spacing:.04em}
+.detail-box .dt-row{display:flex;justify-content:space-between;font-size:.78rem;padding:3px 0;border-bottom:1px solid rgba(255,255,255,.03)}
+/* SCORER TABLE */
+.scorer-table{width:100%;border-collapse:collapse;font-size:.82rem}
+.scorer-table th{text-align:left;padding:8px 10px;font-weight:600;color:var(--text-dim);font-size:.68rem;text-transform:uppercase;border-bottom:1px solid var(--border)}
+.scorer-table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.03)}
+.scorer-table .sc-rank{width:24px;text-align:center;font-weight:700;color:var(--text-dim)}
+.scorer-table .sc-name{font-weight:600}.scorer-table .sc-team{color:var(--text-dim);font-size:.72rem}
+.scorer-table .sc-goals{text-align:center;font-weight:800;color:var(--accent);font-size:1rem}
+.scorer-table .sc-medal{font-size:.85rem}
+
 </style>
 </head>
 <body>
 <nav class="nav" id="nav">
   <a href='#' data-tab='home'>🏠 首页</a>
   <a href='#' data-tab='matches' class='active'>📅 比赛</a>
+  <a href='#' data-tab='scorers'>⚽ 射手榜</a>
   <a href='#' data-tab='teams'>👥 球队</a>
+  <a href='#' data-tab='compare'>🔄 对比</a>
   <a href='#' data-tab='standings'>🏆 积分榜</a>
   <a href='#' data-tab='bracket'>🏅 淘汰赛</a>
-  <a href='#' data-tab='third'>📊 第3名</a>
   <a href='#' data-tab='info'>ℹ️ 信息</a>
   <a href='#' data-tab='log'>📝 日志</a>
-  <span class="nav-utils"><a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播" class="nav-util" id="navTv">📺</a><a href="#" class="nav-util" id="navTheme" title="切换背景">🌙</a></span>
+  <span style="display:flex;align-items:center;gap:4px;margin-left:auto;padding:0 4px"><span class="lang-btn" id="langBtn" title="Switch language">🌐 EN</span><span class="nav-utils"><a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播" class="nav-util" id="navTv">📺</a><a href="#" class="nav-util" id="navTheme" title="切换背景">🌙</a></span></span>
 </nav>
 <div class="tab-content" id="tab-home">
 <div class="hero">
@@ -425,6 +506,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
               </div>
             </div>
           </div>
+  <div class="timeline-wrap" id="timelineWrap"></div>
   <div class="prog-wrap">
     <div class="prog-header">
       <span>🏟️ 赛事进度</span>
@@ -502,6 +584,57 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
             <p style="font-size:.7rem;color:var(--text-dim);margin-top:12px;text-align:center">💡 iOS 用户：<a href="webcal://fifa.skj1023.top/calendar.ics" style="color:var(--accent)">点此用 webcal 一键订阅</a></p>
           </div>
         </div>
+
+
+
+<div class="tab-content" id="tab-scorers">
+<div class="container tab-main">
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">⚽ 射手榜 & 数据</h2>
+      <span class="section-sub">基于已完赛场次统计</span>
+    </div>
+    <div id="scorerList"><div style="color:var(--text-dim);text-align:center;padding:24px">加载中…</div></div>
+  </section>
+</div>
+</div>
+
+<div class="tab-content" id="tab-compare">
+<div class="container tab-main">
+  <section class="section">
+    <div class="section-header">
+      <h2 class="section-title">🔄 球队对比</h2>
+      <span class="section-sub">选择两支球队对比阵容与战绩</span>
+    </div>
+    <div class="compare-wrap" id="compareWrap">
+      <div class="compare-pickers">
+        <select id="cmpSelect1"><option value="">选择球队 A</option></select>
+        <span class="cp-vs">VS</span>
+        <select id="cmpSelect2"><option value="">选择球队 B</option></select>
+        <button class="cal-btn" style="font-size:.72rem" onclick="compareTeams()">对比</button>
+      </div>
+      <div id="compareResult"><div style="color:var(--text-dim);text-align:center;padding:20px">选择两支球队后点击「对比」</div></div>
+    </div>
+  </section>
+</div>
+</div>
+
+<div class="detail-overlay" id="detailOverlay">
+  <div class="detail-box" id="detailBox"></div>
+</div>
+
+<div class="share-modal" id="shareModal">
+  <div class="share-modal-box">
+    <h3 style="margin-bottom:4px">📤 分享比赛</h3>
+    <div class="share-preview" id="sharePreview"></div>
+    <div class="share-btns">
+      <button class="btn-share" onclick="doShareMatch()">📤 分享</button>
+      <button class="btn-sclose" onclick="closeShare()">取消</button>
+    </div>
+  </div>
+</div>
+
+<button class="imm-btn" id="immBtn" title="观赛模式">👁️</button>
 
 <div class="tab-content" id="tab-standings">
 <div class="container tab-main">
@@ -1316,6 +1449,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <div class="sd">7.20 纽约</div>
         </div>
       </div>
+      <div id="bracketTree"></div>
       <div id="knockoutMatchList"></div>
     </div>
   </section>
@@ -2760,6 +2894,87 @@ function renderKnockoutMatches() {
   });
 }
 
+
+
+
+// ===== SHARE =====
+let _shareMid=null;
+function openShare(mid){_shareMid=mid;let m=ALL_MATCHES.find(x=>x.id===mid);if(!m)return;
+  let hd=td(m.h),ad=td(m.a),sc=m.st==='done'?m.s:(isLive(m)?m.s:'vs');
+  document.getElementById('sharePreview').innerHTML='<div class="sp-teams">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="sp-score">'+sc+'</div><div class="sp-meta">'+m.t+' · '+m.g+'组</div><div class="sp-footer">🌎 2026 FIFA World Cup</div>';
+  document.getElementById('shareModal').classList.add('show');}
+function closeShare(){document.getElementById('shareModal').classList.remove('show');_shareMid=null;}
+function doShareMatch(){let m=ALL_MATCHES.find(x=>x.id===_shareMid);if(!m)return;
+  let hd=td(m.h),ad=td(m.a),sc=m.st==='done'?m.s:(isLive(m)?m.s:'vs');
+  let txt='⚽ '+hd.fl+hd.nm+' '+sc+' '+ad.fl+ad.nm+'\n'+m.t+' · '+m.g+'组\n🌎 2026 FIFA World Cup\nfifa.skj1023.top';
+  if(navigator.share)navigator.share({title:'世界杯比赛',text:txt,url:'https://fifa.skj1023.top'}).catch(()=>{});
+  else{navigator.clipboard.writeText(txt).then(()=>{let t=document.getElementById('calToast'),tt=document.getElementById('calToastText');if(t&&tt){tt.textContent='已复制';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}}).catch(()=>{});}
+  closeShare();}
+// ===== IMMERSIVE MODE =====
+(function(){let b=document.getElementById('immBtn');if(!b)return;
+  b.addEventListener('click',function(){document.documentElement.classList.toggle('immersive');
+    b.textContent=document.documentElement.classList.contains('immersive')?'✕':'👁️';});})();
+// ===== LANG SWITCH =====
+(function(){let b=document.getElementById('langBtn');if(!b)return;
+  b.addEventListener('click',function(e){e.preventDefault();
+    let en=document.documentElement.classList.toggle('lang-en');
+    b.textContent=en?'🌐 中':'🌐 EN';});})();
+// ===== TIMELINE =====
+function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)return;
+  let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r4'},{l:'16强',k:'r5'},{l:'1/4',k:'r6'},{l:'半决赛',k:'r7'},{l:'7.19 决赛',k:'fin'}];
+  let dates={s:new Date(2026,5,11),g:new Date(2026,5,14),r4:new Date(2026,5,29),r5:new Date(2026,6,5),r6:new Date(2026,6,10),r7:new Date(2026,6,15),fin:new Date(2026,6,19)};
+  let now=new Date(),ai=-1;for(let i=stages.length-1;i>=0;i--){if(now>=dates[stages[i].k]){ai=i;break;}}
+  w.innerHTML='<div class="timeline">'+stages.map((s,i)=>{let c=i<ai?'past':(i===ai?'active':'');return '<div class="tl-node '+c+'"><div class="tl-dot"></div><div class="tl-label">'+s.l+'</div></div>';}).join('')+'</div>';}
+// ===== SCORERS =====
+const SCORERS={"姆巴佩":"法国 8","登贝莱":"法国 5","哈兰德":"挪威 5","梅西":"阿根廷 5","C罗":"葡萄牙 4","维尼修斯":"巴西 3","拉林":"加拿大 3","戴维":"加拿大 3","上田綺世":"日本 3","萨拉赫":"埃及 3","凯恩":"英格兰 3","Pape Gueye":"塞内加尔 3","哈弗茨":"德国 3","巴洛贡":"美国 3","加克波":"荷兰 3","阿亚里":"瑞典 3","库尼亚":"巴西 2","特罗萨德":"比利时 3","布罗比":"荷兰 2","努涅斯":"乌拉圭 2","伊萨克":"瑞典 2","费兰·托雷斯":"西班牙 2","福登":"英格兰 2","厄德高":"挪威 2","恰尔汗奥卢":"土耳其 2"};
+function renderScorers(){let e=document.getElementById('scorerList');if(!e)return;
+  let arr=Object.entries(SCORERS).map(([n,v])=>{let p=v.split(' ');return{name:n,team:p[0],goals:parseInt(p[1])};}).sort((a,b)=>b.goals-a.goals);
+  let m=['🥇','🥈','🥉'];
+  e.innerHTML='<table class="scorer-table"><thead><tr><th></th><th>球员</th><th>球队</th><th style="text-align:center">进球</th></tr></thead><tbody>'+arr.slice(0,30).map((p,i)=>{let r=i<3?'<span class="sc-medal">'+m[i]+'</span>':'<span class="sc-rank">'+(i+1)+'</span>';let mt=td(p.team);return '<tr><td>'+r+'</td><td class="sc-name">'+p.name+'</td><td class="sc-team">'+mt.fl+mt.nm+'</td><td class="sc-goals">'+p.goals+'</td></tr>';}).join('')+'</tbody></table><div style="margin-top:10px;font-size:.7rem;color:var(--text-dim);text-align:center">⚽ 基于已完赛场次统计 · 持续更新</div>';}
+// ===== BRACKET TREE =====
+function renderBracketTree(){let e=document.getElementById('bracketTree');if(!e)return;
+  let ko=ALL_MATCHES.filter(m=>m.g==='KO'),rn={4:'32强',5:'16强',6:'1/4',7:'半决赛',8:'季军',9:'决赛'};
+  let cols=[4,5,6,7,8,9].filter(r=>ko.some(m=>m.r===r));
+  let hmap={4:16,5:8,6:4,7:2,8:1,9:1};
+  let html='<div class="bracket-tree">';
+  for(let r of cols){let ms=ko.filter(m=>m.r===r).sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));html+='<div class="bracket-col"><div class="bc-title">'+rn[r]+'</div>';for(let i=0;i<hmap[r];i++){let m=ms[i];if(m){let hd=td(m.h),ad=td(m.a),sc=m.st==='done'?m.s:'';html+='<div class="bc-node '+(m.h.includes('待定')?'tbd':'confirmed')+'"><span class="bf">'+hd.fl+'</span> '+hd.nm+(sc?' '+sc:'')+'</div><div class="bc-node '+(m.a.includes('待定')?'tbd':'confirmed')+'"><span class="bf">'+ad.fl+'</span> '+ad.nm+'</div>';}else{html+='<div class="bc-node tbd">—</div><div class="bc-node tbd">—</div>';}}html+='</div>';}
+  html+='</div>';e.innerHTML=html;}
+// ===== COMPARE =====
+function compareTeams(){let s1=document.getElementById('cmpSelect1'),s2=document.getElementById('cmpSelect2');let t1=s1.value,t2=s2.value;let el=document.getElementById('compareResult');
+  if(!t1||!t2||t1===t2){el.innerHTML='<div style="color:var(--text-dim);text-align:center;padding:20px">请选择两支不同球队</div>';return;}
+  let p1=SQUADS[t1]||[],p2=SQUADS[t2]||[],g1=grp(t1),g2=grp(t2);
+  let f=m=>m.st==='done',w=(t,ms)=>ms.filter(m=>f(m)&&((m.h===t&&parseInt(m.s)>parseInt(m.s.split('-')[1]))||(m.a===t&&parseInt(m.s.split('-')[1])>parseInt(m.s.split('-')[0])))).length;
+  let m1=ALL_MATCHES.filter(m=>m.h===t1||m.a===t1),m2=ALL_MATCHES.filter(m=>m.h===t2||m.a===t2);
+  let bw=w(t1,m1),bw2=w(t2,m2);
+  let bar=(v1,v2,lb)=>{let t=v1+v2||1;return '<div class="cg-label">'+lb+'</div><div class="cg-left">'+v1+'</div><div class="cg-center"></div><div class="cg-right">'+v2+'</div><div class="cg-bar"><div class="cg-fill l" style="width:'+(v1/t*100)+'%"></div><div class="cg-fill r" style="width:'+(v2/t*100)+'%"></div></div>';};
+  el.innerHTML='<div class="compare-grid">'+bar(bw,bw2,'胜场')+bar(p1.length,p2.length,'球员数')+bar(g1?1:0,g2?1:0,'已分组')+'</div><div style="text-align:center;margin-top:8px;color:var(--text-dim);font-size:.7rem">'+td(t1).fl+td(t1).nm+' vs '+td(t2).fl+td(t2).nm+'</div>';}
+function buildComparePickers(){let s1=document.getElementById('cmpSelect1'),s2=document.getElementById('cmpSelect2');if(!s1||!s2)return;
+  let teams=Object.keys(SQUADS).sort();let o=teams.map(t=>'<option value="'+t+'">'+t+'</option>').join('');
+  s1.innerHTML='<option value="">选择球队 A</option>'+o;s2.innerHTML='<option value="">选择球队 B</option>'+o;}
+// ===== DETAIL =====
+function openDetail(mid){let m=ALL_MATCHES.find(x=>x.id===mid);if(!m)return;let hd=td(m.h),ad=td(m.a),isD=m.st==='done',isL=isLive(m);
+  let sc=isD?m.s:(isL?m.s:'vs'),loc=LOCATIONS[m.h+'vs'+m.a]||'待定',hl=m.hl||'暂无',bi=isD?'✅ 已结束':(isL?'🔴 进行中':'⏳ 即将开赛');
+  document.getElementById('detailBox').innerHTML='<button class="dt-close" onclick="closeDetail()">✕</button><div style="font-size:.7rem;color:var(--text-sec);margin-bottom:4px">'+bi+'</div><div class="dt-header">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="dt-meta">'+m.t+' · '+loc+' · '+m.g+'组</div><div class="dt-section"><div class="dt-section-title">⚽ 比分</div><div style="font-size:1.6rem;font-weight:800;text-align:center;padding:6px 0">'+(isD||isL?hd.fl+' '+sc+' '+ad.fl:'—')+'</div></div><div class="dt-section"><div class="dt-section-title">📝 赛事简述</div><div style="font-size:.78rem;line-height:1.6;color:var(--text-sec)">'+hl+'</div></div><div class="dt-section"><div class="dt-section-title">📍 信息</div><div class="dt-row"><span>轮次</span><span>第'+m.r+'轮</span></div><div class="dt-row"><span>场馆</span><span>'+loc+'</span></div></div>';
+  document.getElementById('detailOverlay').classList.add('show');}
+function closeDetail(){document.getElementById('detailOverlay').classList.remove('show');}
+document.addEventListener('click',function(e){let o=document.getElementById('detailOverlay');if(o&&e.target===o)closeDetail();});
+// ===== PATCH match cards with share + detail =====
+(function(){let _rm=renderMatchList;if(!_rm)return;
+  renderMatchList=function(c,dk,dd,fd,iu){_rm(c,dk,dd,fd,iu);
+    c.querySelectorAll('.match-card').forEach(cd=>{let mi=cd.getAttribute('data-mid');if(mi){cd.style.cursor='pointer';cd.addEventListener('click',function(e){if(!e.target.closest('.share-btn,.cal-icon,.cal-btn'))openDetail(mi);});}});
+    c.querySelectorAll('.share-btn').forEach(b=>{b.addEventListener('click',function(e){e.stopPropagation();openShare(this.dataset.mid);});});};
+  // Patch mc function to add share button + data-mid
+  let _mc=mc;if(_mc){mc=function(m,iu=false){
+    let card=_mc(m,iu);
+    card=card.replace('class="match-card','data-mid="'+m.id+'" class="match-card');
+    let calIdx=card.lastIndexOf('class="cal-icon"');
+    if(calIdx>0){let ins=card.lastIndexOf('<',calIdx);card=card.slice(0,ins)+'<span class="share-btn" data-mid="'+m.id+'" style="margin-left:auto">📤</span>'+card.slice(ins);}
+    return card;};}
+})();
+// ===== RENDER ADD-ONS =====
+(function(){let _r=render;if(!_r)return;
+  render=function(){_r();renderTimeline();renderScorers();renderBracketTree();buildComparePickers();};
+})();
 
 </script>
 <script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
