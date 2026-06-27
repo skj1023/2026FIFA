@@ -454,6 +454,18 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .scorer-table .sc-name{font-weight:600}.scorer-table .sc-team{color:var(--text-dim);font-size:.72rem}
 .scorer-table .sc-goals{text-align:center;font-weight:800;color:var(--accent);font-size:1rem}
 .scorer-table .sc-medal{font-size:.85rem}
+/* TODAY PICK */
+.today-pick{margin-bottom:18px;padding:14px 16px;background:linear-gradient(135deg,rgba(255,69,58,.08),rgba(255,159,10,.06));border:1px solid rgba(255,69,58,.18);border-radius:var(--radius);position:relative;overflow:hidden}
+.today-pick::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--red),var(--orange),var(--red));background-size:200% 100%;animation:nxBar 3s ease-in-out infinite}
+.today-pick .tp-badge{display:inline-flex;align-items:center;gap:5px;font-size:.68rem;font-weight:700;color:var(--red);margin-bottom:6px}
+.today-pick .tp-badge .dot{width:7px;height:7px;border-radius:50%;background:var(--red);animation:pulse 1.2s ease-in-out infinite}
+.today-pick .tp-main{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.today-pick .tp-teams{font-size:.95rem;font-weight:700}
+.today-pick .tp-meta{font-size:.72rem;color:var(--text-sec)}
+.today-pick .tp-reason{font-size:.72rem;color:var(--text-dim);margin-top:4px;line-height:1.5}
+.today-pick .tp-go{text-decoration:none;color:var(--accent);font-size:.7rem;font-weight:600;margin-left:auto;flex-shrink:0}
+.today-pick .tp-go:hover{text-decoration:underline}
+@media(max-width:640px){.today-pick{padding:12px}.today-pick .tp-main{flex-direction:column;align-items:flex-start}}
 
 </style>
 </head>
@@ -514,13 +526,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     </div>
     <div class="prog-bar"><div class="prog-fill" id="progFill" style="width:0%"></div></div>
   </div>
-  <div class="milestone">
-    <div class="milestone-item"><div class="num">48</div><div class="lbl">参赛球队</div></div>
-    <div class="milestone-item"><div class="num">72</div><div class="lbl">小组赛</div></div>
-    <div class="milestone-item"><div class="num">32</div><div class="lbl">淘汰赛</div></div>
-    <div class="milestone-item"><div class="num" id="playedCount">48</div><div class="lbl">已完赛</div></div>
-    <div class="milestone-item"><div class="num">🏆</div><div class="lbl">7.19 决赛</div></div>
-  </div>
+  <div class="today-pick" id="todayPick"></div>
   <div class="live-banner" id="liveBanner">
     <span class="lb-dot"></span>
     <span id="liveBannerText">🔴 当前有比赛进行中</span>
@@ -682,6 +688,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <a class="info-item" href="javascript:openSubModal()" style="text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(0,113,227,.08),rgba(52,199,89,.06));border:1px solid rgba(0,113,227,.2);cursor:pointer"><span class="ic">📅</span><div><div class="il">全部赛程到手机日历</div><div class="iv" style="color:var(--accent)">📋 复制链接 → 日历粘贴即可 · 自动更新</div></div></a>
     </div>
     <p style="text-align:center;font-size:.75rem;color:var(--text-dim);margin-top:-8px;margin-bottom:16px">💡 点「全部赛程到手机日历」→ 复制链接 → 去日历 app 粘贴订阅。之后赛程更新自动同步。</p>
+    <div class="milestone" style="margin-bottom:16px">
+      <div class="milestone-item"><div class="num">48</div><div class="lbl">参赛球队</div></div>
+      <div class="milestone-item"><div class="num">72</div><div class="lbl">小组赛</div></div>
+      <div class="milestone-item"><div class="num">32</div><div class="lbl">淘汰赛</div></div>
+      <div class="milestone-item"><div class="num" id="playedCount">48</div><div class="lbl">已完赛</div></div>
+      <div class="milestone-item"><div class="num">🏆</div><div class="lbl">7.19 决赛</div></div>
+    </div>
     <div class="rules-guide">
       <div class="rules-head">
         <div>
@@ -2597,8 +2610,8 @@ function render(){
   let done=ALL_MATCHES.filter(m=>m.st==="done");
   let upc=ALL_MATCHES.filter(m=>m.st!=="done"&&m.t);
   
-  document.getElementById("matchCount").textContent=done.length;
-  document.getElementById("playedCount").textContent=done.length;
+  let mc=document.getElementById("matchCount");if(mc)mc.textContent=done.length;
+  let pc=document.getElementById("playedCount");if(pc)pc.textContent=done.length;
   
   // Progress bar
   renderProgress();
@@ -2763,6 +2776,7 @@ function render(){
   renderScorers();
   renderBracketTree();
   buildComparePickers();
+  renderTodayPick();
 }
 
 render();
@@ -2904,6 +2918,30 @@ function renderKnockoutMatches() {
 
 // ===== SHARE =====
 let _shareMid=null;
+// ===== TODAY PICK =====
+function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)return;
+  let now=new Date(),today=now.getDate(),tM=now.getMonth()+1,ts=tM+'/'+today;
+  let picks=ALL_MATCHES.filter(m=>m.t&&m.t.startsWith(ts)&&m.st!=='done');
+  if(!picks.length){e.style.display='none';return;}
+  let stars=['梅西','C罗','姆巴佩','内马尔','哈兰德','萨拉赫','孙兴慜','凯恩','德布劳内'];
+  let score=0,best=null;
+  for(let m of picks){
+    let s=m.r===3?10:0;if(s===10&&m.g==='KO')s=15;
+    for(let star of stars){if(m.h.includes(star)||m.a.includes(star))s+=8;}
+    if(m.hl&&m.hl.includes('出线'))s+=5;
+    let teams=[m.h,m.a];for(let g of Object.values(GROUPS)){for(let t of g.teams){if(teams.some(x=>t.includes(x)&&(t.includes('墨西哥')||t.includes('加拿大')||t.includes('美国'))))s+=6;}}
+    if(s>score){score=s;best=m;}
+  }
+  if(!best){e.style.display='none';return;}
+  let hd=td(best.h),ad=td(best.a),badge='🔥 今日推荐',reason='';
+  if(stars.some(s=>best.h.includes(s)||best.a.includes(s)))reason+='🌟 球星压阵 · ';
+  if(best.r===3&&best.g!=='KO')reason+='⚔️ 出线生死战 · ';
+  if(best.g==='KO')reason+='🏆 淘汰赛 · ';
+  reason=reason.replace(/·\s*$/,'')||'关注度高';
+  e.style.display='';
+  e.innerHTML='<div class="tp-badge"><span class="dot"></span>'+badge+'</div><div class="tp-main"><span class="tp-teams">'+hd.fl+hd.nm+' vs '+ad.fl+ad.nm+'</span><span class="tp-meta">'+best.t+' · '+best.g+'组 · 第'+best.r+'轮</span><a href="#" class="tp-go" data-tab="matches">查看详情 →</a></div><div class="tp-reason">'+reason+'</div>';
+  e.querySelector('.tp-go').addEventListener('click',function(e2){e2.preventDefault();switchTab('matches');});
+}
 function openShare(mid){_shareMid=mid;let m=ALL_MATCHES.find(x=>x.id===mid);if(!m)return;
   let hd=td(m.h),ad=td(m.a),sc=m.st==='done'?m.s:(isLive(m)?m.s:'vs');
   document.getElementById('sharePreview').innerHTML='<div class="sp-teams">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="sp-score">'+sc+'</div><div class="sp-meta">'+m.t+' · '+m.g+'组</div><div class="sp-footer">🌎 2026 FIFA World Cup</div>';
