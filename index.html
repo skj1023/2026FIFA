@@ -2761,6 +2761,11 @@ function render(){
 }
 
 render();
+// Extra renders
+renderTimeline();
+renderScorers();
+renderBracketTree();
+buildComparePickers();
 
 // Tab switching
 function switchTab(tabId){
@@ -2970,10 +2975,6 @@ document.addEventListener('click',function(e){let o=document.getElementById('det
     let calIdx=card.lastIndexOf('class="cal-icon"');
     if(calIdx>0){let ins=card.lastIndexOf('<',calIdx);card=card.slice(0,ins)+'<span class="share-btn" data-mid="'+m.id+'" style="margin-left:auto">📤</span>'+card.slice(ins);}
     return card;};}
-})();
-// ===== RENDER ADD-ONS =====
-(function(){let _r=render;if(!_r)return;
-  render=function(){_r();renderTimeline();renderScorers();renderBracketTree();buildComparePickers();};
 })();
 
 </script>
