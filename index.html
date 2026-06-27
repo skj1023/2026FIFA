@@ -2758,14 +2758,14 @@ function render(){
   // Update stamp
   let us=document.getElementById("updateStamp");
   if(us)us.textContent='更新于 '+new Date().toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})+'（北京时间）';
+  // Extra renders
+  renderTimeline();
+  renderScorers();
+  renderBracketTree();
+  buildComparePickers();
 }
 
 render();
-// Extra renders
-renderTimeline();
-renderScorers();
-renderBracketTree();
-buildComparePickers();
 
 // Tab switching
 function switchTab(tabId){
