@@ -471,8 +471,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 </head>
 <body>
 <nav class="nav" id="nav">
-  <a href='#' data-tab='home'>🏠 首页</a>
-  <a href='#' data-tab='matches' class='active'>📅 比赛</a>
+  <a href='#' data-tab='home' class='active'>🏠 首页</a>
+  <a href='#' data-tab='matches'>📅 比赛</a>
   <a href='#' data-tab='scorers'>⚽ 射手榜</a>
   <a href='#' data-tab='teams'>👥 球队</a>
   <a href='#' data-tab='compare'>🔄 对比</a>
@@ -482,7 +482,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <a href='#' data-tab='log'>📝 日志</a>
   <span style="display:flex;align-items:center;gap:4px;margin-left:auto;padding:0 4px"><span class="lang-btn" id="langBtn" title="Switch language">🌐 EN</span><span class="nav-utils"><a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播" class="nav-util" id="navTv">📺</a><a href="#" class="nav-util" id="navTheme" title="切换背景">🌙</a></span></span>
 </nav>
-<div class="tab-content" id="tab-home">
+<div class="tab-content active" id="tab-home">
 <div class="hero">
   <div class="trophy-glow"></div>
   <div class="hero-content">
@@ -545,7 +545,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 </div>
 </div>
 
-<div class="tab-content active" id="tab-matches">
+<div class="tab-content" id="tab-matches">
 <div class="container tab-main">
   <section class="section" id="matches">
     <div class="section-header">
