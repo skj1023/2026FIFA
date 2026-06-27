@@ -1554,7 +1554,7 @@ const ALL_MATCHES = [
   {id:"L3",g:"L",r:2,t:"6/24 04:00",h:"英格兰",a:"加纳",s:"0-0",st:"done",hl:"⚽ 英格兰0-0加纳：FIFA与ESPN最新均显示FT 0-0，英格兰控球与压制更足但迟迟无法破门，加纳顽强守住关键1分",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:72,tag:"英格兰取胜",basis:["凯恩双响状态佳","加纳首轮苦胜","英格兰进攻火力"],reason:"英格兰首轮4-2力克克罗地亚展现强大攻击力，凯恩双响贝林厄姆破门状态火热；加纳首轮1-0小胜巴拿马场面不占明显优势，面对三狮军团恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L4",g:"L",r:2,t:"6/24 07:00",h:"巴拿马",a:"克罗地亚",s:"0-1",st:"done",hl:"⚽ 巴拿马0-1克罗地亚：Budimir 54'门前包抄打入全场唯一进球，克罗地亚保住出线希望，巴拿马提前出局（ESPN/BBC确认FT）",pred:{date:"2026-06-21",ph:0,pa:3,winner:"a",confidence:74,tag:"克罗地亚大胜",basis:["克罗地亚经验碾压","巴拿马首轮告负","格子军团需抢分"],reason:"克罗地亚虽首轮2-4负于英格兰但整体实力远超巴拿马，莫德里奇领衔的中场对巴拿马形成绝对控制；巴拿马首轮0-1负加纳进攻乏力，面对克罗地亚技术流打法恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L5",g:"L",r:3,t:"6/28 05:00",h:"巴拿马",a:"英格兰",st:"upcoming",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 L组收官 · 巴拿马 vs 英格兰",pred:{date:"2026-06-25",ph:0,pa:3,winner:"a",confidence:77,tag:"英格兰稳胜",basis:["凯恩终结","阵容厚度","巴拿马火力弱"],reason:"英格兰的阵容厚度、定位球和前场终结效率都明显优于巴拿马，只要三狮保持专注，比赛节奏大概率会被牢牢控制在自己脚下。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",st:"upcoming",hl:"⚔️ L组收官战 · 克罗地亚力争出线名额",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["中场控制","加纳速度","末轮压力"],reason:"克罗地亚更擅长中场控制，加纳则有更直接的速度与冲击，末轮都背着结果压力，比赛很可能在试探和转换之间拉成平局。",sources:["FIFA","ESPN","Bing News"],locked:true}}
+  {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",st:"upcoming",hl:"⚔️ L组收官战 · 克罗地亚力争出线名额",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["中场控制","加纳速度","末轮压力"],reason:"克罗地亚更擅长中场控制，加纳则有更直接的速度与冲击，末轮都背着结果压力，比赛很可能在试探和转换之间拉成平局。",sources:["FIFA","ESPN","Bing News"],locked:true}},
 
   // ===== 淘汰赛 32强 (6.29-7.4) =====
   {id:"R01",g:"KO",r:4,t:"6/29 03:00",h:"南非",a:"加拿大",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · A2 vs B2 · 南非小组末轮1-0胜韩国后抢下第二；加拿大虽1-2负瑞士仍以净胜球优势出线"},
@@ -1691,9 +1691,6 @@ function renderMatchList(container,dateKeys,dateData,filterDate,isUpcoming){
   container.innerHTML=sHTML;
   // Log filter
   initLogFilter();
-  
-  // Knockout bracket
-  renderKnockoutMatches();
   
   // Knockout bracket
   renderKnockoutMatches();
@@ -2745,120 +2742,7 @@ function renderKnockoutMatches() {
 }
 
 
-// ===== KNOCKOUT ROUND MATCH RENDERING =====
-function renderKnockoutMatches() {
-  let container = document.getElementById('knockoutMatchList');
-  if (!container) return;
-  let ko = ALL_MATCHES.filter(m => m.g === 'KO');
-  let rounds = {
-    4: {name:'32强', dates:'6.29-7.4', icon:'💥'},
-    5: {name:'16强', dates:'7.5-7.8', icon:'⚔️'},
-    6: {name:'1/4决赛', dates:'7.10-7.12', icon:'🔥'},
-    7: {name:'半决赛', dates:'7.15-7.16', icon:'💫'},
-    8: {name:'季军赛', dates:'7.19', icon:'🥉'},
-    9: {name:'🏆 决赛', dates:'7.20', icon:'🏆'}
-  };
-  let html = '';
-  let roundKeys = [4,5,6,7,8,9];
-  for (let rk of roundKeys) {
-    let info = rounds[rk];
-    let matches = ko.filter(m => m.r === rk);
-    if (!matches.length) continue;
-    html += '<div class="section-header" style="margin-top:12px"><h3 class="section-title" style="font-size:.95rem">'+info.icon+' '+info.name+' · '+info.dates+'</h3></div>';
-    html += '<div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">';
-    // Sort matches by time
-    matches.sort((a,b) => {
-      let ta = parseMatchTime(a.t), tb = parseMatchTime(b.t);
-      return ta - tb;
-    });
-    for (let m of matches) {
-      let hd = td(m.h), ad = td(m.a);
-      let isDone = m.st === 'done';
-      let scoreStr = isDone ? ('<span class="ms">'+m.s+'</span>') : '<span class="ms" style="color:var(--text-dim)">vs</span>';
-      let statusClass = isDone ? 'done' : 'upcoming';
-      let timeLabel = m.t + (isDone ? '' : '');
-      html += '<div class="match-card '+statusClass+' fade-in" style="padding:8px 12px;font-size:.75rem">';
-      html += '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
-      html += '<span style="color:var(--text-dim);font-size:.68rem;min-width:72px">'+timeLabel+'</span>';
-      html += '<span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">';
-      html += '<span class="tn">'+hd.fl+hd.nm+'</span>';
-      html += scoreStr;
-      html += '<span class="tn">'+ad.fl+ad.nm+'</span>';
-      html += '</span>';
-      html += '<a class="cal-icon" onclick="addToCalendar(\''+m.id+'\');event.stopPropagation();" title="添加到日历" style="flex-shrink:0">📅</a>';
-      html += '</div>';
-      if (m.hl && !isDone) {
-        html += '<div style="color:var(--text-dim);font-size:.65rem;margin-top:3px;padding-left:80px">'+m.hl+'</div>';
-      }
-      html += '</div>';
-    }
-    html += '</div>';
-  }
-  container.innerHTML = html;
-  // Fade in
-  requestAnimationFrame(() => {
-    container.querySelectorAll('.fade-in').forEach(el => el.classList.add('vis'));
-  });
-}
-
 </script>
-<script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer>
-// ===== KNOCKOUT ROUND MATCH RENDERING =====
-function renderKnockoutMatches() {
-  let container = document.getElementById('knockoutMatchList');
-  if (!container) return;
-  let ko = ALL_MATCHES.filter(m => m.g === 'KO');
-  let rounds = {
-    4: {name:'32强', dates:'6.29-7.4', icon:'💥'},
-    5: {name:'16强', dates:'7.5-7.8', icon:'⚔️'},
-    6: {name:'1/4决赛', dates:'7.10-7.12', icon:'🔥'},
-    7: {name:'半决赛', dates:'7.15-7.16', icon:'💫'},
-    8: {name:'季军赛', dates:'7.19', icon:'🥉'},
-    9: {name:'🏆 决赛', dates:'7.20', icon:'🏆'}
-  };
-  let html = '';
-  let roundKeys = [4,5,6,7,8,9];
-  for (let rk of roundKeys) {
-    let info = rounds[rk];
-    let matches = ko.filter(m => m.r === rk);
-    if (!matches.length) continue;
-    html += '<div class="section-header" style="margin-top:12px"><h3 class="section-title" style="font-size:.95rem">'+info.icon+' '+info.name+' · '+info.dates+'</h3></div>';
-    html += '<div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">';
-    // Sort matches by time
-    matches.sort((a,b) => {
-      let ta = parseMatchTime(a.t), tb = parseMatchTime(b.t);
-      return ta - tb;
-    });
-    for (let m of matches) {
-      let hd = td(m.h), ad = td(m.a);
-      let isDone = m.st === 'done';
-      let scoreStr = isDone ? ('<span class="ms">'+m.s+'</span>') : '<span class="ms" style="color:var(--text-dim)">vs</span>';
-      let statusClass = isDone ? 'done' : 'upcoming';
-      let timeLabel = m.t + (isDone ? '' : '');
-      html += '<div class="match-card '+statusClass+' fade-in" style="padding:8px 12px;font-size:.75rem">';
-      html += '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
-      html += '<span style="color:var(--text-dim);font-size:.68rem;min-width:72px">'+timeLabel+'</span>';
-      html += '<span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">';
-      html += '<span class="tn">'+hd.fl+hd.nm+'</span>';
-      html += scoreStr;
-      html += '<span class="tn">'+ad.fl+ad.nm+'</span>';
-      html += '</span>';
-      html += '<a class="cal-icon" onclick="addToCalendar(\''+m.id+'\');event.stopPropagation();" title="添加到日历" style="flex-shrink:0">📅</a>';
-      html += '</div>';
-      if (m.hl && !isDone) {
-        html += '<div style="color:var(--text-dim);font-size:.65rem;margin-top:3px;padding-left:80px">'+m.hl+'</div>';
-      }
-      html += '</div>';
-    }
-    html += '</div>';
-  }
-  container.innerHTML = html;
-  // Fade in
-  requestAnimationFrame(() => {
-    container.querySelectorAll('.fade-in').forEach(el => el.classList.add('vis'));
-  });
-}
-
-</script>
+<script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
 </body>
 </html>
