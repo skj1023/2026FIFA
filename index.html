@@ -774,6 +774,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-28 07:06</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ L组收官两战完赛：英格兰2-0巴拿马、克罗地亚2-1加纳</strong> — ESPN World Cup scoreboard/summary 与 BBC Sport live 最新已显示 Full time：L5英格兰凭贝林厄姆62&#39;、凯恩67&#39;两粒进球2-0击败巴拿马，7分锁定L组头名；L6克罗地亚凭Sučić 31&#39;、Vlasić 83&#39;的进球2-1击败加纳，6分反超拿到小组第二，加纳4分转入最佳第3名比较。两场比赛开球均已超过120分钟，福福已将 L5/L6 从live切换为done，并同步刷新首页最新赛果、下一场倒计时、赛事进度以及L组积分/最佳第3名联动数据。当前北京时间07:06不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+        <div class="log-item">
+          <div class="log-time">2026-06-28 07:04</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 L组两场收官战已同步切换 live：巴拿马0-2英格兰、克罗地亚2-1加纳</strong> — ESPN World Cup scoreboard/summary 与 BBC Sport Scores &amp; Fixtures 最新一致显示：L5巴拿马vs英格兰已到90+1&#39;，贝林厄姆62&#39;、凯恩67&#39;先后建功，英格兰暂以2-0领跑并逼近小组头名；L6克罗地亚vs加纳已到90+2&#39;，Sučić 31&#39;首开纪录、Luckassen 73&#39;扳平、Vlasić 83&#39;再度超出。两场比赛开球未满120分钟，福福已将 L5/L6 从upcoming切换为live，并同步补写实时比分与简述；K/J两组稍后场次经 ESPN 与 BBC 复核仍为 Scheduled。当前北京时间07:04不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-27 13:42</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ G组收官两战完赛：埃及1-1伊朗、新西兰1-5比利时</strong> — ESPN FIFA World Cup scoreboard/summary、FIFA Scores &amp; Fixtures 与 BBC Sport 最新一致确认：G5埃及vs伊朗已FT 1-1，Mahmoud Saber 5&#39;为埃及首开纪录，Ramin Rezaeian 14&#39;迅速扳平，埃及5分锁定G组第二，伊朗3分进入最佳第3名比较；G6新西兰vs比利时已FT 1-5，Leandro Trossard梅开二度，Kevin De Bruyne、Romelu Lukaku、Alexis Saelemaekers各入一球，比利时5分以头名晋级，新西兰1分出局。两场比赛开球均已超过120分钟，福福已将G5/G6从live切换为done，并同步刷新首页最新赛果、下一场倒计时、赛事进度以及G组积分/最佳第3名联动数据。当前北京时间13:42不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
         </div>
@@ -1699,8 +1707,8 @@ const ALL_MATCHES = [
   {id:"L2",g:"L",r:1,t:"6/18 07:00",h:"加纳",a:"巴拿马",s:"1-0",st:"done",hl:"⚽ 加纳1-0巴拿马：加纳1-0击败巴拿马，抓住关键机会破门全取3分，L组首轮完赛"},
   {id:"L3",g:"L",r:2,t:"6/24 04:00",h:"英格兰",a:"加纳",s:"0-0",st:"done",hl:"⚽ 英格兰0-0加纳：FIFA与ESPN最新均显示FT 0-0，英格兰控球与压制更足但迟迟无法破门，加纳顽强守住关键1分",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:72,tag:"英格兰取胜",basis:["凯恩双响状态佳","加纳首轮苦胜","英格兰进攻火力"],reason:"英格兰首轮4-2力克克罗地亚展现强大攻击力，凯恩双响贝林厄姆破门状态火热；加纳首轮1-0小胜巴拿马场面不占明显优势，面对三狮军团恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L4",g:"L",r:2,t:"6/24 07:00",h:"巴拿马",a:"克罗地亚",s:"0-1",st:"done",hl:"⚽ 巴拿马0-1克罗地亚：Budimir 54'门前包抄打入全场唯一进球，克罗地亚保住出线希望，巴拿马提前出局（ESPN/BBC确认FT）",pred:{date:"2026-06-21",ph:0,pa:3,winner:"a",confidence:74,tag:"克罗地亚大胜",basis:["克罗地亚经验碾压","巴拿马首轮告负","格子军团需抢分"],reason:"克罗地亚虽首轮2-4负于英格兰但整体实力远超巴拿马，莫德里奇领衔的中场对巴拿马形成绝对控制；巴拿马首轮0-1负加纳进攻乏力，面对克罗地亚技术流打法恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"L5",g:"L",r:3,t:"6/28 05:00",h:"巴拿马",a:"英格兰",st:"upcoming",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 L组收官 · 巴拿马 vs 英格兰",pred:{date:"2026-06-25",ph:0,pa:3,winner:"a",confidence:77,tag:"英格兰稳胜",basis:["凯恩终结","阵容厚度","巴拿马火力弱"],reason:"英格兰的阵容厚度、定位球和前场终结效率都明显优于巴拿马，只要三狮保持专注，比赛节奏大概率会被牢牢控制在自己脚下。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",st:"upcoming",hl:"⚔️ L组收官战 · 克罗地亚力争出线名额",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["中场控制","加纳速度","末轮压力"],reason:"克罗地亚更擅长中场控制，加纳则有更直接的速度与冲击，末轮都背着结果压力，比赛很可能在试探和转换之间拉成平局。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"L5",g:"L",r:3,t:"6/28 05:00",h:"巴拿马",a:"英格兰",s:"0-2",st:"done",hl:"⚽ 英格兰2-0巴拿马：贝林厄姆62'打破僵局，凯恩67'头槌扩大比分；英格兰7分锁定L组头名，巴拿马3战全败出局。",pred:{date:"2026-06-25",ph:0,pa:3,winner:"a",confidence:77,tag:"英格兰稳胜",basis:["凯恩终结","阵容厚度","巴拿马火力弱"],reason:"英格兰的阵容厚度、定位球和前场终结效率都明显优于巴拿马，只要三狮保持专注，比赛节奏大概率会被牢牢控制在自己脚下。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",s:"2-1",st:"done",hl:"⚽ 克罗地亚2-1加纳：Sučić 31'首开纪录，Luckassen 73'扳平后，Vlasić 83'头槌制胜；克罗地亚6分反超拿到L组第二，加纳4分转入最佳第3名比较。",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["中场控制","加纳速度","末轮压力"],reason:"克罗地亚更擅长中场控制，加纳则有更直接的速度与冲击，末轮都背着结果压力，比赛很可能在试探和转换之间拉成平局。",sources:["FIFA","ESPN","Bing News"],locked:true}},
 
   // ===== 淘汰赛 32强 (6.29-7.4) =====
   {id:"R01",g:"KO",r:4,t:"6/29 03:00",h:"南非",a:"加拿大",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · A2 vs B2 · 南非小组末轮1-0胜韩国后抢下第二；加拿大虽1-2负瑞士仍以净胜球优势出线"},
