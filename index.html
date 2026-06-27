@@ -782,6 +782,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 L组两场收官战已同步切换 live：巴拿马0-2英格兰、克罗地亚2-1加纳</strong> — ESPN World Cup scoreboard/summary 与 BBC Sport Scores &amp; Fixtures 最新一致显示：L5巴拿马vs英格兰已到90+1&#39;，贝林厄姆62&#39;、凯恩67&#39;先后建功，英格兰暂以2-0领跑并逼近小组头名；L6克罗地亚vs加纳已到90+2&#39;，Sučić 31&#39;首开纪录、Luckassen 73&#39;扳平、Vlasić 83&#39;再度超出。两场比赛开球未满120分钟，福福已将 L5/L6 从upcoming切换为live，并同步补写实时比分与简述；K/J两组稍后场次经 ESPN 与 BBC 复核仍为 Scheduled。当前北京时间07:04不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
         </div>
         <div class="log-item">
+          <div class="log-time">2026-06-28 01:56</div>
+          <div class="log-content"><span class="log-tag ui">页面</span><strong>🏅 淘汰赛赛程 + 10项新功能 + UI/UX 全面升级</strong> — 小组赛 72 场全部完赛，页面进入淘汰赛阶段大版本更新。①<strong>淘汰赛 Tab</strong>：新增全部 32 场赛程（32强→16强→1/4决赛→半决赛→季军赛→决赛），树状对阵图动态渲染，赛程随小组赛结果自动填充对阵双方。②<strong>10 项新功能</strong>：射手榜与数据 Tab、球队对比工具、比赛分享图（Web Share API）、比赛详情弹窗、积分榜出线标记（第3名橘色/第4名红色）、观赛沉浸模式、深夜暗色模式（OLED 纯黑）、中英语言切换、赛事里程碑时间线。③<strong>UI/UX 升级</strong>：导航下划线跟手动效、比赛卡片 hover 浮起+蓝色发光、赛程与赛果合并为「比赛」Tab（顶部 Filter 栏：未赛/进行中/已完赛/全部）、入场动画 cubic-bezier 缓动优化。④<strong>今日推荐卡片</strong>移至首页，里程碑数据移至信息页。⑤修复：ALL_MATCHES L6 缺逗号导致 JS 解析失败、默认 active tab 不匹配、今日推荐初始化时序问题。</div>
+        </div>
+        <div class="log-item">
+          <div class="log-time">2026-06-26 22:09</div>
+          <div class="log-content"><span class="log-tag ui">功能</span><strong>📅 一键日历订阅功能上线</strong> — 信息页新增「全部赛程到手机日历」入口。iOS 通过 webcal:// 协议直接打开系统日历订阅；Android 因平台限制 webcal 和 data:text/calendar 均触发下载而非打开日历，改为复制链接弹窗引导用户手动粘贴到日历 App。单场比赛卡片新增 📤 分享按钮，桌面端下载 ICS 文件、Android 端用 Web Share API 分享。新增 generate_ics.py 从页面 ALL_MATCHES 数据生成 calendar.ics（104 场赛事），配置每小时 cron 自动 clone 仓库 → 重新生成 → 推送到 GitHub，保证日历与页面数据同步。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-27 13:42</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ G组收官两战完赛：埃及1-1伊朗、新西兰1-5比利时</strong> — ESPN FIFA World Cup scoreboard/summary、FIFA Scores &amp; Fixtures 与 BBC Sport 最新一致确认：G5埃及vs伊朗已FT 1-1，Mahmoud Saber 5&#39;为埃及首开纪录，Ramin Rezaeian 14&#39;迅速扳平，埃及5分锁定G组第二，伊朗3分进入最佳第3名比较；G6新西兰vs比利时已FT 1-5，Leandro Trossard梅开二度，Kevin De Bruyne、Romelu Lukaku、Alexis Saelemaekers各入一球，比利时5分以头名晋级，新西兰1分出局。两场比赛开球均已超过120分钟，福福已将G5/G6从live切换为done，并同步刷新首页最新赛果、下一场倒计时、赛事进度以及G组积分/最佳第3名联动数据。当前北京时间13:42不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
         </div>
