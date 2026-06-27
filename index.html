@@ -389,7 +389,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <a href='#' data-tab='log'>📝 日志</a>
   <span class="nav-utils"><a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播" class="nav-util" id="navTv">📺</a><a href="#" class="nav-util" id="navTheme" title="切换背景">🌙</a></span>
 </nav>
-<div class="tab-content active" id="tab-home">
+<div class="tab-content" id="tab-home">
 <div class="hero">
   <div class="trophy-glow"></div>
   <div class="hero-content">
@@ -457,7 +457,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 </div>
 </div>
 
-<div class="tab-content" id="tab-matches">
+<div class="tab-content active" id="tab-matches">
 <div class="container tab-main">
   <section class="section" id="matches">
     <div class="section-header">
@@ -2622,7 +2622,8 @@ function render(){
   });
   
   // Update stamp
-  document.getElementById("updateStamp").textContent='更新于 '+new Date().toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})+'（北京时间）';
+  let us=document.getElementById("updateStamp");
+  if(us)us.textContent='更新于 '+new Date().toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})+'（北京时间）';
 }
 
 render();
