@@ -66,10 +66,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 /* Nav-util buttons: integrated into nav bar, sticky-right */
 .nav-util{width:36px;height:36px;border-radius:999px;border:1px solid var(--border);background:color-mix(in srgb,var(--bg-card) 86%,transparent);color:var(--text);font-size:1rem;cursor:pointer;text-decoration:none;transition:all .2s;display:flex;align-items:center;justify-content:center;line-height:1;box-shadow:var(--shadow);backdrop-filter:blur(18px) saturate(1.35);-webkit-backdrop-filter:blur(18px) saturate(1.35);flex-shrink:0}
 .nav-util:hover,.nav-util:active{background:var(--bg-card-hover);border-color:var(--accent);transform:scale(1.06)}
-.nav-util.tv{color:var(--red);border-color:color-mix(in srgb,var(--red) 38%,var(--border));background:color-mix(in srgb,var(--red) 12%,var(--bg-card))}
 .nav-actions{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0;padding-left:8px;position:sticky;right:0;z-index:2;background:inherit}
 .light .nav-util{background:rgba(255,255,255,.82);border-color:rgba(0,0,0,.08);box-shadow:0 4px 16px rgba(0,0,0,.07)}
-.light .nav-util.tv{background:rgba(255,59,48,.09);border-color:rgba(255,59,48,.22)}
 .deep-night .nav-actions{background:none}
 @media(max-width:640px){.nav{padding-right:0}.nav-actions{position:sticky;right:6px;z-index:3;padding-left:12px;background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--bg) 78%,transparent) 18%,color-mix(in srgb,var(--bg-card) 94%,transparent) 100%);backdrop-filter:blur(20px) saturate(1.35);-webkit-backdrop-filter:blur(20px) saturate(1.35)}.light .nav-actions{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.72) 18%,rgba(255,255,255,.94) 100%)}.deep-night .nav-actions{background:linear-gradient(90deg,transparent,rgba(0,0,0,.86) 22%,rgba(8,8,8,.96))}}
 
@@ -431,7 +429,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <a href='#' data-tab='info'>ℹ️ 信息</a>
   <a href='#' data-tab='log'>📝 日志</a>
   <div class="nav-actions" aria-label="快捷操作">
-    <a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播" class="nav-util tv" id="navTv"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></a>
     <button type="button" class="nav-util" id="navTheme" title="切换背景">🌙</button>
   </div>
 </nav>
@@ -1482,7 +1479,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 </div>
 </div>
 
-<!-- Nav-integrated buttons now in .mobile-top-actions inside nav -->
+<!-- Theme toggle button in nav-actions inside nav bar -->
 <button class="fs-btn" id="fsBtn" title="全屏">⛶</button>
 <button class="top-btn" id="topBtn" title="回到顶部">↑</button>
 <footer class="footer">
