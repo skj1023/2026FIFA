@@ -786,6 +786,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <div class="log-content"><span class="log-tag ui">修复</span><strong>🔧 修复页面 JS 崩溃：favicon data URI + 变量遮蔽 + TDZ</strong> — ① favicon 的 data URI 中 `&lt;svg&gt;...&lt;/svg&gt;` 未经 URL 编码，部署到 GitHub Pages 后 HTML 解析器在 `&lt;/svg&gt;` 处提前截断 DOM，导致整个 `&lt;script&gt;` 不执行。修复：`%3Csvg...%3E` 编码。② `render()` 内 `let mc=document.getElementById("matchCount")` 的局部变量 `mc` 遮蔽了全局函数 `function mc(m)`，`render()` 执行到最新赛果渲染时调用 `mc(m)` 报错中断，后续代码失效。修复：改名为 `mcEl`。③ `const SCORERS` 声明在 `render()` 调用之后，`render()` 内调用 `renderScorers()` 时 `SCORERS` 处于 Temporal Dead Zone 报错。修复：移到 `render()` 之前。现本地验证全部 Tab 正常渲染，已推送 GitHub 并清理 CDN 缓存。</div>
         </div>
         <div class="log-item">
+        <div class="log-item">
+          <div class="log-time">2026-06-28 11:20</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>📊 K组收官 + 淘汰赛对阵更新 + 射手榜修正</strong> — ① K5 哥伦比亚 0-0 葡萄牙：葡萄牙凭净胜球锁定 K 组头名，哥伦比亚列第二携手晋级。② K6 刚果(金) 3-1 乌兹别克。③ 淘汰赛更新 R08/R12/R16。④ 射手榜全面校订：姆巴佩 8→4、登贝莱 5→4、哈兰德 5→4、梅西 5→5 等，新增 12 名 ESPN 官方进球者。</div>
+        </div>
           <div class="log-time">2026-06-28 01:56</div>
           <div class="log-content"><span class="log-tag ui">页面</span><strong>🏅 淘汰赛赛程 + 10项新功能 + UI/UX 全面升级</strong> — 小组赛 72 场全部完赛，页面进入淘汰赛阶段大版本更新。①<strong>淘汰赛 Tab</strong>：新增全部 32 场赛程（32强→16强→1/4决赛→半决赛→季军赛→决赛），树状对阵图动态渲染，赛程随小组赛结果自动填充对阵双方。②<strong>10 项新功能</strong>：射手榜与数据 Tab、球队对比工具、比赛分享图（Web Share API）、比赛详情弹窗、积分榜出线标记（第3名橘色/第4名红色）、观赛沉浸模式、深夜暗色模式（OLED 纯黑）、中英语言切换、赛事里程碑时间线。③<strong>UI/UX 升级</strong>：导航下划线跟手动效、比赛卡片 hover 浮起+蓝色发光、赛程与赛果合并为「比赛」Tab（顶部 Filter 栏：未赛/进行中/已完赛/全部）、入场动画 cubic-bezier 缓动优化。④<strong>今日推荐卡片</strong>移至首页，里程碑数据移至信息页。⑤修复：ALL_MATCHES L6 缺逗号导致 JS 解析失败、默认 active tab 不匹配、今日推荐初始化时序问题。</div>
         </div>
@@ -1713,8 +1717,8 @@ const ALL_MATCHES = [
   {id:"K2",g:"K",r:1,t:"6/18 10:00",h:"乌兹别克",a:"哥伦比亚",s:"1-3",st:"done",hl:"⚽ 乌兹别克1-3哥伦比亚：哥伦比亚3-1击败乌兹别克斯坦，中亚新军首秀1-3告负"},
   {id:"K3",g:"K",r:2,t:"6/24 01:00",h:"葡萄牙",a:"乌兹别克",s:"5-0",st:"done",hl:"⚽ 葡萄牙5-0乌兹别克：C罗6'、39'双响，努诺·门德斯17'建功，Nematov 60'乌龙，莱奥87'破门；葡萄牙大胜升至K组前列（ESPN/FIFA/BBC确认FT）",pred:{date:"2026-06-21",ph:3,pa:0,winner:"h",confidence:76,tag:"葡萄牙大胜",basis:["C罗领衔","乌兹别克首战惨败","葡萄牙求胜心切"],reason:"葡萄牙首轮1-1意外被刚果(金)逼平，此战面对首轮1-3负哥伦比亚的中亚新军乌兹别克斯坦，实力和经验优势明显，C罗率领的攻击线有望迎来爆发。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"K4",g:"K",r:2,t:"6/24 10:00",h:"哥伦比亚",a:"刚果(金)",s:"1-0",st:"done",hl:"⚽ 哥伦比亚1-0刚果(金)：Daniel Muñoz 76'打入全场唯一进球，哥伦比亚两轮1胜1平积4分暂时升至K组头名，刚果(金)末轮仍需抢分争出线",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:65,tag:"哥伦比亚小胜",basis:["哥伦比亚首轮大胜","刚果(金)逼平葡萄牙","南美技术优势"],reason:"哥伦比亚首轮3-1击败乌兹别克斯坦展现南美技术优势；刚果(金)首轮1-1逼平葡萄牙展现不俗韧性但整体实力仍逊于哥伦比亚，看好南美劲旅小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"K5",g:"K",r:3,t:"6/28 07:30",h:"哥伦比亚",a:"葡萄牙",st:"upcoming",hl:"🔥 K组收官 · 哥伦比亚 vs 葡萄牙，出线关键战",pred:{date:"2026-06-25",ph:1,pa:2,winner:"a",confidence:68,tag:"葡萄牙小胜",basis:["C罗状态","边路推进","哥伦比亚韧性"],reason:"葡萄牙前场个人能力和边路推进手段更多，哥伦比亚会给出足够强度与韧性，但若比赛进入比拼终结的一段，葡萄牙更值得高看一线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"K6",g:"K",r:3,t:"6/28 07:30",h:"刚果(金)",a:"乌兹别克",st:"upcoming",hl:"⚔️ K组收官战 · 刚果(金)荣誉之战",pred:{date:"2026-06-25",ph:2,pa:1,winner:"h",confidence:63,tag:"刚果(金)胜",basis:["身体优势","乌兹防线","末轮求胜"],reason:"刚果（金）在身体对抗和反击冲击上更有威胁，乌兹别克斯坦前两轮防线稳定性一般，末轮开放对攻时刚果（金）更像是能抓住机会的一方。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"K5",g:"K",r:3,t:"6/28 07:30",h:"哥伦比亚",a:"葡萄牙",s:"0-0",st:"done",hl:"🤝 哥伦比亚0-0葡萄牙：葡萄牙5分凭净胜球优势锁定K组头名，哥伦比亚同积5分位列K组第二携手晋级",pred:{date:"2026-06-25",ph:1,pa:2,winner:"a",confidence:68,tag:"葡萄牙小胜",basis:["C罗状态","边路推进","哥伦比亚韧性"],reason:"葡萄牙前场个人能力和边路推进手段更多，哥伦比亚会给出足够强度与韧性，但若比赛进入比拼终结的一段，葡萄牙更值得高看一线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"K6",g:"K",r:3,t:"6/28 07:30",h:"刚果(金)",a:"乌兹别克",s:"3-1",st:"done",hl:"⚽ 刚果(金)3-1乌兹别克：刚果(金)末轮3-1取胜积4分但仍因净胜球劣势无缘出线，乌兹别克0分垫底收官",pred:{date:"2026-06-25",ph:2,pa:1,winner:"h",confidence:63,tag:"刚果(金)胜",basis:["身体优势","乌兹防线","末轮求胜"],reason:"刚果（金）在身体对抗和反击冲击上更有威胁，乌兹别克斯坦前两轮防线稳定性一般，末轮开放对攻时刚果（金）更像是能抓住机会的一方。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L1",g:"L",r:1,t:"6/18 04:00",h:"英格兰",a:"克罗地亚",s:"4-2",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰4-2克罗地亚：凯恩12'(点)42'双响、贝林厄姆47'破门、赖斯89'锁定胜局；巴图里纳36'、穆萨45+5'两度追分，英格兰4-2开门红"},
   {id:"L2",g:"L",r:1,t:"6/18 07:00",h:"加纳",a:"巴拿马",s:"1-0",st:"done",hl:"⚽ 加纳1-0巴拿马：加纳1-0击败巴拿马，抓住关键机会破门全取3分，L组首轮完赛"},
   {id:"L3",g:"L",r:2,t:"6/24 04:00",h:"英格兰",a:"加纳",s:"0-0",st:"done",hl:"⚽ 英格兰0-0加纳：FIFA与ESPN最新均显示FT 0-0，英格兰控球与压制更足但迟迟无法破门，加纳顽强守住关键1分",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:72,tag:"英格兰取胜",basis:["凯恩双响状态佳","加纳首轮苦胜","英格兰进攻火力"],reason:"英格兰首轮4-2力克克罗地亚展现强大攻击力，凯恩双响贝林厄姆破门状态火热；加纳首轮1-0小胜巴拿马场面不占明显优势，面对三狮军团恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
@@ -1730,15 +1734,15 @@ const ALL_MATCHES = [
   {id:"R05",g:"KO",r:4,t:"7/1 01:00",h:"科特迪瓦",a:"挪威",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · I2 vs E2"},
   {id:"R06",g:"KO",r:4,t:"7/1 05:00",h:"法国",a:"瑞典",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · I1 vs F2 · 法国两连胜提前晋级，姆巴佩状态火热；瑞典5-1大胜突尼斯后前景可期"},
   {id:"R07",g:"KO",r:4,t:"7/1 09:00",h:"墨西哥",a:"待定(C/E第3)",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · A1 vs 3rd Group C/E · 东道主墨西哥三战全胜9分强势出线"},
-  {id:"R08",g:"KO",r:4,t:"7/2 00:00",h:"待定(L组冠军)",a:"待定(I/J/K第3)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · L1 vs 3rd I/J/K"},
+  {id:"R08",g:"KO",r:4,t:"7/2 00:00",h:"英格兰",a:"待定(I/J/K第3)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · L1 vs 3rd I/J/K · 英格兰7分L组头名出线"},
   {id:"R09",g:"KO",r:4,t:"7/2 04:00",h:"比利时",a:"待定(A/I/J第3)",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · G1/J2 vs 3rd A/I/J · 比利时前两轮0-0伊朗后需末轮确定头名"},
   {id:"R10",g:"KO",r:4,t:"7/2 08:00",h:"美国",a:"波黑",st:"upcoming",hl:"🏟️ 利维球场·圣克拉拉 · D1 vs B3 · 东道主美国两连胜提前出线，主场迎战波黑"},
   {id:"R11",g:"KO",r:4,t:"7/3 03:00",h:"西班牙",a:"待定(J组第二)",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · H1 vs J2 · 西班牙4-0沙特后欲锁定头名"},
-  {id:"R12",g:"KO",r:4,t:"7/3 07:00",h:"待定(K组第二)",a:"待定(L组第二)",st:"upcoming",hl:"🏟️ BMO球场·多伦多 · K2 vs L2"},
+  {id:"R12",g:"KO",r:4,t:"7/3 07:00",h:"哥伦比亚",a:"克罗地亚",st:"upcoming",hl:"🏟️ BMO球场·多伦多 · K2 vs L2 · 哥伦比亚5分K组第二出线，克罗地亚6分L组第二晋级"},
   {id:"R13",g:"KO",r:4,t:"7/3 11:00",h:"瑞士",a:"待定(G/J第3)",st:"upcoming",hl:"🏟️ BC Place·温哥华 · B1 vs 3rd G/J · 瑞士7分B组头名出线"},
   {id:"R14",g:"KO",r:4,t:"7/4 02:00",h:"澳大利亚",a:"埃及",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · D2 vs G2"},
   {id:"R15",g:"KO",r:4,t:"7/4 06:00",h:"阿根廷",a:"佛得角",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · J1 vs H2 · 卫冕冠军阿根廷两连胜提前晋级，梅西状态火热"},
-  {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"待定(K组冠军)",a:"待定(E/I/L第3)",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · K1 vs 3rd E/I/L"},
+  {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"葡萄牙",a:"待定(E/I/L第3)",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · K1 vs 3rd E/I/L · 葡萄牙5分K组头名出线"},
   // ===== 16强 (7.5-7.8) =====
   {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"待定(R01胜者)",a:"待定(R04胜者)",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · R01胜者 vs R04胜者"},
   {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"待定(R03胜者)",a:"待定(R06胜者)",st:"upcoming",hl:"🏟️ 林肯金融球场·费城 · R03胜者 vs R06胜者"},
@@ -2626,7 +2630,7 @@ function fallbackCopy(text){
   setTimeout(()=>{btn.textContent='📋 复制链接';btn.classList.remove('copied');},2000);
 }
 // ===== SCORERS =====
-const SCORERS={"姆巴佩":"法国 8","登贝莱":"法国 5","哈兰德":"挪威 5","梅西":"阿根廷 5","C罗":"葡萄牙 4","维尼修斯":"巴西 3","拉林":"加拿大 3","戴维":"加拿大 3","上田綺世":"日本 3","萨拉赫":"埃及 3","凯恩":"英格兰 3","Pape Gueye":"塞内加尔 3","哈弗茨":"德国 3","巴洛贡":"美国 3","加克波":"荷兰 3","阿亚里":"瑞典 3","库尼亚":"巴西 2","特罗萨德":"比利时 3","布罗比":"荷兰 2","努涅斯":"乌拉圭 2","伊萨克":"瑞典 2","费兰·托雷斯":"西班牙 2","福登":"英格兰 2","厄德高":"挪威 2","恰尔汗奥卢":"土耳其 2"};
+const SCORERS={"梅西":"阿根廷 5","姆巴佩":"法国 4","维尼修斯":"巴西 4","登贝莱":"法国 4","哈兰德":"挪威 4","Elijah Just":"新西兰 3","Ismaïla Sarr":"塞内加尔 3","Ismael Saibari":"摩洛哥 3","乔纳森·戴维":"加拿大 3","库尼亚":"巴西 3","布罗比":"荷兰 3","Johan Manzambi":"瑞士 3","昂达夫":"德国 3","镰田大地":"日本 2","加克波":"荷兰 2","Julián Quiñones":"墨西哥 2","上田綺世":"日本 2","特罗萨德":"比利时 2","哈弗茨":"德国 2","奥亚萨瓦尔":"西班牙 2","Pape Gueye":"塞内加尔 2","拉林":"加拿大 2","Nicolas Pépé":"科特迪瓦 2","萨默维尔":"荷兰 2","埃兰加":"瑞典 2","Daniel Muñoz":"哥伦比亚 2","凯恩":"英格兰 2","C罗":"葡萄牙 2","巴洛贡":"美国 2","萨拉赫":"埃及 2","阿亚里":"瑞典 2","伊萨克":"瑞典 2","雷扎扬":"伊朗 2","Maxi Araújo":"乌拉圭 2","Rubén Vargas":"瑞士 2","Ermin Mahmic":"波黑 2"};
 // ===== NEXT MATCH & HELPERS =====
 function render(){
   let done=ALL_MATCHES.filter(m=>m.st==="done");
