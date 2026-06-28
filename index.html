@@ -61,13 +61,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .nav a:hover{color:var(--text)}.nav a.active{color:#fff}
 .nav a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;border-radius:2px 2px 0 0;background:var(--accent);transition:all .3s cubic-bezier(.4,0,.2,1)}
 .nav a.active::after{left:8px;width:calc(100% - 16px)}
-/* Fixed nav actions on mobile */
-.nav-actions{display:flex;align-items:center;gap:2px;margin-left:auto;padding:0 4px;flex-shrink:0}
-.nav-utils{display:flex;align-items:center;gap:2px}
-.nav-util{display:block;padding:12px 10px;font-size:.82rem;cursor:pointer;text-decoration:none;color:var(--text-sec);transition:all .2s;white-space:nowrap;flex-shrink:0;line-height:1;border-bottom:2px solid transparent}
-.nav-util:hover{color:var(--text);transform:scale(1.1)}
-@media(min-width:641px){.nav-utils{display:none}} /* Desktop: use floating buttons instead */
-@media(max-width:640px){.nav{padding-right:94px}.nav-actions{position:fixed;top:0;right:0;height:43px;z-index:120;background:linear-gradient(90deg,rgba(10,10,15,0),rgba(10,10,15,.96) 18%);backdrop-filter:blur(20px) saturate(1.4);padding:0 8px 0 18px;margin-left:0}.nav-util{width:36px;height:43px;padding:0;display:flex;align-items:center;justify-content:center;font-size:1rem}.light .nav-actions{background:linear-gradient(90deg,rgba(255,255,255,0),rgba(255,255,255,.96) 18%)}}
+/* Mobile fixed top actions: outside the scrollable nav, pinned to viewport */
+.mobile-top-actions{display:none}
+.nav-util{width:36px;height:36px;border-radius:999px;border:1px solid var(--border);background:color-mix(in srgb,var(--bg-card) 86%,transparent);color:var(--text);font-size:1rem;cursor:pointer;text-decoration:none;transition:all .2s;align-items:center;justify-content:center;line-height:1;box-shadow:0 4px 18px var(--shadow);backdrop-filter:blur(18px) saturate(1.35);-webkit-backdrop-filter:blur(18px) saturate(1.35)}
+.nav-util:hover,.nav-util:active{background:var(--bg-card-hover);border-color:var(--accent);transform:scale(1.06)}
+.nav-util.tv{color:var(--red);border-color:color-mix(in srgb,var(--red) 38%,var(--border));background:color-mix(in srgb,var(--red) 12%,var(--bg-card))}
+@media(max-width:640px){.nav{padding-right:104px}.mobile-top-actions{position:fixed;top:max(4px,env(safe-area-inset-top));right:8px;height:36px;z-index:10000;display:flex;align-items:center;gap:8px;padding:3px 4px 3px 12px;border-radius:999px;background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--bg) 78%,transparent) 18%,color-mix(in srgb,var(--bg-card) 94%,transparent) 100%);border:1px solid color-mix(in srgb,var(--border) 70%,transparent);box-shadow:-18px 0 24px color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(20px) saturate(1.35);-webkit-backdrop-filter:blur(20px) saturate(1.35)}.mobile-top-actions .nav-util{display:flex}.deep-night .mobile-top-actions{background:linear-gradient(90deg,transparent,rgba(0,0,0,.86) 22%,rgba(8,8,8,.96));box-shadow:-18px 0 24px rgba(0,0,0,.72)}}
 
 /* ===== CALENDAR BUTTON ===== */
 .cal-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1px solid var(--accent);background:rgba(0,113,227,.1);color:var(--accent);font-size:.75rem;font-weight:500;cursor:pointer;transition:all .25s;text-decoration:none;white-space:nowrap;line-height:1.3}
@@ -384,11 +383,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 /* ELIMINATION MARKERS */
 .st .rk3{color:var(--orange);font-weight:700}.st .rk4{color:var(--red);font-weight:500}
 /* IMMERSIVE MODE */
-.immersive .nav,.immersive .footer,.immersive .tm-btn,.immersive .tv-btn,.immersive #topBtn{display:none!important}
+.immersive .nav,.immersive .footer,.immersive .tm-btn,.immersive .tv-btn,.immersive #topBtn,.immersive .mobile-top-actions{display:none!important}
 .immersive .match-card{padding:20px 24px}.immersive .team .name{font-size:1.15rem}.immersive .score{font-size:1.8rem}
 .immersive .hero{min-height:30vh;padding:20px}.immersive .hero h1{font-size:1.4rem}
 .immersive .info-grid,.immersive .rules-grid,.immersive .pred-home,.immersive .log-wrap{display:none}
-.imm-btn{position:fixed;bottom:116px;right:24px;z-index:999;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:rgba(20,20,30,.7);color:var(--text);font-size:.9rem;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.3);backdrop-filter:blur(12px)}
+.imm-exit{display:none}.immersive .imm-exit{display:flex;position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:99999;align-items:center;gap:6px;padding:8px 20px;border-radius:999px;border:1px solid rgba(255,69,58,.25);background:rgba(10,10,15,.82);color:#ff453a;font-size:.82rem;font-weight:600;cursor:pointer;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 4px 24px rgba(0,0,0,.35);transition:all .25s}.immersive .imm-exit:hover{background:rgba(255,69,58,.2);border-color:var(--red);transform:translateX(-50%) scale(1.04)}
+.immersive .imm-exit .ico{font-size:1rem}.imm-btn{position:fixed;bottom:116px;right:24px;z-index:999;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:rgba(20,20,30,.7);color:var(--text);font-size:.9rem;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.3);backdrop-filter:blur(12px)}
 .imm-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);color:var(--accent);transform:scale(1.08)}
 @media(max-width:640px){.imm-btn{width:36px;height:36px;bottom:104px;right:16px;font-size:.85rem}}
 .immersive .imm-btn{bottom:16px}
@@ -478,8 +478,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <a href='#' data-tab='bracket'>🏅 淘汰赛</a>
   <a href='#' data-tab='info'>ℹ️ 信息</a>
   <a href='#' data-tab='log'>📝 日志</a>
-  <span class="nav-actions"><span class="nav-utils"><a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播" class="nav-util" id="navTv">📺</a><a href="#" class="nav-util" id="navTheme" title="切换背景">🌙</a></span></span>
 </nav>
+<div class="mobile-top-actions" aria-label="快捷操作">
+  <a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播" class="nav-util tv" id="navTv">📺</a>
+  <button type="button" class="nav-util" id="navTheme" title="切换背景">🌙</button>
+</div>
 <div class="tab-content active" id="tab-home">
 <div class="hero">
   <div class="trophy-glow"></div>
@@ -639,6 +642,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 </div>
 
 <button class="imm-btn" id="immBtn" title="观赛模式">👁️</button>
+<button class="imm-exit" id="immExit" title="退出观赛模式"><span class="ico">✕</span> 退出沉浸模式</button>
 
 <div class="tab-content" id="tab-standings">
 <div class="container tab-main">
@@ -772,6 +776,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
         <div class="log-item">
+          <div class="log-time">2026-06-28 14:25</div>
+          <div class="log-content"><span class="log-tag ui">优化</span><strong>🎨 移动端顶部按钮固定 + 沉浸模式退出按钮 + 中英切换删除</strong> — ① 📺电视直播和🌙颜色切换按钮从可滑动导航内移出，改为视窗固定独立按钮区，导航横向滑动不再影响它们位置，背景色随主题自动适配。② 👁️沉浸模式激活后顶部居中显示「✕ 退出沉浸模式」红色按钮，点击即可退出（右下角👁️按钮也保留双重入口）。③ 中英文切换功能已完全移除（CSS/HTML/JS）。④ 创建 <code>stable-v1.0</code> Git 标签，用于后续回滚。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-28 07:06</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>⚽ L组收官两战完赛：英格兰2-0巴拿马、克罗地亚2-1加纳</strong> — ESPN World Cup scoreboard/summary 与 BBC Sport live 最新已显示 Full time：L5英格兰凭贝林厄姆62&#39;、凯恩67&#39;两粒进球2-0击败巴拿马，7分锁定L组头名；L6克罗地亚凭Sučić 31&#39;、Vlasić 83&#39;的进球2-1击败加纳，6分反超拿到小组第二，加纳4分转入最佳第3名比较。两场比赛开球均已超过120分钟，福福已将 L5/L6 从live切换为done，并同步刷新首页最新赛果、下一场倒计时、赛事进度以及L组积分/最佳第3名联动数据。当前北京时间07:06不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
         </div>
@@ -790,6 +798,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
         <div class="log-item">
           <div class="log-time">2026-06-28 11:50</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 J组收官 + R11 对阵更新</strong> — ① J5 约旦 1-3 阿根廷：阿根廷 9 分全胜锁定 J 组头名（R15 对阵佛得角）。② J6 阿尔及利亚 3-3 奥地利：奥地利 5 分凭净胜球拿到 J 组第二（R11 对阵西班牙）。小组赛全部 72 场完赛。</div>
+        </div>
+        <div class="log-item">
+          <div class="log-time">2026-06-28 13:25</div>
+          <div class="log-content"><span class="log-tag auto">赛程</span><strong>🧩 32强对阵最终落位校正：补全 6 场对手 + 修正 K/J/L 组出线描述</strong> — 福福根据 ESPN World Cup Bracket 与 BBC Sport Scores &amp; Fixtures 复核，已将 R07 墨西哥vs厄瓜多尔、R08 英格兰vs刚果(金)、R09 比利时vs塞内加尔、R12 葡萄牙vs克罗地亚、R13 瑞士vs阿尔及利亚、R16 哥伦比亚vs加纳补齐到 ALL_MATCHES；同时修正 K5/K6、J6、L6 等已完赛卡片中“最佳第3名/小组排名”叙述，避免比赛 Tab 与淘汰赛树出现信息打架。</div>
         </div>
         <div class="log-item">
           <div class="log-time">2026-06-28 01:56</div>
@@ -1666,7 +1678,7 @@ const ALL_MATCHES = [
   {id:"B3",g:"B",r:2,t:"6/19 03:00",h:"瑞士",a:"波黑",s:"4-1",st:"done",hl:"⚽ 瑞士4-1波黑：BBC报道4-1大胜，瑞士两轮1胜1平积4分领跑B组",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:68,tag:"瑞士小胜",basis:["阵容均衡","大赛经验","波黑锋线威胁"],reason:"瑞士阵容结构更均衡，比赛管理能力更强；波黑有哲科支点和反击机会，但稳定性略逊。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"B4",g:"B",r:2,t:"6/19 06:00",h:"加拿大",a:"卡塔尔",s:"6-0",st:"done",hl:"⚽ 加拿大6-0卡塔尔：拉林16'首开纪录，戴维29'45+3'梅开二度，Ahmed33'染红，加拿大下半场再入3球，6-0碾压10人卡塔尔（ESPN确认FT）",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:64,tag:"加拿大小胜",basis:["东道主主场","边路速度","卡塔尔杯赛韧性"],reason:"加拿大边路冲击和主场氛围更占优，卡塔尔杯赛经验不错但防线面对速度型打法压力较大。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"B5",g:"B",r:3,t:"6/25 03:00",h:"瑞士",a:"加拿大",s:"2-1",st:"done",hl:"⚽ 瑞士2-1加拿大：ESPN 与 BBC 最新均确认FT，瑞士拿下头名之战后以7分锁定B组第一，加拿大则以净胜球优势保住出线席位。",pred:{date:"2026-06-22",ph:1,pa:1,winner:"d",confidence:60,tag:"小组头名之争",basis:["瑞士大赛经验","加拿大主场","进攻火力相当"],reason:"瑞士和加拿大同积4分，这是B组头名之争。瑞士大赛经验丰富且整体纪律性强；加拿大主场作战，6-0大胜卡塔尔气势正盛。双方进攻端都有足够威胁，谁都不愿冒险输球，平局是双方都能接受的结果。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"B6",g:"B",r:3,t:"6/25 03:00",h:"波黑",a:"卡塔尔",s:"3-1",st:"done",hl:"⚽ 波黑3-1卡塔尔：ESPN 与 BBC 最新均确认FT，波黑收下本届世界杯首胜，但B组最终仍以净胜球劣势位列第三，卡塔尔1分垫底出局。",pred:{date:"2026-06-22",ph:2,pa:1,winner:"h",confidence:65,tag:"波黑胜出",basis:["哲科支点作用","卡塔尔防线崩盘","欧洲经验"],reason:"波黑和卡塔尔均积1分，这场必须赢才有出线可能。波黑有哲科和皮亚尼奇等经验丰富的老将坐镇，面对亚洲球队仍占个人能力优势；卡塔尔两轮丢7球防守问题严重，0-6惨败后士气受创，波黑更有希望拿下世界杯首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"B6",g:"B",r:3,t:"6/25 03:00",h:"波黑",a:"卡塔尔",s:"3-1",st:"done",hl:"⚽ 波黑3-1卡塔尔：ESPN 与 BBC 最新均确认FT，波黑收下本届世界杯首胜，并以4分位列B组第三、跻身最佳第3名晋级；卡塔尔1分垫底出局。",pred:{date:"2026-06-22",ph:2,pa:1,winner:"h",confidence:65,tag:"波黑胜出",basis:["哲科支点作用","卡塔尔防线崩盘","欧洲经验"],reason:"波黑和卡塔尔均积1分，这场必须赢才有出线可能。波黑有哲科和皮亚尼奇等经验丰富的老将坐镇，面对亚洲球队仍占个人能力优势；卡塔尔两轮丢7球防守问题严重，0-6惨败后士气受创，波黑更有希望拿下世界杯首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"C1",g:"C",r:1,t:"6/14 06:00",h:"巴西",a:"摩洛哥",s:"1-1",st:"done",hl:"⚽ 维尼修斯扳平 · 巴西1-1摩洛哥，首轮各取1分"},
   {id:"C2",g:"C",r:1,t:"6/14 09:00",h:"海地",a:"苏格兰",s:"0-1",st:"done",hl:"🏴󠁧󠁢󠁳󠁣󠁴󠁿 麦金28分钟制胜球，苏格兰28年首胜"},
   {id:"C3",g:"C",r:2,t:"6/20 06:00",h:"苏格兰",a:"摩洛哥",s:"0-1",st:"done",hl:"⚽ 摩洛哥1-0苏格兰：摩洛哥全场压制，第27分钟突袭破门，苏格兰首战告捷后0-1小负，摩洛哥2轮不败积4分领跑C组（ESPN API确认FT 0-1）",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:60,tag:"势均力敌",basis:["苏格兰三军用命","摩洛哥组织更强","防守均稳固"],reason:"苏格兰时隔28年世界杯首胜后士气高涨，摩洛哥首轮战平巴西展现韧性，两队都更倾向稳守反击，平局概率较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
@@ -1678,18 +1690,18 @@ const ALL_MATCHES = [
   {id:"D3",g:"D",r:2,t:"6/20 11:00",h:"土耳其",a:"巴拉圭",s:"0-1",st:"done",hl:"⚽ D组·巴拉圭1-0土耳其：巴拉圭14'闪击破门，土耳其全场狂攻未果遭遇两连败，巴拉圭拿到关键3分保留出线希望（ESPN确认FT 0-1）",pred:{date:"2026-06-18",ph:1,pa:1,winner:"d",confidence:58,tag:"背水言和",basis:["双方都需要积分","防守谨慎","锋线效率待考"],reason:"两队首轮均告负，第二场不容有失。土耳其24年后重返世界杯仍需适应，巴拉圭整体防守仍稳，主动冒险可能性不高，平局是偏稳妥的结果。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"D4",g:"D",r:2,t:"6/20 03:00",h:"美国",a:"澳大利亚",s:"2-0",st:"done",hl:"⚽ D组 · 美国2-0澳大利亚：Burgess 11'乌龙 · Freeman 43'头槌 · 美国2连胜积6分提前出线！",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:70,tag:"美国小胜",basis:["东道主状态火热","巴洛贡双响","澳大利亚防反"],reason:"美国首轮4-1大胜展现攻击力，主场氛围加持明显；澳大利亚首胜士气高昂但防守压力更大，美国更可能延续胜势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"D5",g:"D",r:3,t:"6/26 10:00",h:"土耳其",a:"美国",s:"3-2",st:"done",hl:"⚽ 土耳其3-2美国：Trusty 3'、Berhalter 49'两度为美国建功，但Arda Güler 10'、Barış Alper Yılmaz 31'连追两球，Kaan Ayhan 90+8'完成绝杀；美国仍以6分锁定D组头名，土耳其3分出局。",pred:{date:"2026-06-23",ph:1,pa:2,winner:"a",confidence:69,tag:"美国小胜",basis:["主场氛围","转换效率","土耳其背水"],reason:"美国前两轮两战全胜且攻守转换效率更高，土耳其虽会背水一战主动提速，但防线稳定性不足，倾向美国在对攻中小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"D6",g:"D",r:3,t:"6/26 10:00",h:"巴拉圭",a:"澳大利亚",s:"0-0",st:"done",hl:"⚽ 巴拉圭0-0澳大利亚：双方互交白卷，澳大利亚凭净胜球优势力压同积4分的巴拉圭拿到D组第二，巴拉圭则转入最佳第3名比较。",pred:{date:"2026-06-23",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["同分对决","出线压力","防守优先"],reason:"巴拉圭和澳大利亚大概率都会把这场当成出线分水岭，双方都不愿率先冒险压上，比赛节奏可能偏谨慎，平局概率不低。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"D6",g:"D",r:3,t:"6/26 10:00",h:"巴拉圭",a:"澳大利亚",s:"0-0",st:"done",hl:"⚽ 巴拉圭0-0澳大利亚：双方互交白卷，澳大利亚凭净胜球优势力压同积4分的巴拉圭拿到D组第二，巴拉圭则以最佳第3名身份晋级32强。",pred:{date:"2026-06-23",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["同分对决","出线压力","防守优先"],reason:"巴拉圭和澳大利亚大概率都会把这场当成出线分水岭，双方都不愿率先冒险压上，比赛节奏可能偏谨慎，平局概率不低。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"E1",g:"E",r:1,t:"6/15 01:00",h:"德国",a:"库拉索",s:"7-1",st:"done",hl:"⚽ 哈弗茨双响 · 内梅查6'、施洛特贝克38'、哈弗茨45+5'(点)、穆西亚拉47'、布朗68'、昂达夫78'、哈弗茨88'破门 · 德国7-1大胜库拉索，库拉索科梅嫩西亚21'一度扳平！诺伊尔40岁79天成德国大赛最年长出场球员"},
   {id:"E2",g:"E",r:1,t:"6/15 07:00",h:"科特迪瓦",a:"厄瓜多尔",s:"1-0",st:"done",hl:"⚽ 阿马德·迪亚洛89'绝杀 · 科特迪瓦1-0开门红"},
   {id:"E3",g:"E",r:2,t:"6/21 04:00",h:"德国",a:"科特迪瓦",s:"2-1",st:"done",hl:"⚽ 德国2-1科特迪瓦：Undav 68'90+4'替补梅开二度逆转，Kessié 30'首开纪录，德国补时绝杀2连胜积6分提前晋级32强！",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:72,tag:"德国胜出",basis:["德国7-1狂胜气势正盛","科特迪瓦首轮1-0","德国攻击群"],reason:"德国首轮7-1大胜库拉索状态极佳，哈弗茨双响、穆西亚拉多点开花；科特迪瓦首轮1-0绝杀厄瓜多尔展现韧性，但面对德国攻击群恐难守住，看好德国延续强势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"E4",g:"E",r:2,t:"6/21 08:00",h:"厄瓜多尔",a:"库拉索",s:"0-0",st:"done",hl:"⚽ 厄瓜多尔0-0库拉索：全场比赛结束，双方90分钟均无建树互交白卷。厄瓜多尔控球占优但未能破门，库拉索收获队史世界杯第一分！",pred:{date:"2026-06-18",ph:2,pa:0,winner:"h",confidence:75,tag:"厄瓜多尔胜",basis:["实力差距","库拉索防守脆弱","厄瓜多尔急需3分"],reason:"厄瓜多尔首战0-1小负科特迪瓦，整体表现并非不堪一击；库拉索首轮被德国7-1击溃防守暴露出严重问题，厄瓜多尔攻击线有望迎来爆发。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"E5",g:"E",r:3,t:"6/26 04:00",h:"厄瓜多尔",a:"德国",s:"2-1",st:"done",hl:"⚽ 厄瓜多尔2-1德国：Angulo 9'、Plata 77'建功，Sané 2'闪击难救主；厄瓜多尔收官战爆冷取胜，但德国仍以6分锁定E组头名。",pred:{date:"2026-06-23",ph:1,pa:2,winner:"a",confidence:71,tag:"德国取胜",basis:["阵容厚度","德国已连胜","厄瓜多尔需抢分"],reason:"德国前两轮已展现更强的阵容厚度与后程发力能力，厄瓜多尔必须争胜会留出身后空间，这更利于德国利用反击和个人能力拿下比赛。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"E5",g:"E",r:3,t:"6/26 04:00",h:"厄瓜多尔",a:"德国",s:"2-1",st:"done",hl:"⚽ 厄瓜多尔2-1德国：Angulo 9'、Plata 77'建功，Sané 2'闪击难救主；厄瓜多尔爆冷取胜后以4分位列E组第三，并跻身最佳第3名晋级，德国仍以6分锁定E组头名。",pred:{date:"2026-06-23",ph:1,pa:2,winner:"a",confidence:71,tag:"德国取胜",basis:["阵容厚度","德国已连胜","厄瓜多尔需抢分"],reason:"德国前两轮已展现更强的阵容厚度与后程发力能力，厄瓜多尔必须争胜会留出身后空间，这更利于德国利用反击和个人能力拿下比赛。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"E6",g:"E",r:3,t:"6/26 04:00",h:"库拉索",a:"科特迪瓦",s:"0-2",st:"done",hl:"⚽ 科特迪瓦2-0库拉索：Pépé 7'、64'梅开二度，科特迪瓦收下关键3分后以6分锁定E组第二，库拉索1分垫底出局。",pred:{date:"2026-06-23",ph:0,pa:2,winner:"a",confidence:67,tag:"科特迪瓦胜",basis:["身体对抗","库拉索火力弱","出线主动权"],reason:"科特迪瓦整体对抗能力和比赛经验更成熟，而库拉索前两轮进攻产出有限；在出线主动权刺激下，看好科特迪瓦更稳定地兑现优势。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"F1",g:"F",r:1,t:"6/15 04:00",h:"荷兰",a:"日本",s:"2-2",st:"done",hl:"⚽ 范迪克51'首开纪录 · 中村敬斗57'扳平 · 萨默维尔64'再度领先 · 鎌田大地88'绝平！荷兰2-2日本各取1分"},
   {id:"F2",g:"F",r:1,t:"6/15 10:00",h:"瑞典",a:"突尼斯",s:"5-1",st:"done",hl:"⚽ 阿亚里双响 · 伊萨克、哲凯赖什建功 · 瑞典5-1大胜突尼斯全取3分"},
   {id:"F3",g:"F",r:2,t:"6/21 12:00",h:"突尼斯",a:"日本",s:"0-4",st:"done",hl:"⚽ 日本4-0突尼斯：鎌田大地4'闪击、上田綺世31'83'梅开二度、伊東純也69'破门，日本4-0大胜创亚洲队世界杯最大胜分差纪录！突尼斯两连败出局",pred:{date:"2026-06-18",ph:0,pa:1,winner:"a",confidence:63,tag:"日本小胜",basis:["突尼斯防守崩盘","日本控制力","日本经验"],reason:"突尼斯首轮1-5惨败瑞典暴露出防守体系问题；日本首轮2-2绝平荷兰展现顽强斗志和技术能力，久保建英和三笘薰的速度对突尼斯防线构成持续威胁，日本更可能拿下首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"F4",g:"F",r:2,t:"6/21 01:00",h:"荷兰",a:"瑞典",s:"5-1",st:"done",hl:"⚽ 荷兰5-1瑞典：布罗比5'17'梅开二度、加克波47'54'双响、萨默维尔89'锦上添花，瑞典埃兰加59'扳回一城，荷兰5-1大胜登顶F组（ESPN确认FT）",pred:{date:"2026-06-18",ph:2,pa:1,winner:"h",confidence:65,tag:"荷兰险胜",basis:["荷兰中场控制力","瑞典伊萨克威胁","阵容厚度"],reason:"荷兰整体阵容更为均衡，首轮2-2绝平日本展现韧性；瑞典首轮5-1大胜攻击力恐怖，但荷兰的防守组织更为严谨，橙衣军团有望在主场式氛围中小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"F5",g:"F",r:3,t:"6/26 07:00",h:"日本",a:"瑞典",s:"1-1",st:"done",hl:"⚽ 日本1-1瑞典：前田大然56'破门、埃兰加62'迅速扳平，日本以5分锁定F组第二晋级，瑞典4分转入最佳第3名比较。",pred:{date:"2026-06-23",ph:1,pa:1,winner:"d",confidence:60,tag:"强强有平",basis:["日本组织度","瑞典冲击力","末轮谨慎"],reason:"日本的组织和瑞典的冲击都具备威胁，但末轮直接对话通常更重结果管理，双方各取一分并不意外，看平是更稳的选择。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"F5",g:"F",r:3,t:"6/26 07:00",h:"日本",a:"瑞典",s:"1-1",st:"done",hl:"⚽ 日本1-1瑞典：前田大然56'破门、埃兰加62'迅速扳平，日本以5分锁定F组第二晋级，瑞典4分则以最佳第3名身份晋级32强。",pred:{date:"2026-06-23",ph:1,pa:1,winner:"d",confidence:60,tag:"强强有平",basis:["日本组织度","瑞典冲击力","末轮谨慎"],reason:"日本的组织和瑞典的冲击都具备威胁，但末轮直接对话通常更重结果管理，双方各取一分并不意外，看平是更稳的选择。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"F6",g:"F",r:3,t:"6/26 07:00",h:"突尼斯",a:"荷兰",s:"1-3",st:"done",hl:"⚽ 荷兰3-1突尼斯：斯希里开场乌龙，布罗贝与范黑克相继建功，Mastouri一度追回一球；荷兰7分锁定F组头名，突尼斯3战全败出局。",pred:{date:"2026-06-23",ph:0,pa:3,winner:"a",confidence:74,tag:"荷兰大胜",basis:["进攻火力","突尼斯防线松动","荷兰控场"],reason:"荷兰前场连续制造高质量机会，突尼斯则连续暴露防线漏洞；只要荷兰维持控球压制和边路推进，赢面明显更大。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"G1",g:"G",r:1,t:"6/16 03:00",h:"比利时",a:"埃及",s:"1-1",st:"done",hl:"⚽ 比利时1-1埃及 · 双方握手言和各取1分"},
   {id:"G2",g:"G",r:1,t:"6/16 09:00",h:"伊朗",a:"新西兰",s:"2-2",st:"done",hl:"⚽ 贾斯特双响 · 雷扎扬&莫赫比破门，伊朗2-2新西兰上演进球大战"},
@@ -1708,43 +1720,43 @@ const ALL_MATCHES = [
   {id:"I3",g:"I",r:2,t:"6/23 05:00",h:"法国",a:"伊拉克",s:"3-0",st:"done",hl:"⚽ 法国3-0伊拉克：姆巴佩14'、54'双响，登贝莱66'破门，法国两连胜提前晋级32强（ESPN确认FT）",pred:{date:"2026-06-20",ph:3,pa:0,winner:"h",confidence:78,tag:"法国大胜",basis:["姆巴佩双响状态火热","伊拉克防线脆弱","法国卫冕冠军底蕴"],reason:"法国首轮3-1击败塞内加尔，姆巴佩双响状态爆棚；伊拉克首轮1-4惨败挪威防线漏洞百出，面对法国的技术+速度冲击恐难抵挡。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"I4",g:"I",r:2,t:"6/23 08:00",h:"挪威",a:"塞内加尔",s:"3-2",st:"done",hl:"⚽ 挪威3-2塞内加尔：Marcus Pedersen 43'首开纪录，哈兰德48'、58'双响，伊斯梅拉·萨尔53'、90+3'梅开二度；挪威两连胜积6分提前晋级32强（ESPN确认FT）",pred:{date:"2026-06-20",ph:2,pa:1,winner:"h",confidence:67,tag:"挪威险胜",basis:["哈兰德双响状态火热","塞内加尔身体对抗","非洲冠军韧性"],reason:"挪威首轮4-1大胜伊拉克，哈兰德双响状态火热；塞内加尔首轮1-3负法国但展现出一定韧性，非洲冠军的身体对抗会给挪威制造麻烦，但哈兰德终结能力是胜负手。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"I5",g:"I",r:3,t:"6/27 03:00",h:"挪威",a:"法国",s:"1-4",st:"done",hl:"⚽ 法国4-1挪威：登贝莱7'20'32'上演帽子戏法，Aasgaard 21'一度追到1-2，Doué 90+4'锁定胜局；法国3战全胜9分头名出线，挪威6分排名I组第二。",pred:{date:"2026-06-25",ph:2,pa:2,winner:"d",confidence:64,tag:"强强有平",basis:["哈兰德状态","法国前场","头名之争"],reason:"挪威有哈兰德的终结与冲击，法国则拥有更完整的前场配置，头名之争双方都具备进球能力，也都不愿贸然失控，对攻后打平并不意外。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"I6",g:"I",r:3,t:"6/27 03:00",h:"塞内加尔",a:"伊拉克",s:"5-0",st:"done",hl:"⚽ 塞内加尔5-0伊拉克：Diarra 4'首开纪录，Sulaka 13'染红后伊拉克少打一人，Sarr 56'、Pape Gueye 59'71'与Ndiaye 82'连下四城；塞内加尔收官取胜升至3分，伊拉克3战全败出局。",pred:{date:"2026-06-25",ph:2,pa:0,winner:"h",confidence:70,tag:"塞内加尔胜",basis:["身体对抗","伊拉克防线","经验优势"],reason:"塞内加尔整体身体对抗和比赛经验更成熟，伊拉克前两轮防线承压明显，只要塞内加尔提升终结效率，赢球概率更高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"I6",g:"I",r:3,t:"6/27 03:00",h:"塞内加尔",a:"伊拉克",s:"5-0",st:"done",hl:"⚽ 塞内加尔5-0伊拉克：Diarra 4'首开纪录，Sulaka 13'染红后伊拉克少打一人，Sarr 56'、Pape Gueye 59'71'与Ndiaye 82'连下四城；塞内加尔收官取胜升至3分，并搭上最佳第3名末班车晋级32强，伊拉克3战全败出局。",pred:{date:"2026-06-25",ph:2,pa:0,winner:"h",confidence:70,tag:"塞内加尔胜",basis:["身体对抗","伊拉克防线","经验优势"],reason:"塞内加尔整体身体对抗和比赛经验更成熟，伊拉克前两轮防线承压明显，只要塞内加尔提升终结效率，赢球概率更高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"J1",g:"J",r:1,t:"6/17 09:00",h:"阿根廷",a:"阿尔及利亚",s:"3-0",st:"done",hl:"🐐 梅西戴帽之夜 · 追平世界杯历史总进球纪录 · 阿根廷3-0完胜阿尔及利亚"},
   {id:"J2",g:"J",r:1,t:"6/17 12:00",h:"奥地利",a:"约旦",s:"3-1",st:"done",hl:"⚽ 奥地利3-1约旦：施密德21'首开纪录 · 奥尔万50'扳平 · 阿拉布76'乌龙 · 奥地利终场前再入一球锁定胜局，J组首轮全取3分"},
   {id:"J3",g:"J",r:2,t:"6/23 01:00",h:"阿根廷",a:"奥地利",s:"2-0",st:"done",hl:"⚽ 阿根廷2-0奥地利：梅西38'、90+5'双响，超越克洛泽独享世界杯历史射手王；阿根廷两连胜提前晋级32强（BBC确认FT）",pred:{date:"2026-06-20",ph:2,pa:0,winner:"h",confidence:73,tag:"阿根廷胜",basis:["梅西戴帽状态神勇","奥地利中场硬朗","卫冕冠军控制力"],reason:"阿根廷首轮梅西戴帽3-0完胜阿尔及利亚，卫冕冠军攻防俱佳；奥地利首轮3-1击败约旦展现欧战级硬度，但面对阿根廷的传控体系和梅西的个人能力仍处于下风，看好阿根廷稳取2连胜提前出线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"J4",g:"J",r:2,t:"6/23 11:00",h:"约旦",a:"阿尔及利亚",s:"1-2",st:"done",hl:"⚽ 阿尔及利亚2-1约旦：Nizar Al-Rashdan 36'先拔头筹，Nadhir Benbouali 69'头球扳平，Amine Gouiri 82'门前补射反超；阿尔及利亚下半场连追两球逆转拿下关键3分（ESPN/BBC确认FT）",pred:{date:"2026-06-20",ph:0,pa:2,winner:"a",confidence:65,tag:"阿尔及利亚胜",basis:["非洲冠军底蕴","约旦首轮消耗大","阿尔及利亚经验"],reason:"阿尔及利亚首轮0-3负阿根廷但场面并非一边倒，非洲冠军经验丰富调整能力强；约旦首轮1-3负奥地利暴露防守漏洞，面对阿尔及利亚的技术型攻击线恐难守住，看好北非之狐取首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"J5",g:"J",r:3,t:"6/28 10:00",h:"约旦",a:"阿根廷",s:"1-3",st:"done",hl:"🐐 阿根廷3-1约旦：卫冕冠军三战全胜9分锁定J组头名，约旦三连败小组出局",pred:{date:"2026-06-25",ph:0,pa:3,winner:"a",confidence:79,tag:"阿根廷稳胜",basis:["梅西领衔","技术差距","轮换深度"],reason:"阿根廷即使轮换也保持明显的技术和比赛控制力优势，约旦要持续限制梅西和阿根廷中前场传跑难度极高，看好卫冕冠军稳健拿下。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"J6",g:"J",r:3,t:"6/28 10:00",h:"阿尔及利亚",a:"奥地利",s:"3-3",st:"done",hl:"🤝 阿尔及利亚3-3奥地利：双方末轮上演进球大战各取1分，奥地利5分凭借净胜球优势拿到J组第二晋级，阿尔及利亚4分转入最佳第3名比较",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:60,tag:"谨慎看平",basis:["双方硬度","出线压力","中场缠斗"],reason:"阿尔及利亚和奥地利都具备不错的对抗与纪律性，末轮争出线时中场缠斗会很激烈，谁先失误谁就可能出局，平局拉扯感较强。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"J6",g:"J",r:3,t:"6/28 10:00",h:"阿尔及利亚",a:"奥地利",s:"3-3",st:"done",hl:"🤝 阿尔及利亚3-3奥地利：双方末轮上演进球大战各取1分，奥地利5分凭借净胜球优势拿到J组第二晋级，阿尔及利亚4分也以最佳第3名身份闯入32强",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:60,tag:"谨慎看平",basis:["双方硬度","出线压力","中场缠斗"],reason:"阿尔及利亚和奥地利都具备不错的对抗与纪律性，末轮争出线时中场缠斗会很激烈，谁先失误谁就可能出局，平局拉扯感较强。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"K1",g:"K",r:1,t:"6/18 01:00",h:"葡萄牙",a:"刚果(金)",s:"1-1",st:"done",hl:"⚽ 葡萄牙1-1刚果(金)：内维斯6'首开纪录，维萨45+5'头球扳平，C罗第六届世界杯首秀双方握手言和各取1分"},
   {id:"K2",g:"K",r:1,t:"6/18 10:00",h:"乌兹别克",a:"哥伦比亚",s:"1-3",st:"done",hl:"⚽ 乌兹别克1-3哥伦比亚：哥伦比亚3-1击败乌兹别克斯坦，中亚新军首秀1-3告负"},
   {id:"K3",g:"K",r:2,t:"6/24 01:00",h:"葡萄牙",a:"乌兹别克",s:"5-0",st:"done",hl:"⚽ 葡萄牙5-0乌兹别克：C罗6'、39'双响，努诺·门德斯17'建功，Nematov 60'乌龙，莱奥87'破门；葡萄牙大胜升至K组前列（ESPN/FIFA/BBC确认FT）",pred:{date:"2026-06-21",ph:3,pa:0,winner:"h",confidence:76,tag:"葡萄牙大胜",basis:["C罗领衔","乌兹别克首战惨败","葡萄牙求胜心切"],reason:"葡萄牙首轮1-1意外被刚果(金)逼平，此战面对首轮1-3负哥伦比亚的中亚新军乌兹别克斯坦，实力和经验优势明显，C罗率领的攻击线有望迎来爆发。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"K4",g:"K",r:2,t:"6/24 10:00",h:"哥伦比亚",a:"刚果(金)",s:"1-0",st:"done",hl:"⚽ 哥伦比亚1-0刚果(金)：Daniel Muñoz 76'打入全场唯一进球，哥伦比亚两轮1胜1平积4分暂时升至K组头名，刚果(金)末轮仍需抢分争出线",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:65,tag:"哥伦比亚小胜",basis:["哥伦比亚首轮大胜","刚果(金)逼平葡萄牙","南美技术优势"],reason:"哥伦比亚首轮3-1击败乌兹别克斯坦展现南美技术优势；刚果(金)首轮1-1逼平葡萄牙展现不俗韧性但整体实力仍逊于哥伦比亚，看好南美劲旅小胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"K5",g:"K",r:3,t:"6/28 07:30",h:"哥伦比亚",a:"葡萄牙",s:"0-0",st:"done",hl:"🤝 哥伦比亚0-0葡萄牙：葡萄牙5分凭净胜球优势锁定K组头名，哥伦比亚同积5分位列K组第二携手晋级",pred:{date:"2026-06-25",ph:1,pa:2,winner:"a",confidence:68,tag:"葡萄牙小胜",basis:["C罗状态","边路推进","哥伦比亚韧性"],reason:"葡萄牙前场个人能力和边路推进手段更多，哥伦比亚会给出足够强度与韧性，但若比赛进入比拼终结的一段，葡萄牙更值得高看一线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"K6",g:"K",r:3,t:"6/28 07:30",h:"刚果(金)",a:"乌兹别克",s:"3-1",st:"done",hl:"⚽ 刚果(金)3-1乌兹别克：刚果(金)末轮3-1取胜积4分但仍因净胜球劣势无缘出线，乌兹别克0分垫底收官",pred:{date:"2026-06-25",ph:2,pa:1,winner:"h",confidence:63,tag:"刚果(金)胜",basis:["身体优势","乌兹防线","末轮求胜"],reason:"刚果（金）在身体对抗和反击冲击上更有威胁，乌兹别克斯坦前两轮防线稳定性一般，末轮开放对攻时刚果（金）更像是能抓住机会的一方。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"K5",g:"K",r:3,t:"6/28 07:30",h:"哥伦比亚",a:"葡萄牙",s:"0-0",st:"done",hl:"🤝 哥伦比亚0-0葡萄牙：哥伦比亚7分锁定K组头名，葡萄牙5分位列第二携手晋级，32强将分别对阵加纳与克罗地亚",pred:{date:"2026-06-25",ph:1,pa:2,winner:"a",confidence:68,tag:"葡萄牙小胜",basis:["C罗状态","边路推进","哥伦比亚韧性"],reason:"葡萄牙前场个人能力和边路推进手段更多，哥伦比亚会给出足够强度与韧性，但若比赛进入比拼终结的一段，葡萄牙更值得高看一线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"K6",g:"K",r:3,t:"6/28 07:30",h:"刚果(金)",a:"乌兹别克",s:"3-1",st:"done",hl:"⚽ 刚果(金)3-1乌兹别克：刚果(金)末轮3-1取胜后以4分位列K组第三，并以最佳第3名身份晋级32强；乌兹别克0分垫底收官",pred:{date:"2026-06-25",ph:2,pa:1,winner:"h",confidence:63,tag:"刚果(金)胜",basis:["身体优势","乌兹防线","末轮求胜"],reason:"刚果（金）在身体对抗和反击冲击上更有威胁，乌兹别克斯坦前两轮防线稳定性一般，末轮开放对攻时刚果（金）更像是能抓住机会的一方。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L1",g:"L",r:1,t:"6/18 04:00",h:"英格兰",a:"克罗地亚",s:"4-2",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰4-2克罗地亚：凯恩12'(点)42'双响、贝林厄姆47'破门、赖斯89'锁定胜局；巴图里纳36'、穆萨45+5'两度追分，英格兰4-2开门红"},
   {id:"L2",g:"L",r:1,t:"6/18 07:00",h:"加纳",a:"巴拿马",s:"1-0",st:"done",hl:"⚽ 加纳1-0巴拿马：加纳1-0击败巴拿马，抓住关键机会破门全取3分，L组首轮完赛"},
   {id:"L3",g:"L",r:2,t:"6/24 04:00",h:"英格兰",a:"加纳",s:"0-0",st:"done",hl:"⚽ 英格兰0-0加纳：FIFA与ESPN最新均显示FT 0-0，英格兰控球与压制更足但迟迟无法破门，加纳顽强守住关键1分",pred:{date:"2026-06-21",ph:2,pa:0,winner:"h",confidence:72,tag:"英格兰取胜",basis:["凯恩双响状态佳","加纳首轮苦胜","英格兰进攻火力"],reason:"英格兰首轮4-2力克克罗地亚展现强大攻击力，凯恩双响贝林厄姆破门状态火热；加纳首轮1-0小胜巴拿马场面不占明显优势，面对三狮军团恐难守住。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L4",g:"L",r:2,t:"6/24 07:00",h:"巴拿马",a:"克罗地亚",s:"0-1",st:"done",hl:"⚽ 巴拿马0-1克罗地亚：Budimir 54'门前包抄打入全场唯一进球，克罗地亚保住出线希望，巴拿马提前出局（ESPN/BBC确认FT）",pred:{date:"2026-06-21",ph:0,pa:3,winner:"a",confidence:74,tag:"克罗地亚大胜",basis:["克罗地亚经验碾压","巴拿马首轮告负","格子军团需抢分"],reason:"克罗地亚虽首轮2-4负于英格兰但整体实力远超巴拿马，莫德里奇领衔的中场对巴拿马形成绝对控制；巴拿马首轮0-1负加纳进攻乏力，面对克罗地亚技术流打法恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"L5",g:"L",r:3,t:"6/28 05:00",h:"巴拿马",a:"英格兰",s:"0-2",st:"done",hl:"⚽ 英格兰2-0巴拿马：贝林厄姆62'打破僵局，凯恩67'头槌扩大比分；英格兰7分锁定L组头名，巴拿马3战全败出局。",pred:{date:"2026-06-25",ph:0,pa:3,winner:"a",confidence:77,tag:"英格兰稳胜",basis:["凯恩终结","阵容厚度","巴拿马火力弱"],reason:"英格兰的阵容厚度、定位球和前场终结效率都明显优于巴拿马，只要三狮保持专注，比赛节奏大概率会被牢牢控制在自己脚下。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",s:"2-1",st:"done",hl:"⚽ 克罗地亚2-1加纳：Sučić 31'首开纪录，Luckassen 73'扳平后，Vlasić 83'头槌制胜；克罗地亚6分反超拿到L组第二，加纳4分转入最佳第3名比较。",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["中场控制","加纳速度","末轮压力"],reason:"克罗地亚更擅长中场控制，加纳则有更直接的速度与冲击，末轮都背着结果压力，比赛很可能在试探和转换之间拉成平局。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",s:"2-1",st:"done",hl:"⚽ 克罗地亚2-1加纳：Sučić 31'首开纪录，Luckassen 73'扳平后，Vlasić 83'头槌制胜；克罗地亚6分反超拿到L组第二，加纳4分也以最佳第3名身份晋级32强。",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["中场控制","加纳速度","末轮压力"],reason:"克罗地亚更擅长中场控制，加纳则有更直接的速度与冲击，末轮都背着结果压力，比赛很可能在试探和转换之间拉成平局。",sources:["FIFA","ESPN","Bing News"],locked:true}},
 
   // ===== 淘汰赛 32强 (6.29-7.4) =====
   {id:"R01",g:"KO",r:4,t:"6/29 03:00",h:"南非",a:"加拿大",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · A2 vs B2 · 南非小组末轮1-0胜韩国后抢下第二；加拿大虽1-2负瑞士仍以净胜球优势出线"},
   {id:"R02",g:"KO",r:4,t:"6/30 01:00",h:"巴西",a:"日本",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · C1 vs F2 · 巴西7分锁C组头名；日本4-0大胜突尼斯后有望力拼出线"},
-  {id:"R03",g:"KO",r:4,t:"6/30 04:30",h:"德国",a:"巴拉圭",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · E1 vs D3/3rd"},
+  {id:"R03",g:"KO",r:4,t:"6/30 04:30",h:"德国",a:"巴拉圭",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · E1 vs D3 · 德国6分拿到E组头名，巴拉圭则以最佳第3名身份晋级"},
   {id:"R04",g:"KO",r:4,t:"6/30 09:00",h:"荷兰",a:"摩洛哥",st:"upcoming",hl:"🏟️ BBVA球场·瓜达卢佩 · F1 vs C2 · 荷兰5-1大胜瑞典登顶F组；摩洛哥4-2收官战后7分列C组第二"},
   {id:"R05",g:"KO",r:4,t:"7/1 01:00",h:"科特迪瓦",a:"挪威",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · I2 vs E2"},
   {id:"R06",g:"KO",r:4,t:"7/1 05:00",h:"法国",a:"瑞典",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · I1 vs F2 · 法国两连胜提前晋级，姆巴佩状态火热；瑞典5-1大胜突尼斯后前景可期"},
-  {id:"R07",g:"KO",r:4,t:"7/1 09:00",h:"墨西哥",a:"待定(C/E第3)",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · A1 vs 3rd Group C/E · 东道主墨西哥三战全胜9分强势出线"},
-  {id:"R08",g:"KO",r:4,t:"7/2 00:00",h:"英格兰",a:"待定(I/J/K第3)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · L1 vs 3rd I/J/K · 英格兰7分L组头名出线"},
-  {id:"R09",g:"KO",r:4,t:"7/2 04:00",h:"比利时",a:"待定(A/I/J第3)",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · G1/J2 vs 3rd A/I/J · 比利时前两轮0-0伊朗后需末轮确定头名"},
+  {id:"R07",g:"KO",r:4,t:"7/1 09:00",h:"墨西哥",a:"厄瓜多尔",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · A1 vs E3 · 东道主墨西哥三战全胜9分强势出线；厄瓜多尔末轮爆冷胜德国后以最佳第3名身份晋级"},
+  {id:"R08",g:"KO",r:4,t:"7/2 00:00",h:"英格兰",a:"刚果(金)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · L1 vs K3 · 英格兰7分L组头名出线；刚果(金)4分位列K组第三并跻身最佳第3名"},
+  {id:"R09",g:"KO",r:4,t:"7/2 04:00",h:"比利时",a:"塞内加尔",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · G1 vs I3 · 比利时5分锁定G组头名；塞内加尔末轮5-0大胜伊拉克后惊险搭上最佳第3名末班车"},
   {id:"R10",g:"KO",r:4,t:"7/2 08:00",h:"美国",a:"波黑",st:"upcoming",hl:"🏟️ 利维球场·圣克拉拉 · D1 vs B3 · 东道主美国两连胜提前出线，主场迎战波黑"},
   {id:"R11",g:"KO",r:4,t:"7/3 03:00",h:"西班牙",a:"奥地利",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · H1 vs J2 · 西班牙头名出线迎战奥地利，奥地利 3-3 逼平阿尔及利亚后锁定 J 组第二"},
-  {id:"R12",g:"KO",r:4,t:"7/3 07:00",h:"哥伦比亚",a:"克罗地亚",st:"upcoming",hl:"🏟️ BMO球场·多伦多 · K2 vs L2 · 哥伦比亚5分K组第二出线，克罗地亚6分L组第二晋级"},
-  {id:"R13",g:"KO",r:4,t:"7/3 11:00",h:"瑞士",a:"待定(G/J第3)",st:"upcoming",hl:"🏟️ BC Place·温哥华 · B1 vs 3rd G/J · 瑞士7分B组头名出线"},
-  {id:"R14",g:"KO",r:4,t:"7/4 02:00",h:"澳大利亚",a:"埃及",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · D2 vs G2"},
+  {id:"R12",g:"KO",r:4,t:"7/3 07:00",h:"葡萄牙",a:"克罗地亚",st:"upcoming",hl:"🏟️ BMO球场·多伦多 · K2 vs L2 · 葡萄牙5分位列K组第二，克罗地亚6分拿到L组第二，强强对话落位多伦多"},
+  {id:"R13",g:"KO",r:4,t:"7/3 11:00",h:"瑞士",a:"阿尔及利亚",st:"upcoming",hl:"🏟️ BC Place·温哥华 · B1 vs J3 · 瑞士7分锁定B组头名；阿尔及利亚末轮3-3战平奥地利后以最佳第3名身份晋级"},
+  {id:"R14",g:"KO",r:4,t:"7/4 02:00",h:"澳大利亚",a:"埃及",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · D2 vs G2 · 澳大利亚凭净胜球拿到D组第二；埃及5分位列G组第二晋级"},
   {id:"R15",g:"KO",r:4,t:"7/4 06:00",h:"阿根廷",a:"佛得角",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · J1 vs H2 · 卫冕冠军阿根廷两连胜提前晋级，梅西状态火热"},
-  {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"葡萄牙",a:"待定(E/I/L第3)",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · K1 vs 3rd E/I/L · 葡萄牙5分K组头名出线"},
+  {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"哥伦比亚",a:"加纳",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · K1 vs L3 · 哥伦比亚7分锁定K组头名；加纳4分以最佳第3名身份晋级，堪萨斯城上演南美对非洲"},
   // ===== 16强 (7.5-7.8) =====
   {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"待定(R01胜者)",a:"待定(R04胜者)",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · R01胜者 vs R04胜者"},
   {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"待定(R03胜者)",a:"待定(R06胜者)",st:"upcoming",hl:"🏟️ 林肯金融球场·费城 · R03胜者 vs R06胜者"},
@@ -2984,9 +2996,11 @@ function doShareMatch(){let m=ALL_MATCHES.find(x=>x.id===_shareMid);if(!m)return
   else{navigator.clipboard.writeText(txt).then(()=>{let t=document.getElementById('calToast'),tt=document.getElementById('calToastText');if(t&&tt){tt.textContent='已复制';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}}).catch(()=>{});}
   closeShare();}
 // ===== IMMERSIVE MODE =====
-(function(){let b=document.getElementById('immBtn');if(!b)return;
-  b.addEventListener('click',function(){document.documentElement.classList.toggle('immersive');
-    b.textContent=document.documentElement.classList.contains('immersive')?'✕':'👁️';});})();
+(function(){let ib=document.getElementById('immBtn'),eb=document.getElementById('immExit');
+  function toggleImm(){document.documentElement.classList.toggle('immersive');
+    if(ib)ib.textContent=document.documentElement.classList.contains('immersive')?'✕':'👁️';}
+  if(ib)ib.addEventListener('click',toggleImm);
+  if(eb)eb.addEventListener('click',toggleImm);})();
 // ===== TIMELINE =====
 function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)return;
   let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r4'},{l:'16强',k:'r5'},{l:'1/4',k:'r6'},{l:'半决赛',k:'r7'},{l:'7.19 决赛',k:'fin'}];
