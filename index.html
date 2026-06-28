@@ -384,16 +384,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .share-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);color:var(--accent)}
 /* ELIMINATION MARKERS */
 .st .rk3{color:var(--orange);font-weight:700}.st .rk4{color:var(--red);font-weight:500}
-/* IMMERSIVE MODE */
-.immersive .nav,.immersive .footer,.immersive .tm-btn,.immersive .tv-btn,.immersive #topBtn,.immersive .mobile-top-actions{display:none!important}
-.immersive .match-card{padding:20px 24px}.immersive .team .name{font-size:1.15rem}.immersive .score{font-size:1.8rem}
-.immersive .hero{min-height:30vh;padding:20px}.immersive .hero h1{font-size:1.4rem}
-.immersive .info-grid,.immersive .rules-grid,.immersive .pred-home,.immersive .log-wrap{display:none}
-.imm-exit{display:none}.immersive .imm-exit{display:flex;position:fixed;top:12px;left:50%;transform:translateX(-50%);z-index:99999;align-items:center;gap:6px;padding:8px 20px;border-radius:999px;border:1px solid rgba(255,69,58,.25);background:rgba(10,10,15,.82);color:#ff453a;font-size:.82rem;font-weight:600;cursor:pointer;backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);box-shadow:0 4px 24px rgba(0,0,0,.35);transition:all .25s}.immersive .imm-exit:hover{background:rgba(255,69,58,.2);border-color:var(--red);transform:translateX(-50%) scale(1.04)}
-.immersive .imm-exit .ico{font-size:1rem}.imm-btn{position:fixed;bottom:116px;right:24px;z-index:999;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:rgba(20,20,30,.7);color:var(--text);font-size:.9rem;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 12px rgba(0,0,0,.3);backdrop-filter:blur(12px)}
-.imm-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);color:var(--accent);transform:scale(1.08)}
-@media(max-width:640px){.imm-btn{width:36px;height:36px;bottom:104px;right:16px;font-size:.85rem}}
-.immersive .imm-btn{bottom:16px}
 /* SHARE MODAL */
 .share-modal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
 .share-modal.show{display:flex}
@@ -650,8 +640,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   </div>
 </div>
 
-<button class="imm-btn" id="immBtn" title="观赛模式">👁️</button>
-<button class="imm-exit" id="immExit" title="退出观赛模式"><span class="ico">✕</span> 退出沉浸模式</button>
 
 <div class="tab-content" id="tab-standings">
 <div class="container tab-main">
@@ -784,6 +772,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time">2026-06-28 20:10</div>
+          <div class="log-content"><span class="log-tag ui">精简</span><strong>🗑️ 移除观赛沉浸模式</strong> — 因实用性不高，完整删除沉浸模式所有相关代码：CSS 类（`.immersive` 相关隐藏/放大样式）、HTML 入口按钮（`#immBtn` + `#immExit`）、JS 切换逻辑；页面精简后减轻加载负担。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-28 16:00</div>
           <div class="log-content"><span class="log-tag ui">优化</span><strong>🏅 淘汰赛页面移动端适配 + 赛程列表折叠</strong> — ① 桌面浏览器保留 6 列树状对阵图；移动端改为纵向轮次卡片排列，无横向溢出问题。② 淘汰赛赛程列表由全量渲染改为默认显示最近 4 场，点击「展开全部 N 场▼」展开全部 32 场，再次点击收起。③ bracket tree 在移动端卡片化展示（圆角分轮 + 浅色微背景），与整体体验一致。</div>
@@ -3002,12 +2994,6 @@ function doShareMatch(){let m=ALL_MATCHES.find(x=>x.id===_shareMid);if(!m)return
   if(navigator.share)navigator.share({title:'世界杯比赛',text:txt,url:'https://fifa.skj1023.top'}).catch(()=>{});
   else{navigator.clipboard.writeText(txt).then(()=>{let t=document.getElementById('calToast'),tt=document.getElementById('calToastText');if(t&&tt){tt.textContent='已复制';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}}).catch(()=>{});}
   closeShare();}
-// ===== IMMERSIVE MODE =====
-(function(){let ib=document.getElementById('immBtn'),eb=document.getElementById('immExit');
-  function toggleImm(){document.documentElement.classList.toggle('immersive');
-    if(ib)ib.textContent=document.documentElement.classList.contains('immersive')?'✕':'👁️';}
-  if(ib)ib.addEventListener('click',toggleImm);
-  if(eb)eb.addEventListener('click',toggleImm);})();
 // ===== TIMELINE =====
 function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)return;
   let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r4'},{l:'16强',k:'r5'},{l:'1/4',k:'r6'},{l:'半决赛',k:'r7'},{l:'7.19 决赛',k:'fin'}];
