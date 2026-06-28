@@ -2866,7 +2866,7 @@ function getTeamStats(name){
     let x=m.h===name?hs:as,y=m.h===name?as:hs;
     gf+=x;ga+=y;
     if(x===y){d++;pts++}
-    else if((m.h===name&&x>y)||(m.a===name&&y>x)){w++;pts+=3;let mg=Math.abs(x-y);if(mg>mxW)mxW=mg}
+    else if(x>y){w++;pts+=3;let mg=Math.abs(x-y);if(mg>mxW)mxW=mg}
     else{l++;let mg=Math.abs(x-y);if(mg>mxL)mxL=mg}
     if(y===0)cs++;
   }
@@ -2922,7 +2922,8 @@ ${rowSm('⭐ 球星',a.stars,b.stars)}
 </div>`;}
 function buildComparePickers(){let s1=document.getElementById('cmpSelect1'),s2=document.getElementById('cmpSelect2');if(!s1||!s2)return;
   let teams=Object.keys(SQUADS).sort();let o=teams.map(t=>'<option value="'+t+'">'+t+'</option>').join('');
-  s1.innerHTML='<option value="">选择球队 A</option>'+o;s2.innerHTML='<option value="">选择球队 B</option>'+o;}
+  s1.innerHTML='<option value="">选择球队 A</option>'+o;s2.innerHTML='<option value="">选择球队 B</option>'+o;
+  s1.value='阿根廷';s2.value='法国';setTimeout(compareTeams,50);}
 // ===== DETAIL =====
 function openDetail(mid){let m=ALL_MATCHES.find(x=>x.id===mid);if(!m)return;let hd=td(m.h),ad=td(m.a),isD=m.st==='done',isL=isLive(m);
   let sc=isD?m.s:(isL?m.s:'vs'),loc=LOCATIONS[m.h+'vs'+m.a]||'待定',hl=m.hl||'暂无',bi=isD?'✅ 已结束':(isL?'🔴 进行中':'⏳ 即将开赛');
