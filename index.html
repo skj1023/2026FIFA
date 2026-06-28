@@ -70,44 +70,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .nav-util.tv{color:var(--red);border-color:color-mix(in srgb,var(--red) 38%,var(--border));background:color-mix(in srgb,var(--red) 12%,var(--bg-card))}
 @media(max-width:640px){.nav{padding-right:104px}.mobile-top-actions{position:fixed;top:max(4px,env(safe-area-inset-top));right:8px;height:36px;z-index:10000;display:flex;align-items:center;gap:8px;padding:3px 4px 3px 12px;border-radius:999px;background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--bg) 78%,transparent) 18%,color-mix(in srgb,var(--bg-card) 94%,transparent) 100%);border:1px solid color-mix(in srgb,var(--border) 70%,transparent);box-shadow:-18px 0 24px color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(20px) saturate(1.35);-webkit-backdrop-filter:blur(20px) saturate(1.35)}.mobile-top-actions .nav-util{display:flex}.light .mobile-top-actions{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.72) 18%,rgba(255,255,255,.94) 100%);border-color:rgba(0,0,0,.07);box-shadow:-18px 0 24px rgba(255,255,255,.72),0 4px 18px rgba(0,0,0,.06)}.light .nav-util{background:rgba(255,255,255,.82);border-color:rgba(0,0,0,.08);box-shadow:0 4px 16px rgba(0,0,0,.07)}.light .nav-util.tv{background:rgba(255,59,48,.09);border-color:rgba(255,59,48,.22)}.deep-night .mobile-top-actions{background:linear-gradient(90deg,transparent,rgba(0,0,0,.86) 22%,rgba(8,8,8,.96));box-shadow:-18px 0 24px rgba(0,0,0,.72)}}
 
-/* ===== CALENDAR BUTTON ===== */
-.cal-btn{display:inline-flex;align-items:center;gap:6px;padding:6px 14px;border-radius:20px;border:1px solid var(--accent);background:rgba(0,113,227,.1);color:var(--accent);font-size:.75rem;font-weight:500;cursor:pointer;transition:all .25s;text-decoration:none;white-space:nowrap;line-height:1.3}
-.cal-btn:hover{background:rgba(0,113,227,.22);transform:scale(1.04);box-shadow:0 2px 12px rgba(0,113,227,.15)}
-.cal-btn:active{transform:scale(0.96)}
-.cal-btn.done{opacity:.4;pointer-events:none;cursor:default}
-.cal-icon{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:8px;border:1px solid var(--border);background:var(--bg-card);cursor:pointer;font-size:.75rem;transition:all .2s;color:var(--text-dim);flex-shrink:0;position:relative}
-.cal-icon:hover{border-color:var(--accent);background:var(--bg-card-hover);color:var(--accent);transform:scale(1.08)}
-.cal-icon.sel{border-color:var(--accent);background:rgba(0,113,227,.15);color:var(--accent)}
-.cal-icon.sel::after{content:'✓';position:absolute;top:-6px;right:-6px;font-size:.55rem;background:var(--accent);color:#fff;border-radius:50%;width:14px;height:14px;display:flex;align-items:center;justify-content:center;line-height:1}
 
-.cal-btn.done{opacity:.4;pointer-events:none;cursor:default}
-
-/* Calendar toast */
-.cal-toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:12px 20px;font-size:.82rem;color:var(--text);box-shadow:0 8px 32px rgba(0,0,0,.4);z-index:9999;opacity:0;transition:all .3s ease;pointer-events:none;backdrop-filter:blur(12px);white-space:nowrap}
-.cal-toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-/* ===== SUBSCRIBE MODAL ===== */
-.sub-modal{display:none;position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:20px}
-.sub-modal.show{display:flex}
-.sub-modal-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-width:440px;width:100%;padding:28px 24px 20px;box-shadow:0 16px 48px rgba(0,0,0,.5);max-height:90vh;overflow-y:auto}
-.sub-modal-box h3{font-size:1.05rem;font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:8px}
-.sub-modal-box .sub-meta{font-size:.78rem;color:var(--text-sec);margin-bottom:16px;line-height:1.5}
-.sub-modal-box .sub-url{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:.75rem;color:var(--text);word-break:break-all;margin-bottom:12px;font-family:monospace;user-select:all}
-.sub-modal-box .sub-steps{font-size:.78rem;color:var(--text-sec);margin-bottom:16px;line-height:1.7}
-.sub-modal-box .sub-steps li{margin-bottom:4px}
-.sub-modal-box .sub-btns{display:flex;gap:8px;flex-wrap:wrap}
-.sub-modal-box .sub-btns button,.sub-modal-box .sub-btns a{flex:1;min-width:100px;padding:10px 16px;border-radius:12px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;text-align:center;text-decoration:none;transition:all .2s}
-.sub-modal-box .btn-copy{background:var(--accent);color:#fff}
-.sub-modal-box .btn-copy:hover{filter:brightness(1.15)}
-.sub-modal-box .btn-copy.copied{background:var(--green)}
-.sub-modal-box .btn-dl{background:var(--bg-card-hover);color:var(--text);border:1px solid var(--border)}
-.sub-modal-box .btn-dl:hover{background:var(--border)}
-.sub-modal-box .btn-close{background:transparent;color:var(--text-dim);border:1px solid var(--border);min-width:auto;flex:0}
-.sub-modal-box .btn-close:hover{color:var(--text)}
-.cal-toast .icon{margin-right:8px}
-
-/* Match card calendar icon placement */
-.match-card .match-top{display:flex;justify-content:space-between;align-items:center}
-.match-card .match-top .cal-icon-wrap{flex-shrink:0;margin-left:8px}
 
 /* TAB SYSTEM */
 .tab-content{display:none;animation:tabFade .3s ease}
@@ -379,21 +342,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .t3-stats strong{color:var(--text)}
 
 
-/* SHARE BUTTON */
-.share-btn{display:inline-flex;align-items:center;gap:4px;padding:4px 10px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-dim);font-size:.65rem;cursor:pointer;transition:all .2s;flex-shrink:0}
-.share-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);color:var(--accent)}
 /* ELIMINATION MARKERS */
 .st .rk3{color:var(--orange);font-weight:700}.st .rk4{color:var(--red);font-weight:500}
-/* SHARE MODAL */
-.share-modal{position:fixed;inset:0;z-index:99999;background:rgba(0,0,0,.6);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px}
-.share-modal.show{display:flex}
-.share-modal-box{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);max-width:380px;width:100%;padding:24px;text-align:center}
-.share-modal-box .share-preview{margin:16px 0;padding:20px;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-sm)}
-.share-modal-box .share-preview .sp-score{font-size:2rem;font-weight:850;margin:8px 0}
-.share-btns{display:flex;gap:8px;justify-content:center}
-.share-btns button{padding:10px 20px;border-radius:12px;border:none;font-size:.82rem;font-weight:600;cursor:pointer;transition:all .2s}
-.btn-share{background:var(--accent);color:#fff}.btn-share:hover{filter:brightness(1.15)}
-.btn-sclose{background:var(--bg-card-hover);color:var(--text-dim);border:1px solid var(--border)}
 /* DARK MODE ENHANCED */
 .deep-night{--bg:#000!important;--bg-card:#0d0d0d!important;--bg-card-hover:#151515!important;--border:#1a1a1a!important}
 .deep-night .nav{background:rgba(0,0,0,.92)!important}.deep-night .hero{background:linear-gradient(180deg,#05050a,#000)!important}
@@ -513,9 +463,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
         </div>
         <div class="nx-extra" id="nxExtra"></div>
               </div>
-              <div style="margin-top:10px;display:flex;justify-content:center">
-                <span class="cal-btn" id="nxCalBtn" onclick="addToCalendar(getNextMatch())">📅 预约到系统日历</span>
-              </div>
             </div>
           </div>
   <div class="timeline-wrap" id="timelineWrap"></div>
@@ -550,10 +497,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <section class="section" id="matches">
     <div class="section-header">
           <h2 class="section-title">📅 比赛</h2>
-          <div style="display:flex;align-items:center;gap:6px;flex-wrap:wrap">
-            <span class="section-sub">北京时间 · 共 104 场</span>
-            <a class="cal-btn" href="javascript:openSubModal()" style="text-decoration:none;font-size:.7rem">📅 全部赛程到日历</a>
-          </div>
+          <span class="section-sub">北京时间 · 共 104 场</span>
         </div>
         <div class="match-filter" id="matchFilter">
           <span class="filter-pill active" data-filter="upcoming">📅 未赛</span>
@@ -567,29 +511,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     </div>
     </div>
 
-    <!-- Toast -->
-        <div class="cal-toast" id="calToast"><span class="icon">✅</span><span id="calToastText">已添加到日历</span></div>
-
-        <!-- Subscribe Modal -->
-        <div class="sub-modal" id="subModal">
-          <div class="sub-modal-box">
-            <h3>📅 订阅全部赛程到手机日历</h3>
-            <div class="sub-meta">将下面链接复制到你的日历 app 中，通过「URL 订阅」或「添加日历」功能导入。之后赛程更新会自动同步。</div>
-            <div class="sub-url" id="subUrl">https://fifa.skj1023.top/calendar.ics</div>
-            <ol class="sub-steps">
-              <li>📋 点下方「复制链接」</li>
-              <li>📱 打开手机自带「日历」app</li>
-              <li>⚙️ 找「设置」→「订阅日历」/「添加日历」</li>
-              <li>📎 粘贴链接 → 点完成即可</li>
-            </ol>
-            <div class="sub-btns">
-              <button class="btn-copy" id="subCopyBtn" onclick="copySubUrl()">📋 复制链接</button>
-              <a class="btn-dl" href="https://fifa.skj1023.top/calendar.ics" download="calendar.ics">⬇️ 下载 ICS</a>
-              <button class="btn-close" onclick="closeSubModal()">✕</button>
-            </div>
-            <p style="font-size:.7rem;color:var(--text-dim);margin-top:12px;text-align:center">💡 iOS 用户：<a href="webcal://fifa.skj1023.top/calendar.ics" style="color:var(--accent)">点此用 webcal 一键订阅</a></p>
-          </div>
-        </div>
 
 
 
@@ -617,7 +538,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
         <select id="cmpSelect1"><option value="">选择球队 A</option></select>
         <span class="cp-vs">VS</span>
         <select id="cmpSelect2"><option value="">选择球队 B</option></select>
-        <button class="cal-btn" style="font-size:.72rem" onclick="compareTeams()">对比</button>
+        <button style="font-size:.72rem;padding:8px 14px;border-radius:12px;border:1px solid var(--border);background:var(--bg-card);color:var(--text-sec);cursor:pointer;transition:all .2s" onclick="compareTeams()">对比</button>
       </div>
       <div id="compareResult"><div style="color:var(--text-dim);text-align:center;padding:20px">选择两支球队后点击「对比」</div></div>
     </div>
@@ -629,16 +550,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <div class="detail-box" id="detailBox"></div>
 </div>
 
-<div class="share-modal" id="shareModal">
-  <div class="share-modal-box">
-    <h3 style="margin-bottom:4px">📤 分享比赛</h3>
-    <div class="share-preview" id="sharePreview"></div>
-    <div class="share-btns">
-      <button class="btn-share" onclick="doShareMatch()">📤 分享</button>
-      <button class="btn-sclose" onclick="closeShare()">取消</button>
-    </div>
-  </div>
-</div>
 
 
 <div class="tab-content" id="tab-standings">
@@ -684,9 +595,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="info-item"><span class="ic">🕐</span><div><div class="il">时差</div><div class="iv">美东 = 京 −12h · 70% 场次 06–11点</div></div></div>
       <div class="info-item"><span class="ic">⚖️</span><div><div class="il">赛制</div><div class="iv">12组×4队 → 小组前2+8最佳第3 → 32强</div></div></div>
       <div class="info-item"><span class="ic">🎵</span><div><div class="il">主题曲</div><div class="iv">《Dai Dai》Shakira × Burna Boy</div></div></div>
-      <a class="info-item" href="javascript:openSubModal()" style="text-decoration:none;color:inherit;background:linear-gradient(135deg,rgba(0,113,227,.08),rgba(52,199,89,.06));border:1px solid rgba(0,113,227,.2);cursor:pointer"><span class="ic">📅</span><div><div class="il">全部赛程到手机日历</div><div class="iv" style="color:var(--accent)">📋 复制链接 → 日历粘贴即可 · 自动更新</div></div></a>
     </div>
-    <p style="text-align:center;font-size:.75rem;color:var(--text-dim);margin-top:-8px;margin-bottom:16px">💡 点「全部赛程到手机日历」→ 复制链接 → 去日历 app 粘贴订阅。之后赛程更新自动同步。</p>
     <div class="milestone" style="margin-bottom:16px">
       <div class="milestone-item"><div class="num">48</div><div class="lbl">参赛球队</div></div>
       <div class="milestone-item"><div class="num">72</div><div class="lbl">小组赛</div></div>
@@ -772,6 +681,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time">2026-06-29 00:15</div>
+          <div class="log-content"><span class="log-tag ui">精简</span><strong>🗑️ 移除日程订阅和分享比赛卡片功能</strong> — 完整删除：全部日历相关 CSS 类（`.cal-btn`、`.cal-icon`、`.cal-toast`、`.sub-modal`）、分享 CSS 类（`.share-btn`、`.share-modal`）、HTML 入口（预约/订阅按钮、分享弹窗、Toast）、JS 函数群（`addToCalendar`、`openSubModal`、`openShare/closeShare/doShareMatch` 等共 12 个函数）及匹配卡片中的日历图标和分享按钮渲染；页面体积缩减约 12KB。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-28 20:10</div>
           <div class="log-content"><span class="log-tag ui">精简</span><strong>🗑️ 移除观赛沉浸模式</strong> — 因实用性不高，完整删除沉浸模式所有相关代码：CSS 类（`.immersive` 相关隐藏/放大样式）、HTML 入口按钮（`#immBtn` + `#immExit`）、JS 切换逻辑；页面精简后减轻加载负担。</div>
@@ -2409,9 +2322,8 @@ function mc(m,isUpcoming=false){
   let hr=RANK2022[hd.nm]?`<span class="r22">22${RANK2022[hd.nm]}</span>`:'';
   let ar=RANK2022[ad.nm]?`<span class="r22">22${RANK2022[ad.nm]}</span>`:'';
     let mid=m.id||m.g+m.r+'_'+m.h+'_'+m.a;
-    let calIcon=m.st!=='done'?`<span class="cal-icon" id="cal_${mid}" onclick="event.stopPropagation();addToCalendar('${mid}')" data-mid="${mid}" title="添加到系统日历">📅</span>`:'';
     return `<div class="match-card ${m.st} fade-in" data-match-id="${mid}">
-    <div class="match-meta"><span class="tag ${t}">${tl}</span><span>${m.g}组 第${m.r}轮</span><span>·</span><span>${m.t}</span>${calIcon}</div>
+    <div class="match-meta"><span class="tag ${t}">${tl}</span><span>${m.g}组 第${m.r}轮</span><span>·</span><span>${m.t}</span></div>
     <div class="match-vs">
       <div class="team home"><span class="flag">${hd.fl}</span><span class="name">${hd.nm}</span>${hr}</div>
       ${sc}
@@ -2560,102 +2472,6 @@ function renderFinalCountdown(){
   if(units)units.innerHTML='<div class="fc-unit"><strong>'+days+'</strong><span>天</span></div><div class="fc-unit"><strong>'+String(hours).padStart(2,'0')+'</strong><span>小时</span></div><div class="fc-unit"><strong>'+String(mins).padStart(2,'0')+'</strong><span>分钟</span></div><div class="fc-unit"><strong>'+String(secs).padStart(2,'0')+'</strong><span>秒</span></div>';
 }
 
-// ===== CALENDAR FUNCTIONS =====
-function findMatchById(id){
-  return ALL_MATCHES.find(m=>m.id===id||(m.g+m.r+'_'+m.h+'_'+m.a)===id);
-}
-function getNextMatch(){
-  let now=new Date();
-  let grace=2.5*60*60*1000;
-  let candidates=ALL_MATCHES.filter(m=>m.st!=='done'&&m.t).map(m=>({...m,dt:parseMatchTime(m.t)})).filter(m=>m.dt>now-grace);
-  return candidates.length?candidates.reduce((a,b)=>a.dt<b.dt?a:b):null;
-}
-function icsEscape(s){return (s||'').split(',').join('\,').split(';').join('\;').split(String.fromCharCode(10)).join('\n').split(String.fromCharCode(13)).join('')}
-function icsDate(dt){return dt.getFullYear()+('0'+(dt.getMonth()+1)).slice(-2)+('0'+dt.getDate()).slice(-2)+'T'+('0'+dt.getHours()).slice(-2)+('0'+dt.getMinutes()).slice(-2)+'00'}
-function generateICS(m){
-  let hd=td(m.h),ad=td(m.a);
-  let dt=parseMatchTime(m.t);
-  let end=new Date(dt.getTime()+2*60*60*1000);
-  let title=hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+' · 2026世界杯 '+m.g+'组';
-  let desc='2026 FIFA World Cup · '+m.g+'组 第'+m.r+'轮\n'+hd.nm+' vs '+ad.nm;
-  let p=predOf(m);
-  if(p)desc+='\n\n🔮 福福预测：'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm+'（'+p.tag+' · '+p.confidence+'%）';
-  let venue=loc(m.h,m.a);
-  let ics='BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//福福//FIFA Calendar//ZH\nBEGIN:VEVENT\n';
-  ics+='DTSTART:'+icsDate(dt)+'\nDTEND:'+icsDate(end)+'\n';
-  ics+='SUMMARY:'+icsEscape(title)+'\n';
-  ics+='DESCRIPTION:'+icsEscape(desc)+'\n';
-  ics+='LOCATION:'+icsEscape('📍 '+venue)+'\n';
-  ics+='BEGIN:VALARM\nTRIGGER:-PT15M\nACTION:DISPLAY\nDESCRIPTION:比赛即将开始\nEND:VALARM\n';
-  ics+='END:VEVENT\nEND:VCALENDAR';
-  return ics;
-}
-function showToast(msg,icon){
-  let el=document.getElementById('calToast');
-  let txt=document.getElementById('calToastText');
-  let ic=el.querySelector('.icon');
-  if(ic)ic.textContent=icon||'✅';
-  if(txt)txt.textContent=msg;
-  el.classList.add('show');
-  clearTimeout(el._t);
-  el._t=setTimeout(()=>el.classList.remove('show'),3000);
-}
-function addToCalendar(matchId){
-  let m=typeof matchId==='string'?findMatchById(matchId):matchId;
-  if(!m||m.st==='done')return;
-  let hd=td(m.h),ad=td(m.a);
-  let ics=generateICS(m);
-  let fn='FIFA2026_'+m.g+m.r+'_'+hd.nm+'_vs_'+ad.nm+'.ics';
-  let blob=new Blob([ics],{type:'text/calendar;charset=utf-8'});
-  // Try Web Share API first (Android → share to calendar app)
-  if(navigator.share&&navigator.canShare){
-    let file=new File([blob],fn,{type:'text/calendar'});
-    if(navigator.canShare({files:[file]})){
-      navigator.share({files:[file],title:'2026世界杯 '+hd.nm+' vs '+ad.nm}).catch(()=>{});
-      showToast('✅ 已添加到日历','📅');
-      return;
-    }
-  }
-  // Fallback: download
-  let url=URL.createObjectURL(blob);
-  let a=document.createElement('a');
-  a.href=url;a.download=fn;
-  document.body.appendChild(a);a.click();
-  document.body.removeChild(a);
-  setTimeout(()=>URL.revokeObjectURL(url),5000);
-  showToast('✅ 已添加到日历','📅');
-}
-// ===== SUBSCRIBE MODAL =====
-function openSubModal(){
-  document.getElementById('subModal').classList.add('show');
-  let btn=document.getElementById('subCopyBtn');
-  btn.textContent='📋 复制链接';btn.classList.remove('copied');
-}
-function closeSubModal(){
-  document.getElementById('subModal').classList.remove('show');
-}
-function copySubUrl(){
-  let url=document.getElementById('subUrl').textContent;
-  if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(url).then(()=>{
-      let btn=document.getElementById('subCopyBtn');
-      btn.textContent='✅ 已复制';btn.classList.add('copied');
-      setTimeout(()=>{btn.textContent='📋 复制链接';btn.classList.remove('copied');},2000);
-    }).catch(()=>fallbackCopy(url));
-  }else{
-    fallbackCopy(url);
-  }
-}
-function fallbackCopy(text){
-  let ta=document.createElement('textarea');
-  ta.value=text;ta.style.position='fixed';ta.style.opacity='0';
-  document.body.appendChild(ta);ta.select();
-  try{document.execCommand('copy')}catch(e){}
-  document.body.removeChild(ta);
-  let btn=document.getElementById('subCopyBtn');
-  btn.textContent='✅ 已复制';btn.classList.add('copied');
-  setTimeout(()=>{btn.textContent='📋 复制链接';btn.classList.remove('copied');},2000);
-}
 // ===== SCORERS =====
 const SCORERS={"梅西":"阿根廷 5","姆巴佩":"法国 4","维尼修斯":"巴西 4","登贝莱":"法国 4","哈兰德":"挪威 4","Elijah Just":"新西兰 3","Ismaïla Sarr":"塞内加尔 3","Ismael Saibari":"摩洛哥 3","乔纳森·戴维":"加拿大 3","库尼亚":"巴西 3","布罗比":"荷兰 3","Johan Manzambi":"瑞士 3","昂达夫":"德国 3","镰田大地":"日本 2","加克波":"荷兰 2","Julián Quiñones":"墨西哥 2","上田綺世":"日本 2","特罗萨德":"比利时 2","哈弗茨":"德国 2","奥亚萨瓦尔":"西班牙 2","Pape Gueye":"塞内加尔 2","拉林":"加拿大 2","Nicolas Pépé":"科特迪瓦 2","萨默维尔":"荷兰 2","埃兰加":"瑞典 2","Daniel Muñoz":"哥伦比亚 2","凯恩":"英格兰 2","C罗":"葡萄牙 2","巴洛贡":"美国 2","萨拉赫":"埃及 2","阿亚里":"瑞典 2","伊萨克":"瑞典 2","雷扎扬":"伊朗 2","Maxi Araújo":"乌拉圭 2","Rubén Vargas":"瑞士 2","Ermin Mahmic":"波黑 2"};
 // ===== NEXT MATCH & HELPERS =====
@@ -2938,7 +2754,7 @@ function renderKnockoutMatches() {
       + '<span class="ko-time" style="color:var(--text-dim);font-size:.68rem;min-width:72px">'+m.t+'</span>'
       + '<span class="ko-teams" style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;min-width:190px">'
       + '<span class="tn">'+hd.fl+hd.nm+'</span>'+scoreStr+'<span class="tn">'+ad.fl+ad.nm+'</span>'
-      + '</span><a class="cal-icon" onclick="addToCalendar(\''+m.id+'\');event.stopPropagation();" title="添加到日历" style="flex-shrink:0">📅</a></div>'+hl+'</div>';
+      + '</span></div>'+hl+'</div>';
   }
   let html = '<div class="ko-list-wrap collapsed" id="koListWrap"><div class="ko-list-head"><div><div class="ko-list-title">📋 淘汰赛赛程列表</div><div style="font-size:.72rem;color:var(--text-dim);margin-top:2px">默认显示最近 '+visibleLimit+' 场，展开后查看全部 '+ko.length+' 场</div></div><button class="ko-toggle" id="koToggle" type="button">展开全部 '+ko.length+' 场 ▼</button></div>';
   for (let rk of [4,5,6,7,8,9]) {
@@ -2957,8 +2773,6 @@ function renderKnockoutMatches() {
 
 
 
-// ===== SHARE =====
-let _shareMid=null;
 // ===== TODAY PICK =====
 function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)return;
   let now=new Date(),today=now.getDate(),tM=now.getMonth()+1,ts=tM+'/'+today;
@@ -2983,17 +2797,6 @@ function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)retu
   e.innerHTML='<div class="tp-badge"><span class="dot"></span>'+badge+'</div><div class="tp-main"><span class="tp-teams">'+hd.fl+hd.nm+' vs '+ad.fl+ad.nm+'</span><span class="tp-meta">'+best.t+' · '+best.g+'组 · 第'+best.r+'轮</span><a href="#" class="tp-go" data-tab="matches">查看详情 →</a></div><div class="tp-reason">'+reason+'</div>';
   e.querySelector('.tp-go').addEventListener('click',function(e2){e2.preventDefault();switchTab('matches');});
 }
-function openShare(mid){_shareMid=mid;let m=ALL_MATCHES.find(x=>x.id===mid);if(!m)return;
-  let hd=td(m.h),ad=td(m.a),sc=m.st==='done'?m.s:(isLive(m)?m.s:'vs');
-  document.getElementById('sharePreview').innerHTML='<div class="sp-teams">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="sp-score">'+sc+'</div><div class="sp-meta">'+m.t+' · '+m.g+'组</div><div class="sp-footer">🌎 2026 FIFA World Cup</div>';
-  document.getElementById('shareModal').classList.add('show');}
-function closeShare(){document.getElementById('shareModal').classList.remove('show');_shareMid=null;}
-function doShareMatch(){let m=ALL_MATCHES.find(x=>x.id===_shareMid);if(!m)return;
-  let hd=td(m.h),ad=td(m.a),sc=m.st==='done'?m.s:(isLive(m)?m.s:'vs');
-  let txt='⚽ '+hd.fl+hd.nm+' '+sc+' '+ad.fl+ad.nm+'\n'+m.t+' · '+m.g+'组\n🌎 2026 FIFA World Cup\nfifa.skj1023.top';
-  if(navigator.share)navigator.share({title:'世界杯比赛',text:txt,url:'https://fifa.skj1023.top'}).catch(()=>{});
-  else{navigator.clipboard.writeText(txt).then(()=>{let t=document.getElementById('calToast'),tt=document.getElementById('calToastText');if(t&&tt){tt.textContent='已复制';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2000);}}).catch(()=>{});}
-  closeShare();}
 // ===== TIMELINE =====
 function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)return;
   let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r4'},{l:'16强',k:'r5'},{l:'1/4',k:'r6'},{l:'半决赛',k:'r7'},{l:'7.19 决赛',k:'fin'}];
@@ -3032,17 +2835,13 @@ function openDetail(mid){let m=ALL_MATCHES.find(x=>x.id===mid);if(!m)return;let 
   document.getElementById('detailOverlay').classList.add('show');}
 function closeDetail(){document.getElementById('detailOverlay').classList.remove('show');}
 document.addEventListener('click',function(e){let o=document.getElementById('detailOverlay');if(o&&e.target===o)closeDetail();});
-// ===== PATCH match cards with share + detail =====
+// ===== PATCH match cards with detail =====
 (function(){let _rm=renderMatchList;if(!_rm)return;
   renderMatchList=function(c,dk,dd,fd,iu){_rm(c,dk,dd,fd,iu);
-    c.querySelectorAll('.match-card').forEach(cd=>{let mi=cd.getAttribute('data-mid');if(mi){cd.style.cursor='pointer';cd.addEventListener('click',function(e){if(!e.target.closest('.share-btn,.cal-icon,.cal-btn'))openDetail(mi);});}});
-    c.querySelectorAll('.share-btn').forEach(b=>{b.addEventListener('click',function(e){e.stopPropagation();openShare(this.dataset.mid);});});};
-  // Patch mc function to add share button + data-mid
+    c.querySelectorAll('.match-card').forEach(cd=>{let mi=cd.getAttribute('data-mid');if(mi){cd.style.cursor='pointer';cd.addEventListener('click',function(e){openDetail(mi);});}});};
   let _mc=mc;if(_mc){mc=function(m,iu=false){
     let card=_mc(m,iu);
-    card=card.replace('class="match-card','data-mid="'+m.id+'" class="match-card');
-    let calIdx=card.lastIndexOf('class="cal-icon"');
-    if(calIdx>0){let ins=card.lastIndexOf('<',calIdx);card=card.slice(0,ins)+'<span class="share-btn" data-mid="'+m.id+'" style="margin-left:auto">📤</span>'+card.slice(ins);}
+    card=card.replace('class="match-card",'data-mid="'+m.id+'" class="match-card');
     return card;};}
 })();
 
