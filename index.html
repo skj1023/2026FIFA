@@ -67,11 +67,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .nav-util{width:36px;height:36px;border-radius:999px;border:1px solid var(--border);background:color-mix(in srgb,var(--bg-card) 86%,transparent);color:var(--text);font-size:1rem;cursor:pointer;text-decoration:none;transition:all .2s;display:flex;align-items:center;justify-content:center;line-height:1;box-shadow:var(--shadow);backdrop-filter:blur(18px) saturate(1.35);-webkit-backdrop-filter:blur(18px) saturate(1.35);flex-shrink:0}
 .nav-util:hover,.nav-util:active{background:var(--bg-card-hover);border-color:var(--accent);transform:scale(1.06)}
 .nav-util.tv{color:var(--red);border-color:color-mix(in srgb,var(--red) 38%,var(--border));background:color-mix(in srgb,var(--red) 12%,var(--bg-card))}
-.mobile-top-actions{display:flex;align-items:center;gap:6px;margin-left:auto;padding-left:12px;position:sticky;right:0;background:inherit;z-index:2}
+.nav-actions{display:flex;align-items:center;gap:6px;margin-left:auto;flex-shrink:0;padding-left:8px;position:sticky;right:0;z-index:2;background:inherit}
 .light .nav-util{background:rgba(255,255,255,.82);border-color:rgba(0,0,0,.08);box-shadow:0 4px 16px rgba(0,0,0,.07)}
 .light .nav-util.tv{background:rgba(255,59,48,.09);border-color:rgba(255,59,48,.22)}
-.deep-night .mobile-top-actions{background:none}
-@media(max-width:640px){.nav{padding-right:110px}.mobile-top-actions{position:fixed;top:max(4px,env(safe-area-inset-top));right:8px;height:36px;z-index:10000;display:flex;align-items:center;gap:8px;padding:3px 4px 3px 12px;border-radius:999px;background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--bg) 78%,transparent) 18%,color-mix(in srgb,var(--bg-card) 94%,transparent) 100%);border:1px solid color-mix(in srgb,var(--border) 70%,transparent);box-shadow:-18px 0 24px color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(20px) saturate(1.35);-webkit-backdrop-filter:blur(20px) saturate(1.35);position:fixed;margin-left:0}.light .mobile-top-actions{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.72) 18%,rgba(255,255,255,.94) 100%);border-color:rgba(0,0,0,.07);box-shadow:-18px 0 24px rgba(255,255,255,.72),0 4px 18px rgba(0,0,0,.06)}.deep-night .mobile-top-actions{background:linear-gradient(90deg,transparent,rgba(0,0,0,.86) 22%,rgba(8,8,8,.96));box-shadow:-18px 0 24px rgba(0,0,0,.72)}}
+.deep-night .nav-actions{background:none}
+@media(max-width:640px){.nav{padding-right:0}.nav-actions{position:sticky;right:6px;z-index:3;padding-left:12px;background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--bg) 78%,transparent) 18%,color-mix(in srgb,var(--bg-card) 94%,transparent) 100%);backdrop-filter:blur(20px) saturate(1.35);-webkit-backdrop-filter:blur(20px) saturate(1.35)}.light .nav-actions{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.72) 18%,rgba(255,255,255,.94) 100%)}.deep-night .nav-actions{background:linear-gradient(90deg,transparent,rgba(0,0,0,.86) 22%,rgba(8,8,8,.96))}}
 
 
 
@@ -430,11 +430,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <a href='#' data-tab='bracket'>🏅 淘汰赛</a>
   <a href='#' data-tab='info'>ℹ️ 信息</a>
   <a href='#' data-tab='log'>📝 日志</a>
+  <div class="nav-actions" aria-label="快捷操作">
+    <a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播" class="nav-util tv" id="navTv">📺</a>
+    <button type="button" class="nav-util" id="navTheme" title="切换背景">🌙</button>
+  </div>
 </nav>
-<div class="mobile-top-actions" aria-label="快捷操作">
-  <a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播" class="nav-util tv" id="navTv">📺</a>
-  <button type="button" class="nav-util" id="navTheme" title="切换背景">🌙</button>
-</div>
 <div class="tab-content active" id="tab-home">
 <div class="hero">
   <div class="trophy-glow"></div>
