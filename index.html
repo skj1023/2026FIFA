@@ -2892,33 +2892,34 @@ function compareTeams(){let s1=document.getElementById('cmpSelect1'),s2=document
   let row=(lb,v1,v2)=>'<div class="cr-row"><span class="cr-val-a">'+v1+'</span><span class="cr-label">'+lb+'</span><span class="cr-val-b">'+v2+'</span>'+bar(v1,v2)+'</div>';
   let rowSm=(lb,v1,v2)=>'<div class="cr-row-sm"><span class="cr-val-a">'+v1+'</span><span class="cr-label">'+lb+'</span><span class="cr-val-b">'+v2+'</span>'+bar(v1,v2)+'</div>';
   let gdCls=v=>v>0?'pos':v<0?'neg':'zero';
+  let gdTxt=v=>v>0?'+'+v:v<0?''+v:'0';
   let formDot=(c,i)=>{let m={W:'w',L:'l',D:'d'};let cls=m[c]||'u';return'<span class="cr-form-dot '+cls+'">'+(c||'—')+'</span>'};
   let fmtFormA=a.fm.split('').map((c,i)=>formDot(c,i)).join('');
   let fmtFormB=b.fm.split('').map((c,i)=>formDot(c,i)).join('');
   let histA=a.brStr+(a.by?'('+a.by+')':'');
   let histB=b.brStr+(b.by?'('+b.by+')':'');
-  el.innerHTML='<div class="compare-result">\
-<div class="cr-header">\
-<div class="cr-team cr-team-a"><span class="cr-flag">'+m1.fl+'</span><span class="cr-name">'+m1.nm+'</span><span class="cr-meta cr-meta-a">'+a.ct+(histA?' · '+histA:'')+'</span></div>\
-<div class="cr-vs">VS</div>\
-<div class="cr-team cr-team-b"><span class="cr-flag">'+m2.fl+'</span><span class="cr-name">'+m2.nm+'</span><span class="cr-meta cr-meta-b">'+b.ct+(histB?' · '+histB:'')+'</span></div>\
-</div>\
-<div class="cr-section-title">📊 核心数据</div>\
-'+row('积分',a.pts,b.pts)+\
-row('总进球',a.gf,b.gf)+\
-row('总失球',a.ga,b.ga)+\
-'<div class="cr-row"><span class="cr-gd-val-a '+gdCls(a.gd)+'">'+(a.gd>0?'+'+a.gd:a.gd)+'</span><span class="cr-label">净胜球</span><span class="cr-gd-val-b '+gdCls(b.gd)+'">'+(b.gd>0?'+'+b.gd:b.gd)+'</span></div>'+\
-row('零封',a.cs,b.cs)+\
-'<div class="cr-section-title">🧑‍🤝‍🧑 阵容</div>\
-'+rowSm('🧤 门将',a.gks,b.gks)+\
-rowSm('🛡️ 后卫',a.dfs,b.dfs)+\
-rowSm('⚡ 中场',a.mds,b.mds)+\
-rowSm('⚽ 前锋',a.fws,b.fws)+\
-rowSm('⭐ 球星',a.stars,b.stars)+\
-'<div class="cr-section-title">📈 近5场走势</div>\
-<div class="cr-form-row"><div class="cr-form-a">'+fmtFormA+'</div><div class="cr-form-b">'+fmtFormB+'</div></div>\
-<div class="cr-monthl">⚽ 已赛 '+a.pl+' 场 · '+a.w+'胜'+a.d+'平'+a.l+'负 &nbsp;|&nbsp; ⚽ 已赛 '+b.pl+' 场 · '+b.w+'胜'+b.d+'平'+b.l+'负</div>\
-</div>';}
+  el.innerHTML=`<div class="compare-result">
+<div class="cr-header">
+<div class="cr-team cr-team-a"><span class="cr-flag">${m1.fl}</span><span class="cr-name">${m1.nm}</span><span class="cr-meta cr-meta-a">${a.ct}${histA?' · '+histA:''}</span></div>
+<div class="cr-vs">VS</div>
+<div class="cr-team cr-team-b"><span class="cr-flag">${m2.fl}</span><span class="cr-name">${m2.nm}</span><span class="cr-meta cr-meta-b">${b.ct}${histB?' · '+histB:''}</span></div>
+</div>
+<div class="cr-section-title">📊 核心数据</div>
+${row('积分',a.pts,b.pts)}
+${row('总进球',a.gf,b.gf)}
+${row('总失球',a.ga,b.ga)}
+<div class="cr-row"><span class="cr-gd-val-a ${gdCls(a.gd)}">${gdTxt(a.gd)}</span><span class="cr-label">净胜球</span><span class="cr-gd-val-b ${gdCls(b.gd)}">${gdTxt(b.gd)}</span></div>
+${row('零封',a.cs,b.cs)}
+<div class="cr-section-title">🧑‍🤝‍🧑 阵容</div>
+${rowSm('🧤 门将',a.gks,b.gks)}
+${rowSm('🛡️ 后卫',a.dfs,b.dfs)}
+${rowSm('⚡ 中场',a.mds,b.mds)}
+${rowSm('⚽ 前锋',a.fws,b.fws)}
+${rowSm('⭐ 球星',a.stars,b.stars)}
+<div class="cr-section-title">📈 近5场走势</div>
+<div class="cr-form-row"><div class="cr-form-a">${fmtFormA}</div><div class="cr-form-b">${fmtFormB}</div></div>
+<div class="cr-monthl">⚽ 已赛 ${a.pl} 场 · ${a.w}胜${a.d}平${a.l}负 &nbsp;|&nbsp; ⚽ 已赛 ${b.pl} 场 · ${b.w}胜${b.d}平${b.l}负</div>
+</div>`;}
 function buildComparePickers(){let s1=document.getElementById('cmpSelect1'),s2=document.getElementById('cmpSelect2');if(!s1||!s2)return;
   let teams=Object.keys(SQUADS).sort();let o=teams.map(t=>'<option value="'+t+'">'+t+'</option>').join('');
   s1.innerHTML='<option value="">选择球队 A</option>'+o;s2.innerHTML='<option value="">选择球队 B</option>'+o;}
