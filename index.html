@@ -47,15 +47,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .hero .live-count{display:inline-flex;align-items:center;gap:6px;margin-top:16px;padding:8px 20px;background:rgba(52,199,89,.1);border:1px solid rgba(52,199,89,.25);border-radius:100px;font-size:.82rem;color:var(--green)}
 .hero-live-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:10px 28px;background:rgba(255,69,58,.12);border:1px solid rgba(255,69,58,.3);border-radius:100px;font-size:.88rem;font-weight:600;color:var(--red);text-decoration:none;transition:all .25s;backdrop-filter:blur(8px)}.hero-live-btn:hover{background:rgba(255,69,58,.25);border-color:var(--red);transform:scale(1.04);box-shadow:0 4px 20px rgba(255,69,58,.2)}
 /* FIXED BUTTONS */
-.tm-btn{position:fixed;top:16px;right:16px;z-index:999;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:rgba(20,20,30,.7);color:var(--text);font-size:.9rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.3);backdrop-filter:blur(12px)}.tm-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);transform:scale(1.08)}
-.tv-btn{position:fixed;top:62px;right:16px;z-index:999;width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,69,58,.3);background:rgba(255,69,58,.12);color:var(--red);font-size:.85rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.3);backdrop-filter:blur(12px);text-decoration:none}.tv-btn:hover{background:rgba(255,69,58,.25);border-color:var(--red);transform:scale(1.08)}
+/* FIXED ACTION BUTTONS (fullscreen, back-to-top; TV/theme now in nav) */
 .fs-btn{position:fixed;bottom:24px;right:24px;z-index:999;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:rgba(20,20,30,.7);color:var(--text);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.3);backdrop-filter:blur(12px)}.fs-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);transform:scale(1.08)}
 .top-btn{position:fixed;bottom:70px;right:24px;z-index:999;width:38px;height:38px;border-radius:50%;border:1px solid var(--border);background:rgba(20,20,30,.7);color:var(--text);font-size:1.05rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .25s;box-shadow:0 2px 12px rgba(0,0,0,.3);backdrop-filter:blur(12px)}.top-btn:hover{background:var(--bg-card-hover);border-color:var(--accent);transform:scale(1.08)}
-@media(max-width:640px){.tm-btn,.tv-btn{display:none}.fs-btn{width:36px;height:36px;font-size:.85rem;bottom:16px;right:16px}.top-btn{width:36px;height:36px;font-size:.9rem;bottom:60px;right:16px}}
+/* Mobile: hide standalone fixed buttons (replaced by nav-integrated) */
+@media(max-width:640px){.fs-btn{width:36px;height:36px;font-size:.85rem;bottom:16px;right:16px}.top-btn{width:36px;height:36px;font-size:.9rem;bottom:60px;right:16px}}
 .pulse-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);animation:pulse 1.5s ease-in-out infinite}
 @keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(52,199,89,.5)}50%{box-shadow:0 0 0 8px rgba(52,199,89,0)}}
 /* NAV */
-.nav{position:sticky;top:0;z-index:100;display:flex;gap:0;padding:0 12px;background:rgba(10,10,15,.85);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;box-shadow:0 1px 0 rgba(255,255,255,.02)}
+.nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;gap:0;padding:0 8px;background:rgba(10,10,15,.85);backdrop-filter:blur(20px) saturate(1.4);-webkit-backdrop-filter:blur(20px) saturate(1.4);border-bottom:1px solid var(--border);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;box-shadow:0 1px 0 rgba(255,255,255,.02)}
 .light .nav{background:rgba(255,255,255,.82);border-bottom-color:rgba(0,0,0,.08);box-shadow:0 1px 0 rgba(0,0,0,.03),0 8px 24px rgba(0,0,0,.04)}
 .deep-night .nav{background:rgba(0,0,0,.92)!important;border-bottom-color:#1a1a1a}
 .nav::-webkit-scrollbar{display:none}
@@ -63,12 +63,15 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .nav a:hover{color:var(--text)}.nav a.active{color:#fff}.light .nav a.active{color:var(--accent)}
 .nav a::after{content:'';position:absolute;bottom:0;left:50%;width:0;height:2px;border-radius:2px 2px 0 0;background:var(--accent);transition:all .3s cubic-bezier(.4,0,.2,1)}
 .nav a.active::after{left:8px;width:calc(100% - 16px)}
-/* Mobile fixed top actions: outside the scrollable nav, pinned to viewport */
-.mobile-top-actions{display:none}
-.nav-util{width:36px;height:36px;border-radius:999px;border:1px solid var(--border);background:color-mix(in srgb,var(--bg-card) 86%,transparent);color:var(--text);font-size:1rem;cursor:pointer;text-decoration:none;transition:all .2s;align-items:center;justify-content:center;line-height:1;box-shadow:0 4px 18px var(--shadow);backdrop-filter:blur(18px) saturate(1.35);-webkit-backdrop-filter:blur(18px) saturate(1.35)}
+/* Nav-util buttons: integrated into nav bar, sticky-right */
+.nav-util{width:36px;height:36px;border-radius:999px;border:1px solid var(--border);background:color-mix(in srgb,var(--bg-card) 86%,transparent);color:var(--text);font-size:1rem;cursor:pointer;text-decoration:none;transition:all .2s;display:flex;align-items:center;justify-content:center;line-height:1;box-shadow:var(--shadow);backdrop-filter:blur(18px) saturate(1.35);-webkit-backdrop-filter:blur(18px) saturate(1.35);flex-shrink:0}
 .nav-util:hover,.nav-util:active{background:var(--bg-card-hover);border-color:var(--accent);transform:scale(1.06)}
 .nav-util.tv{color:var(--red);border-color:color-mix(in srgb,var(--red) 38%,var(--border));background:color-mix(in srgb,var(--red) 12%,var(--bg-card))}
-@media(max-width:640px){.nav{padding-right:104px}.mobile-top-actions{position:fixed;top:max(4px,env(safe-area-inset-top));right:8px;height:36px;z-index:10000;display:flex;align-items:center;gap:8px;padding:3px 4px 3px 12px;border-radius:999px;background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--bg) 78%,transparent) 18%,color-mix(in srgb,var(--bg-card) 94%,transparent) 100%);border:1px solid color-mix(in srgb,var(--border) 70%,transparent);box-shadow:-18px 0 24px color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(20px) saturate(1.35);-webkit-backdrop-filter:blur(20px) saturate(1.35)}.mobile-top-actions .nav-util{display:flex}.light .mobile-top-actions{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.72) 18%,rgba(255,255,255,.94) 100%);border-color:rgba(0,0,0,.07);box-shadow:-18px 0 24px rgba(255,255,255,.72),0 4px 18px rgba(0,0,0,.06)}.light .nav-util{background:rgba(255,255,255,.82);border-color:rgba(0,0,0,.08);box-shadow:0 4px 16px rgba(0,0,0,.07)}.light .nav-util.tv{background:rgba(255,59,48,.09);border-color:rgba(255,59,48,.22)}.deep-night .mobile-top-actions{background:linear-gradient(90deg,transparent,rgba(0,0,0,.86) 22%,rgba(8,8,8,.96));box-shadow:-18px 0 24px rgba(0,0,0,.72)}}
+.mobile-top-actions{display:flex;align-items:center;gap:6px;margin-left:auto;padding-left:12px;position:sticky;right:0;background:inherit;z-index:2}
+.light .nav-util{background:rgba(255,255,255,.82);border-color:rgba(0,0,0,.08);box-shadow:0 4px 16px rgba(0,0,0,.07)}
+.light .nav-util.tv{background:rgba(255,59,48,.09);border-color:rgba(255,59,48,.22)}
+.deep-night .mobile-top-actions{background:none}
+@media(max-width:640px){.mobile-top-actions{position:fixed;top:max(4px,env(safe-area-inset-top));right:8px;height:36px;z-index:10000;display:flex;align-items:center;gap:8px;padding:3px 4px 3px 12px;border-radius:999px;background:linear-gradient(90deg,transparent 0%,color-mix(in srgb,var(--bg) 78%,transparent) 18%,color-mix(in srgb,var(--bg-card) 94%,transparent) 100%);border:1px solid color-mix(in srgb,var(--border) 70%,transparent);box-shadow:-18px 0 24px color-mix(in srgb,var(--bg) 72%,transparent);backdrop-filter:blur(20px) saturate(1.35);-webkit-backdrop-filter:blur(20px) saturate(1.35);position:fixed;margin-left:0}.light .mobile-top-actions{background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,.72) 18%,rgba(255,255,255,.94) 100%);border-color:rgba(0,0,0,.07);box-shadow:-18px 0 24px rgba(255,255,255,.72),0 4px 18px rgba(0,0,0,.06)}.deep-night .mobile-top-actions{background:linear-gradient(90deg,transparent,rgba(0,0,0,.86) 22%,rgba(8,8,8,.96));box-shadow:-18px 0 24px rgba(0,0,0,.72)}}
 
 
 
@@ -688,6 +691,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
         <div class="log-item">
           <div class="log-time">2026-06-28 20:10</div>
           <div class="log-content"><span class="log-tag ui">精简</span><strong>🗑️ 移除观赛沉浸模式</strong> — 因实用性不高，完整删除沉浸模式所有相关代码：CSS 类（`.immersive` 相关隐藏/放大样式）、HTML 入口按钮（`#immBtn` + `#immExit`）、JS 切换逻辑；页面精简后减轻加载负担。</div>
+        </div>
+        <div class="log-item">
+          <div class="log-time">2026-06-28 17:50</div>
+          <div class="log-content"><span class="log-tag ui">修复</span><strong>🐛 修复 JS SyntaxError 导致首页无数据/Tab 无法切换 + 📺/🌙 按钮整合进导航栏 + cron 修复</strong> — ① 第 2844 行 <code>replace()</code> 的字符串引号错位导致整个 <code>&lt;script&gt;</code> 不执行，首页无数据、所有 Tab 无法切换、更改主题后也不生效。修复引号分隔。② 📺电视和🌙颜色切换按钮从独立 <code>position:fixed</code> 元素改为嵌入导航栏右侧，与导航栏背景/毛玻璃效果统一；桌面端随导航滚动移动，不再浮在右上角。③ 🗑️ 删除失效的 <code>.tm-btn</code>/<code>.tv-btn</code> CSS 和 HTML 及 JS 双重绑定。④ 🕐 修复 FIFA calendar.ics 自动更新 cron（exit code 127，bash PATH 不全），改用 Python 脚本后正常运行。</div>
         </div>
         <div class="log-item">
           <div class="log-time">2026-06-28 16:00</div>
@@ -1475,8 +1482,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 </div>
 </div>
 
-<button class="tm-btn" id="tmBtn" title="切换背景">🌙</button>
-<a class="tv-btn" id="tvBtn" href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" title="CCTV5 直播">📺</a>
+<!-- Nav-integrated buttons now in .mobile-top-actions inside nav -->
 <button class="fs-btn" id="fsBtn" title="全屏">⛶</button>
 <button class="top-btn" id="topBtn" title="回到顶部">↑</button>
 <footer class="footer">
@@ -2704,12 +2710,12 @@ document.querySelectorAll('.tab-link').forEach(a=>{
 
 // Theme toggle
 (function(){
-  let btn=document.getElementById('tmBtn');
-  let navBtn=document.getElementById('navTheme');
+  let btn=document.getElementById('navTheme');
+  if(!btn)return;
   let html=document.documentElement;
   function updateUI(light){
-    if(btn){btn.textContent=light?'☀️':'🌙';btn.title=light?'切换为深色':'切换为浅色'}
-    if(navBtn){navBtn.textContent=light?'☀️':'🌙';navBtn.title=light?'切换为深色':'切换为浅色'}
+    btn.textContent=light?'☀️':'🌙';
+    btn.title=light?'切换为深色':'切换为浅色';
   }
   function setTheme(light){
     if(light){html.classList.add('light')}else{html.classList.remove('light')}
@@ -2717,8 +2723,10 @@ document.querySelectorAll('.tab-link').forEach(a=>{
     localStorage.setItem('wc_theme',light?'light':'dark');
   }
   if(localStorage.getItem('wc_theme')==='light')setTheme(true);
-  if(btn)btn.addEventListener('click',function(){setTheme(!html.classList.contains('light'))});
-  if(navBtn)navBtn.addEventListener('click',function(e){e.preventDefault();setTheme(!html.classList.contains('light'))});
+  btn.addEventListener('click',function(e){
+    e.preventDefault();
+    setTheme(!html.classList.contains('light'));
+  });
 })();
 
 // Back to top
