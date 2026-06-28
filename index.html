@@ -786,10 +786,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <div class="log-content"><span class="log-tag ui">修复</span><strong>🔧 修复页面 JS 崩溃：favicon data URI + 变量遮蔽 + TDZ</strong> — ① favicon 的 data URI 中 `&lt;svg&gt;...&lt;/svg&gt;` 未经 URL 编码，部署到 GitHub Pages 后 HTML 解析器在 `&lt;/svg&gt;` 处提前截断 DOM，导致整个 `&lt;script&gt;` 不执行。修复：`%3Csvg...%3E` 编码。② `render()` 内 `let mc=document.getElementById("matchCount")` 的局部变量 `mc` 遮蔽了全局函数 `function mc(m)`，`render()` 执行到最新赛果渲染时调用 `mc(m)` 报错中断，后续代码失效。修复：改名为 `mcEl`。③ `const SCORERS` 声明在 `render()` 调用之后，`render()` 内调用 `renderScorers()` 时 `SCORERS` 处于 Temporal Dead Zone 报错。修复：移到 `render()` 之前。现本地验证全部 Tab 正常渲染，已推送 GitHub 并清理 CDN 缓存。</div>
         </div>
         <div class="log-item">
-        <div class="log-item">
           <div class="log-time">2026-06-28 11:20</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>📊 K组收官 + 淘汰赛对阵更新 + 射手榜修正</strong> — ① K5 哥伦比亚 0-0 葡萄牙：葡萄牙凭净胜球锁定 K 组头名，哥伦比亚列第二携手晋级。② K6 刚果(金) 3-1 乌兹别克。③ 淘汰赛更新 R08/R12/R16。④ 射手榜全面校订：姆巴佩 8→4、登贝莱 5→4、哈兰德 5→4、梅西 5→5 等，新增 12 名 ESPN 官方进球者。</div>
         </div>
+        <div class="log-item">
+          <div class="log-time">2026-06-28 11:50</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 J组收官 + R11 对阵更新</strong> — ① J5 约旦 1-3 阿根廷：阿根廷 9 分全胜锁定 J 组头名（R15 对阵佛得角）。② J6 阿尔及利亚 3-3 奥地利：奥地利 5 分凭净胜球拿到 J 组第二（R11 对阵西班牙）。小组赛全部 72 场完赛。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-28 01:56</div>
           <div class="log-content"><span class="log-tag ui">页面</span><strong>🏅 淘汰赛赛程 + 10项新功能 + UI/UX 全面升级</strong> — 小组赛 72 场全部完赛，页面进入淘汰赛阶段大版本更新。①<strong>淘汰赛 Tab</strong>：新增全部 32 场赛程（32强→16强→1/4决赛→半决赛→季军赛→决赛），树状对阵图动态渲染，赛程随小组赛结果自动填充对阵双方。②<strong>10 项新功能</strong>：射手榜与数据 Tab、球队对比工具、比赛分享图（Web Share API）、比赛详情弹窗、积分榜出线标记（第3名橘色/第4名红色）、观赛沉浸模式、深夜暗色模式（OLED 纯黑）、中英语言切换、赛事里程碑时间线。③<strong>UI/UX 升级</strong>：导航下划线跟手动效、比赛卡片 hover 浮起+蓝色发光、赛程与赛果合并为「比赛」Tab（顶部 Filter 栏：未赛/进行中/已完赛/全部）、入场动画 cubic-bezier 缓动优化。④<strong>今日推荐卡片</strong>移至首页，里程碑数据移至信息页。⑤修复：ALL_MATCHES L6 缺逗号导致 JS 解析失败、默认 active tab 不匹配、今日推荐初始化时序问题。</div>
         </div>
@@ -1711,8 +1715,8 @@ const ALL_MATCHES = [
   {id:"J2",g:"J",r:1,t:"6/17 12:00",h:"奥地利",a:"约旦",s:"3-1",st:"done",hl:"⚽ 奥地利3-1约旦：施密德21'首开纪录 · 奥尔万50'扳平 · 阿拉布76'乌龙 · 奥地利终场前再入一球锁定胜局，J组首轮全取3分"},
   {id:"J3",g:"J",r:2,t:"6/23 01:00",h:"阿根廷",a:"奥地利",s:"2-0",st:"done",hl:"⚽ 阿根廷2-0奥地利：梅西38'、90+5'双响，超越克洛泽独享世界杯历史射手王；阿根廷两连胜提前晋级32强（BBC确认FT）",pred:{date:"2026-06-20",ph:2,pa:0,winner:"h",confidence:73,tag:"阿根廷胜",basis:["梅西戴帽状态神勇","奥地利中场硬朗","卫冕冠军控制力"],reason:"阿根廷首轮梅西戴帽3-0完胜阿尔及利亚，卫冕冠军攻防俱佳；奥地利首轮3-1击败约旦展现欧战级硬度，但面对阿根廷的传控体系和梅西的个人能力仍处于下风，看好阿根廷稳取2连胜提前出线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"J4",g:"J",r:2,t:"6/23 11:00",h:"约旦",a:"阿尔及利亚",s:"1-2",st:"done",hl:"⚽ 阿尔及利亚2-1约旦：Nizar Al-Rashdan 36'先拔头筹，Nadhir Benbouali 69'头球扳平，Amine Gouiri 82'门前补射反超；阿尔及利亚下半场连追两球逆转拿下关键3分（ESPN/BBC确认FT）",pred:{date:"2026-06-20",ph:0,pa:2,winner:"a",confidence:65,tag:"阿尔及利亚胜",basis:["非洲冠军底蕴","约旦首轮消耗大","阿尔及利亚经验"],reason:"阿尔及利亚首轮0-3负阿根廷但场面并非一边倒，非洲冠军经验丰富调整能力强；约旦首轮1-3负奥地利暴露防守漏洞，面对阿尔及利亚的技术型攻击线恐难守住，看好北非之狐取首胜。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"J5",g:"J",r:3,t:"6/28 10:00",h:"约旦",a:"阿根廷",st:"upcoming",hl:"🐐 J组收官 · 梅西最后一届世界杯小组赛谢幕，约旦力争制造惊喜",pred:{date:"2026-06-25",ph:0,pa:3,winner:"a",confidence:79,tag:"阿根廷稳胜",basis:["梅西领衔","技术差距","轮换深度"],reason:"阿根廷即使轮换也保持明显的技术和比赛控制力优势，约旦要持续限制梅西和阿根廷中前场传跑难度极高，看好卫冕冠军稳健拿下。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"J6",g:"J",r:3,t:"6/28 10:00",h:"阿尔及利亚",a:"奥地利",st:"upcoming",hl:"⚔️ J组收官战 · 阿尔及利亚与奥地利争夺出线主动权",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:60,tag:"谨慎看平",basis:["双方硬度","出线压力","中场缠斗"],reason:"阿尔及利亚和奥地利都具备不错的对抗与纪律性，末轮争出线时中场缠斗会很激烈，谁先失误谁就可能出局，平局拉扯感较强。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"J5",g:"J",r:3,t:"6/28 10:00",h:"约旦",a:"阿根廷",s:"1-3",st:"done",hl:"🐐 阿根廷3-1约旦：卫冕冠军三战全胜9分锁定J组头名，约旦三连败小组出局",pred:{date:"2026-06-25",ph:0,pa:3,winner:"a",confidence:79,tag:"阿根廷稳胜",basis:["梅西领衔","技术差距","轮换深度"],reason:"阿根廷即使轮换也保持明显的技术和比赛控制力优势，约旦要持续限制梅西和阿根廷中前场传跑难度极高，看好卫冕冠军稳健拿下。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"J6",g:"J",r:3,t:"6/28 10:00",h:"阿尔及利亚",a:"奥地利",s:"3-3",st:"done",hl:"🤝 阿尔及利亚3-3奥地利：双方末轮上演进球大战各取1分，奥地利5分凭借净胜球优势拿到J组第二晋级，阿尔及利亚4分转入最佳第3名比较",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:60,tag:"谨慎看平",basis:["双方硬度","出线压力","中场缠斗"],reason:"阿尔及利亚和奥地利都具备不错的对抗与纪律性，末轮争出线时中场缠斗会很激烈，谁先失误谁就可能出局，平局拉扯感较强。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"K1",g:"K",r:1,t:"6/18 01:00",h:"葡萄牙",a:"刚果(金)",s:"1-1",st:"done",hl:"⚽ 葡萄牙1-1刚果(金)：内维斯6'首开纪录，维萨45+5'头球扳平，C罗第六届世界杯首秀双方握手言和各取1分"},
   {id:"K2",g:"K",r:1,t:"6/18 10:00",h:"乌兹别克",a:"哥伦比亚",s:"1-3",st:"done",hl:"⚽ 乌兹别克1-3哥伦比亚：哥伦比亚3-1击败乌兹别克斯坦，中亚新军首秀1-3告负"},
   {id:"K3",g:"K",r:2,t:"6/24 01:00",h:"葡萄牙",a:"乌兹别克",s:"5-0",st:"done",hl:"⚽ 葡萄牙5-0乌兹别克：C罗6'、39'双响，努诺·门德斯17'建功，Nematov 60'乌龙，莱奥87'破门；葡萄牙大胜升至K组前列（ESPN/FIFA/BBC确认FT）",pred:{date:"2026-06-21",ph:3,pa:0,winner:"h",confidence:76,tag:"葡萄牙大胜",basis:["C罗领衔","乌兹别克首战惨败","葡萄牙求胜心切"],reason:"葡萄牙首轮1-1意外被刚果(金)逼平，此战面对首轮1-3负哥伦比亚的中亚新军乌兹别克斯坦，实力和经验优势明显，C罗率领的攻击线有望迎来爆发。",sources:["FIFA","ESPN","Bing News"],locked:true}},
@@ -1737,7 +1741,7 @@ const ALL_MATCHES = [
   {id:"R08",g:"KO",r:4,t:"7/2 00:00",h:"英格兰",a:"待定(I/J/K第3)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · L1 vs 3rd I/J/K · 英格兰7分L组头名出线"},
   {id:"R09",g:"KO",r:4,t:"7/2 04:00",h:"比利时",a:"待定(A/I/J第3)",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · G1/J2 vs 3rd A/I/J · 比利时前两轮0-0伊朗后需末轮确定头名"},
   {id:"R10",g:"KO",r:4,t:"7/2 08:00",h:"美国",a:"波黑",st:"upcoming",hl:"🏟️ 利维球场·圣克拉拉 · D1 vs B3 · 东道主美国两连胜提前出线，主场迎战波黑"},
-  {id:"R11",g:"KO",r:4,t:"7/3 03:00",h:"西班牙",a:"待定(J组第二)",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · H1 vs J2 · 西班牙4-0沙特后欲锁定头名"},
+  {id:"R11",g:"KO",r:4,t:"7/3 03:00",h:"西班牙",a:"奥地利",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · H1 vs J2 · 西班牙头名出线迎战奥地利，奥地利 3-3 逼平阿尔及利亚后锁定 J 组第二"},
   {id:"R12",g:"KO",r:4,t:"7/3 07:00",h:"哥伦比亚",a:"克罗地亚",st:"upcoming",hl:"🏟️ BMO球场·多伦多 · K2 vs L2 · 哥伦比亚5分K组第二出线，克罗地亚6分L组第二晋级"},
   {id:"R13",g:"KO",r:4,t:"7/3 11:00",h:"瑞士",a:"待定(G/J第3)",st:"upcoming",hl:"🏟️ BC Place·温哥华 · B1 vs 3rd G/J · 瑞士7分B组头名出线"},
   {id:"R14",g:"KO",r:4,t:"7/4 02:00",h:"澳大利亚",a:"埃及",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · D2 vs G2"},
