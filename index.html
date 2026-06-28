@@ -2872,7 +2872,7 @@ function getTeamStats(name){
   }
   let gd=gf-ga;
   let sq=SQUADS[name]||[];
-  let gks=sq.filter(p=>p.p==='门将').length,dfs=sq.filter(p=>p.p==='后卫').length,mds=sq.filter(p=>p.p==='中场').length,fws=sq.filter(p=>p.p==='前锋').length,stars=sq.filter(p=>p.img).length;
+  let gks=sq.filter(p=>p.p==='门将').length,dfs=sq.filter(p=>p.p==='后卫').length,mds=sq.filter(p=>p.p==='中场').length,fws=sq.filter(p=>p.p==='前锋').length,stars=sq.filter(p=>(PP[p.n]||0)>=4).length;
   let fm=ms.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t)).slice(-5).map(m=>{
     let [hs,as]=m.s.split('-').map(Number);
     if(hs===as)return'D';
