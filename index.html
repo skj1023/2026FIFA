@@ -2841,7 +2841,7 @@ document.addEventListener('click',function(e){let o=document.getElementById('det
     c.querySelectorAll('.match-card').forEach(cd=>{let mi=cd.getAttribute('data-mid');if(mi){cd.style.cursor='pointer';cd.addEventListener('click',function(e){openDetail(mi);});}});};
   let _mc=mc;if(_mc){mc=function(m,iu=false){
     let card=_mc(m,iu);
-    card=card.replace('class="match-card",'data-mid="'+m.id+'" class="match-card');
+    card=card.replace('class="match-card"', 'data-mid="'+m.id+'" class="match-card');
     return card;};}
 })();
 
