@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>🌎 2026 FIFA World Cup · 美加墨世界杯观赛主页</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏆</text></svg>">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🏆%3C/text%3E%3C/svg%3E">
 <style>
 /* ===== RESET & BASE ===== */
 *{margin:0;padding:0;box-sizing:border-box}
@@ -780,6 +780,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
         <div class="log-item">
           <div class="log-time">2026-06-28 07:04</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 L组两场收官战已同步切换 live：巴拿马0-2英格兰、克罗地亚2-1加纳</strong> — ESPN World Cup scoreboard/summary 与 BBC Sport Scores &amp; Fixtures 最新一致显示：L5巴拿马vs英格兰已到90+1&#39;，贝林厄姆62&#39;、凯恩67&#39;先后建功，英格兰暂以2-0领跑并逼近小组头名；L6克罗地亚vs加纳已到90+2&#39;，Sučić 31&#39;首开纪录、Luckassen 73&#39;扳平、Vlasić 83&#39;再度超出。两场比赛开球未满120分钟，福福已将 L5/L6 从upcoming切换为live，并同步补写实时比分与简述；K/J两组稍后场次经 ESPN 与 BBC 复核仍为 Scheduled。当前北京时间07:04不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+        <div class="log-item">
+          <div class="log-time">2026-06-28 08:30</div>
+          <div class="log-content"><span class="log-tag ui">修复</span><strong>🔧 修复页面 JS 崩溃：favicon data URI + 变量遮蔽 + TDZ</strong> — ① favicon 的 data URI 中 `&lt;svg&gt;...&lt;/svg&gt;` 未经 URL 编码，部署到 GitHub Pages 后 HTML 解析器在 `&lt;/svg&gt;` 处提前截断 DOM，导致整个 `&lt;script&gt;` 不执行。修复：`%3Csvg...%3E` 编码。② `render()` 内 `let mc=document.getElementById("matchCount")` 的局部变量 `mc` 遮蔽了全局函数 `function mc(m)`，`render()` 执行到最新赛果渲染时调用 `mc(m)` 报错中断，后续代码失效。修复：改名为 `mcEl`。③ `const SCORERS` 声明在 `render()` 调用之后，`render()` 内调用 `renderScorers()` 时 `SCORERS` 处于 Temporal Dead Zone 报错。修复：移到 `render()` 之前。现本地验证全部 Tab 正常渲染，已推送 GitHub 并清理 CDN 缓存。</div>
         </div>
         <div class="log-item">
           <div class="log-time">2026-06-28 01:56</div>
@@ -2621,12 +2625,14 @@ function fallbackCopy(text){
   btn.textContent='✅ 已复制';btn.classList.add('copied');
   setTimeout(()=>{btn.textContent='📋 复制链接';btn.classList.remove('copied');},2000);
 }
+// ===== SCORERS =====
+const SCORERS={"姆巴佩":"法国 8","登贝莱":"法国 5","哈兰德":"挪威 5","梅西":"阿根廷 5","C罗":"葡萄牙 4","维尼修斯":"巴西 3","拉林":"加拿大 3","戴维":"加拿大 3","上田綺世":"日本 3","萨拉赫":"埃及 3","凯恩":"英格兰 3","Pape Gueye":"塞内加尔 3","哈弗茨":"德国 3","巴洛贡":"美国 3","加克波":"荷兰 3","阿亚里":"瑞典 3","库尼亚":"巴西 2","特罗萨德":"比利时 3","布罗比":"荷兰 2","努涅斯":"乌拉圭 2","伊萨克":"瑞典 2","费兰·托雷斯":"西班牙 2","福登":"英格兰 2","厄德高":"挪威 2","恰尔汗奥卢":"土耳其 2"};
 // ===== NEXT MATCH & HELPERS =====
 function render(){
   let done=ALL_MATCHES.filter(m=>m.st==="done");
   let upc=ALL_MATCHES.filter(m=>m.st!=="done"&&m.t);
   
-  let mc=document.getElementById("matchCount");if(mc)mc.textContent=done.length;
+  let mcEl=document.getElementById("matchCount");if(mcEl)mcEl.textContent=done.length;
   let pc=document.getElementById("playedCount");if(pc)pc.textContent=done.length;
   
   // Progress bar
@@ -2987,7 +2993,6 @@ function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)re
   let now=new Date(),ai=-1;for(let i=stages.length-1;i>=0;i--){if(now>=dates[stages[i].k]){ai=i;break;}}
   w.innerHTML='<div class="timeline">'+stages.map((s,i)=>{let c=i<ai?'past':(i===ai?'active':'');return '<div class="tl-node '+c+'"><div class="tl-dot"></div><div class="tl-label">'+s.l+'</div></div>';}).join('')+'</div>';}
 // ===== SCORERS =====
-const SCORERS={"姆巴佩":"法国 8","登贝莱":"法国 5","哈兰德":"挪威 5","梅西":"阿根廷 5","C罗":"葡萄牙 4","维尼修斯":"巴西 3","拉林":"加拿大 3","戴维":"加拿大 3","上田綺世":"日本 3","萨拉赫":"埃及 3","凯恩":"英格兰 3","Pape Gueye":"塞内加尔 3","哈弗茨":"德国 3","巴洛贡":"美国 3","加克波":"荷兰 3","阿亚里":"瑞典 3","库尼亚":"巴西 2","特罗萨德":"比利时 3","布罗比":"荷兰 2","努涅斯":"乌拉圭 2","伊萨克":"瑞典 2","费兰·托雷斯":"西班牙 2","福登":"英格兰 2","厄德高":"挪威 2","恰尔汗奥卢":"土耳其 2"};
 function renderScorers(){let e=document.getElementById('scorerList');if(!e)return;
   let arr=Object.entries(SCORERS).map(([n,v])=>{let p=v.split(' ');return{name:n,team:p[0],goals:parseInt(p[1])};}).sort((a,b)=>b.goals-a.goals);
   let m=['🥇','🥈','🥉'];
