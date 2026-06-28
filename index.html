@@ -419,13 +419,20 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .tl-label{font-size:.6rem;color:var(--text-dim);font-weight:600;white-space:nowrap}
 .tl-node.active .tl-label{color:var(--accent)}.tl-node.past .tl-label{color:var(--text-sec)}
 /* BRACKET TREE */
-.bracket-tree{display:grid;grid-template-columns:repeat(6,1fr);gap:3px;overflow-x:auto;padding:8px 4px;min-width:680px}
-.bracket-col{display:flex;flex-direction:column;gap:2px}
-.bracket-col .bc-title{font-size:.55rem;text-transform:uppercase;letter-spacing:.04em;color:var(--text-dim);text-align:center;padding:3px 0;margin-bottom:4px}
-.bc-node{background:var(--bg-card);border:1px solid var(--border);border-radius:6px;padding:4px 6px;font-size:.58rem;text-align:center;transition:all .15s;min-height:28px;display:flex;align-items:center;justify-content:center;gap:3px}
+.bracket-tree{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;overflow-x:visible;padding:8px 4px;width:100%;max-width:100%}
+.bracket-col{display:flex;flex-direction:column;gap:3px;min-width:0}
+.bracket-col .bc-title{font-size:.55rem;text-transform:uppercase;letter-spacing:.03em;color:var(--text-dim);text-align:center;padding:4px 0;margin-bottom:4px;position:sticky;top:43px;background:var(--bg-card);z-index:1;border-radius:6px}
+.bc-node{background:var(--bg-card);border:1px solid var(--border);border-radius:7px;padding:5px 6px;font-size:.58rem;text-align:center;transition:all .15s;min-height:30px;display:flex;align-items:center;justify-content:center;gap:3px;line-height:1.25;overflow:hidden;text-overflow:ellipsis}
 .bc-node.confirmed{border-color:var(--accent);background:rgba(0,113,227,.06)}
 .bc-node.tbd{color:var(--text-dim);border-style:dashed;opacity:.6}
-.bc-node .bf{font-size:.7rem}
+.bc-node .bf{font-size:.72rem;flex-shrink:0}
+.ko-list-wrap{margin-top:14px;text-align:left;border-top:1px solid var(--border);padding-top:14px}
+.ko-list-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap}
+.ko-list-title{font-size:.9rem;font-weight:800;color:var(--text)}
+.ko-toggle{border:1px solid var(--border);background:var(--bg-card);color:var(--text-sec);border-radius:999px;padding:7px 12px;font-size:.72rem;font-weight:650;cursor:pointer;transition:all .2s}.ko-toggle:hover{border-color:var(--accent);color:var(--accent);background:var(--bg-card-hover)}
+.ko-round{margin-top:10px}.ko-round-title{font-size:.78rem;font-weight:800;color:var(--text-sec);margin:8px 0 6px}.ko-round-grid{display:flex;flex-direction:column;gap:6px}.ko-match.ko-hidden{display:none}.ko-list-wrap.expanded .ko-match.ko-hidden{display:block}.ko-list-wrap.expanded .ko-round.ko-empty{display:none}
+@media(max-width:640px){.bracket-wrap{padding:14px 12px;text-align:left;overflow:hidden}.bracket-wrap h3{text-align:left}.bracket-wrap p{text-align:left}.bracket-stages{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.bracket-tree{display:flex;flex-direction:column;gap:10px;padding:8px 0;min-width:0;overflow:visible}.bracket-col{border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.025);padding:9px;box-shadow:0 2px 12px rgba(0,0,0,.08)}.light .bracket-col{background:rgba(255,255,255,.72)}.bracket-col .bc-title{position:static;text-align:left;font-size:.72rem;font-weight:800;color:var(--text);padding:0 0 7px;margin-bottom:7px;border-bottom:1px solid var(--border);background:transparent}.bc-node{font-size:.74rem;min-height:34px;justify-content:flex-start;text-align:left;padding:7px 9px}.ko-list-head{align-items:flex-start}.ko-toggle{width:100%;justify-content:center}.ko-match{font-size:.74rem}.ko-match .ko-row{align-items:flex-start!important}.ko-match .ko-time{min-width:58px!important}.ko-match .ko-teams{justify-content:flex-start!important;flex-wrap:wrap}.ko-match .ko-hl{padding-left:0!important;margin-top:6px!important}}
+
 /* COMPARE */
 .compare-pickers{display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap}
 .compare-pickers select{padding:8px 12px;border-radius:10px;border:1px solid var(--border);background:var(--bg-card);color:var(--text);font-size:.8rem;outline:none;flex:1;min-width:120px}
@@ -777,6 +784,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+        <div class="log-item">
+          <div class="log-time">2026-06-28 16:00</div>
+          <div class="log-content"><span class="log-tag ui">优化</span><strong>🏅 淘汰赛页面移动端适配 + 赛程列表折叠</strong> — ① 桌面浏览器保留 6 列树状对阵图；移动端改为纵向轮次卡片排列，无横向溢出问题。② 淘汰赛赛程列表由全量渲染改为默认显示最近 4 场，点击「展开全部 N 场▼」展开全部 32 场，再次点击收起。③ bracket tree 在移动端卡片化展示（圆角分轮 + 浅色微背景），与整体体验一致。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-28 15:05</div>
           <div class="log-content"><span class="log-tag ui">优化</span><strong>☀️ 浅色模式顶部导航适配</strong> — 修复移动端浅色模式下顶部导航仍为深色、与📺/🌙悬浮按钮视觉割裂的问题：浅色模式下导航栏改为白色毛玻璃背景，active Tab 改用主题蓝色，右上角快捷按钮容器同步改为浅色渐变与轻阴影；深色/极深色模式保持原有暗色观感。</div>
@@ -2913,7 +2924,7 @@ document.querySelectorAll('.tab-link').forEach(a=>{
 function renderKnockoutMatches() {
   let container = document.getElementById('knockoutMatchList');
   if (!container) return;
-  let ko = ALL_MATCHES.filter(m => m.g === 'KO');
+  let ko = ALL_MATCHES.filter(m => m.g === 'KO').sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
   let rounds = {
     4: {name:'32强', dates:'6.29-7.4', icon:'💥'},
     5: {name:'16强', dates:'7.5-7.8', icon:'⚔️'},
@@ -2922,47 +2933,33 @@ function renderKnockoutMatches() {
     8: {name:'季军赛', dates:'7.19', icon:'🥉'},
     9: {name:'🏆 决赛', dates:'7.20', icon:'🏆'}
   };
-  let html = '';
-  let roundKeys = [4,5,6,7,8,9];
-  for (let rk of roundKeys) {
-    let info = rounds[rk];
-    let matches = ko.filter(m => m.r === rk);
-    if (!matches.length) continue;
-    html += '<div class="section-header" style="margin-top:12px"><h3 class="section-title" style="font-size:.95rem">'+info.icon+' '+info.name+' · '+info.dates+'</h3></div>';
-    html += '<div style="display:flex;flex-direction:column;gap:5px;margin-bottom:10px">';
-    // Sort matches by time
-    matches.sort((a,b) => {
-      let ta = parseMatchTime(a.t), tb = parseMatchTime(b.t);
-      return ta - tb;
-    });
-    for (let m of matches) {
-      let hd = td(m.h), ad = td(m.a);
-      let isDone = m.st === 'done';
-      let scoreStr = isDone ? ('<span class="ms">'+m.s+'</span>') : '<span class="ms" style="color:var(--text-dim)">vs</span>';
-      let statusClass = isDone ? 'done' : 'upcoming';
-      let timeLabel = m.t + (isDone ? '' : '');
-      html += '<div class="match-card '+statusClass+' fade-in" style="padding:8px 12px;font-size:.75rem">';
-      html += '<div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">';
-      html += '<span style="color:var(--text-dim);font-size:.68rem;min-width:72px">'+timeLabel+'</span>';
-      html += '<span style="flex:1;display:flex;align-items:center;justify-content:center;gap:4px">';
-      html += '<span class="tn">'+hd.fl+hd.nm+'</span>';
-      html += scoreStr;
-      html += '<span class="tn">'+ad.fl+ad.nm+'</span>';
-      html += '</span>';
-      html += '<a class="cal-icon" onclick="addToCalendar(\''+m.id+'\');event.stopPropagation();" title="添加到日历" style="flex-shrink:0">📅</a>';
-      html += '</div>';
-      if (m.hl && !isDone) {
-        html += '<div style="color:var(--text-dim);font-size:.65rem;margin-top:3px;padding-left:80px">'+m.hl+'</div>';
-      }
-      html += '</div>';
-    }
-    html += '</div>';
+  let visibleLimit = 4;
+  let visibleIds = new Set(ko.slice(0, visibleLimit).map(m=>m.id));
+  function matchHTML(m){
+    let hd = td(m.h), ad = td(m.a), isDone = m.st === 'done';
+    let scoreStr = isDone ? ('<span class="ms">'+m.s+'</span>') : '<span class="ms" style="color:var(--text-dim)">vs</span>';
+    let statusClass = isDone ? 'done' : 'upcoming';
+    let hidden = visibleIds.has(m.id) ? '' : ' ko-hidden';
+    let hl = m.hl && !isDone ? '<div class="ko-hl" style="color:var(--text-dim);font-size:.65rem;margin-top:3px;padding-left:80px;line-height:1.5">'+m.hl+'</div>' : '';
+    return '<div class="match-card ko-match '+statusClass+' fade-in'+hidden+'" data-mid="'+m.id+'" style="padding:9px 12px;font-size:.75rem">'
+      + '<div class="ko-row" style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">'
+      + '<span class="ko-time" style="color:var(--text-dim);font-size:.68rem;min-width:72px">'+m.t+'</span>'
+      + '<span class="ko-teams" style="flex:1;display:flex;align-items:center;justify-content:center;gap:5px;min-width:190px">'
+      + '<span class="tn">'+hd.fl+hd.nm+'</span>'+scoreStr+'<span class="tn">'+ad.fl+ad.nm+'</span>'
+      + '</span><a class="cal-icon" onclick="addToCalendar(\''+m.id+'\');event.stopPropagation();" title="添加到日历" style="flex-shrink:0">📅</a></div>'+hl+'</div>';
   }
+  let html = '<div class="ko-list-wrap collapsed" id="koListWrap"><div class="ko-list-head"><div><div class="ko-list-title">📋 淘汰赛赛程列表</div><div style="font-size:.72rem;color:var(--text-dim);margin-top:2px">默认显示最近 '+visibleLimit+' 场，展开后查看全部 '+ko.length+' 场</div></div><button class="ko-toggle" id="koToggle" type="button">展开全部 '+ko.length+' 场 ▼</button></div>';
+  for (let rk of [4,5,6,7,8,9]) {
+    let info = rounds[rk], matches = ko.filter(m => m.r === rk);
+    if (!matches.length) continue;
+    let hasVisible = matches.some(m=>visibleIds.has(m.id));
+    html += '<div class="ko-round '+(hasVisible?'':'ko-empty')+'"><div class="ko-round-title">'+info.icon+' '+info.name+' · '+info.dates+'</div><div class="ko-round-grid">'+matches.map(matchHTML).join('')+'</div></div>';
+  }
+  html += '</div>';
   container.innerHTML = html;
-  // Fade in
-  requestAnimationFrame(() => {
-    container.querySelectorAll('.fade-in').forEach(el => el.classList.add('vis'));
-  });
+  let wrap=document.getElementById('koListWrap'),btn=document.getElementById('koToggle');
+  if(btn&&wrap){btn.addEventListener('click',function(){let exp=wrap.classList.toggle('expanded');btn.textContent=exp?'收起赛程 ▲':'展开全部 '+ko.length+' 场 ▼';});}
+  requestAnimationFrame(() => { container.querySelectorAll('.fade-in').forEach(el => el.classList.add('vis')); });
 }
 
 
