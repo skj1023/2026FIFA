@@ -718,6 +718,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
       <div class="log-item">
+          <div class="log-time">2026-06-30 07:12</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🎯 R03 实时比分已刷新：德国1-1巴拉圭，比赛进入点球大战</strong> — 福福根据 ESPN World Cup scoreboard 最新可见信息同步更新：北京时间 6/30 04:30 开球的 R03 德国vs巴拉圭在常规/加时阶段已战成 1-1，当前状态显示为 <strong>Pens</strong>，尚未出现最终胜者，因此本站继续保持 <code>live</code>，并把比赛卡片实时比分从 0-0 刷新为 1-1、简述改为“进入点球大战”。R04 荷兰vs摩洛哥经同页复核仍为北京时间 09:00 待开球；当前北京时间 07:12 不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+      <div class="log-item">
           <div class="log-time">2026-06-30 05:00</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🏁 R02 完赛 + R03 切换 live：巴西2-1日本，德国0-0巴拉圭</strong> — 福福根据 ESPN World Cup scoreboard、FIFA Matches 与 BBC Sport Scores &amp; Fixtures 最新交叉复核：R02 巴西vs日本已 Full time，巴西 2-1 淘汰日本晋级16强；由于北京时间 6/30 01:00 开球至今已超过 120 分钟，本站已将 R02 从 live 切换为 done，并同步把 7/6 的 R19 写入为“巴西 vs R05胜者”。同时 R03 德国vs巴拉圭最新已到 34&#39;、比分 0-0，仍在进行中，本站已将其从 upcoming 切换为 live 并补写实时简述。当前北京时间 05:00 不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
         </div>
@@ -1724,7 +1728,7 @@ const ALL_MATCHES = [
   // ===== 淘汰赛 32强 (6.29-7.4) =====
   {id:"R01",g:"KO",r:4,t:"6/29 03:00",h:"南非",a:"加拿大",s:"0-1",st:"done",hl:"🍁 加拿大1-0南非：Stephen Eustáquio 补时绝杀，32强首战一击制胜，加拿大率先晋级16强",pred:{locked:true,ph:1,pa:2,confidence:62,tag:"加拿大小胜",reason:"加拿大前场速度和转换质量更好，南非韧性足但淘汰赛经验与终结稳定性略吃亏。",basis:["东道主气势","边路速度","南非防反"]}},
   {id:"R02",g:"KO",r:4,t:"6/30 01:00",h:"巴西",a:"日本",s:"2-1",st:"done",hl:"⚽ 巴西2-1日本：ESPN、FIFA 与 BBC 最新一致确认FT，桑巴军团在32强战险胜过关并率先落位 7/6 的 R19。",pred:{locked:true,ph:2,pa:1,confidence:66,tag:"巴西险胜",reason:"日本组织纪律性很强，但巴西前场个人爆点更多，淘汰赛一两个瞬间足以改变比赛。",basis:["巴西爆点","日本纪律","小比分"]}},
-  {id:"R03",g:"KO",r:4,t:"6/30 04:30",h:"德国",a:"巴拉圭",s:"0-0",st:"live",hl:"🔴 德国0-0巴拉圭：ESPN、FIFA 与 BBC 最新均显示 34' 仍在进行中，32强战暂时僵持。",pred:{locked:true,ph:2,pa:0,confidence:70,tag:"德国控场",reason:"德国中前场压迫和阵地战层次更完整，巴拉圭需要长时间低位防守，反击机会有限。",basis:["控球优势","高位压迫","巴拉圭低位"]}},
+  {id:"R03",g:"KO",r:4,t:"6/30 04:30",h:"德国",a:"巴拉圭",s:"1-1",st:"live",hl:"🔴 德国1-1巴拉圭：ESPN 最新比分页可见状态已进入 Pens，32强战暂未产生最终胜者。",pred:{locked:true,ph:2,pa:0,confidence:70,tag:"德国控场",reason:"德国中前场压迫和阵地战层次更完整，巴拉圭需要长时间低位防守，反击机会有限。",basis:["控球优势","高位压迫","巴拉圭低位"]}},
   {id:"R04",g:"KO",r:4,t:"6/30 09:00",h:"荷兰",a:"摩洛哥",st:"upcoming",hl:"🏟️ BBVA球场·瓜达卢佩 · F1 vs C2 · 荷兰5-1大胜瑞典登顶F组；摩洛哥4-2收官战后7分列C组第二",pred:{locked:true,ph:2,pa:1,confidence:61,tag:"荷兰微优",reason:"摩洛哥反击锋利，但荷兰近期进攻打开后边路和中路衔接更顺，预计会是胶着小胜。",basis:["荷兰火力","摩洛哥反击","边路对位"]}},
   {id:"R05",g:"KO",r:4,t:"7/1 01:00",h:"科特迪瓦",a:"挪威",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · I2 vs E2",pred:{locked:true,ph:1,pa:2,confidence:58,tag:"挪威加时边缘",reason:"科特迪瓦身体对抗强，但挪威锋线终结点更明确，比赛可能被拖入最后阶段才分出胜负。",basis:["挪威锋线","非洲对抗","胶着局"]}},
   {id:"R06",g:"KO",r:4,t:"7/1 05:00",h:"法国",a:"瑞典",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · I1 vs F2 · 法国两连胜提前晋级，姆巴佩状态火热；瑞典5-1大胜突尼斯后前景可期",pred:{locked:true,ph:3,pa:1,confidence:74,tag:"法国晋级",reason:"法国进攻点太多，姆巴佩和登贝莱状态在线；瑞典有冲击力，但防线抗压会非常困难。",basis:["姆巴佩","登贝莱","法国深度"]}},
