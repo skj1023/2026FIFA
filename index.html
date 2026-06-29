@@ -730,6 +730,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <div class="log-content"><span class="log-tag ui">修复</span><strong>🐛 修复 JS SyntaxError 导致首页无数据/Tab 无法切换 + 📺/🌙 按钮整合进导航栏 + cron 修复</strong> — ① 第 2844 行 <code>replace()</code> 的字符串引号错位导致整个 <code>&lt;script&gt;</code> 不执行，首页无数据、所有 Tab 无法切换、更改主题后也不生效。修复引号分隔。② 📺电视和🌙颜色切换按钮从独立 <code>position:fixed</code> 元素改为嵌入导航栏右侧，与导航栏背景/毛玻璃效果统一；桌面端随导航滚动移动，不再浮在右上角。③ 🗑️ 删除失效的 <code>.tm-btn</code>/<code>.tv-btn</code> CSS 和 HTML 及 JS 双重绑定。④ 🕐 修复 FIFA calendar.ics 自动更新 cron（exit code 127，bash PATH 不全），改用 Python 脚本后正常运行。</div>
         </div>
         <div class="log-item">
+          <div class="log-time">2026-06-29 08:33</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>🍁 32强首战完赛：加拿大1-0南非晋级16强</strong> — 福福已根据 ESPN World Cup scoreboard 与 BBC Sport Scores &amp; Fixtures 同步确认：R01 南非vs加拿大已 Full time，Stephen Eustáquio 伤停补时绝杀，加拿大 1-0 取胜并率先晋级16强。比赛北京时间 6/29 03:00 开球，当前已超过 120 分钟，因此本站已将 R01 从 upcoming 改为 done，补写比分与赛果摘要；首页最新赛果、下一场倒计时、赛事进度以及淘汰赛后续占位展示将按现有联动逻辑自动刷新。当前北京时间处于预测窗口，但未来3天内相关场次既有预测均为 locked，本轮未新增预测。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-28 16:00</div>
           <div class="log-content"><span class="log-tag ui">优化</span><strong>🏅 淘汰赛页面移动端适配 + 赛程列表折叠</strong> — ① 桌面浏览器保留 6 列树状对阵图；移动端改为纵向轮次卡片排列，无横向溢出问题。② 淘汰赛赛程列表由全量渲染改为默认显示最近 4 场，点击「展开全部 N 场▼」展开全部 32 场，再次点击收起。③ bracket tree 在移动端卡片化展示（圆角分轮 + 浅色微背景），与整体体验一致。</div>
         </div>
@@ -1706,7 +1710,7 @@ const ALL_MATCHES = [
   {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",s:"2-1",st:"done",hl:"⚽ 克罗地亚2-1加纳：Sučić 31'首开纪录，Luckassen 73'扳平后，Vlasić 83'头槌制胜；克罗地亚6分反超拿到L组第二，加纳4分也以最佳第3名身份晋级32强。",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["中场控制","加纳速度","末轮压力"],reason:"克罗地亚更擅长中场控制，加纳则有更直接的速度与冲击，末轮都背着结果压力，比赛很可能在试探和转换之间拉成平局。",sources:["FIFA","ESPN","Bing News"],locked:true}},
 
   // ===== 淘汰赛 32强 (6.29-7.4) =====
-  {id:"R01",g:"KO",r:4,t:"6/29 03:00",h:"南非",a:"加拿大",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · A2 vs B2 · 南非小组末轮1-0胜韩国后抢下第二；加拿大虽1-2负瑞士仍以净胜球优势出线",pred:{locked:true,ph:1,pa:2,confidence:62,tag:"加拿大小胜",reason:"加拿大前场速度和转换质量更好，南非韧性足但淘汰赛经验与终结稳定性略吃亏。",basis:["东道主气势","边路速度","南非防反"]}},
+  {id:"R01",g:"KO",r:4,t:"6/29 03:00",h:"南非",a:"加拿大",s:"0-1",st:"done",hl:"🍁 加拿大1-0南非：Stephen Eustáquio 补时绝杀，32强首战一击制胜，加拿大率先晋级16强",pred:{locked:true,ph:1,pa:2,confidence:62,tag:"加拿大小胜",reason:"加拿大前场速度和转换质量更好，南非韧性足但淘汰赛经验与终结稳定性略吃亏。",basis:["东道主气势","边路速度","南非防反"]}},
   {id:"R02",g:"KO",r:4,t:"6/30 01:00",h:"巴西",a:"日本",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · C1 vs F2 · 巴西7分锁C组头名；日本4-0大胜突尼斯后有望力拼出线",pred:{locked:true,ph:2,pa:1,confidence:66,tag:"巴西险胜",reason:"日本组织纪律性很强，但巴西前场个人爆点更多，淘汰赛一两个瞬间足以改变比赛。",basis:["巴西爆点","日本纪律","小比分"]}},
   {id:"R03",g:"KO",r:4,t:"6/30 04:30",h:"德国",a:"巴拉圭",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · E1 vs D3 · 德国6分拿到E组头名，巴拉圭则以最佳第3名身份晋级",pred:{locked:true,ph:2,pa:0,confidence:70,tag:"德国控场",reason:"德国中前场压迫和阵地战层次更完整，巴拉圭需要长时间低位防守，反击机会有限。",basis:["控球优势","高位压迫","巴拉圭低位"]}},
   {id:"R04",g:"KO",r:4,t:"6/30 09:00",h:"荷兰",a:"摩洛哥",st:"upcoming",hl:"🏟️ BBVA球场·瓜达卢佩 · F1 vs C2 · 荷兰5-1大胜瑞典登顶F组；摩洛哥4-2收官战后7分列C组第二",pred:{locked:true,ph:2,pa:1,confidence:61,tag:"荷兰微优",reason:"摩洛哥反击锋利，但荷兰近期进攻打开后边路和中路衔接更顺，预计会是胶着小胜。",basis:["荷兰火力","摩洛哥反击","边路对位"]}},
