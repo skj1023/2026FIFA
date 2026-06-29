@@ -717,6 +717,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+      <div class="log-item">
+          <div class="log-time">2026-06-29 16:58</div>
+          <div class="log-content"><span class="log-tag auto">赛程</span><strong>🧭 16强占位同步：加拿大已写入 R17 对阵位</strong> — 福福复核 FIFA Matches、ESPN World Cup Scores 与 BBC Sport Scores &amp; Fixtures 后确认：R01 南非0-1加拿大的胜者已明确为加拿大，因此将 7/5 的 R17 从“R01胜者 vs R04胜者”同步落位为“加拿大 vs R04胜者”。这样比赛 Tab、淘汰赛赛程列表和对阵树在展示 16 强后续赛程时不再只剩占位符，整页数据口径保持一致。</div>
+        </div>
         <div class="log-item">
           <div class="log-time">2026-06-29 00:15</div>
           <div class="log-content"><span class="log-tag ui">精简</span><strong>🗑️ 移除日程订阅和分享比赛卡片功能</strong> — 完整删除：全部日历相关 CSS 类（`.cal-btn`、`.cal-icon`、`.cal-toast`、`.sub-modal`）、分享 CSS 类（`.share-btn`、`.share-modal`）、HTML 入口（预约/订阅按钮、分享弹窗、Toast）、JS 函数群（`addToCalendar`、`openSubModal`、`openShare/closeShare/doShareMatch` 等共 12 个函数）及匹配卡片中的日历图标和分享按钮渲染；页面体积缩减约 12KB。</div>
@@ -1727,7 +1731,7 @@ const ALL_MATCHES = [
   {id:"R15",g:"KO",r:4,t:"7/4 06:00",h:"阿根廷",a:"佛得角",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · J1 vs H2 · 卫冕冠军阿根廷两连胜提前晋级，梅西状态火热",pred:{locked:true,ph:3,pa:0,confidence:78,tag:"阿根廷优势明显",reason:"阿根廷攻防控制力和淘汰赛经验都高一档，佛得角需要完美防守才可能把悬念拖久。",basis:["梅西状态","卫冕冠军","比赛控制"]}},
   {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"哥伦比亚",a:"加纳",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · K1 vs L3 · 哥伦比亚7分锁定K组头名；加纳4分以最佳第3名身份晋级，堪萨斯城上演南美对非洲",pred:{locked:true,ph:2,pa:1,confidence:62,tag:"哥伦比亚小胜",reason:"哥伦比亚小组赛稳定性更好，中前场衔接更顺；加纳速度和身体冲击足以制造威胁。",basis:["哥伦比亚稳定","加纳速度","南美节奏"]}}, 
   // ===== 16强 (7.5-7.8) =====
-  {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"待定(R01胜者)",a:"待定(R04胜者)",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · R01胜者 vs R04胜者"},
+  {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"待定(R04胜者)",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · 加拿大 vs R04胜者 · R01胜者已落位"},
   {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"待定(R03胜者)",a:"待定(R06胜者)",st:"upcoming",hl:"🏟️ 林肯金融球场·费城 · R03胜者 vs R06胜者"},
   {id:"R19",g:"KO",r:5,t:"7/6 04:00",h:"待定(R02胜者)",a:"待定(R05胜者)",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · R02胜者 vs R05胜者"},
   {id:"R20",g:"KO",r:5,t:"7/6 08:00",h:"待定(R07胜者)",a:"待定(R08胜者)",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · R07胜者 vs R08胜者"},
