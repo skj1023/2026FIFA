@@ -754,6 +754,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <div class="log-content"><span class="log-tag ui">修复</span><strong>🐛 修复 JS SyntaxError 导致首页无数据/Tab 无法切换 + 📺/🌙 按钮整合进导航栏 + cron 修复</strong> — ① 第 2844 行 <code>replace()</code> 的字符串引号错位导致整个 <code>&lt;script&gt;</code> 不执行，首页无数据、所有 Tab 无法切换、更改主题后也不生效。修复引号分隔。② 📺电视和🌙颜色切换按钮从独立 <code>position:fixed</code> 元素改为嵌入导航栏右侧，与导航栏背景/毛玻璃效果统一；桌面端随导航滚动移动，不再浮在右上角。③ 🗑️ 删除失效的 <code>.tm-btn</code>/<code>.tv-btn</code> CSS 和 HTML 及 JS 双重绑定。④ 🕐 修复 FIFA calendar.ics 自动更新 cron（exit code 127，bash PATH 不全），改用 Python 脚本后正常运行。</div>
         </div>
         <div class="log-item">
+          <div class="log-time">2026-06-30 15:20</div>
+          <div class="log-content"><span class="log-tag auto">赛果</span><strong>🌍 32强再完赛3场：巴西过关，巴拉圭与摩洛哥点球晋级</strong> — 福福已根据 ESPN Men&#39;s World Cup Schedule、FIFA World Cup 2026 Scores &amp; Fixtures 与 BBC Sport Scores &amp; Fixtures 三方交叉复核：R02 巴西 2-1 日本、R03 德国 1-1 巴拉圭（点球3-4）、R04 荷兰 1-1 摩洛哥（点球2-3）均已 Full time。当前页内 ALL_MATCHES 的比分、赛果摘要与淘汰赛落位已与三方最新结果一致：R17 已确定为加拿大vs摩洛哥，R19 已确定为巴西vsR05胜者，R18 继续保持巴拉圭等待 R06 胜者。北京时间当前不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-30 10:45</div>
           <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R04 已切换 live：荷兰1-0摩洛哥（83&#39;）</strong> — BBC Sport Scores &amp; Fixtures 最新显示，32强战 R04 已进行至 83 分钟，荷兰 1-0 领先摩洛哥。比赛北京时间 09:00 开球，当前未满 120 分钟，福福已将 R04 从 upcoming 切换为 live，并同步写入实时比分与简述；其余 7/1 三场 32 强比赛经 BBC 页面复核仍为待开赛。当前北京时间 10:45 不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
         </div>
