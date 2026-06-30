@@ -718,6 +718,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
       <div class="log-item">
+        <div class="log-time">2026-07-01 05:31</div>
+        <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R05 完赛：挪威 2-1 淘汰科特迪瓦，R19 对阵位已同步落位；R06 已切换 live</strong> — 福福根据 ESPN World Cup scoreboard / Top Events 与 BBC Sport Scores &amp; Fixtures 同步复核：北京时间 7/1 01:00 开球的 32 强战 R05 科特迪瓦vs挪威已显示 <strong>FT</strong>，比分为挪威 2-1 过关；当前开球时间已超过 120 分钟，本站已将 R05 从 <code>live</code> 切换为 <code>done</code>，并把 7/6 的 R19 从“巴西 vs 待定(R05胜者)”同步写成“巴西 vs 挪威”。同时，北京时间 7/1 05:00 开球的 R06 法国vs瑞典经 ESPN 与 BBC 最新一致显示已在上半场进行中，本站已将其从 <code>upcoming</code> 切换为 <code>live</code> 并写入实时 0-0 口径。当前北京时间 05:31 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+      </div>
+      <div class="log-item">
         <div class="log-time">2026-06-30 11:56</div>
         <div class="log-content"><span class="log-tag auto">赛况</span><strong>🏁 R04 完赛：摩洛哥点球 3-2 淘汰荷兰，R17 对阵位已同步落位</strong> — 福福根据 BBC Sport Scores &amp; Fixtures 当日赛程页最新结果复核：北京时间 6/30 09:00 开球的 32 强战 R04 荷兰vs摩洛哥已在常规时间与加时赛 1-1 战平后，由摩洛哥通过点球大战 3-2 晋级。当前开球时间已超过 120 分钟，本站已将 R04 从 <code>live</code> 切换为 <code>done</code>，并把 7/5 的 R17 从“加拿大 vs 待定(R04胜者)”同步写成“加拿大 vs 摩洛哥”。当前北京时间不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
       </div>
@@ -1754,8 +1758,8 @@ const ALL_MATCHES = [
   {id:"R02",g:"KO",r:4,t:"6/30 01:00",h:"巴西",a:"日本",s:"2-1",st:"done",hl:"⚽ 巴西2-1日本：ESPN、FIFA 与 BBC 最新一致确认FT，桑巴军团在32强战险胜过关并率先落位 7/6 的 R19。",pred:{locked:true,ph:2,pa:1,confidence:66,tag:"巴西险胜",reason:"日本组织纪律性很强，但巴西前场个人爆点更多，淘汰赛一两个瞬间足以改变比赛。",basis:["巴西爆点","日本纪律","小比分"]}},
   {id:"R03",g:"KO",r:4,t:"6/30 04:30",h:"德国",a:"巴拉圭",s:"1-1",st:"done",hl:"⚽ 巴拉圭点球4-3德国：双方90分钟与加时战成1-1，巴拉圭通过点球大战4-3爆冷晋级16强，并将于7/5落位R18。",pred:{locked:true,ph:2,pa:0,confidence:70,tag:"德国控场",reason:"德国中前场压迫和阵地战层次更完整，巴拉圭需要长时间低位防守，反击机会有限。",basis:["控球优势","高位压迫","巴拉圭低位"]}},
   {id:"R04",g:"KO",r:4,t:"6/30 09:00",h:"荷兰",a:"摩洛哥",s:"1-1",st:"done",hl:"⚽ 摩洛哥点球3-2荷兰：双方90分钟与加时战成1-1，摩洛哥通过点球大战3-2淘汰荷兰晋级16强，并将于7/5落位R17。",pred:{locked:true,ph:2,pa:1,confidence:61,tag:"荷兰微优",reason:"摩洛哥反击锋利，但荷兰近期进攻打开后边路和中路衔接更顺，预计会是胶着小胜。",basis:["荷兰火力","摩洛哥反击","边路对位"]}},
-  {id:"R05",g:"KO",r:4,t:"7/1 01:00",h:"科特迪瓦",a:"挪威",s:"0-1",st:"live",hl:"🔴 R05进行中：ESPN 与 BBC 最新均显示挪威仍在领先，本站已将实时比分同步为科特迪瓦0-1挪威。",pred:{locked:true,ph:1,pa:2,confidence:58,tag:"挪威加时边缘",reason:"科特迪瓦身体对抗强，但挪威锋线终结点更明确，比赛可能被拖入最后阶段才分出胜负。",basis:["挪威锋线","非洲对抗","胶着局"]}},
-  {id:"R06",g:"KO",r:4,t:"7/1 05:00",h:"法国",a:"瑞典",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · I1 vs F2 · 法国两连胜提前晋级，姆巴佩状态火热；瑞典5-1大胜突尼斯后前景可期",pred:{locked:true,ph:3,pa:1,confidence:74,tag:"法国晋级",reason:"法国进攻点太多，姆巴佩和登贝莱状态在线；瑞典有冲击力，但防线抗压会非常困难。",basis:["姆巴佩","登贝莱","法国深度"]}},
+  {id:"R05",g:"KO",r:4,t:"7/1 01:00",h:"科特迪瓦",a:"挪威",s:"1-2",st:"done",hl:"⚽ 挪威2-1科特迪瓦：ESPN 与 BBC 最新一致确认 FT，挪威在 32 强战惊险过关并落位 7/6 对阵巴西的 R19。",pred:{locked:true,ph:1,pa:2,confidence:58,tag:"挪威加时边缘",reason:"科特迪瓦身体对抗强，但挪威锋线终结点更明确，比赛可能被拖入最后阶段才分出胜负。",basis:["挪威锋线","非洲对抗","胶着局"]}},
+  {id:"R06",g:"KO",r:4,t:"7/1 05:00",h:"法国",a:"瑞典",s:"0-0",st:"live",hl:"🔴 R06进行中：ESPN 与 BBC 最新一致显示法国vs瑞典已进入上半场，当前仍是 0-0。",pred:{locked:true,ph:3,pa:1,confidence:74,tag:"法国晋级",reason:"法国进攻点太多，姆巴佩和登贝莱状态在线；瑞典有冲击力，但防线抗压会非常困难。",basis:["姆巴佩","登贝莱","法国深度"]}},
   {id:"R07",g:"KO",r:4,t:"7/1 09:00",h:"墨西哥",a:"厄瓜多尔",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · A1 vs E3 · 东道主墨西哥三战全胜9分强势出线；厄瓜多尔末轮爆冷胜德国后以最佳第3名身份晋级",pred:{locked:true,ph:2,pa:1,confidence:64,tag:"墨西哥主场过关",reason:"墨西哥小组赛势头和主场氛围都很强，厄瓜多尔冲击力不弱但稳定性略逊。",basis:["主场优势","小组全胜","厄瓜多尔冲击"]}},
   {id:"R08",g:"KO",r:4,t:"7/2 00:00",h:"英格兰",a:"刚果(金)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · L1 vs K3 · 英格兰7分L组头名出线；刚果(金)4分位列K组第三并跻身最佳第3名",pred:{locked:true,ph:2,pa:0,confidence:76,tag:"英格兰稳胜",reason:"英格兰阵容厚度和定位球威胁明显更强，刚果(金)需要极高效率反击才有机会制造悬念。",basis:["阵容厚度","定位球","凯恩"]}},
   {id:"R09",g:"KO",r:4,t:"7/2 04:00",h:"比利时",a:"塞内加尔",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · G1 vs I3 · 比利时5分锁定G组头名；塞内加尔末轮5-0大胜伊拉克后惊险搭上最佳第3名末班车",pred:{locked:true,ph:2,pa:1,confidence:59,tag:"比利时小胜",reason:"塞内加尔状态回升且对抗强，但比利时中前场经验和关键球处理仍更稳。",basis:["比利时经验","塞内加尔冲击","关键球"]}},
@@ -1769,7 +1773,7 @@ const ALL_MATCHES = [
   // ===== 16强 (7.5-7.8) =====
   {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"摩洛哥",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · 加拿大 vs 摩洛哥 · R01/R04胜者已全部落位"},
   {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"巴拉圭",a:"待定(R06胜者)",st:"upcoming",hl:"🏟️ 林肯金融球场·费城 · 巴拉圭 vs R06胜者 · R03胜者已落位"},
-  {id:"R19",g:"KO",r:5,t:"7/6 04:00",h:"巴西",a:"待定(R05胜者)",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · 巴西 vs R05胜者 · R02胜者已落位"},
+  {id:"R19",g:"KO",r:5,t:"7/6 04:00",h:"巴西",a:"挪威",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · 巴西 vs 挪威 · R02/R05 胜者已全部落位"},
   {id:"R20",g:"KO",r:5,t:"7/6 08:00",h:"待定(R07胜者)",a:"待定(R08胜者)",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · R07胜者 vs R08胜者"},
   {id:"R21",g:"KO",r:5,t:"7/7 03:00",h:"待定(R12胜者)",a:"待定(R11胜者)",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · R12胜者 vs R11胜者"},
   {id:"R22",g:"KO",r:5,t:"7/7 08:00",h:"待定(R10胜者)",a:"待定(R09胜者)",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · R10胜者 vs R09胜者"},
