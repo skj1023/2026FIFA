@@ -750,6 +750,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <div class="log-content"><span class="log-tag ui">修复</span><strong>🐛 修复 JS SyntaxError 导致首页无数据/Tab 无法切换 + 📺/🌙 按钮整合进导航栏 + cron 修复</strong> — ① 第 2844 行 <code>replace()</code> 的字符串引号错位导致整个 <code>&lt;script&gt;</code> 不执行，首页无数据、所有 Tab 无法切换、更改主题后也不生效。修复引号分隔。② 📺电视和🌙颜色切换按钮从独立 <code>position:fixed</code> 元素改为嵌入导航栏右侧，与导航栏背景/毛玻璃效果统一；桌面端随导航滚动移动，不再浮在右上角。③ 🗑️ 删除失效的 <code>.tm-btn</code>/<code>.tv-btn</code> CSS 和 HTML 及 JS 双重绑定。④ 🕐 修复 FIFA calendar.ics 自动更新 cron（exit code 127，bash PATH 不全），改用 Python 脚本后正常运行。</div>
         </div>
         <div class="log-item">
+          <div class="log-time">2026-06-30 10:45</div>
+          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R04 已切换 live：荷兰1-0摩洛哥（83&#39;）</strong> — BBC Sport Scores &amp; Fixtures 最新显示，32强战 R04 已进行至 83 分钟，荷兰 1-0 领先摩洛哥。比赛北京时间 09:00 开球，当前未满 120 分钟，福福已将 R04 从 upcoming 切换为 live，并同步写入实时比分与简述；其余 7/1 三场 32 强比赛经 BBC 页面复核仍为待开赛。当前北京时间 10:45 不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+        </div>
+        <div class="log-item">
           <div class="log-time">2026-06-29 08:33</div>
           <div class="log-content"><span class="log-tag auto">赛果</span><strong>🍁 32强首战完赛：加拿大1-0南非晋级16强</strong> — 福福已根据 ESPN World Cup scoreboard 与 BBC Sport Scores &amp; Fixtures 同步确认：R01 南非vs加拿大已 Full time，Stephen Eustáquio 伤停补时绝杀，加拿大 1-0 取胜并率先晋级16强。比赛北京时间 6/29 03:00 开球，当前已超过 120 分钟，因此本站已将 R01 从 upcoming 改为 done，补写比分与赛果摘要；首页最新赛果、下一场倒计时、赛事进度以及淘汰赛后续占位展示将按现有联动逻辑自动刷新。当前北京时间处于预测窗口，但未来3天内相关场次既有预测均为 locked，本轮未新增预测。</div>
         </div>
@@ -1733,7 +1737,7 @@ const ALL_MATCHES = [
   {id:"R01",g:"KO",r:4,t:"6/29 03:00",h:"南非",a:"加拿大",s:"0-1",st:"done",hl:"🍁 加拿大1-0南非：Stephen Eustáquio 补时绝杀，32强首战一击制胜，加拿大率先晋级16强",pred:{locked:true,ph:1,pa:2,confidence:62,tag:"加拿大小胜",reason:"加拿大前场速度和转换质量更好，南非韧性足但淘汰赛经验与终结稳定性略吃亏。",basis:["东道主气势","边路速度","南非防反"]}},
   {id:"R02",g:"KO",r:4,t:"6/30 01:00",h:"巴西",a:"日本",s:"2-1",st:"done",hl:"⚽ 巴西2-1日本：ESPN、FIFA 与 BBC 最新一致确认FT，桑巴军团在32强战险胜过关并率先落位 7/6 的 R19。",pred:{locked:true,ph:2,pa:1,confidence:66,tag:"巴西险胜",reason:"日本组织纪律性很强，但巴西前场个人爆点更多，淘汰赛一两个瞬间足以改变比赛。",basis:["巴西爆点","日本纪律","小比分"]}},
   {id:"R03",g:"KO",r:4,t:"6/30 04:30",h:"德国",a:"巴拉圭",s:"1-1",st:"done",hl:"⚽ 巴拉圭点球4-3德国：双方90分钟与加时战成1-1，巴拉圭通过点球大战4-3爆冷晋级16强，并将于7/5落位R18。",pred:{locked:true,ph:2,pa:0,confidence:70,tag:"德国控场",reason:"德国中前场压迫和阵地战层次更完整，巴拉圭需要长时间低位防守，反击机会有限。",basis:["控球优势","高位压迫","巴拉圭低位"]}},
-  {id:"R04",g:"KO",r:4,t:"6/30 09:00",h:"荷兰",a:"摩洛哥",st:"upcoming",hl:"🏟️ BBVA球场·瓜达卢佩 · F1 vs C2 · 荷兰5-1大胜瑞典登顶F组；摩洛哥4-2收官战后7分列C组第二",pred:{locked:true,ph:2,pa:1,confidence:61,tag:"荷兰微优",reason:"摩洛哥反击锋利，但荷兰近期进攻打开后边路和中路衔接更顺，预计会是胶着小胜。",basis:["荷兰火力","摩洛哥反击","边路对位"]}},
+  {id:"R04",g:"KO",r:4,t:"6/30 09:00",h:"荷兰",a:"摩洛哥",s:"1-0",st:"live",hl:"🔴 83' 荷兰1-0摩洛哥：BBC Sport 实时比分显示橙衣军团在32强战暂时领先，比赛仍在进行中。",pred:{locked:true,ph:2,pa:1,confidence:61,tag:"荷兰微优",reason:"摩洛哥反击锋利，但荷兰近期进攻打开后边路和中路衔接更顺，预计会是胶着小胜。",basis:["荷兰火力","摩洛哥反击","边路对位"]}},
   {id:"R05",g:"KO",r:4,t:"7/1 01:00",h:"科特迪瓦",a:"挪威",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · I2 vs E2",pred:{locked:true,ph:1,pa:2,confidence:58,tag:"挪威加时边缘",reason:"科特迪瓦身体对抗强，但挪威锋线终结点更明确，比赛可能被拖入最后阶段才分出胜负。",basis:["挪威锋线","非洲对抗","胶着局"]}},
   {id:"R06",g:"KO",r:4,t:"7/1 05:00",h:"法国",a:"瑞典",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · I1 vs F2 · 法国两连胜提前晋级，姆巴佩状态火热；瑞典5-1大胜突尼斯后前景可期",pred:{locked:true,ph:3,pa:1,confidence:74,tag:"法国晋级",reason:"法国进攻点太多，姆巴佩和登贝莱状态在线；瑞典有冲击力，但防线抗压会非常困难。",basis:["姆巴佩","登贝莱","法国深度"]}},
   {id:"R07",g:"KO",r:4,t:"7/1 09:00",h:"墨西哥",a:"厄瓜多尔",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · A1 vs E3 · 东道主墨西哥三战全胜9分强势出线；厄瓜多尔末轮爆冷胜德国后以最佳第3名身份晋级",pred:{locked:true,ph:2,pa:1,confidence:64,tag:"墨西哥主场过关",reason:"墨西哥小组赛势头和主场氛围都很强，厄瓜多尔冲击力不弱但稳定性略逊。",basis:["主场优势","小组全胜","厄瓜多尔冲击"]}},
