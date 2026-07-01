@@ -384,42 +384,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .cg-bar{height:4px;border-radius:4px;grid-column:1/-1;background:var(--border);overflow:hidden}
 .cg-bar .cg-fill{height:100%;border-radius:4px;transition:width .4s}
 .cg-bar .cg-fill.l{background:var(--accent);float:left}.cg-bar .cg-fill.r{background:var(--orange);float:right}
-/* ENHANCED COMPARE */
-.compare-result{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:4px}
-.cr-header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:20px;padding-bottom:16px;border-bottom:1px solid var(--border)}
-.cr-team{flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
-.cr-team-a{text-align:left;align-items:flex-start}
-.cr-team-b{text-align:right;align-items:flex-end}
-.cr-flag{font-size:2.2rem;line-height:1}
-.cr-name{font-size:1.1rem;font-weight:700;margin-top:2px}
-.cr-meta{font-size:.68rem;color:var(--text-dim);display:flex;gap:4px;flex-wrap:wrap}
-.cr-meta-a{justify-content:flex-start}.cr-meta-b{justify-content:flex-end}
-.cr-vs{font-size:.75rem;font-weight:800;color:var(--text-dim);flex-shrink:0;padding:0 6px}
-.cr-section-title{font-size:.72rem;font-weight:700;color:var(--text-sec);margin:16px 0 10px;text-transform:uppercase;letter-spacing:.04em;display:flex;align-items:center;gap:6px}
-.cr-section-title:first-of-type{margin-top:0}
-.cr-row{display:grid;grid-template-columns:44px 1fr 44px;align-items:center;gap:8px 10px;margin-bottom:8px}
-.cr-row-sm{display:grid;grid-template-columns:32px 1fr 32px;align-items:center;gap:6px 10px;margin-bottom:5px;font-size:.72rem}
-.cr-label{text-align:center;font-size:.72rem;font-weight:500;color:var(--text-sec);white-space:nowrap}
-.cr-val{font-size:.82rem;font-weight:700;min-width:30px}
-.cr-val-a{text-align:right;color:var(--accent);font-size:.82rem;font-weight:700;min-width:30px}
-.cr-val-b{text-align:left;color:var(--orange);font-size:.82rem;font-weight:700;min-width:30px}
-.cr-bar{grid-column:1/-1;height:6px;border-radius:6px;background:var(--border);overflow:hidden;display:flex;margin-top:-2px}
-.cr-fill{height:100%;border-radius:6px;transition:width .5s cubic-bezier(.16,1,.3,1)}
-.cr-fill-a{background:linear-gradient(90deg,var(--accent),#4a9eff)}
-.cr-fill-b{background:linear-gradient(90deg,var(--orange),#ffbb3d)}
-.cr-gd{font-size:.82rem;font-weight:800;text-align:center}
-.cr-gd.pos{color:var(--green)}.cr-gd.neg{color:var(--red)}.cr-gd.zero{color:var(--text-dim)}
-.cr-gd-val-a{text-align:right;font-size:.82rem;font-weight:700}.cr-gd-val-a.pos{color:var(--green)}.cr-gd-val-a.neg{color:var(--red)}
-.cr-gd-val-b{text-align:left;font-size:.82rem;font-weight:700}.cr-gd-val-b.pos{color:var(--green)}.cr-gd-val-b.neg{color:var(--red)}
-.cr-form-row{display:flex;justify-content:space-between;gap:20px;margin-top:4px}
-.cr-form-a,.cr-form-b{display:flex;gap:4px;flex-wrap:wrap}
-.cr-form-dot{display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:6px;font-size:.6rem;font-weight:800;line-height:1}
-.cr-form-dot.w{background:rgba(52,199,89,.15);color:var(--green)}
-.cr-form-dot.l{background:rgba(255,69,58,.12);color:var(--red)}
-.cr-form-dot.d{background:rgba(136,136,160,.1);color:var(--text-sec)}
-.cr-form-dot.u{background:rgba(136,136,160,.05);color:var(--text-dim);font-size:.5rem}
-.cr-monthl{font-size:.7rem;color:var(--text-dim);margin-top:10px;text-align:center;padding-top:10px;border-top:1px solid var(--border)}
-@media(max-width:640px){.compare-result{padding:14px}.cr-header{margin-bottom:14px;padding-bottom:12px}.cr-flag{font-size:1.8rem}.cr-name{font-size:.95rem}.cr-row{grid-template-columns:34px 1fr 34px;gap:5px 8px}.cr-val-a,.cr-val-b{font-size:.75rem}.cr-row-sm{grid-template-columns:28px 1fr 28px}}
 /* DETAIL OVERLAY */
 .detail-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;padding:20px}
 .detail-overlay.show{display:flex}
@@ -717,78 +681,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
-              <div class="log-item">
-        <div class="log-time">2026-07-02 07:29</div>
-        <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R09 完赛：比利时 3-2 塞内加尔（加时），R22 已同步落位</strong> — 福福已根据 ESPN API 与 FIFA 最新数据交叉复核：北京时间 7/2 04:00 开球的 32 强战 R09 现已 Full time AET（加时结束），比利时 3-2 逆转塞内加尔晋级。本站已将 ALL_MATCHES 中 R09 从 <code>live</code> 切换为 <code>done</code>，补写赛果摘要，并把 7/7 的 R22 从"待定(R10胜者) vs 待定(R09胜者)"同步更新为"待定(R10胜者) vs 比利时"。当前北京时间 07:29 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-      </div>
-              <div class="log-item">
-        <div class="log-time">2026-07-02 06:25</div>
-        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R09 比分已同步：比利时 2-2 塞内加尔（加时半场）</strong> — 福福已根据 ESPN World Cup Gamecast 与 BBC Sport Scores &amp; Fixtures 交叉复核：北京时间 7/2 04:00 开球的 32 强战 R09 最新已来到加时半场，两站一致显示比利时从 0-2 追到 2-2；BBC 页面标注 <strong>106&#39; ET</strong>，关键事件为 Diarra 25&#39;、I. Sarr 51&#39; 先后建功，随后 Lukaku 86&#39; 与 Tielemans 89&#39; 连续扳平。本站已把 ALL_MATCHES 中 R09 的实时比分与简述同步更新，R22 继续保持“待定(R10胜者) vs 待定(R09胜者)”。当前北京时间 06:25 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-      </div>
-        <div class="log-item">
-        <div class="log-time">2026-07-02 05:21</div>
-        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R09 已切换 live：比利时0-2塞内加尔（58&#39;）</strong> — 福福已根据 ESPN World Cup scoreboard 与 BBC Sport Scores &amp; Fixtures 交叉复核：北京时间 7/2 04:00 开球的 32 强战 R09 比利时vs塞内加尔当前仍在比赛进行中，两站最新一致显示塞内加尔在 58&#39; 时 2-0 领先。本站已将 ALL_MATCHES 中 R09 从 <code>upcoming</code> 切换为 <code>live</code>，补写实时比分与简述；由于尚未出现 <strong>FT</strong> / Full time 明确落版，R22 继续保持“待定(R10胜者) vs 待定(R09胜者)”。当前北京时间 05:21 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-      </div>
-        <div class="log-item">
-        <div class="log-time">2026-07-02 02:06</div>
-        <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R08 完赛：英格兰 2-1 刚果(金)，凯恩梅开二度逆转，R20 已同步落位</strong> — 福福已根据 ESPN match summary 与 BBC Sport Scores &amp; Fixtures 交叉复核：北京时间 7/2 00:00 开球的 R08 现已 Full time，英格兰 2-1 逆转刚果(金)晋级。本站已将 ALL_MATCHES 中 R08 从 <code>live</code> 切换为 <code>done</code>，补写赛果摘要，并把 7/6 的 R20 从"墨西哥 vs 待定(R08胜者)"同步更新为"墨西哥 vs 英格兰"。当前北京时间 02:06 已超过 00:05-02:00 预测窗口，本轮不新增预测，既有 locked 预测全部保留。</div>
-      </div>
-        <div class="log-item">
-        <div class="log-time">2026-07-02 00:50</div>
-        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R08 已切换 live：英格兰0-1刚果(金)（半场）</strong> — 福福根据 ESPN World Cup 官方数据复核：北京时间 7/2 00:00 开球的 32 强战 R08 英格兰vs刚果(金)当前半场结束，Cipenga 7' 闪击破门、贝林厄姆染黄；ESPN 确认半场比分 0-1。本站已将 R08 从 <code>upcoming</code> 切换为 <code>live</code>。同时，为 7/5 的两场 16 强战（R17 加拿大vs摩洛哥、R18 巴拉圭vs法国）生成了 AI 预测。当前北京时间 00:50 在 00:05-02:00 预测窗口内，已按站点规则为未来 3 天（7/3~7/5）中尚无 locked 预测的比赛生成预测。</div>
-      </div>
-      <div class="log-item">
-        <div class="log-time">2026-07-01 14:13</div>
-        <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R07 完赛：墨西哥 2-0 厄瓜多尔，R20 主队已同步落位</strong> — 福福已根据 ESPN World Cup scoreboard 与 BBC Sport Scores &amp; Fixtures 交叉复核：北京时间 7/1 09:00 开球的 R07 现已 Full time，墨西哥 2-0 淘汰厄瓜多尔晋级。本站已将 ALL_MATCHES 中 R07 从 <code>live</code> 切换为 <code>done</code>，补写赛果摘要，并把 7/6 的 R20 从“待定(R07胜者) vs 待定(R08胜者)”同步更新为“墨西哥 vs 待定(R08胜者)”。当前北京时间 14:13 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-      </div>
-      <div class="log-item">
-        <div class="log-time">2026-07-01 12:02</div>
-        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R07 已切换 live：墨西哥2-0厄瓜多尔（90+9&#39;）</strong> — 福福已根据 ESPN World Cup scoreboard / Top Events、BBC Sport Scores &amp; Fixtures 与 FIFA World Cup 2026 Scores &amp; Fixtures 当日赛程/战报口径交叉复核：北京时间 7/1 09:00 开球的 32 强战 R07 墨西哥vs厄瓜多尔当前仍显示比赛进行中，ESPN 与 BBC 最新一致可见比分为墨西哥 2-0 领先、时间到 90+9&#39;；FIFA 同页新闻流亦已同步出现墨西哥比赛相关更新。由于尚未看到 <strong>FT</strong> / Full time 明确落版，本站本轮只将 R07 从 <code>upcoming</code> 切换为 <code>live</code>，补写实时比分与简述，R20 继续保持“待定(R07胜者) vs 待定(R08胜者)”。当前北京时间 12:02 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-      </div>
-      <div class="log-item">
-        <div class="log-time">2026-07-01 07:43</div>
-        <div class="log-content"><span class="log-tag auto">赛果</span><strong>🇫🇷 R06 完赛：法国 3-0 瑞典，R18 对阵位已同步落位</strong> — 福福根据 ESPN World Cup scoreboard / Top Events 与 BBC Sport Scores &amp; Fixtures 同步复核：北京时间 7/1 05:00 开球的 32 强战 R06 法国vs瑞典目前已显示 <strong>FT</strong>，比分为法国 3-0 过关；当前开球时间已超过 120 分钟，本站已将 R06 从 <code>live</code> 切换为 <code>done</code>，同步写入 3-0 赛果摘要，并把 7/5 的 R18 从“巴拉圭 vs 待定(R06胜者)”更新为“巴拉圭 vs 法国”。当前北京时间 07:43 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-      </div>
-      <div class="log-item">
-        <div class="log-time">2026-07-01 05:31</div>
-        <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R05 完赛：挪威 2-1 淘汰科特迪瓦，R19 对阵位已同步落位；R06 已切换 live</strong> — 福福根据 ESPN World Cup scoreboard / Top Events 与 BBC Sport Scores &amp; Fixtures 同步复核：北京时间 7/1 01:00 开球的 32 强战 R05 科特迪瓦vs挪威已显示 <strong>FT</strong>，比分为挪威 2-1 过关；当前开球时间已超过 120 分钟，本站已将 R05 从 <code>live</code> 切换为 <code>done</code>，并把 7/6 的 R19 从“巴西 vs 待定(R05胜者)”同步写成“巴西 vs 挪威”。同时，北京时间 7/1 05:00 开球的 R06 法国vs瑞典经 ESPN 与 BBC 最新一致显示已在上半场进行中，本站已将其从 <code>upcoming</code> 切换为 <code>live</code> 并写入实时 0-0 口径。当前北京时间 05:31 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-      </div>
-      <div class="log-item">
-        <div class="log-time">2026-06-30 11:56</div>
-        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🏁 R04 完赛：摩洛哥点球 3-2 淘汰荷兰，R17 对阵位已同步落位</strong> — 福福根据 BBC Sport Scores &amp; Fixtures 当日赛程页最新结果复核：北京时间 6/30 09:00 开球的 32 强战 R04 荷兰vs摩洛哥已在常规时间与加时赛 1-1 战平后，由摩洛哥通过点球大战 3-2 晋级。当前开球时间已超过 120 分钟，本站已将 R04 从 <code>live</code> 切换为 <code>done</code>，并把 7/5 的 R17 从“加拿大 vs 待定(R04胜者)”同步写成“加拿大 vs 摩洛哥”。当前北京时间不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-      </div>
-      <div class="log-item">
-        <div class="log-time">2026-06-30 08:32</div>
-        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🏁 R03 完赛：巴拉圭点球 4-3 淘汰德国，R18 对阵位已同步落位</strong> — 福福根据 ESPN World Cup scoreboard 的 <strong>FT-Pens</strong> 结果与 BBC Sport Scores &amp; Fixtures 赛程页交叉复核：北京时间 6/30 04:30 开球的 R03 德国vs巴拉圭已在常规时间/加时 1-1 后由巴拉圭通过点球大战 4-3 晋级，因此本站现已将 R03 从 <code>live</code> 切换为 <code>done</code>，并把 7/5 的 R18 从“待定(R03胜者) vs 待定(R06胜者)”同步写成“巴拉圭 vs 待定(R06胜者)”。R04 荷兰vs摩洛哥经 BBC 当日赛程复核仍为北京时间 09:00 待开球；当前北京时间 08:32 不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-      </div>
-      <div class="log-item">
-          <div class="log-time">2026-06-30 07:12</div>
-          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🎯 R03 实时比分已刷新：德国1-1巴拉圭，比赛进入点球大战</strong> — 福福根据 ESPN World Cup scoreboard 最新可见信息同步更新：北京时间 6/30 04:30 开球的 R03 德国vs巴拉圭在常规/加时阶段已战成 1-1，当前状态显示为 <strong>Pens</strong>，尚未出现最终胜者，因此本站继续保持 <code>live</code>，并把比赛卡片实时比分从 0-0 刷新为 1-1、简述改为“进入点球大战”。R04 荷兰vs摩洛哥经同页复核仍为北京时间 09:00 待开球；当前北京时间 07:12 不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-        </div>
-      <div class="log-item">
-          <div class="log-time">2026-07-01 08:47</div>
-          <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R05/R06 完赛同步：挪威 2-1 科特迪瓦，法国 3-0 瑞典</strong> — 福福已根据 ESPN World Cup scoreboard、FIFA World Cup 2026 Scores &amp; Fixtures 与 BBC Sport Scores &amp; Fixtures 三方交叉复核：北京时间 7/1 已结束的两场 32 强战现均为 Full time，R05 挪威 2-1 淘汰科特迪瓦、R06 法国 3-0 击败瑞典。当前页内 ALL_MATCHES 的比分、赛果摘要与 16 强后续落位已保持一致：R18 已写为巴拉圭vs法国，R19 已写为巴西vs挪威；当前北京时间不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-        </div>
-      <div class="log-item">
-          <div class="log-time">2026-07-01 02:20</div>
-          <div class="log-content"><span class="log-tag auto">赛况</span><strong>📡 R05 实时比分已刷新：科特迪瓦0-1挪威</strong> — 福福已根据 ESPN World Cup scoreboard / Top Events 与 BBC Sport Scores &amp; Fixtures 同步复核：北京时间 7/1 01:00 开球的 R05 当前仍在比赛进行中，双方一致显示挪威正在领先，页面已将 ALL_MATCHES 中 R05 的 live 比分从 0-0 刷新为 0-1，并把简述更新为实时领先口径；R06 法国vs瑞典经同源复核仍为待开赛。当前北京时间 02:20 已超过 00:05-02:00 预测窗口，本轮不新增预测，既有 locked 预测全部保留。</div>
-        </div>
-      <div class="log-item">
-          <div class="log-time">2026-07-01 01:08</div>
-          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R05 已切换 live：科特迪瓦0-0挪威（11&#39;）</strong> — 福福根据 ESPN Top Events/World Cup live ticker 与 BBC Sport Scores &amp; Fixtures 同步复核：北京时间 7/1 01:00 开球的 R05 科特迪瓦vs挪威已进入比赛进行中阶段，ESPN 当前显示 11&#39;、比分 0-0；BBC 同页仍列为当日 18:00 UK 开球场次，时间口径一致。本站已将 R05 从 upcoming 切换为 live，并补写实时比分与简述；R06 法国vs瑞典经同源复核仍为待开赛。当前北京时间仍在 00:05-02:00 预测窗口内，但未来3天相关场次既有预测均为 locked，本轮未新增预测。</div>
-        </div>
-      <div class="log-item">
-          <div class="log-time">2026-06-30 05:00</div>
-          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🏁 R02 完赛 + R03 切换 live：巴西2-1日本，德国0-0巴拉圭</strong> — 福福根据 ESPN World Cup scoreboard、FIFA Matches 与 BBC Sport Scores &amp; Fixtures 最新交叉复核：R02 巴西vs日本已 Full time，巴西 2-1 淘汰日本晋级16强；由于北京时间 6/30 01:00 开球至今已超过 120 分钟，本站已将 R02 从 live 切换为 done，并同步把 7/6 的 R19 写入为“巴西 vs R05胜者”。同时 R03 德国vs巴拉圭最新已到 34&#39;、比分 0-0，仍在进行中，本站已将其从 upcoming 切换为 live 并补写实时简述。当前北京时间 05:00 不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-        </div>
-      <div class="log-item">
-          <div class="log-time">2026-06-30 02:53</div>
-          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R02 已切换 live：巴西1-1日本</strong> — 福福根据 ESPN World Cup scoreboard 与 BBC Sport Scores &amp; Fixtures 最新交叉复核：R02 巴西vs日本当前为 1-1，比赛已到 90+3&#39; 仍在进行中。由于北京时间 6/30 01:00 开球至今未满 120 分钟，本站本轮只将 R02 从 upcoming 切换为 live，并补写实时比分与简述；R03 德国vs巴拉圭、R04 荷兰vs摩洛哥经同源复核仍为 scheduled / 未开球。当前北京时间 02:53 已超过预测窗口 02:00，本轮未新增预测，既有 locked 预测全部保留。</div>
-        </div>
-      <div class="log-item">
-          <div class="log-time">2026-06-29 16:58</div>
-          <div class="log-content"><span class="log-tag auto">赛程</span><strong>🧭 16强占位同步：加拿大已写入 R17 对阵位</strong> — 福福复核 FIFA Matches、ESPN World Cup Scores 与 BBC Sport Scores &amp; Fixtures 后确认：R01 南非0-1加拿大的胜者已明确为加拿大，因此将 7/5 的 R17 从“R01胜者 vs R04胜者”同步落位为“加拿大 vs R04胜者”。这样比赛 Tab、淘汰赛赛程列表和对阵树在展示 16 强后续赛程时不再只剩占位符，整页数据口径保持一致。</div>
-        </div>
         <div class="log-item">
           <div class="log-time">2026-06-29 00:15</div>
           <div class="log-content"><span class="log-tag ui">精简</span><strong>🗑️ 移除日程订阅和分享比赛卡片功能</strong> — 完整删除：全部日历相关 CSS 类（`.cal-btn`、`.cal-icon`、`.cal-toast`、`.sub-modal`）、分享 CSS 类（`.share-btn`、`.share-modal`）、HTML 入口（预约/订阅按钮、分享弹窗、Toast）、JS 函数群（`addToCalendar`、`openSubModal`、`openShare/closeShare/doShareMatch` 等共 12 个函数）及匹配卡片中的日历图标和分享按钮渲染；页面体积缩减约 12KB。</div>
@@ -800,18 +692,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
         <div class="log-item">
           <div class="log-time">2026-06-28 17:50</div>
           <div class="log-content"><span class="log-tag ui">修复</span><strong>🐛 修复 JS SyntaxError 导致首页无数据/Tab 无法切换 + 📺/🌙 按钮整合进导航栏 + cron 修复</strong> — ① 第 2844 行 <code>replace()</code> 的字符串引号错位导致整个 <code>&lt;script&gt;</code> 不执行，首页无数据、所有 Tab 无法切换、更改主题后也不生效。修复引号分隔。② 📺电视和🌙颜色切换按钮从独立 <code>position:fixed</code> 元素改为嵌入导航栏右侧，与导航栏背景/毛玻璃效果统一；桌面端随导航滚动移动，不再浮在右上角。③ 🗑️ 删除失效的 <code>.tm-btn</code>/<code>.tv-btn</code> CSS 和 HTML 及 JS 双重绑定。④ 🕐 修复 FIFA calendar.ics 自动更新 cron（exit code 127，bash PATH 不全），改用 Python 脚本后正常运行。</div>
-        </div>
-        <div class="log-item">
-          <div class="log-time">2026-06-30 15:20</div>
-          <div class="log-content"><span class="log-tag auto">赛果</span><strong>🌍 32强再完赛3场：巴西过关，巴拉圭与摩洛哥点球晋级</strong> — 福福已根据 ESPN Men&#39;s World Cup Schedule、FIFA World Cup 2026 Scores &amp; Fixtures 与 BBC Sport Scores &amp; Fixtures 三方交叉复核：R02 巴西 2-1 日本、R03 德国 1-1 巴拉圭（点球3-4）、R04 荷兰 1-1 摩洛哥（点球2-3）均已 Full time。当前页内 ALL_MATCHES 的比分、赛果摘要与淘汰赛落位已与三方最新结果一致：R17 已确定为加拿大vs摩洛哥，R19 已确定为巴西vsR05胜者，R18 继续保持巴拉圭等待 R06 胜者。北京时间当前不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-        </div>
-        <div class="log-item">
-          <div class="log-time">2026-06-30 10:45</div>
-          <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R04 已切换 live：荷兰1-0摩洛哥（83&#39;）</strong> — BBC Sport Scores &amp; Fixtures 最新显示，32强战 R04 已进行至 83 分钟，荷兰 1-0 领先摩洛哥。比赛北京时间 09:00 开球，当前未满 120 分钟，福福已将 R04 从 upcoming 切换为 live，并同步写入实时比分与简述；其余 7/1 三场 32 强比赛经 BBC 页面复核仍为待开赛。当前北京时间 10:45 不在预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
-        </div>
-        <div class="log-item">
-          <div class="log-time">2026-06-29 08:33</div>
-          <div class="log-content"><span class="log-tag auto">赛果</span><strong>🍁 32强首战完赛：加拿大1-0南非晋级16强</strong> — 福福已根据 ESPN World Cup scoreboard 与 BBC Sport Scores &amp; Fixtures 同步确认：R01 南非vs加拿大已 Full time，Stephen Eustáquio 伤停补时绝杀，加拿大 1-0 取胜并率先晋级16强。比赛北京时间 6/29 03:00 开球，当前已超过 120 分钟，因此本站已将 R01 从 upcoming 改为 done，补写比分与赛果摘要；首页最新赛果、下一场倒计时、赛事进度以及淘汰赛后续占位展示将按现有联动逻辑自动刷新。当前北京时间处于预测窗口，但未来3天内相关场次既有预测均为 locked，本轮未新增预测。</div>
         </div>
         <div class="log-item">
           <div class="log-time">2026-06-28 16:00</div>
@@ -1790,15 +1670,15 @@ const ALL_MATCHES = [
   {id:"L6",g:"L",r:3,t:"6/28 05:00",h:"克罗地亚",a:"加纳",s:"2-1",st:"done",hl:"⚽ 克罗地亚2-1加纳：Sučić 31'首开纪录，Luckassen 73'扳平后，Vlasić 83'头槌制胜；克罗地亚6分反超拿到L组第二，加纳4分也以最佳第3名身份晋级32强。",pred:{date:"2026-06-25",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["中场控制","加纳速度","末轮压力"],reason:"克罗地亚更擅长中场控制，加纳则有更直接的速度与冲击，末轮都背着结果压力，比赛很可能在试探和转换之间拉成平局。",sources:["FIFA","ESPN","Bing News"],locked:true}},
 
   // ===== 淘汰赛 32强 (6.29-7.4) =====
-  {id:"R01",g:"KO",r:4,t:"6/29 03:00",h:"南非",a:"加拿大",s:"0-1",st:"done",hl:"🍁 加拿大1-0南非：Stephen Eustáquio 补时绝杀，32强首战一击制胜，加拿大率先晋级16强",pred:{locked:true,ph:1,pa:2,confidence:62,tag:"加拿大小胜",reason:"加拿大前场速度和转换质量更好，南非韧性足但淘汰赛经验与终结稳定性略吃亏。",basis:["东道主气势","边路速度","南非防反"]}},
-  {id:"R02",g:"KO",r:4,t:"6/30 01:00",h:"巴西",a:"日本",s:"2-1",st:"done",hl:"⚽ 巴西2-1日本：ESPN、FIFA 与 BBC 最新一致确认FT，桑巴军团在32强战险胜过关并率先落位 7/6 的 R19。",pred:{locked:true,ph:2,pa:1,confidence:66,tag:"巴西险胜",reason:"日本组织纪律性很强，但巴西前场个人爆点更多，淘汰赛一两个瞬间足以改变比赛。",basis:["巴西爆点","日本纪律","小比分"]}},
-  {id:"R03",g:"KO",r:4,t:"6/30 04:30",h:"德国",a:"巴拉圭",s:"1-1",st:"done",hl:"⚽ 巴拉圭点球4-3德国：双方90分钟与加时战成1-1，巴拉圭通过点球大战4-3爆冷晋级16强，并将于7/5落位R18。",pred:{locked:true,ph:2,pa:0,confidence:70,tag:"德国控场",reason:"德国中前场压迫和阵地战层次更完整，巴拉圭需要长时间低位防守，反击机会有限。",basis:["控球优势","高位压迫","巴拉圭低位"]}},
-  {id:"R04",g:"KO",r:4,t:"6/30 09:00",h:"荷兰",a:"摩洛哥",s:"1-1",st:"done",hl:"⚽ 摩洛哥点球3-2荷兰：双方90分钟与加时战成1-1，摩洛哥通过点球大战3-2淘汰荷兰晋级16强，并将于7/5落位R17。",pred:{locked:true,ph:2,pa:1,confidence:61,tag:"荷兰微优",reason:"摩洛哥反击锋利，但荷兰近期进攻打开后边路和中路衔接更顺，预计会是胶着小胜。",basis:["荷兰火力","摩洛哥反击","边路对位"]}},
-  {id:"R05",g:"KO",r:4,t:"7/1 01:00",h:"科特迪瓦",a:"挪威",s:"1-2",st:"done",hl:"⚽ 挪威2-1科特迪瓦：ESPN 与 BBC 最新一致确认 FT，挪威在 32 强战惊险过关并落位 7/6 对阵巴西的 R19。",pred:{locked:true,ph:1,pa:2,confidence:58,tag:"挪威加时边缘",reason:"科特迪瓦身体对抗强，但挪威锋线终结点更明确，比赛可能被拖入最后阶段才分出胜负。",basis:["挪威锋线","非洲对抗","胶着局"]}},
-  {id:"R06",g:"KO",r:4,t:"7/1 05:00",h:"法国",a:"瑞典",s:"3-0",st:"done",hl:"⚽ 法国3-0瑞典：ESPN 与 BBC 最新一致确认 FT，高卢军团零封过关，并将于 7/5 在 R18 对阵巴拉圭。",pred:{locked:true,ph:3,pa:1,confidence:74,tag:"法国晋级",reason:"法国进攻点太多，姆巴佩和登贝莱状态在线；瑞典有冲击力，但防线抗压会非常困难。",basis:["姆巴佩","登贝莱","法国深度"]}},
-  {id:"R07",g:"KO",r:4,t:"7/1 09:00",h:"墨西哥",a:"厄瓜多尔",s:"2-0",st:"done",hl:"⚽ 墨西哥2-0厄瓜多尔：ESPN 与 BBC 最新一致确认 FT，希门尼斯与基尼奥内斯建功，东道主晋级并落位 7/6 墨西哥城的 R20。",pred:{locked:true,ph:2,pa:1,confidence:64,tag:"墨西哥主场过关",reason:"墨西哥小组赛势头和主场氛围都很强，厄瓜多尔冲击力不弱但稳定性略逊。",basis:["主场优势","小组全胜","厄瓜多尔冲击"]}},
-  {id:"R08",g:"KO",r:4,t:"7/2 00:00",h:"英格兰",a:"刚果(金)",s:"2-1",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰2-1刚果(金)：ESPN与BBC最新一致确认FT，凯恩75'86'梅开二度逆转，Cipenga 7'首开纪录，三狮军团惊险晋级并落位7/6的R20对阵墨西哥。",pred:{locked:true,ph:2,pa:0,confidence:76,tag:"英格兰稳胜",reason:"英格兰阵容厚度和定位球威胁明显更强，刚果(金)需要极高效率反击才有机会制造悬念。",basis:["阵容厚度","定位球","凯恩"]}},
-  {id:"R09",g:"KO",r:4,t:"7/2 04:00",h:"比利时",a:"塞内加尔",s:"3-2",st:"done",hl:"⚽ 比利时3-2塞内加尔（加时）：ESPN API 与 FIFA 最新一致确认 FT AET，卢卡库 86'、蒂勒曼斯 89' 连追两球扳平 2-2 拖入加时后，加时赛比利时再入一球 3-2 逆转塞内加尔晋级。R22 已同步为\"待定(R10胜者) vs 比利时\"。",pred:{locked:true,ph:2,pa:1,confidence:59,tag:"比利时小胜",reason:"塞内加尔状态回升且对抗强，但比利时中前场经验和关键球处理仍更稳。",basis:["比利时经验","塞内加尔冲击","关键球"]}},
+  {id:"R01",g:"KO",r:4,t:"6/29 03:00",h:"南非",a:"加拿大",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · A2 vs B2 · 南非小组末轮1-0胜韩国后抢下第二；加拿大虽1-2负瑞士仍以净胜球优势出线",pred:{locked:true,ph:1,pa:2,confidence:62,tag:"加拿大小胜",reason:"加拿大前场速度和转换质量更好，南非韧性足但淘汰赛经验与终结稳定性略吃亏。",basis:["东道主气势","边路速度","南非防反"]}},
+  {id:"R02",g:"KO",r:4,t:"6/30 01:00",h:"巴西",a:"日本",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · C1 vs F2 · 巴西7分锁C组头名；日本4-0大胜突尼斯后有望力拼出线",pred:{locked:true,ph:2,pa:1,confidence:66,tag:"巴西险胜",reason:"日本组织纪律性很强，但巴西前场个人爆点更多，淘汰赛一两个瞬间足以改变比赛。",basis:["巴西爆点","日本纪律","小比分"]}},
+  {id:"R03",g:"KO",r:4,t:"6/30 04:30",h:"德国",a:"巴拉圭",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · E1 vs D3 · 德国6分拿到E组头名，巴拉圭则以最佳第3名身份晋级",pred:{locked:true,ph:2,pa:0,confidence:70,tag:"德国控场",reason:"德国中前场压迫和阵地战层次更完整，巴拉圭需要长时间低位防守，反击机会有限。",basis:["控球优势","高位压迫","巴拉圭低位"]}},
+  {id:"R04",g:"KO",r:4,t:"6/30 09:00",h:"荷兰",a:"摩洛哥",st:"upcoming",hl:"🏟️ BBVA球场·瓜达卢佩 · F1 vs C2 · 荷兰5-1大胜瑞典登顶F组；摩洛哥4-2收官战后7分列C组第二",pred:{locked:true,ph:2,pa:1,confidence:61,tag:"荷兰微优",reason:"摩洛哥反击锋利，但荷兰近期进攻打开后边路和中路衔接更顺，预计会是胶着小胜。",basis:["荷兰火力","摩洛哥反击","边路对位"]}},
+  {id:"R05",g:"KO",r:4,t:"7/1 01:00",h:"科特迪瓦",a:"挪威",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · I2 vs E2",pred:{locked:true,ph:1,pa:2,confidence:58,tag:"挪威加时边缘",reason:"科特迪瓦身体对抗强，但挪威锋线终结点更明确，比赛可能被拖入最后阶段才分出胜负。",basis:["挪威锋线","非洲对抗","胶着局"]}},
+  {id:"R06",g:"KO",r:4,t:"7/1 05:00",h:"法国",a:"瑞典",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · I1 vs F2 · 法国两连胜提前晋级，姆巴佩状态火热；瑞典5-1大胜突尼斯后前景可期",pred:{locked:true,ph:3,pa:1,confidence:74,tag:"法国晋级",reason:"法国进攻点太多，姆巴佩和登贝莱状态在线；瑞典有冲击力，但防线抗压会非常困难。",basis:["姆巴佩","登贝莱","法国深度"]}},
+  {id:"R07",g:"KO",r:4,t:"7/1 09:00",h:"墨西哥",a:"厄瓜多尔",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · A1 vs E3 · 东道主墨西哥三战全胜9分强势出线；厄瓜多尔末轮爆冷胜德国后以最佳第3名身份晋级",pred:{locked:true,ph:2,pa:1,confidence:64,tag:"墨西哥主场过关",reason:"墨西哥小组赛势头和主场氛围都很强，厄瓜多尔冲击力不弱但稳定性略逊。",basis:["主场优势","小组全胜","厄瓜多尔冲击"]}},
+  {id:"R08",g:"KO",r:4,t:"7/2 00:00",h:"英格兰",a:"刚果(金)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · L1 vs K3 · 英格兰7分L组头名出线；刚果(金)4分位列K组第三并跻身最佳第3名",pred:{locked:true,ph:2,pa:0,confidence:76,tag:"英格兰稳胜",reason:"英格兰阵容厚度和定位球威胁明显更强，刚果(金)需要极高效率反击才有机会制造悬念。",basis:["阵容厚度","定位球","凯恩"]}},
+  {id:"R09",g:"KO",r:4,t:"7/2 04:00",h:"比利时",a:"塞内加尔",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · G1 vs I3 · 比利时5分锁定G组头名；塞内加尔末轮5-0大胜伊拉克后惊险搭上最佳第3名末班车",pred:{locked:true,ph:2,pa:1,confidence:59,tag:"比利时小胜",reason:"塞内加尔状态回升且对抗强，但比利时中前场经验和关键球处理仍更稳。",basis:["比利时经验","塞内加尔冲击","关键球"]}},
   {id:"R10",g:"KO",r:4,t:"7/2 08:00",h:"美国",a:"波黑",st:"upcoming",hl:"🏟️ 利维球场·圣克拉拉 · D1 vs B3 · 东道主美国两连胜提前出线，主场迎战波黑",pred:{locked:true,ph:2,pa:1,confidence:63,tag:"美国借主场晋级",reason:"美国转换速度和主场能量更足，波黑定位球与反击能制造麻烦，但整体节奏可能被美国拉快。",basis:["主场能量","转换速度","波黑定位球"]}},
   {id:"R11",g:"KO",r:4,t:"7/3 03:00",h:"西班牙",a:"奥地利",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · H1 vs J2 · 西班牙头名出线迎战奥地利，奥地利 3-3 逼平阿尔及利亚后锁定 J 组第二",pred:{locked:true,ph:2,pa:0,confidence:71,tag:"西班牙控局",reason:"西班牙控球和压迫质量更稳定，奥地利能跑能抢，但长期无球防守会消耗巨大。",basis:["控球压迫","边中结合","奥地利体能"]}},
   {id:"R12",g:"KO",r:4,t:"7/3 07:00",h:"葡萄牙",a:"克罗地亚",st:"upcoming",hl:"🏟️ BMO球场·多伦多 · K2 vs L2 · 葡萄牙5分位列K组第二，克罗地亚6分拿到L组第二，强强对话落位多伦多",pred:{locked:true,ph:1,pa:1,confidence:55,tag:"拖入加时",reason:"葡萄牙个人能力更强，克罗地亚中场控制和淘汰赛韧性极高，90分钟很可能拉扯成平局。",basis:["葡萄牙前场","克罗地亚中场","淘汰赛韧性"]}},
@@ -1807,12 +1687,12 @@ const ALL_MATCHES = [
   {id:"R15",g:"KO",r:4,t:"7/4 06:00",h:"阿根廷",a:"佛得角",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · J1 vs H2 · 卫冕冠军阿根廷两连胜提前晋级，梅西状态火热",pred:{locked:true,ph:3,pa:0,confidence:78,tag:"阿根廷优势明显",reason:"阿根廷攻防控制力和淘汰赛经验都高一档，佛得角需要完美防守才可能把悬念拖久。",basis:["梅西状态","卫冕冠军","比赛控制"]}},
   {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"哥伦比亚",a:"加纳",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · K1 vs L3 · 哥伦比亚7分锁定K组头名；加纳4分以最佳第3名身份晋级，堪萨斯城上演南美对非洲",pred:{locked:true,ph:2,pa:1,confidence:62,tag:"哥伦比亚小胜",reason:"哥伦比亚小组赛稳定性更好，中前场衔接更顺；加纳速度和身体冲击足以制造威胁。",basis:["哥伦比亚稳定","加纳速度","南美节奏"]}}, 
   // ===== 16强 (7.5-7.8) =====
-  {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"摩洛哥",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · 加拿大 vs 摩洛哥 · R01/R04胜者已全部落位",pred:{date:"2026-07-01",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["东道主气势","摩洛哥韧性","点球气焰"],reason:"加拿大淘汰赛首轮1-0绝杀南非士气正盛，东道主主场氛围不可小觑；摩洛哥点球淘汰荷兰韧劲十足，防守纪律性强。双方实力接近、风格各异，90分钟可能难分胜负。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"巴拉圭",a:"法国",st:"upcoming",hl:"🏟️ 林肯金融球场·费城 · 巴拉圭 vs 法国 · R03/R06 胜者已全部落位",pred:{date:"2026-07-01",ph:0,pa:2,winner:"a",confidence:75,tag:"法国晋级",basis:["姆巴佩状态","法国攻击群","巴拉圭消耗大"],reason:"法国小组赛三战全胜攻防俱佳，姆巴佩和登贝莱边路冲击力对巴拉圭防线构成绝对威胁；巴拉圭刚经历点球大战消耗巨大，面对高卢军团的持续压迫恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"R19",g:"KO",r:5,t:"7/6 04:00",h:"巴西",a:"挪威",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · 巴西 vs 挪威 · R02/R05 胜者已全部落位"},
-  {id:"R20",g:"KO",r:5,t:"7/6 08:00",h:"墨西哥",a:"英格兰",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · 墨西哥 vs 英格兰 · R07/R08 胜者已全部落位"},
+  {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"待定(R01胜者)",a:"待定(R04胜者)",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · R01胜者 vs R04胜者"},
+  {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"待定(R03胜者)",a:"待定(R06胜者)",st:"upcoming",hl:"🏟️ 林肯金融球场·费城 · R03胜者 vs R06胜者"},
+  {id:"R19",g:"KO",r:5,t:"7/6 04:00",h:"待定(R02胜者)",a:"待定(R05胜者)",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · R02胜者 vs R05胜者"},
+  {id:"R20",g:"KO",r:5,t:"7/6 08:00",h:"待定(R07胜者)",a:"待定(R08胜者)",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · R07胜者 vs R08胜者"},
   {id:"R21",g:"KO",r:5,t:"7/7 03:00",h:"待定(R12胜者)",a:"待定(R11胜者)",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · R12胜者 vs R11胜者"},
-  {id:"R22",g:"KO",r:5,t:"7/7 08:00",h:"待定(R10胜者)",a:"比利时",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · R10胜者 vs 比利时 · 比利时加时3-2逆转塞内加尔已落位"},
+  {id:"R22",g:"KO",r:5,t:"7/7 08:00",h:"待定(R10胜者)",a:"待定(R09胜者)",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · R10胜者 vs R09胜者"},
   {id:"R23",g:"KO",r:5,t:"7/8 00:00",h:"待定(R15胜者)",a:"待定(R14胜者)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · R15胜者 vs R14胜者"},
   {id:"R24",g:"KO",r:5,t:"7/8 04:00",h:"待定(R13胜者)",a:"待定(R16胜者)",st:"upcoming",hl:"🏟️ BC Place·温哥华 · R13胜者 vs R16胜者"},
   // ===== 1/4决赛 (7.10-7.12) =====
@@ -2942,72 +2822,17 @@ function renderBracketTree(){let e=document.getElementById('bracketTree');if(!e)
   for(let r of cols){let ms=ko.filter(m=>m.r===r).sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));html+='<div class="bracket-col"><div class="bc-title">'+rn[r]+'</div>';for(let i=0;i<hmap[r];i++){let m=ms[i];if(m){let hd=td(m.h),ad=td(m.a),sc=m.st==='done'?m.s:'';html+='<div class="bc-node '+(m.h.includes('待定')?'tbd':'confirmed')+'"><span class="bf">'+hd.fl+'</span> '+hd.nm+(sc?' '+sc:'')+'</div><div class="bc-node '+(m.a.includes('待定')?'tbd':'confirmed')+'"><span class="bf">'+ad.fl+'</span> '+ad.nm+'</div>';}else{html+='<div class="bc-node tbd">—</div><div class="bc-node tbd">—</div>';}}html+='</div>';}
   html+='</div>';e.innerHTML=html;}
 // ===== COMPARE =====
-function getTeamStats(name){
-  let ms=ALL_MATCHES.filter(m=>m.st==='done'&&(m.h===name||m.a===name));
-  let pl=ms.length,pts=0,w=0,d=0,l=0,gf=0,ga=0,cs=0,mxW=0,mxL=0;
-  for(let m of ms){
-    let [hs,as]=m.s.split('-').map(Number);
-    let x=m.h===name?hs:as,y=m.h===name?as:hs;
-    gf+=x;ga+=y;
-    if(x===y){d++;pts++}
-    else if(x>y){w++;pts+=3;let mg=Math.abs(x-y);if(mg>mxW)mxW=mg}
-    else{l++;let mg=Math.abs(x-y);if(mg>mxL)mxL=mg}
-    if(y===0)cs++;
-  }
-  let gd=gf-ga;
-  let sq=SQUADS[name]||[];
-  let gks=sq.filter(p=>p.p==='门将').length,dfs=sq.filter(p=>p.p==='后卫').length,mds=sq.filter(p=>p.p==='中场').length,fws=sq.filter(p=>p.p==='前锋').length,stars=sq.filter(p=>(PP[p.n]||0)>=4).length;
-  let fm=ms.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t)).slice(-5).map(m=>{
-    let [hs,as]=m.s.split('-').map(Number);
-    if(hs===as)return'D';
-    return((m.h===name&&hs>as)||(m.a===name&&as>hs))?'W':'L';
-  }).join('');
-  let ct='';for(let[c,ts]of Object.entries(CONTINENTS)){if(ts.includes(name)){ct=c.split(' / ')[0];break}}
-  let hst=TEAM_WORLD_CUP_HISTORY[name]||{},br=null,by=null;
-  for(let y of[2022,2018,2014]){if(hst[y]!=null&&(br===null||hst[y]<br)){br=hst[y];by=y}}
-  let brStr='';if(br===1)brStr='🏆 冠军';else if(br===2)brStr='🥈 亚军';else if(br===3)brStr='🥉 季军';else if(br===4)brStr='4th';else if(br&&br<=8)brStr='8强';else if(br&&br<=16)brStr='16强';else brStr='小组赛';
-  return{pl,pts,w,d,l,gf,ga,gd,cs,mxW,mxL,fm,gks,dfs,mds,fws,stars,ct,brStr,by,ms};
-}
 function compareTeams(){let s1=document.getElementById('cmpSelect1'),s2=document.getElementById('cmpSelect2');let t1=s1.value,t2=s2.value;let el=document.getElementById('compareResult');
   if(!t1||!t2||t1===t2){el.innerHTML='<div style="color:var(--text-dim);text-align:center;padding:20px">请选择两支不同球队</div>';return;}
-  let a=getTeamStats(t1),b=getTeamStats(t2);let m1=td(t1),m2=td(t2);
-  let pct=(v1,v2)=>{let t=v1+v2||1;return Math.round(v1/t*100)};
-  let bar=(v1,v2)=>'<div class="cr-bar"><div class="cr-fill cr-fill-a" style="width:'+pct(v1,v2)+'%"></div><div class="cr-fill cr-fill-b" style="width:'+pct(v2,v1)+'%"></div></div>';
-  let row=(lb,v1,v2)=>'<div class="cr-row"><span class="cr-val-a">'+v1+'</span><span class="cr-label">'+lb+'</span><span class="cr-val-b">'+v2+'</span>'+bar(v1,v2)+'</div>';
-  let rowSm=(lb,v1,v2)=>'<div class="cr-row-sm"><span class="cr-val-a">'+v1+'</span><span class="cr-label">'+lb+'</span><span class="cr-val-b">'+v2+'</span>'+bar(v1,v2)+'</div>';
-  let gdCls=v=>v>0?'pos':v<0?'neg':'zero';
-  let gdTxt=v=>v>0?'+'+v:v<0?''+v:'0';
-  let formDot=(c,i)=>{let m={W:'w',L:'l',D:'d'};let cls=m[c]||'u';return'<span class="cr-form-dot '+cls+'">'+(c||'—')+'</span>'};
-  let fmtFormA=a.fm.split('').map((c,i)=>formDot(c,i)).join('');
-  let fmtFormB=b.fm.split('').map((c,i)=>formDot(c,i)).join('');
-  let histA=a.brStr+(a.by?'('+a.by+')':'');
-  let histB=b.brStr+(b.by?'('+b.by+')':'');
-  el.innerHTML=`<div class="compare-result">
-<div class="cr-header">
-<div class="cr-team cr-team-a"><span class="cr-flag">${m1.fl}</span><span class="cr-name">${m1.nm}</span><span class="cr-meta cr-meta-a">${a.ct}${histA?' · '+histA:''}</span></div>
-<div class="cr-vs">VS</div>
-<div class="cr-team cr-team-b"><span class="cr-flag">${m2.fl}</span><span class="cr-name">${m2.nm}</span><span class="cr-meta cr-meta-b">${b.ct}${histB?' · '+histB:''}</span></div>
-</div>
-<div class="cr-section-title">📊 核心数据</div>
-${row('积分',a.pts,b.pts)}
-${row('总进球',a.gf,b.gf)}
-${row('总失球',a.ga,b.ga)}
-<div class="cr-row"><span class="cr-gd-val-a ${gdCls(a.gd)}">${gdTxt(a.gd)}</span><span class="cr-label">净胜球</span><span class="cr-gd-val-b ${gdCls(b.gd)}">${gdTxt(b.gd)}</span></div>
-${row('零封',a.cs,b.cs)}
-<div class="cr-section-title">🧑‍🤝‍🧑 阵容</div>
-${rowSm('🧤 门将',a.gks,b.gks)}
-${rowSm('🛡️ 后卫',a.dfs,b.dfs)}
-${rowSm('⚡ 中场',a.mds,b.mds)}
-${rowSm('⚽ 前锋',a.fws,b.fws)}
-${rowSm('⭐ 球星',a.stars,b.stars)}
-<div class="cr-section-title">📈 近5场走势</div>
-<div class="cr-form-row"><div class="cr-form-a">${fmtFormA}</div><div class="cr-form-b">${fmtFormB}</div></div>
-<div class="cr-monthl">⚽ 已赛 ${a.pl} 场 · ${a.w}胜${a.d}平${a.l}负 &nbsp;|&nbsp; ⚽ 已赛 ${b.pl} 场 · ${b.w}胜${b.d}平${b.l}负</div>
-</div>`;}
+  let p1=SQUADS[t1]||[],p2=SQUADS[t2]||[],g1=grp(t1),g2=grp(t2);
+  let f=m=>m.st==='done',w=(t,ms)=>ms.filter(m=>f(m)&&((m.h===t&&parseInt(m.s)>parseInt(m.s.split('-')[1]))||(m.a===t&&parseInt(m.s.split('-')[1])>parseInt(m.s.split('-')[0])))).length;
+  let m1=ALL_MATCHES.filter(m=>m.h===t1||m.a===t1),m2=ALL_MATCHES.filter(m=>m.h===t2||m.a===t2);
+  let bw=w(t1,m1),bw2=w(t2,m2);
+  let bar=(v1,v2,lb)=>{let t=v1+v2||1;return '<div class="cg-label">'+lb+'</div><div class="cg-left">'+v1+'</div><div class="cg-center"></div><div class="cg-right">'+v2+'</div><div class="cg-bar"><div class="cg-fill l" style="width:'+(v1/t*100)+'%"></div><div class="cg-fill r" style="width:'+(v2/t*100)+'%"></div></div>';};
+  el.innerHTML='<div class="compare-grid">'+bar(bw,bw2,'胜场')+bar(p1.length,p2.length,'球员数')+bar(g1?1:0,g2?1:0,'已分组')+'</div><div style="text-align:center;margin-top:8px;color:var(--text-dim);font-size:.7rem">'+td(t1).fl+td(t1).nm+' vs '+td(t2).fl+td(t2).nm+'</div>';}
 function buildComparePickers(){let s1=document.getElementById('cmpSelect1'),s2=document.getElementById('cmpSelect2');if(!s1||!s2)return;
   let teams=Object.keys(SQUADS).sort();let o=teams.map(t=>'<option value="'+t+'">'+t+'</option>').join('');
-  s1.innerHTML='<option value="">选择球队 A</option>'+o;s2.innerHTML='<option value="">选择球队 B</option>'+o;
-  s1.value='阿根廷';s2.value='法国';setTimeout(compareTeams,50);}
+  s1.innerHTML='<option value="">选择球队 A</option>'+o;s2.innerHTML='<option value="">选择球队 B</option>'+o;}
 // ===== DETAIL =====
 function openDetail(mid){let m=ALL_MATCHES.find(x=>x.id===mid);if(!m)return;let hd=td(m.h),ad=td(m.a),isD=m.st==='done',isL=isLive(m);
   let sc=isD?m.s:(isL?m.s:'vs'),loc=LOCATIONS[m.h+'vs'+m.a]||'待定',hl=m.hl||'暂无',bi=isD?'✅ 已结束':(isL?'🔴 进行中':'⏳ 即将开赛');
