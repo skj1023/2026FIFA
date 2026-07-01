@@ -718,6 +718,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
       <div class="log-item">
+        <div class="log-time">2026-07-01 12:02</div>
+        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R07 已切换 live：墨西哥2-0厄瓜多尔（90+9&#39;）</strong> — 福福已根据 ESPN World Cup scoreboard / Top Events、BBC Sport Scores &amp; Fixtures 与 FIFA World Cup 2026 Scores &amp; Fixtures 当日赛程/战报口径交叉复核：北京时间 7/1 09:00 开球的 32 强战 R07 墨西哥vs厄瓜多尔当前仍显示比赛进行中，ESPN 与 BBC 最新一致可见比分为墨西哥 2-0 领先、时间到 90+9&#39;；FIFA 同页新闻流亦已同步出现墨西哥比赛相关更新。由于尚未看到 <strong>FT</strong> / Full time 明确落版，本站本轮只将 R07 从 <code>upcoming</code> 切换为 <code>live</code>，补写实时比分与简述，R20 继续保持“待定(R07胜者) vs 待定(R08胜者)”。当前北京时间 12:02 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+      </div>
+      <div class="log-item">
         <div class="log-time">2026-07-01 07:43</div>
         <div class="log-content"><span class="log-tag auto">赛果</span><strong>🇫🇷 R06 完赛：法国 3-0 瑞典，R18 对阵位已同步落位</strong> — 福福根据 ESPN World Cup scoreboard / Top Events 与 BBC Sport Scores &amp; Fixtures 同步复核：北京时间 7/1 05:00 开球的 32 强战 R06 法国vs瑞典目前已显示 <strong>FT</strong>，比分为法国 3-0 过关；当前开球时间已超过 120 分钟，本站已将 R06 从 <code>live</code> 切换为 <code>done</code>，同步写入 3-0 赛果摘要，并把 7/5 的 R18 从“巴拉圭 vs 待定(R06胜者)”更新为“巴拉圭 vs 法国”。当前北京时间 07:43 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
       </div>
@@ -1768,7 +1772,7 @@ const ALL_MATCHES = [
   {id:"R04",g:"KO",r:4,t:"6/30 09:00",h:"荷兰",a:"摩洛哥",s:"1-1",st:"done",hl:"⚽ 摩洛哥点球3-2荷兰：双方90分钟与加时战成1-1，摩洛哥通过点球大战3-2淘汰荷兰晋级16强，并将于7/5落位R17。",pred:{locked:true,ph:2,pa:1,confidence:61,tag:"荷兰微优",reason:"摩洛哥反击锋利，但荷兰近期进攻打开后边路和中路衔接更顺，预计会是胶着小胜。",basis:["荷兰火力","摩洛哥反击","边路对位"]}},
   {id:"R05",g:"KO",r:4,t:"7/1 01:00",h:"科特迪瓦",a:"挪威",s:"1-2",st:"done",hl:"⚽ 挪威2-1科特迪瓦：ESPN 与 BBC 最新一致确认 FT，挪威在 32 强战惊险过关并落位 7/6 对阵巴西的 R19。",pred:{locked:true,ph:1,pa:2,confidence:58,tag:"挪威加时边缘",reason:"科特迪瓦身体对抗强，但挪威锋线终结点更明确，比赛可能被拖入最后阶段才分出胜负。",basis:["挪威锋线","非洲对抗","胶着局"]}},
   {id:"R06",g:"KO",r:4,t:"7/1 05:00",h:"法国",a:"瑞典",s:"3-0",st:"done",hl:"⚽ 法国3-0瑞典：ESPN 与 BBC 最新一致确认 FT，高卢军团零封过关，并将于 7/5 在 R18 对阵巴拉圭。",pred:{locked:true,ph:3,pa:1,confidence:74,tag:"法国晋级",reason:"法国进攻点太多，姆巴佩和登贝莱状态在线；瑞典有冲击力，但防线抗压会非常困难。",basis:["姆巴佩","登贝莱","法国深度"]}},
-  {id:"R07",g:"KO",r:4,t:"7/1 09:00",h:"墨西哥",a:"厄瓜多尔",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · A1 vs E3 · 东道主墨西哥三战全胜9分强势出线；厄瓜多尔末轮爆冷胜德国后以最佳第3名身份晋级",pred:{locked:true,ph:2,pa:1,confidence:64,tag:"墨西哥主场过关",reason:"墨西哥小组赛势头和主场氛围都很强，厄瓜多尔冲击力不弱但稳定性略逊。",basis:["主场优势","小组全胜","厄瓜多尔冲击"]}},
+  {id:"R07",g:"KO",r:4,t:"7/1 09:00",h:"墨西哥",a:"厄瓜多尔",s:"2-0",st:"live",hl:"🔴 墨西哥2-0厄瓜多尔（90+9'）：ESPN 与 BBC 最新可见比分一致，东道主已在补时阶段建立两球优势",pred:{locked:true,ph:2,pa:1,confidence:64,tag:"墨西哥主场过关",reason:"墨西哥小组赛势头和主场氛围都很强，厄瓜多尔冲击力不弱但稳定性略逊。",basis:["主场优势","小组全胜","厄瓜多尔冲击"]}},
   {id:"R08",g:"KO",r:4,t:"7/2 00:00",h:"英格兰",a:"刚果(金)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · L1 vs K3 · 英格兰7分L组头名出线；刚果(金)4分位列K组第三并跻身最佳第3名",pred:{locked:true,ph:2,pa:0,confidence:76,tag:"英格兰稳胜",reason:"英格兰阵容厚度和定位球威胁明显更强，刚果(金)需要极高效率反击才有机会制造悬念。",basis:["阵容厚度","定位球","凯恩"]}},
   {id:"R09",g:"KO",r:4,t:"7/2 04:00",h:"比利时",a:"塞内加尔",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · G1 vs I3 · 比利时5分锁定G组头名；塞内加尔末轮5-0大胜伊拉克后惊险搭上最佳第3名末班车",pred:{locked:true,ph:2,pa:1,confidence:59,tag:"比利时小胜",reason:"塞内加尔状态回升且对抗强，但比利时中前场经验和关键球处理仍更稳。",basis:["比利时经验","塞内加尔冲击","关键球"]}},
   {id:"R10",g:"KO",r:4,t:"7/2 08:00",h:"美国",a:"波黑",st:"upcoming",hl:"🏟️ 利维球场·圣克拉拉 · D1 vs B3 · 东道主美国两连胜提前出线，主场迎战波黑",pred:{locked:true,ph:2,pa:1,confidence:63,tag:"美国借主场晋级",reason:"美国转换速度和主场能量更足，波黑定位球与反击能制造麻烦，但整体节奏可能被美国拉快。",basis:["主场能量","转换速度","波黑定位球"]}},
