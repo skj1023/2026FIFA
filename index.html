@@ -718,6 +718,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+        <div class="log-time">2026-07-03 01:41</div>
+        <div class="log-content"><span class="log-tag auto">预测</span><strong>🧠 7/6 16强前瞻已补齐：R19 巴西vs挪威、R20 墨西哥vs英格兰新增 locked 预测</strong> — 福福已在北京时间 01:41 的预测窗口内，先用 ESPN World Cup Schedule、FIFA Match Fixtures and Where to Watch 与 BBC Sport Scores &amp; Fixtures 复核最新赛程：7/2 的最新可靠赛果仍是美国 2-0 波黑，7/3 首场 R11 西班牙vs奥地利尚未开球，因此本轮无需改动已完赛/直播状态。按照“从明天起连续3个自然日”的规则，本站已为仍缺失预测且落在 7/6 的 R19、R20 补写 <code>pred</code> 并锁定；7/4-7/5 已有 locked 预测全部保留，前端结构与既有 AI 预测代码未作任何改动。</div>
+      </div>
+              <div class="log-item">
         <div class="log-time">2026-07-02 10:45</div>
         <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R10 完赛：美国 2-0 波黑，R22 已同步落位</strong> — 福福已根据 ESPN World Cup Schedule 与 BBC Sport Scores &amp; Fixtures 交叉复核：北京时间 7/2 08:00 开球的 32 强战 R10 现已 Full time，且距开球已超过 120 分钟；两站最新一致显示美国 2-0 击败波黑晋级。本站已将 ALL_MATCHES 中 R10 从 <code>live</code> 切换为 <code>done</code>，补写赛果摘要，并把 7/7 的 R22 从“待定(R10胜者) vs 比利时”同步更新为“美国 vs 比利时”。当前北京时间 10:45 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
       </div>
@@ -1821,8 +1825,8 @@ const ALL_MATCHES = [
   // ===== 16强 (7.5-7.8) =====
   {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"摩洛哥",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · 加拿大 vs 摩洛哥 · R01/R04胜者已全部落位",pred:{date:"2026-07-01",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["东道主气势","摩洛哥韧性","点球气焰"],reason:"加拿大淘汰赛首轮1-0绝杀南非士气正盛，东道主主场氛围不可小觑；摩洛哥点球淘汰荷兰韧劲十足，防守纪律性强。双方实力接近、风格各异，90分钟可能难分胜负。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"巴拉圭",a:"法国",st:"upcoming",hl:"🏟️ 林肯金融球场·费城 · 巴拉圭 vs 法国 · R03/R06 胜者已全部落位",pred:{date:"2026-07-01",ph:0,pa:2,winner:"a",confidence:75,tag:"法国晋级",basis:["姆巴佩状态","法国攻击群","巴拉圭消耗大"],reason:"法国小组赛三战全胜攻防俱佳，姆巴佩和登贝莱边路冲击力对巴拉圭防线构成绝对威胁；巴拉圭刚经历点球大战消耗巨大，面对高卢军团的持续压迫恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"R19",g:"KO",r:5,t:"7/6 04:00",h:"巴西",a:"挪威",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · 巴西 vs 挪威 · R02/R05 胜者已全部落位"},
-  {id:"R20",g:"KO",r:5,t:"7/6 08:00",h:"墨西哥",a:"英格兰",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · 墨西哥 vs 英格兰 · R07/R08 胜者已全部落位"},
+  {id:"R19",g:"KO",r:5,t:"7/6 04:00",h:"巴西",a:"挪威",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · 巴西 vs 挪威 · R02/R05 胜者已全部落位",pred:{date:"2026-07-03",ph:2,pa:1,winner:"h",confidence:68,tag:"巴西过关",basis:["锋线爆点","挪威反击","淘汰赛经验"],reason:"巴西前场单点爆破和持续施压能力仍高于挪威，哈兰德领衔的反击会制造威胁，但若比赛进入阵地战与细节处理，桑巴军团更值得高看一线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"R20",g:"KO",r:5,t:"7/6 08:00",h:"墨西哥",a:"英格兰",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · 墨西哥 vs 英格兰 · R07/R08 胜者已全部落位",pred:{date:"2026-07-03",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["高原主场","英格兰阵容厚度","胶着节奏"],reason:"墨西哥坐镇阿兹特克的主场与高原环境会明显抬高比赛强度，英格兰整体配置更深但未必能轻松提速，90分钟大概率是一场拉扯感很强的硬仗。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R21",g:"KO",r:5,t:"7/7 03:00",h:"待定(R12胜者)",a:"待定(R11胜者)",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · R12胜者 vs R11胜者"},
   {id:"R22",g:"KO",r:5,t:"7/7 08:00",h:"美国",a:"比利时",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · 美国 vs 比利时 · 美国2-0淘汰波黑后与比利时会师8强"},
   {id:"R23",g:"KO",r:5,t:"7/8 00:00",h:"待定(R15胜者)",a:"待定(R14胜者)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · R15胜者 vs R14胜者"},
