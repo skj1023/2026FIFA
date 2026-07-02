@@ -718,6 +718,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+        <div class="log-time">2026-07-03 03:59</div>
+        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R11 已切换 live：西班牙 1-0 奥地利（半场）</strong> — 福福已根据 ESPN Top Events、FIFA Match Fixtures and Where to Watch 与 BBC Sport Scores &amp; Fixtures 交叉复核：北京时间 7/3 03:00 开球的 32 强战 R11 当前仍在进行中，三方最新一致显示西班牙半场 1-0 领先奥地利。本站已将 ALL_MATCHES 中 R11 从 <code>upcoming</code> 切换为 <code>live</code>，补写实时比分与简述；由于距离开球尚未满 120 分钟且未见 FT / Full time 明确落版，R11 继续保持 <code>live</code>。当前北京时间 03:59 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+      </div>
+              <div class="log-item">
         <div class="log-time">2026-07-03 01:41</div>
         <div class="log-content"><span class="log-tag auto">预测</span><strong>🧠 7/6 16强前瞻已补齐：R19 巴西vs挪威、R20 墨西哥vs英格兰新增 locked 预测</strong> — 福福已在北京时间 01:41 的预测窗口内，先用 ESPN World Cup Schedule、FIFA Match Fixtures and Where to Watch 与 BBC Sport Scores &amp; Fixtures 复核最新赛程：7/2 的最新可靠赛果仍是美国 2-0 波黑，7/3 首场 R11 西班牙vs奥地利尚未开球，因此本轮无需改动已完赛/直播状态。按照“从明天起连续3个自然日”的规则，本站已为仍缺失预测且落在 7/6 的 R19、R20 补写 <code>pred</code> 并锁定；7/4-7/5 已有 locked 预测全部保留，前端结构与既有 AI 预测代码未作任何改动。</div>
       </div>
@@ -1816,7 +1820,7 @@ const ALL_MATCHES = [
   {id:"R08",g:"KO",r:4,t:"7/2 00:00",h:"英格兰",a:"刚果(金)",s:"2-1",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰2-1刚果(金)：ESPN与BBC最新一致确认FT，凯恩75'86'梅开二度逆转，Cipenga 7'首开纪录，三狮军团惊险晋级并落位7/6的R20对阵墨西哥。",pred:{locked:true,ph:2,pa:0,confidence:76,tag:"英格兰稳胜",reason:"英格兰阵容厚度和定位球威胁明显更强，刚果(金)需要极高效率反击才有机会制造悬念。",basis:["阵容厚度","定位球","凯恩"]}},
   {id:"R09",g:"KO",r:4,t:"7/2 04:00",h:"比利时",a:"塞内加尔",s:"3-2",st:"done",hl:"⚽ 比利时3-2塞内加尔（加时）：ESPN API 与 FIFA 最新一致确认 FT AET，卢卡库 86'、蒂勒曼斯 89' 连追两球扳平 2-2 拖入加时后，加时赛比利时再入一球 3-2 逆转塞内加尔晋级。R22 已同步为\"待定(R10胜者) vs 比利时\"。",pred:{locked:true,ph:2,pa:1,confidence:59,tag:"比利时小胜",reason:"塞内加尔状态回升且对抗强，但比利时中前场经验和关键球处理仍更稳。",basis:["比利时经验","塞内加尔冲击","关键球"]}},
   {id:"R10",g:"KO",r:4,t:"7/2 08:00",h:"美国",a:"波黑",s:"2-0",st:"done",hl:"⚽ 美国2-0波黑：ESPN 与 BBC 最新一致确认 FT，美国在圣克拉拉零封晋级，R22 已同步更新为\"美国 vs 比利时\"。",pred:{locked:true,ph:2,pa:1,confidence:63,tag:"美国借主场晋级",reason:"美国转换速度和主场能量更足，波黑定位球与反击能制造麻烦，但整体节奏可能被美国拉快。",basis:["主场能量","转换速度","波黑定位球"]}},
-  {id:"R11",g:"KO",r:4,t:"7/3 03:00",h:"西班牙",a:"奥地利",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · H1 vs J2 · 西班牙头名出线迎战奥地利，奥地利 3-3 逼平阿尔及利亚后锁定 J 组第二",pred:{locked:true,ph:2,pa:0,confidence:71,tag:"西班牙控局",reason:"西班牙控球和压迫质量更稳定，奥地利能跑能抢，但长期无球防守会消耗巨大。",basis:["控球压迫","边中结合","奥地利体能"]}},
+  {id:"R11",g:"KO",r:4,t:"7/3 03:00",h:"西班牙",a:"奥地利",s:"1-0",st:"live",hl:"🔴 西班牙1-0奥地利（半场）：ESPN、FIFA 与 BBC 最新一致显示西班牙在洛杉矶 SoFi 球场半场领先，R11 当前仍在进行中。",pred:{locked:true,ph:2,pa:0,confidence:71,tag:"西班牙控局",reason:"西班牙控球和压迫质量更稳定，奥地利能跑能抢，但长期无球防守会消耗巨大。",basis:["控球压迫","边中结合","奥地利体能"]}},
   {id:"R12",g:"KO",r:4,t:"7/3 07:00",h:"葡萄牙",a:"克罗地亚",st:"upcoming",hl:"🏟️ BMO球场·多伦多 · K2 vs L2 · 葡萄牙5分位列K组第二，克罗地亚6分拿到L组第二，强强对话落位多伦多",pred:{locked:true,ph:1,pa:1,confidence:55,tag:"拖入加时",reason:"葡萄牙个人能力更强，克罗地亚中场控制和淘汰赛韧性极高，90分钟很可能拉扯成平局。",basis:["葡萄牙前场","克罗地亚中场","淘汰赛韧性"]}},
   {id:"R13",g:"KO",r:4,t:"7/3 11:00",h:"瑞士",a:"阿尔及利亚",st:"upcoming",hl:"🏟️ BC Place·温哥华 · B1 vs J3 · 瑞士7分锁定B组头名；阿尔及利亚末轮3-3战平奥地利后以最佳第3名身份晋级",pred:{locked:true,ph:2,pa:1,confidence:60,tag:"瑞士稳中有险",reason:"瑞士整体结构清晰、失误少，阿尔及利亚进攻情绪和对抗很强，但防守端波动较大。",basis:["瑞士稳定","阿尔及利亚火力","防守波动"]}},
   {id:"R14",g:"KO",r:4,t:"7/4 02:00",h:"澳大利亚",a:"埃及",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · D2 vs G2 · 澳大利亚凭净胜球拿到D组第二；埃及5分位列G组第二晋级",pred:{locked:true,ph:1,pa:1,confidence:54,tag:"谨慎看平",reason:"澳大利亚身体和定位球优势明显，埃及依靠萨拉赫与边路速度有反击威胁，90分钟胜负很难拉开。",basis:["澳洲定位球","萨拉赫","低比分"]}},
