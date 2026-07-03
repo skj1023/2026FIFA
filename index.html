@@ -718,6 +718,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+        <div class="log-time">2026-07-04 03:19</div>
+        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔄 R14 实时比分已刷新：澳大利亚1-1埃及（58'）</strong> — 福福已根据 ESPN World Cup scoreboard 最新数据复核：北京时间 7/4 02:00 开球的 32 强战 R14 当前仍在比赛进行中（2nd Half 58'），ESPN 最新确认比分已变为 1-1，澳大利亚下半场扳平比分。本站已将 ALL_MATCHES 中 R14 的实时比分从 <code>0-1</code> 更新为 <code>1-1</code>，并重写直播简述；由于距离开球尚未满 120 分钟且未见 FT 明确落版，R14 继续保持 <code>live</code>，R23 继续保持"待定(R15胜者) vs 待定(R14胜者)"。当前北京时间 03:19 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+      </div>
+              <div class="log-item">
         <div class="log-time">2026-07-04 02:11</div>
         <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R14 已切换 live：埃及1-0澳大利亚（17'）</strong> — 福福已根据 ESPN World Cup API 最新数据复核：北京时间 7/4 02:00 开球的 32 强战 R14 埃及vs澳大利亚当前正在进行中，ESPN 确认 <strong>First Half 17'</strong>，Emam Ashour 13' 头球破门帮助埃及反客为主率先打破僵局。本站已将 ALL_MATCHES 中 R14 从 <code>upcoming</code> 切换为 <code>live</code>，补写实时比分与简述；由于距离开球仅约11分钟，R23 继续保持待定。当前北京时间 02:11 已超过 00:05-02:00 预测窗口，本轮未新增预测，既有 locked 预测全部保留。</div>
       </div>
@@ -1851,7 +1855,7 @@ const ALL_MATCHES = [
   {id:"R11",g:"KO",r:4,t:"7/3 03:00",h:"西班牙",a:"奥地利",s:"3-0",st:"done",hl:"⚽ 西班牙3-0奥地利：ESPN 最新确认 FT，西班牙在洛杉矶 SoFi 球场3-0完胜奥地利晋级16强，R12（葡萄牙 vs 克罗地亚）胜者将是西班牙的下一轮对手。",pred:{locked:true,ph:2,pa:0,confidence:71,tag:"西班牙控局",reason:"西班牙控球和压迫质量更稳定，奥地利能跑能抢，但长期无球防守会消耗巨大。",basis:["控球压迫","边中结合","奥地利体能"]}},
   {id:"R12",g:"KO",r:4,t:"7/3 07:00",h:"葡萄牙",a:"克罗地亚",s:"2-1",st:"done",hl:"⚽ 葡萄牙2-1克罗地亚：FIFA 与 BBC 最新一致确认 FT，葡萄牙在32强焦点战淘汰克罗地亚晋级16强，并将于7/7在R21对阵西班牙。",pred:{locked:true,ph:1,pa:1,confidence:55,tag:"拖入加时",reason:"葡萄牙个人能力更强，克罗地亚中场控制和淘汰赛韧性极高，90分钟很可能拉扯成平局。",basis:["葡萄牙前场","克罗地亚中场","淘汰赛韧性"]}},
   {id:"R13",g:"KO",r:4,t:"7/3 11:00",h:"瑞士",a:"阿尔及利亚",s:"2-0",st:"done",hl:"⚽ 瑞士2-0阿尔及利亚：BBC 最新确认 FT，瑞士在 BC Place 2-0 零封阿尔及利亚晋级 16 强，R24 已同步更新为\"瑞士 vs 待定(R16 胜者)\"。",pred:{locked:true,ph:2,pa:1,confidence:60,tag:"瑞士稳中有险",reason:"瑞士整体结构清晰、失误少，阿尔及利亚进攻情绪和对抗很强，但防守端波动较大。",basis:["瑞士稳定","阿尔及利亚火力","防守波动"]}},
-  {id:"R14",g:"KO",r:4,t:"7/4 02:00",h:"澳大利亚",a:"埃及",s:"0-1",st:"live",hl:"🔴 埃及1-0澳大利亚（17'）：Emam Ashour 13'头球破门，埃及在AT&T球场反客为主先声夺人，澳大利亚暂0-1落后（ESPN确认First Half 17'）",pred:{locked:true,ph:1,pa:1,confidence:54,tag:"谨慎看平",reason:"澳大利亚身体和定位球优势明显，埃及依靠萨拉赫与边路速度有反击威胁，90分钟胜负很难拉开。",basis:["澳洲定位球","萨拉赫","低比分"]}},
+  {id:"R14",g:"KO",r:4,t:"7/4 02:00",h:"澳大利亚",a:"埃及",s:"1-1",st:"live",hl:"🔴 澳大利亚1-1埃及（58'）：Emam Ashour 13'头球破门助埃及先声夺人，澳大利亚下半场扳平比分，双方暂1-1僵持（ESPN确认2nd Half 58'）",pred:{locked:true,ph:1,pa:1,confidence:54,tag:"谨慎看平",reason:"澳大利亚身体和定位球优势明显，埃及依靠萨拉赫与边路速度有反击威胁，90分钟胜负很难拉开。",basis:["澳洲定位球","萨拉赫","低比分"]}},
   {id:"R15",g:"KO",r:4,t:"7/4 06:00",h:"阿根廷",a:"佛得角",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · J1 vs H2 · 卫冕冠军阿根廷两连胜提前晋级，梅西状态火热",pred:{locked:true,ph:3,pa:0,confidence:78,tag:"阿根廷优势明显",reason:"阿根廷攻防控制力和淘汰赛经验都高一档，佛得角需要完美防守才可能把悬念拖久。",basis:["梅西状态","卫冕冠军","比赛控制"]}},
   {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"哥伦比亚",a:"加纳",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · K1 vs L3 · 哥伦比亚7分锁定K组头名；加纳4分以最佳第3名身份晋级，堪萨斯城上演南美对非洲",pred:{locked:true,ph:2,pa:1,confidence:62,tag:"哥伦比亚小胜",reason:"哥伦比亚小组赛稳定性更好，中前场衔接更顺；加纳速度和身体冲击足以制造威胁。",basis:["哥伦比亚稳定","加纳速度","南美节奏"]}}, 
   // ===== 16强 (7.5-7.8) =====
