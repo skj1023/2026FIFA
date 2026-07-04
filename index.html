@@ -718,6 +718,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+        <div class="log-time">2026-07-04 09:58</div>
+        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R16 已切换 live：哥伦比亚1-0加纳（36&#39;）</strong> — 福福已根据 BBC Sport Scores &amp; Fixtures 最新数据复核：北京时间 7/4 09:30 开球的 32 强战 R16 哥伦比亚 vs 加纳当前正在进行中，BBC 最新显示 <code>Colombia 1-0 Ghana</code>、比赛时间来到 <strong>36 minutes</strong>。本站已将 ALL_MATCHES 中 R16 从 <code>upcoming</code> 切换为 <code>live</code>，补写实时比分与直播简述；由于比赛尚未结束，R24 继续保持"瑞士 vs 待定(R16胜者)"。当前北京时间 09:58 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+      </div>
+              <div class="log-item">
         <div class="log-time">2026-07-04 08:57</div>
         <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R15 完赛：阿根廷3-2佛得角，R23 已同步落位</strong> — 福福已根据 FIFA 2026 World Cup 官方 API（idCompetition=17, idSeason=285023）最新数据复核：北京时间 7/4 06:00 开球的 32 强战 R15 阿根廷 vs 佛得角已在开球超过 120 分钟后确认 FT，FIFA 官方显示 <code>ARG 3-2 CPV</code>，梅西梅开二度、劳塔罗打入制胜球，卫冕冠军有惊无险晋级 16 强。本站已将 ALL_MATCHES 中 R15 从 <code>live</code> 切换为 <code>done</code>，补写比分 <code>3-2</code> 及赛果摘要，同时把 R23 从&quot;待定(R15胜者) vs 埃及&quot;更新为&quot;阿根廷 vs 埃及&quot;。当前北京时间 08:57 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
       </div>
@@ -1873,7 +1877,7 @@ const ALL_MATCHES = [
   {id:"R13",g:"KO",r:4,t:"7/3 11:00",h:"瑞士",a:"阿尔及利亚",s:"2-0",st:"done",hl:"⚽ 瑞士2-0阿尔及利亚：BBC 最新确认 FT，瑞士在 BC Place 2-0 零封阿尔及利亚晋级 16 强，R24 已同步更新为\"瑞士 vs 待定(R16 胜者)\"。",pred:{locked:true,ph:2,pa:1,confidence:60,tag:"瑞士稳中有险",reason:"瑞士整体结构清晰、失误少，阿尔及利亚进攻情绪和对抗很强，但防守端波动较大。",basis:["瑞士稳定","阿尔及利亚火力","防守波动"]}},
   {id:"R14",g:"KO",r:4,t:"7/4 02:00",h:"澳大利亚",a:"埃及",s:"1-1",st:"done",hl:"⚽ 澳大利亚1-1埃及（点球2-4）：Emam Ashour 13'首开纪录，Mohamed Hany 55'乌龙扳平，双方120分钟战平1-1；点球大战埃及4-2胜出，队史首次晋级世界杯淘汰赛16强。R23 已更新为「阿根廷 vs 埃及」。",pred:{locked:true,ph:1,pa:1,confidence:54,tag:"谨慎看平",reason:"澳大利亚身体和定位球优势明显，埃及依靠萨拉赫与边路速度有反击威胁，90分钟胜负很难拉开。",basis:["澳洲定位球","萨拉赫","低比分"]}},
   {id:"R15",g:"KO",r:4,t:"7/4 06:00",h:"阿根廷",a:"佛得角",s:"3-2",st:"done",hl:"🐐 阿根廷3-2佛得角：FIFA API 确认 FT，梅西双响+劳塔罗制胜球，卫冕冠军有惊无险挺进16强。R23 已同步为「阿根廷 vs 埃及」。",pred:{locked:true,ph:3,pa:0,confidence:78,tag:"阿根廷优势明显",reason:"阿根廷攻防控制力和淘汰赛经验都高一档，佛得角需要完美防守才可能把悬念拖久。",basis:["梅西状态","卫冕冠军","比赛控制"]}},
-  {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"哥伦比亚",a:"加纳",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · K1 vs L3 · 哥伦比亚7分锁定K组头名；加纳4分以最佳第3名身份晋级，堪萨斯城上演南美对非洲",pred:{locked:true,ph:2,pa:1,confidence:62,tag:"哥伦比亚小胜",reason:"哥伦比亚小组赛稳定性更好，中前场衔接更顺；加纳速度和身体冲击足以制造威胁。",basis:["哥伦比亚稳定","加纳速度","南美节奏"]}}, 
+  {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"哥伦比亚",a:"加纳",s:"1-0",st:"live",hl:"🔴 哥伦比亚1-0加纳（36'）· 箭头球场堪萨斯城 · K组头名哥伦比亚对上最佳第3名加纳，南美对非洲",pred:{locked:true,ph:2,pa:1,confidence:62,tag:"哥伦比亚小胜",reason:"哥伦比亚小组赛稳定性更好，中前场衔接更顺；加纳速度和身体冲击足以制造威胁。",basis:["哥伦比亚稳定","加纳速度","南美节奏"]}}, 
   // ===== 16强 (7.5-7.8) =====
   {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"摩洛哥",st:"upcoming",hl:"🏟️ NRG球场·休斯顿 · 加拿大 vs 摩洛哥 · R01/R04胜者已全部落位",pred:{date:"2026-07-01",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["东道主气势","摩洛哥韧性","点球气焰"],reason:"加拿大淘汰赛首轮1-0绝杀南非士气正盛，东道主主场氛围不可小觑；摩洛哥点球淘汰荷兰韧劲十足，防守纪律性强。双方实力接近、风格各异，90分钟可能难分胜负。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"巴拉圭",a:"法国",st:"upcoming",hl:"🏟️ 林肯金融球场·费城 · 巴拉圭 vs 法国 · R03/R06 胜者已全部落位",pred:{date:"2026-07-01",ph:0,pa:2,winner:"a",confidence:75,tag:"法国晋级",basis:["姆巴佩状态","法国攻击群","巴拉圭消耗大"],reason:"法国小组赛三战全胜攻防俱佳，姆巴佩和登贝莱边路冲击力对巴拉圭防线构成绝对威胁；巴拉圭刚经历点球大战消耗巨大，面对高卢军团的持续压迫恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
