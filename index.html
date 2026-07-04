@@ -718,6 +718,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+        <div class="log-time">2026-07-05 05:30</div>
+        <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R18 已切换 live：巴拉圭0-0法国（约25&#39;）</strong> — 福福已根据 ESPN World Cup scoreboard 与 BBC Sport Scores &amp; Fixtures 最新交叉复核：北京时间 7/5 05:00 开球的 16 强战 R18 巴拉圭 vs 法国当前正在进行中，ESPN 显示 <code>24&#39;</code>、BBC 显示 <code>25&#39;</code>，两站最新一致比分均为 <code>Paraguay 0-0 France</code>。本站已将 ALL_MATCHES 中 R18 从 <code>upcoming</code> 切换为 <code>live</code>、补写实时比分与直播简述，同时将 QF1 继续保持为&quot;摩洛哥 vs 待定(R18胜者)&quot;。当前北京时间 05:30 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+      </div>
+              
+              <div class="log-item">
         <div class="log-time">2026-07-05 03:21</div>
         <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R17 完赛：摩洛哥3-0加拿大，QF1 已同步落位</strong> — 福福已根据 ESPN World Cup scoreboard 与 FIFA 2026 World Cup 官方赛程页最新交叉复核：北京时间 7/5 01:00 开球的 16 强战 R17 已在开球超过 120 分钟后确认 <code>FT</code>，两站最新一致显示 <code>Canada 0-3 Morocco</code>。FIFA 官方同时给出赛后头条 <strong>Ounahi double helps end Canada run as Morocco march on</strong>。本站已将 ALL_MATCHES 中 R17 从 <code>live</code> 切换为 <code>done</code>、补全比分 <code>0-3</code> 并重写赛果摘要，同时把 7/10 的 QF1 从&quot;待定(R17胜者) vs 待定(R18胜者)&quot;同步更新为&quot;摩洛哥 vs 待定(R18胜者)&quot;。当前北京时间 03:21 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
       </div>
@@ -1902,7 +1907,7 @@ const ALL_MATCHES = [
   {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"哥伦比亚",a:"加纳",s:"1-0",st:"done",hl:"⚽ 哥伦比亚1-0加纳：ESPN 与 BBC 最新一致确认 FT，哥伦比亚在堪萨斯城箭头球场零封晋级，并将于 7/8 在 R24 对阵瑞士。",pred:{locked:true,ph:2,pa:1,confidence:62,tag:"哥伦比亚小胜",reason:"哥伦比亚小组赛稳定性更好，中前场衔接更顺；加纳速度和身体冲击足以制造威胁。",basis:["哥伦比亚稳定","加纳速度","南美节奏"]}}, 
   // ===== 16强 (7.5-7.8) =====
   {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"摩洛哥",s:"0-3",st:"done",hl:"⚽ 摩洛哥3-0加拿大：ESPN 与 FIFA 最新一致确认 FT，FIFA 赛后头条点出 Ounahi 双响，摩洛哥在休斯敦完胜东道主挺进 1/4 决赛。",pred:{date:"2026-07-01",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["东道主气势","摩洛哥韧性","点球气焰"],reason:"加拿大淘汰赛首轮1-0绝杀南非士气正盛，东道主主场氛围不可小觑；摩洛哥点球淘汰荷兰韧劲十足，防守纪律性强。双方实力接近、风格各异，90分钟可能难分胜负。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"巴拉圭",a:"法国",st:"upcoming",hl:"🏟️ 林肯金融球场·费城 · 巴拉圭 vs 法国 · R03/R06 胜者已全部落位",pred:{date:"2026-07-01",ph:0,pa:2,winner:"a",confidence:75,tag:"法国晋级",basis:["姆巴佩状态","法国攻击群","巴拉圭消耗大"],reason:"法国小组赛三战全胜攻防俱佳，姆巴佩和登贝莱边路冲击力对巴拉圭防线构成绝对威胁；巴拉圭刚经历点球大战消耗巨大，面对高卢军团的持续压迫恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"巴拉圭",a:"法国",s:"0-0",st:"live",hl:"🔴 巴拉圭0-0法国：ESPN/BBC 最新一致显示比赛进入上半场中段，法国暂未攻破巴拉圭防线。",pred:{date:"2026-07-01",ph:0,pa:2,winner:"a",confidence:75,tag:"法国晋级",basis:["姆巴佩状态","法国攻击群","巴拉圭消耗大"],reason:"法国小组赛三战全胜攻防俱佳，姆巴佩和登贝莱边路冲击力对巴拉圭防线构成绝对威胁；巴拉圭刚经历点球大战消耗巨大，面对高卢军团的持续压迫恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R19",g:"KO",r:5,t:"7/6 04:00",h:"巴西",a:"挪威",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · 巴西 vs 挪威 · R02/R05 胜者已全部落位",pred:{date:"2026-07-03",ph:2,pa:1,winner:"h",confidence:68,tag:"巴西过关",basis:["锋线爆点","挪威反击","淘汰赛经验"],reason:"巴西前场单点爆破和持续施压能力仍高于挪威，哈兰德领衔的反击会制造威胁，但若比赛进入阵地战与细节处理，桑巴军团更值得高看一线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R20",g:"KO",r:5,t:"7/6 08:00",h:"墨西哥",a:"英格兰",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · 墨西哥 vs 英格兰 · R07/R08 胜者已全部落位",pred:{date:"2026-07-03",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["高原主场","英格兰阵容厚度","胶着节奏"],reason:"墨西哥坐镇阿兹特克的主场与高原环境会明显抬高比赛强度，英格兰整体配置更深但未必能轻松提速，90分钟大概率是一场拉扯感很强的硬仗。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R21",g:"KO",r:5,t:"7/7 03:00",h:"葡萄牙",a:"西班牙",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · 葡萄牙 vs 西班牙 · 葡萄牙2-1淘汰克罗地亚，西班牙3-0奥地利，两队在16强上演伊比利亚德比！",pred:{date:"2026-07-04",ph:1,pa:1,winner:"d",confidence:57,tag:"伊比利亚德比看平",basis:["葡萄牙状态","西班牙传控","伊比利亚德比","淘汰赛谨慎"],reason:"伊比利亚德比向来胶着，葡萄牙有C罗和B费的个人能力，西班牙传控体系更成熟；淘汰赛阶段双方开局都会谨慎，90分钟打平进入加时的可能性较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
