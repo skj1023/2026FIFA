@@ -718,6 +718,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+        <div class="log-time">2026-07-05 00:05</div>
+        <div class="log-content"><span class="log-tag auto">预测</span><strong>🧠 预测窗口开启：已补全 7/8 两场 16 强 AI 预测</strong> — 福福已在北京时间 <code>2026-07-05 00:05</code> 复核 ESPN World Cup scoreboard 与 BBC Sport Scores &amp; Fixtures：当前仅确认 <code>Canada vs Morocco</code> 与 <code>Paraguay vs France</code> 仍处赛前状态，暂无需要切换为 <code>live/done</code> 的新赛果。本轮命中 00:05-02:00 预测窗口，按“今天不算、从明天起连续 3 个自然日”规则，为尚未 locked 的 <code>R23 阿根廷 vs 埃及</code> 与 <code>R24 瑞士 vs 哥伦比亚</code> 补写 AI 预测；既有 locked 预测全部保留，页面其余前端结构与球队数据未改动。</div>
+      </div>
+              <div class="log-item">
         <div class="log-time">2026-07-04 12:13</div>
         <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R16 完赛：哥伦比亚1-0加纳，R24 已同步落位</strong> — 福福已根据 ESPN World Cup scoreboard 与 BBC Sport Scores &amp; Fixtures 最新交叉复核：北京时间 7/4 09:30 开球的 32 强战 R16 已在开球超过 120 分钟后确认 <code>FT</code>，两站最新一致显示 <code>Colombia 1-0 Ghana</code>。本站已将 ALL_MATCHES 中 R16 从 <code>live</code> 切换为 <code>done</code>，保留比分 <code>1-0</code> 并重写赛果摘要，同时把 R24 从&quot;瑞士 vs 待定(R16胜者)&quot;同步更新为&quot;瑞士 vs 哥伦比亚&quot;。当前北京时间 12:13 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
       </div>
@@ -1889,8 +1893,8 @@ const ALL_MATCHES = [
   {id:"R20",g:"KO",r:5,t:"7/6 08:00",h:"墨西哥",a:"英格兰",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · 墨西哥 vs 英格兰 · R07/R08 胜者已全部落位",pred:{date:"2026-07-03",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["高原主场","英格兰阵容厚度","胶着节奏"],reason:"墨西哥坐镇阿兹特克的主场与高原环境会明显抬高比赛强度，英格兰整体配置更深但未必能轻松提速，90分钟大概率是一场拉扯感很强的硬仗。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R21",g:"KO",r:5,t:"7/7 03:00",h:"葡萄牙",a:"西班牙",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · 葡萄牙 vs 西班牙 · 葡萄牙2-1淘汰克罗地亚，西班牙3-0奥地利，两队在16强上演伊比利亚德比！",pred:{date:"2026-07-04",ph:1,pa:1,winner:"d",confidence:57,tag:"伊比利亚德比看平",basis:["葡萄牙状态","西班牙传控","伊比利亚德比","淘汰赛谨慎"],reason:"伊比利亚德比向来胶着，葡萄牙有C罗和B费的个人能力，西班牙传控体系更成熟；淘汰赛阶段双方开局都会谨慎，90分钟打平进入加时的可能性较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R22",g:"KO",r:5,t:"7/7 08:00",h:"美国",a:"比利时",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · 美国 vs 比利时 · 美国2-0淘汰波黑后与比利时会师8强",pred:{date:"2026-07-04",ph:1,pa:2,winner:"a",confidence:63,tag:"比利时小胜",basis:["比利时经验","美国主场","德布劳内","转换节奏"],reason:"美国主场氛围和转换速度不容小觑，但比利时阵容经验和关键球处理能力更强；德布劳内领衔的中前场在淘汰赛阶段更有控场优势，看好比利时小胜晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"R23",g:"KO",r:5,t:"7/8 00:00",h:"阿根廷",a:"埃及",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · 阿根廷 vs 埃及 · 卫冕冠军阿根廷3-2淘汰佛得角后将于7/8对阵点球晋级的埃及"},
-  {id:"R24",g:"KO",r:5,t:"7/8 04:00",h:"瑞士",a:"哥伦比亚",st:"upcoming",hl:"🏟️ BC Place·温哥华 · 瑞士 vs 哥伦比亚 · R13/R16 胜者已全部落位"},
+  {id:"R23",g:"KO",r:5,t:"7/8 00:00",h:"阿根廷",a:"埃及",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · 阿根廷 vs 埃及 · 卫冕冠军阿根廷3-2淘汰佛得角后将于7/8对阵点球晋级的埃及",pred:{date:"2026-07-05",ph:2,pa:0,winner:"h",confidence:74,tag:"阿根廷稳进",basis:["卫冕冠军底蕴","梅西串联","埃及防反","淘汰赛经验"],reason:"阿根廷在淘汰赛阶段的控场和关键球处理仍明显高于埃及，梅西与中前场的连续串联有望持续压制比赛节奏，看好卫冕冠军以两球优势晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"R24",g:"KO",r:5,t:"7/8 04:00",h:"瑞士",a:"哥伦比亚",st:"upcoming",hl:"🏟️ BC Place·温哥华 · 瑞士 vs 哥伦比亚 · R13/R16 胜者已全部落位",pred:{date:"2026-07-05",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["瑞士结构稳定","哥伦比亚硬度","中场缠斗","加时可能"],reason:"瑞士整体站位与防线层次更稳，哥伦比亚在对抗和推进端更有冲击力，这类强度接近的淘汰赛往往先比耐心与失误控制，90分钟打平的概率不低。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 1/4决赛 (7.10-7.12) =====
   {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"待定(R17胜者)",a:"待定(R18胜者)",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · 上半区1/4决赛"},
   {id:"QF2",g:"KO",r:6,t:"7/11 03:00",h:"待定(R21胜者)",a:"待定(R22胜者)",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · 下半区1/4决赛"},
