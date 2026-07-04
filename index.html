@@ -718,6 +718,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+        <div class="log-time">2026-07-05 03:21</div>
+        <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R17 完赛：摩洛哥3-0加拿大，QF1 已同步落位</strong> — 福福已根据 ESPN World Cup scoreboard 与 FIFA 2026 World Cup 官方赛程页最新交叉复核：北京时间 7/5 01:00 开球的 16 强战 R17 已在开球超过 120 分钟后确认 <code>FT</code>，两站最新一致显示 <code>Canada 0-3 Morocco</code>。FIFA 官方同时给出赛后头条 <strong>Ounahi double helps end Canada run as Morocco march on</strong>。本站已将 ALL_MATCHES 中 R17 从 <code>live</code> 切换为 <code>done</code>、补全比分 <code>0-3</code> 并重写赛果摘要，同时把 7/10 的 QF1 从&quot;待定(R17胜者) vs 待定(R18胜者)&quot;同步更新为&quot;摩洛哥 vs 待定(R18胜者)&quot;。当前北京时间 03:21 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
+      </div>
+              
+              <div class="log-item">
         <div class="log-time">2026-07-05 02:15</div>
         <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔄 R17 实时比分已刷新：加拿大0-1摩洛哥（52&#39;）</strong> — 福福已根据 BBC Sport Scores &amp; Fixtures 最新数据复核：北京时间 7/5 01:00 开球的 16 强战 R17 加拿大 vs 摩洛哥当前仍在进行中，BBC 最新显示 <code>Canada 0-1 Morocco</code>、比赛时间来到 <strong>52&#39;</strong>。本站已将 ALL_MATCHES 中 R17 的实时比分从 <code>0-0</code> 刷新为 <code>0-1</code> 并重写直播简述；R18 巴拉圭 vs 法国仍保持赛前状态。当前北京时间 02:15 已超出 00:05-02:00 预测窗口，本轮未新增预测，既有 locked 预测全部保留。</div>
       </div>
@@ -1896,7 +1901,7 @@ const ALL_MATCHES = [
   {id:"R15",g:"KO",r:4,t:"7/4 06:00",h:"阿根廷",a:"佛得角",s:"3-2",st:"done",hl:"🐐 阿根廷3-2佛得角：FIFA API 确认 FT，梅西双响+劳塔罗制胜球，卫冕冠军有惊无险挺进16强。R23 已同步为「阿根廷 vs 埃及」。",pred:{locked:true,ph:3,pa:0,confidence:78,tag:"阿根廷优势明显",reason:"阿根廷攻防控制力和淘汰赛经验都高一档，佛得角需要完美防守才可能把悬念拖久。",basis:["梅西状态","卫冕冠军","比赛控制"]}},
   {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"哥伦比亚",a:"加纳",s:"1-0",st:"done",hl:"⚽ 哥伦比亚1-0加纳：ESPN 与 BBC 最新一致确认 FT，哥伦比亚在堪萨斯城箭头球场零封晋级，并将于 7/8 在 R24 对阵瑞士。",pred:{locked:true,ph:2,pa:1,confidence:62,tag:"哥伦比亚小胜",reason:"哥伦比亚小组赛稳定性更好，中前场衔接更顺；加纳速度和身体冲击足以制造威胁。",basis:["哥伦比亚稳定","加纳速度","南美节奏"]}}, 
   // ===== 16强 (7.5-7.8) =====
-  {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"摩洛哥",s:"0-1",st:"live",hl:"🔴 加拿大0-1摩洛哥（52&#39;）：摩洛哥在下半场率先改写比分，东道主加拿大仍在提速施压寻找扳平机会",pred:{date:"2026-07-01",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["东道主气势","摩洛哥韧性","点球气焰"],reason:"加拿大淘汰赛首轮1-0绝杀南非士气正盛，东道主主场氛围不可小觑；摩洛哥点球淘汰荷兰韧劲十足，防守纪律性强。双方实力接近、风格各异，90分钟可能难分胜负。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"摩洛哥",s:"0-3",st:"done",hl:"⚽ 摩洛哥3-0加拿大：ESPN 与 FIFA 最新一致确认 FT，FIFA 赛后头条点出 Ounahi 双响，摩洛哥在休斯敦完胜东道主挺进 1/4 决赛。",pred:{date:"2026-07-01",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["东道主气势","摩洛哥韧性","点球气焰"],reason:"加拿大淘汰赛首轮1-0绝杀南非士气正盛，东道主主场氛围不可小觑；摩洛哥点球淘汰荷兰韧劲十足，防守纪律性强。双方实力接近、风格各异，90分钟可能难分胜负。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"巴拉圭",a:"法国",st:"upcoming",hl:"🏟️ 林肯金融球场·费城 · 巴拉圭 vs 法国 · R03/R06 胜者已全部落位",pred:{date:"2026-07-01",ph:0,pa:2,winner:"a",confidence:75,tag:"法国晋级",basis:["姆巴佩状态","法国攻击群","巴拉圭消耗大"],reason:"法国小组赛三战全胜攻防俱佳，姆巴佩和登贝莱边路冲击力对巴拉圭防线构成绝对威胁；巴拉圭刚经历点球大战消耗巨大，面对高卢军团的持续压迫恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R19",g:"KO",r:5,t:"7/6 04:00",h:"巴西",a:"挪威",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · 巴西 vs 挪威 · R02/R05 胜者已全部落位",pred:{date:"2026-07-03",ph:2,pa:1,winner:"h",confidence:68,tag:"巴西过关",basis:["锋线爆点","挪威反击","淘汰赛经验"],reason:"巴西前场单点爆破和持续施压能力仍高于挪威，哈兰德领衔的反击会制造威胁，但若比赛进入阵地战与细节处理，桑巴军团更值得高看一线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R20",g:"KO",r:5,t:"7/6 08:00",h:"墨西哥",a:"英格兰",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · 墨西哥 vs 英格兰 · R07/R08 胜者已全部落位",pred:{date:"2026-07-03",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["高原主场","英格兰阵容厚度","胶着节奏"],reason:"墨西哥坐镇阿兹特克的主场与高原环境会明显抬高比赛强度，英格兰整体配置更深但未必能轻松提速，90分钟大概率是一场拉扯感很强的硬仗。",sources:["FIFA","ESPN","Bing News"],locked:true}},
@@ -1905,7 +1910,7 @@ const ALL_MATCHES = [
   {id:"R23",g:"KO",r:5,t:"7/8 00:00",h:"阿根廷",a:"埃及",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · 阿根廷 vs 埃及 · 卫冕冠军阿根廷3-2淘汰佛得角后将于7/8对阵点球晋级的埃及",pred:{date:"2026-07-05",ph:2,pa:0,winner:"h",confidence:74,tag:"阿根廷稳进",basis:["卫冕冠军底蕴","梅西串联","埃及防反","淘汰赛经验"],reason:"阿根廷在淘汰赛阶段的控场和关键球处理仍明显高于埃及，梅西与中前场的连续串联有望持续压制比赛节奏，看好卫冕冠军以两球优势晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R24",g:"KO",r:5,t:"7/8 04:00",h:"瑞士",a:"哥伦比亚",st:"upcoming",hl:"🏟️ BC Place·温哥华 · 瑞士 vs 哥伦比亚 · R13/R16 胜者已全部落位",pred:{date:"2026-07-05",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["瑞士结构稳定","哥伦比亚硬度","中场缠斗","加时可能"],reason:"瑞士整体站位与防线层次更稳，哥伦比亚在对抗和推进端更有冲击力，这类强度接近的淘汰赛往往先比耐心与失误控制，90分钟打平的概率不低。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 1/4决赛 (7.10-7.12) =====
-  {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"待定(R17胜者)",a:"待定(R18胜者)",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · 上半区1/4决赛"},
+  {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"摩洛哥",a:"待定(R18胜者)",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · 摩洛哥 vs 待定(R18胜者) · R17 胜者已落位"},
   {id:"QF2",g:"KO",r:6,t:"7/11 03:00",h:"待定(R21胜者)",a:"待定(R22胜者)",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · 下半区1/4决赛"},
   {id:"QF3",g:"KO",r:6,t:"7/12 05:00",h:"待定(R19胜者)",a:"待定(R20胜者)",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 上半区1/4决赛"},
   {id:"QF4",g:"KO",r:6,t:"7/12 09:00",h:"待定(R23胜者)",a:"待定(R24胜者)",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · 下半区1/4决赛"},
