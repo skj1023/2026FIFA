@@ -479,7 +479,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     <p class="sub">美国 · 加拿大 · 墨西哥 三国联合主办</p>
     <div class="hosts"><span>🇺🇸</span><span style="font-size:.7rem;color:var(--text-dim)">·</span><span>🇨🇦</span><span style="font-size:.7rem;color:var(--text-dim)">·</span><span>🇲🇽</span></div>
     <div class="meta-line">
-      <span>🗓️ <strong>6.11 – 7.19</strong> · 39天</span>
+      <span>🗓️ <strong>6.11 – 7.20</strong> · 北京时间</span>
       <span>🏟️ <strong>16</strong> 城市</span>
       <span>👥 <strong>48</strong> 球队 · <strong>104</strong> 场</span>
       <span>🏆 <strong>32</strong> 队晋级淘汰赛</span>
@@ -595,7 +595,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <section class="section" id="standings">
     <div class="section-header">
       <h2 class="section-title">🏆 小组积分榜</h2>
-      <span class="section-sub">✅ 每组前2晋级 · ✗ 后2名待定（小组完赛后显示）</span>
+      <span class="section-sub">小组赛最终排名 · 前2名直接晋级，部分第3名晋级32强</span>
     </div>
     <div id="standingsList"></div>
   </section>
@@ -625,9 +625,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
     </div>
     <div class="info-grid">
-      <div class="info-item"><span class="ic">🗓️</span><div><div class="il">赛期</div><div class="iv">6.11 – 7.19 · 39 天</div></div></div>
+      <div class="info-item"><span class="ic">🗓️</span><div><div class="il">赛期</div><div class="iv">6.11 – 7.20 · 北京时间</div></div></div>
       <div class="info-item"><span class="ic">🏟️</span><div><div class="il">场馆</div><div class="iv">16 城市 · 美国11/加拿大2/墨西哥3</div></div></div>
-      <div class="info-item"><span class="ic">🏆</span><div><div class="il">决赛</div><div class="iv">7.19 · 纽约大都会人寿体育场</div></div></div>
+      <div class="info-item"><span class="ic">🏆</span><div><div class="il">决赛</div><div class="iv">7.20 03:00 北京 / 7.19 纽约</div></div></div>
       <a class="info-item" href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" style="text-decoration:none;color:inherit"><span class="ic">📺</span><div><div class="il">直播</div><div class="iv">CCTV5 · 咪咕视频 · 抖音</div></div></a>
       <div class="info-item"><span class="ic">🇦🇸</span><div><div class="il">亚洲参赛</div><div class="iv">韩日伊沙乌约 6 队</div></div></div>
       <div class="info-item"><span class="ic">🕐</span><div><div class="il">时差</div><div class="iv">美东 = 京 −12h · 70% 场次 06–11点</div></div></div>
@@ -639,7 +639,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="milestone-item"><div class="num">72</div><div class="lbl">小组赛</div></div>
       <div class="milestone-item"><div class="num">32</div><div class="lbl">淘汰赛</div></div>
       <div class="milestone-item"><div class="num" id="playedCount">48</div><div class="lbl">已完赛</div></div>
-      <div class="milestone-item"><div class="num">🏆</div><div class="lbl">7.19 决赛</div></div>
+      <div class="milestone-item"><div class="num">🏆</div><div class="lbl">7.20 决赛（北京时间）</div></div>
     </div>
     <div class="rules-guide">
       <div class="rules-head">
@@ -699,7 +699,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           </ul>
         </div>
       </div>
-      <div class="rule-note"><strong>阅读建议：</strong>小组赛期间看「小组积分榜」判断本组形势；再看「最佳第3名排名」判断第 3 名球队的跨组竞争。只有当对应比赛全部结束后，✅ / ✗ 才代表最终晋级或淘汰。</div>
+      <div class="rule-note"><strong>阅读建议：</strong>当前已进入淘汰赛阶段：看「比赛」追踪最近/即将开球场次，看「淘汰赛」确认晋级路径；「小组积分榜」与「最佳第3名」现在作为小组赛最终结果回看。</div>
     </div>
   </section>
 </div>
@@ -719,6 +719,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+              <div class="log-item">
+        <div class="log-time">2026-07-05 21:18</div>
+        <div class="log-content"><span class="log-tag ui">修复</span><strong>🧹 全 Tab 滞后信息校正：淘汰赛、信息、积分榜、最佳第3名同步到16强阶段</strong> — 福福已全量检查比赛数据和各 Tab 文案：当前 ALL_MATCHES 为 90/104 已完赛、16强阶段无 live 比赛，下一场为 7/6 04:00 巴西vs挪威。本站已把淘汰赛阶段高亮改为北京时间自动判断，淘汰赛赛程默认展示当前附近4场而非最早4场，并将信息页、时间轴、小组积分榜和最佳第3名说明从小组赛口径更新为当前淘汰赛口径。</div>
+      </div>
               <div class="log-item">
         <div class="log-time">2026-07-05 09:47</div>
         <div class="log-content"><span class="log-tag auto">赛程</span><strong>🧭 QF1 对阵顺序校正：法国 vs 摩洛哥</strong> — 福福已根据 FIFA 2026 官方赛程页与 ESPN 7/10 赛程页再次交叉复核，1/4 决赛 QF1 官方展示顺序均为 <code>France vs Morocco</code>（北京时间 7/10 04:00）。本站本轮未改动任何已完赛比分、积分榜或球员数据，仅将 ALL_MATCHES 中 QF1 从&quot;摩洛哥 vs 法国&quot;校正为&quot;法国 vs 摩洛哥&quot;，并保留未来 3 天比赛的既有 locked 预测。</div>
@@ -1680,7 +1684,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     </div>
     <div style="background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px 16px;margin-bottom:14px;font-size:.78rem;line-height:1.7">
       <p><strong>❓ 为什么需要「最佳第3名」？</strong></p>
-      <p style="color:var(--text-sec);margin-top:4px">2026世界杯扩军至48队，共12个小组（每组4队）。每组前2名直接晋级（24队），剩余8个名额由12个小组第3名中成绩最好的8支球队获得。</p>
+      <p style="color:var(--text-sec);margin-top:4px">2026世界杯扩军至48队，共12个小组（每组4队）。小组赛已结束：每组前2名直接晋级（24队），剩余8个名额由12个小组第3名中成绩最好的8支球队获得。</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;padding-top:10px;border-top:1px solid var(--border)">
         <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 10px;background:rgba(52,199,89,.1);border-radius:20px;font-size:.72rem;color:var(--green)">✅ 排名前8 → 晋级32强</span>
         <span style="display:inline-flex;align-items:center;gap:4px;padding:3px 10px;background:rgba(255,69,58,.1);border-radius:20px;font-size:.72rem;color:var(--red)">✗ 排名后4 → 被淘汰</span>
@@ -1981,16 +1985,17 @@ function renderProgress(){
   let total=104, done=0;
   for(let m of ALL_MATCHES)if(m.st==="done")done++;
   let pct=Math.min(100,Math.round(done/total*100));
-  // Tournament day
+  // Tournament day, Beijing time: 2026-06-11 through 2026-07-20
   let start=new Date(2026,5,11);
-  let end=new Date(2026,6,19);
-  let now=new Date();
-  let day=Math.max(1,Math.min(39,Math.floor((now-start)/86400000)+1));
-  let dayPct=Math.min(100,Math.round((day/39)*100));
+  let end=new Date(2026,6,20);
+  let totalDays=Math.floor((end-start)/86400000)+1;
+  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
+  let day=Math.max(1,Math.min(totalDays,Math.floor((now-start)/86400000)+1));
+  let dayPct=Math.min(100,Math.round((day/totalDays)*100));
   let fill=document.getElementById("progFill");
   let lbl=document.getElementById("progLabel");
   if(fill)fill.style.width=dayPct+"%";
-  if(lbl)lbl.textContent="第 "+day+"/39 天 · 已赛 "+done+"/"+total+" 场 ("+pct+"%)";
+  if(lbl)lbl.textContent="第 "+day+"/"+totalDays+" 天 · 已赛 "+done+"/"+total+" 场 ("+pct+"%)";
 }
 // Build date pills (DRY)
 function buildPills(container,dateKeys,dateData,selectedDate,totalCount,extraFn){
@@ -2540,7 +2545,8 @@ function renderBestThird(){
     let badgeColor=in8?'var(--green)':'var(--red)';
     html+=`<div class="t3-row ${in8?'in':'out'}"><span class="t3-rk">${i+1}</span><span class="t3-team"><span class="flag">${flag}</span>${name} · ${t.g}组 <span style="margin-left:6px;font-size:.66rem;color:${badgeColor}">${badge}</span></span><span class="t3-stats"><span><strong>${t.p}</strong> 赛</span><span><strong>${t.w}</strong> 胜</span><span><strong>${t.d}</strong> 平</span><span><strong>${t.l}</strong> 负</span><span>${t.gf}/${t.ga}</span><span><strong>${gdS}</strong></span><span><strong>${t.pts}</strong> 分</span></span></div>`;
   }
-  html+='<div style="padding:8px 16px;font-size:.72rem;color:var(--text-dim);border-top:1px solid var(--border)">'+statusText+' · 前8名获得32强名额；小组赛未结束前仅作动态参考，不代表最终晋级/淘汰。</div></div>';
+  let note=allGroupsComplete?'前8名获得32强名额；本表为小组赛最终排序。':'前8名获得32强名额；小组赛未结束前仅作动态参考，不代表最终晋级/淘汰。';
+  html+='<div style="padding:8px 16px;font-size:.72rem;color:var(--text-dim);border-top:1px solid var(--border)">'+statusText+' · '+note+'</div></div>';
   el.innerHTML=html;
 }
 
@@ -2689,7 +2695,7 @@ function renderFinalCountdown(){
   if(!box)return;
   // Approximate final kickoff/end marker in Beijing time. 2026-07-19 local evening ≈ 2026-07-20 Beijing morning.
   let end=new Date(2026,6,20,10,0,0);
-  let now=new Date();
+  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
   let diff=end-now;
   let main=document.getElementById('finalCountdownMain');
   let units=document.getElementById('finalCountdownUnits');
@@ -2979,11 +2985,12 @@ function renderKnockoutMatches() {
     9: {name:'🏆 决赛', dates:'7.20', icon:'🏆'}
   };
   let visibleLimit = 4;
-  let visibleIds = new Set(ko.slice(0, visibleLimit).map(m=>m.id));
+  let now = new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
+  let visibleIds = new Set(ko.slice().sort((a,b)=>Math.abs(parseMatchTime(a.t)-now)-Math.abs(parseMatchTime(b.t)-now)).slice(0, visibleLimit).map(m=>m.id));
   function matchHTML(m){
     let hd = td(m.h), ad = td(m.a), isDone = m.st === 'done';
     let scoreStr = isDone ? ('<span class="ms">'+m.s+'</span>') : '<span class="ms" style="color:var(--text-dim)">vs</span>';
-    let statusClass = isDone ? 'done' : 'upcoming';
+    let statusClass = isDone ? 'done' : (m.st==='live'?'live':'upcoming');
     let hidden = visibleIds.has(m.id) ? '' : ' ko-hidden';
     let hl = m.hl && !isDone ? '<div class="ko-hl" style="color:var(--text-dim);font-size:.65rem;margin-top:3px;padding-left:80px;line-height:1.5">'+m.hl+'</div>' : '';
     return '<div class="match-card ko-match '+statusClass+' fade-in'+hidden+'" data-mid="'+m.id+'" style="padding:9px 12px;font-size:.75rem">'
@@ -2993,7 +3000,7 @@ function renderKnockoutMatches() {
       + '<span class="tn">'+hd.fl+hd.nm+'</span>'+scoreStr+'<span class="tn">'+ad.fl+ad.nm+'</span>'
       + '</span></div>'+hl+'</div>';
   }
-  let html = '<div class="ko-list-wrap collapsed" id="koListWrap"><div class="ko-list-head"><div><div class="ko-list-title">📋 淘汰赛赛程列表</div><div style="font-size:.72rem;color:var(--text-dim);margin-top:2px">默认显示最近 '+visibleLimit+' 场，展开后查看全部 '+ko.length+' 场</div></div><button class="ko-toggle" id="koToggle" type="button">展开全部 '+ko.length+' 场 ▼</button></div>';
+  let html = '<div class="ko-list-wrap collapsed" id="koListWrap"><div class="ko-list-head"><div><div class="ko-list-title">📋 淘汰赛赛程列表</div><div style="font-size:.72rem;color:var(--text-dim);margin-top:2px">默认显示当前附近 '+visibleLimit+' 场，展开后查看全部 '+ko.length+' 场</div></div><button class="ko-toggle" id="koToggle" type="button">展开全部 '+ko.length+' 场 ▼</button></div>';
   for (let rk of [4,5,6,7,8,9]) {
     let info = rounds[rk], matches = ko.filter(m => m.r === rk);
     if (!matches.length) continue;
@@ -3036,9 +3043,9 @@ function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)retu
 }
 // ===== TIMELINE =====
 function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)return;
-  let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r4'},{l:'16强',k:'r5'},{l:'1/4',k:'r6'},{l:'半决赛',k:'r7'},{l:'7.19 决赛',k:'fin'}];
-  let dates={s:new Date(2026,5,11),g:new Date(2026,5,14),r4:new Date(2026,5,29),r5:new Date(2026,6,5),r6:new Date(2026,6,10),r7:new Date(2026,6,15),fin:new Date(2026,6,19)};
-  let now=new Date(),ai=-1;for(let i=stages.length-1;i>=0;i--){if(now>=dates[stages[i].k]){ai=i;break;}}
+  let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r4'},{l:'16强',k:'r5'},{l:'1/4',k:'r6'},{l:'半决赛',k:'r7'},{l:'7.20 决赛',k:'fin'}];
+  let dates={s:new Date(2026,5,11),g:new Date(2026,5,14),r4:new Date(2026,5,29),r5:new Date(2026,6,5),r6:new Date(2026,6,10),r7:new Date(2026,6,15),fin:new Date(2026,6,20)};
+  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'})),ai=-1;for(let i=stages.length-1;i>=0;i--){if(now>=dates[stages[i].k]){ai=i;break;}}
   w.innerHTML='<div class="timeline">'+stages.map((s,i)=>{let c=i<ai?'past':(i===ai?'active':'');return '<div class="tl-node '+c+'"><div class="tl-dot"></div><div class="tl-label">'+s.l+'</div></div>';}).join('')+'</div>';}
 // ===== SCORERS =====
 function renderScorers(){let e=document.getElementById('scorerList');if(!e)return;
