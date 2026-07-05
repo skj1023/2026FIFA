@@ -718,6 +718,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+        <div class="log-time">2026-07-05 09:47</div>
+        <div class="log-content"><span class="log-tag auto">赛程</span><strong>🧭 QF1 对阵顺序校正：法国 vs 摩洛哥</strong> — 福福已根据 FIFA 2026 官方赛程页与 ESPN 7/10 赛程页再次交叉复核，1/4 决赛 QF1 官方展示顺序均为 <code>France vs Morocco</code>（北京时间 7/10 04:00）。本站本轮未改动任何已完赛比分、积分榜或球员数据，仅将 ALL_MATCHES 中 QF1 从&quot;摩洛哥 vs 法国&quot;校正为&quot;法国 vs 摩洛哥&quot;，并保留未来 3 天比赛的既有 locked 预测。</div>
+      </div>
+              
+              <div class="log-item">
         <div class="log-time">2026-07-05 07:35</div>
         <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R18 完赛：法国1-0巴拉圭，QF1 已同步为摩洛哥vs法国</strong> — 福福已根据 ESPN FIFA World Cup scoreboard API 最新复核：北京时间 7/5 05:00 开球的 16 强战 R18 在开球超过 120 分钟后已显示 <code>FT</code>，最新比分为 <code>Paraguay 0-1 France</code>。本站已将 ALL_MATCHES 中 R18 从 <code>live</code> 切换为 <code>done</code>、补全比分 <code>0-1</code> 并重写赛果摘要，同时把 7/10 的 QF1 从&quot;摩洛哥 vs 待定(R18胜者)&quot;同步更新为&quot;摩洛哥 vs 法国&quot;。当前北京时间 07:35 不在 00:05-02:00 预测窗口内，本轮未新增预测，既有 locked 预测全部保留。</div>
       </div>
@@ -1920,7 +1925,7 @@ const ALL_MATCHES = [
   {id:"R23",g:"KO",r:5,t:"7/8 00:00",h:"阿根廷",a:"埃及",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · 阿根廷 vs 埃及 · 卫冕冠军阿根廷3-2淘汰佛得角后将于7/8对阵点球晋级的埃及",pred:{date:"2026-07-05",ph:2,pa:0,winner:"h",confidence:74,tag:"阿根廷稳进",basis:["卫冕冠军底蕴","梅西串联","埃及防反","淘汰赛经验"],reason:"阿根廷在淘汰赛阶段的控场和关键球处理仍明显高于埃及，梅西与中前场的连续串联有望持续压制比赛节奏，看好卫冕冠军以两球优势晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R24",g:"KO",r:5,t:"7/8 04:00",h:"瑞士",a:"哥伦比亚",st:"upcoming",hl:"🏟️ BC Place·温哥华 · 瑞士 vs 哥伦比亚 · R13/R16 胜者已全部落位",pred:{date:"2026-07-05",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["瑞士结构稳定","哥伦比亚硬度","中场缠斗","加时可能"],reason:"瑞士整体站位与防线层次更稳，哥伦比亚在对抗和推进端更有冲击力，这类强度接近的淘汰赛往往先比耐心与失误控制，90分钟打平的概率不低。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 1/4决赛 (7.10-7.12) =====
-  {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"摩洛哥",a:"法国",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · 摩洛哥 vs 法国 · R17/R18 胜者已全部落位"},
+  {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"法国",a:"摩洛哥",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · 法国 vs 摩洛哥 · R17/R18 胜者已全部落位"},
   {id:"QF2",g:"KO",r:6,t:"7/11 03:00",h:"待定(R21胜者)",a:"待定(R22胜者)",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · 下半区1/4决赛"},
   {id:"QF3",g:"KO",r:6,t:"7/12 05:00",h:"待定(R19胜者)",a:"待定(R20胜者)",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 上半区1/4决赛"},
   {id:"QF4",g:"KO",r:6,t:"7/12 09:00",h:"待定(R23胜者)",a:"待定(R24胜者)",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · 下半区1/4决赛"},
