@@ -687,7 +687,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           <ul>
             <li><strong>小组赛</strong>：6.11 – 6.28，48 队 → 32 队。</li>
             <li><strong>淘汰赛</strong>：32 强、16 强、1/4 决赛、半决赛。</li>
-            <li><strong>季军赛</strong>：7.18；<strong>决赛</strong>：7.19 纽约。</li>
+            <li><strong>季军赛</strong>：7.19；<strong>决赛</strong>：7.20 北京 / 7.19 纽约。</li>
           </ul>
         </div>
         <div class="rule-card">
@@ -719,8 +719,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
-              <div class="log-item">
-        <div class="log-time">2026-07-05 15:40</div>
+                    <div class="log-item">
+              <div class="log-time">2026-07-05 17:47</div>
+              <div class="log-content"><span class="log-tag ui">修复</span><strong>📅 信息页季军赛/决赛日期校正：统一使用北京时间口径</strong> — 福福已全站巡检确认 16 强阶段无新的 live/done 赛果需要切换；ALL_MATCHES 为 90/104 已完赛，下一场为 7/6 04:00 巴西 vs 挪威。本次将 info 区决赛和季军赛的硬编码日期从本地时区改成北京时间统一展示（季军赛 7.19、决赛 7.20 北京 / 7.19 纽约），与 ALL_MATCHES 中的时间字段保持一致。</div>
+            </div>
+                    <div class="log-item">
+              <div class="log-time">2026-07-05 15:40</div>
         <div class="log-content"><span class="log-tag ui">修复</span><strong>🪪 页脚访问统计改为稳定展示：本地预览与弱网场景不再残留“加载中”</strong> — 福福本轮全站巡检确认赛程与淘汰赛落位无需改动；同时修正了页脚访问统计在本地预览/弱网环境下长期卡住的问题。现在即使统计脚本暂时不可用，页面也会优雅显示占位符，不再影响“首页 / 日志 / 信息”等 Tab 的完整校验体验。</div>
       </div>
               <div class="log-item">
