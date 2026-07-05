@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
                     <div class="log-item">
+              <div class="log-time">2026-07-05 21:16</div>
+              <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R19 已切换 live：巴西0-0挪威（58'）</strong> — 福福已根据 ESPN World Cup scoreboard 最新数据交叉复核：北京时间 7/5 晚间开球的 16 强战 R19 巴西 vs 挪威当前正在进行中，ESPN 确认 57' 比分仍为 Brazil 0-0 Norway。本站已将 ALL_MATCHES 中 R19 从 <code>upcoming</code> 切换为 <code>live</code>，补写实时比分与直播简述；由于比赛尚未结束，QF3 继续保持"待定(R19胜者) vs 待定(R20胜者)"。</div>
+            </div>
+                    <div class="log-item">
               <div class="log-time">2026-07-06 03:57</div>
               <div class="log-content"><span class="log-tag ui">修复</span><strong>🏟️ 淘汰赛场馆映射补全 + 全站数据巡检（赛果/淘汰赛落位均正确）</strong> — 福福根据 ESPN 与 BBC 交叉复核确认：7/5 两场 16 强（R17/R18）均维持 done 状态，暂无新 live 场次；7/6 04:00 巴西 vs 挪威与 08:00 墨西哥 vs 英格兰均为赛前状态，开球前本站不提前切换至 live；累计 90/104 已完赛。本次将 KO 轮次全部已知对阵的场馆补进统一映射，修复比赛卡详情页与日历中“📍 待定”问题。</div>
             </div>
@@ -1949,7 +1953,7 @@ const ALL_MATCHES = [
   // ===== 16强 (7.5-7.8) =====
   {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"摩洛哥",s:"0-3",st:"done",hl:"⚽ 摩洛哥3-0加拿大：ESPN 与 FIFA 最新一致确认 FT，FIFA 赛后头条点出 Ounahi 双响，摩洛哥在休斯敦完胜东道主挺进 1/4 决赛。",pred:{date:"2026-07-01",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["东道主气势","摩洛哥韧性","点球气焰"],reason:"加拿大淘汰赛首轮1-0绝杀南非士气正盛，东道主主场氛围不可小觑；摩洛哥点球淘汰荷兰韧劲十足，防守纪律性强。双方实力接近、风格各异，90分钟可能难分胜负。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"巴拉圭",a:"法国",s:"0-1",st:"done",hl:"⚽ 法国1-0巴拉圭：ESPN FIFA World Cup scoreboard API 最新确认 FT，高卢军团以一球优势过关，7/10 将在 QF1 对阵摩洛哥。",pred:{date:"2026-07-01",ph:0,pa:2,winner:"a",confidence:75,tag:"法国晋级",basis:["姆巴佩状态","法国攻击群","巴拉圭消耗大"],reason:"法国小组赛三战全胜攻防俱佳，姆巴佩和登贝莱边路冲击力对巴拉圭防线构成绝对威胁；巴拉圭刚经历点球大战消耗巨大，面对高卢军团的持续压迫恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"R19",g:"KO",r:5,t:"7/6 04:00",h:"巴西",a:"挪威",st:"upcoming",hl:"🏟️ 大都会球场·东卢瑟福 · 巴西 vs 挪威 · R02/R05 胜者已全部落位",pred:{date:"2026-07-03",ph:2,pa:1,winner:"h",confidence:68,tag:"巴西过关",basis:["锋线爆点","挪威反击","淘汰赛经验"],reason:"巴西前场单点爆破和持续施压能力仍高于挪威，哈兰德领衔的反击会制造威胁，但若比赛进入阵地战与细节处理，桑巴军团更值得高看一线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"R19",g:"KO",r:5,t:"7/5 20:00",h:"巴西",a:"挪威",s:"0-0",st:"live",hl:"🔴 巴西0-0挪威（58'）：ESPN 最新确认双方在16强战上半区互有攻守但均未破门，哈兰德与维尼修斯先后制造威胁",pred:{date:"2026-07-03",ph:2,pa:1,winner:"h",confidence:68,tag:"巴西过关",basis:["锋线爆点","挪威反击","淘汰赛经验"],reason:"巴西前场单点爆破和持续施压能力仍高于挪威，哈兰德领衔的反击会制造威胁，但若比赛进入阵地战与细节处理，桑巴军团更值得高看一线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R20",g:"KO",r:5,t:"7/6 08:00",h:"墨西哥",a:"英格兰",st:"upcoming",hl:"🏟️ 阿兹特克球场·墨西哥城 · 墨西哥 vs 英格兰 · R07/R08 胜者已全部落位",pred:{date:"2026-07-03",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["高原主场","英格兰阵容厚度","胶着节奏"],reason:"墨西哥坐镇阿兹特克的主场与高原环境会明显抬高比赛强度，英格兰整体配置更深但未必能轻松提速，90分钟大概率是一场拉扯感很强的硬仗。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R21",g:"KO",r:5,t:"7/7 03:00",h:"葡萄牙",a:"西班牙",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · 葡萄牙 vs 西班牙 · 葡萄牙2-1淘汰克罗地亚，西班牙3-0奥地利，两队在16强上演伊比利亚德比！",pred:{date:"2026-07-04",ph:1,pa:1,winner:"d",confidence:57,tag:"伊比利亚德比看平",basis:["葡萄牙状态","西班牙传控","伊比利亚德比","淘汰赛谨慎"],reason:"伊比利亚德比向来胶着，葡萄牙有C罗和B费的个人能力，西班牙传控体系更成熟；淘汰赛阶段双方开局都会谨慎，90分钟打平进入加时的可能性较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R22",g:"KO",r:5,t:"7/7 08:00",h:"美国",a:"比利时",st:"upcoming",hl:"🏟️ 流明球场·西雅图 · 美国 vs 比利时 · 美国2-0淘汰波黑后与比利时会师8强",pred:{date:"2026-07-04",ph:1,pa:2,winner:"a",confidence:63,tag:"比利时小胜",basis:["比利时经验","美国主场","德布劳内","转换节奏"],reason:"美国主场氛围和转换速度不容小觑，但比利时阵容经验和关键球处理能力更强；德布劳内领衔的中前场在淘汰赛阶段更有控场优势，看好比利时小胜晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
