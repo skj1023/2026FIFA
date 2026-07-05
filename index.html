@@ -218,6 +218,8 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .bracket-stage .sd{font-size:.6rem;color:var(--text-dim);margin-top:1px}
 .bracket-stage.active{background:rgba(0,113,227,.06);border-color:rgba(0,113,227,.2)}
 .bracket-stage.active .sv{color:var(--accent)}
+.bracket-stage.past{background:rgba(52,199,89,.045);border-color:rgba(52,199,89,.18)}
+.bracket-stage.past .sv{color:var(--green)}
 @media(max-width:500px){
 .milestone-item{min-width:50%;border-right:none;border-bottom:1px solid var(--border)}
 .milestone-item:nth-child(odd){border-right:1px solid var(--border)}
@@ -1623,37 +1625,37 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <h3>🏆 2026 世界杯 · 淘汰赛对阵表</h3>
       <p>北京时间 · 共32场淘汰赛 · 一场定胜负</p>
       <div class="bracket-stages">
-        <div class="bracket-stage active">
+        <div class="bracket-stage" data-stage="group">
           <div class="sn">🏁 小组赛</div>
           <div class="sv">48→32</div>
           <div class="sd">6.11-6.28</div>
         </div>
-        <div class="bracket-stage">
+        <div class="bracket-stage" data-stage="r32">
           <div class="sn">32强</div>
           <div class="sv">32→16</div>
           <div class="sd">6.29-7.4</div>
         </div>
-        <div class="bracket-stage">
+        <div class="bracket-stage" data-stage="r16">
           <div class="sn">16强</div>
           <div class="sv">16→8</div>
           <div class="sd">7.5-7.8</div>
         </div>
-        <div class="bracket-stage">
+        <div class="bracket-stage" data-stage="qf">
           <div class="sn">1/4决赛</div>
           <div class="sv">8→4</div>
           <div class="sd">7.10-7.12</div>
         </div>
-        <div class="bracket-stage">
+        <div class="bracket-stage" data-stage="sf">
           <div class="sn">半决赛</div>
           <div class="sv">4→2</div>
           <div class="sd">7.15-7.16</div>
         </div>
-        <div class="bracket-stage">
+        <div class="bracket-stage" data-stage="third">
           <div class="sn">🥉 季军赛</div>
           <div class="sv">🥉</div>
           <div class="sd">7.19</div>
         </div>
-        <div class="bracket-stage">
+        <div class="bracket-stage" data-stage="final">
           <div class="sn">🏆 决赛</div>
           <div class="sv">🏆</div>
           <div class="sd">7.20 纽约</div>
@@ -2875,6 +2877,7 @@ function render(){
   // Extra renders
   renderTimeline();
   renderScorers();
+  updateBracketStageHighlight();
   renderBracketTree();
   buildComparePickers();
   renderTodayPick();
@@ -3042,6 +3045,28 @@ function renderScorers(){let e=document.getElementById('scorerList');if(!e)retur
   let arr=Object.entries(SCORERS).map(([n,v])=>{let p=v.split(' ');return{name:n,team:p[0],goals:parseInt(p[1])};}).sort((a,b)=>b.goals-a.goals);
   let m=['🥇','🥈','🥉'];
   e.innerHTML='<table class="scorer-table"><thead><tr><th></th><th>球员</th><th>球队</th><th style="text-align:center">进球</th></tr></thead><tbody>'+arr.slice(0,30).map((p,i)=>{let r=i<3?'<span class="sc-medal">'+m[i]+'</span>':'<span class="sc-rank">'+(i+1)+'</span>';let mt=td(p.team);return '<tr><td>'+r+'</td><td class="sc-name">'+p.name+'</td><td class="sc-team">'+mt.fl+mt.nm+'</td><td class="sc-goals">'+p.goals+'</td></tr>';}).join('')+'</tbody></table><div style="margin-top:10px;font-size:.7rem;color:var(--text-dim);text-align:center">⚽ 基于已完赛场次统计 · 持续更新</div>';}
+// ===== BRACKET STAGE HIGHLIGHT =====
+function updateBracketStageHighlight(){
+  let nodes=[...document.querySelectorAll('.bracket-stage[data-stage]')];
+  if(!nodes.length)return;
+  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
+  let stages=[
+    {k:'group',d:new Date(2026,5,11)},
+    {k:'r32',d:new Date(2026,5,29)},
+    {k:'r16',d:new Date(2026,6,5)},
+    {k:'qf',d:new Date(2026,6,10)},
+    {k:'sf',d:new Date(2026,6,15)},
+    {k:'third',d:new Date(2026,6,19)},
+    {k:'final',d:new Date(2026,6,20)}
+  ];
+  let ai=0;
+  for(let i=stages.length-1;i>=0;i--){if(now>=stages[i].d){ai=i;break;}}
+  nodes.forEach(n=>{
+    let idx=stages.findIndex(s=>s.k===n.dataset.stage);
+    n.classList.toggle('past',idx>-1&&idx<ai);
+    n.classList.toggle('active',idx===ai);
+  });
+}
 // ===== BRACKET TREE =====
 function renderBracketTree(){let e=document.getElementById('bracketTree');if(!e)return;
   let ko=ALL_MATCHES.filter(m=>m.g==='KO'),rn={4:'32强',5:'16强',6:'1/4',7:'半决赛',8:'季军',9:'决赛'};
