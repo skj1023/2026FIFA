@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+        <div class="log-time">2026-07-05 15:40</div>
+        <div class="log-content"><span class="log-tag ui">修复</span><strong>🪪 页脚访问统计改为稳定展示：本地预览与弱网场景不再残留“加载中”</strong> — 福福本轮全站巡检确认赛程与淘汰赛落位无需改动；同时修正了页脚访问统计在本地预览/弱网环境下长期卡住的问题。现在即使统计脚本暂时不可用，页面也会优雅显示占位符，不再影响“首页 / 日志 / 信息”等 Tab 的完整校验体验。</div>
+      </div>
+              <div class="log-item">
         <div class="log-time">2026-07-05 21:18</div>
         <div class="log-content"><span class="log-tag ui">修复</span><strong>🧹 全 Tab 滞后信息校正：淘汰赛、信息、积分榜、最佳第3名同步到16强阶段</strong> — 福福已全量检查比赛数据和各 Tab 文案：当前 ALL_MATCHES 为 90/104 已完赛、16强阶段无 live 比赛，下一场为 7/6 04:00 巴西vs挪威。本站已把淘汰赛阶段高亮改为北京时间自动判断，淘汰赛赛程默认展示当前附近4场而非最早4场，并将信息页、时间轴、小组积分榜和最佳第3名说明从小组赛口径更新为当前淘汰赛口径。</div>
       </div>
@@ -1719,7 +1723,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 <button class="top-btn" id="topBtn" title="回到顶部">↑</button>
 <footer class="footer">
   <p>由 Hermes Agent · 福福 自动维护 · 每场比赛后自动更新数据</p>
-  <div class="pv">👁️ 被浏览 <span id="busuanzi_site_pv">加载中...</span> 次 · 🧑 <span id="busuanzi_site_uv">加载中...</span> 位访客 · 📊 今日 <span id="busuanzi_today_pv">加载中...</span></div>
+  <div class="pv">👁️ 被浏览 <span id="busuanzi_site_pv">—</span> 次 · 🧑 <span id="busuanzi_site_uv">—</span> 位访客 · 📊 今日 <span id="busuanzi_today_pv">—</span></div>
   <div class="cr"><a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank">📺 CCTV5 直播</a><a href="https://www.miguvideo.com/" target="_blank">咪咕视频</a><a href="https://www.douyin.com/" target="_blank">抖音</a></div>
 </footer>
 <script>
@@ -3166,7 +3170,22 @@ document.addEventListener('click',function(e){let o=document.getElementById('det
     return card;};}
 })();
 
+// ===== FOOTER COUNTER FALLBACK =====
+(function(){
+  const ids=['busuanzi_site_pv','busuanzi_site_uv','busuanzi_today_pv'];
+  function ensureBusuanziFallback(){
+    ids.forEach(id=>{
+      let el=document.getElementById(id);
+      if(!el)return;
+      let txt=(el.textContent||'').trim();
+      if(!txt||/加载中/i.test(txt))el.textContent='—';
+    });
+  }
+  if(location.protocol==='file:')setTimeout(ensureBusuanziFallback,200);
+  window.addEventListener('load',()=>setTimeout(ensureBusuanziFallback,2500),{once:true});
+})();
+
 </script>
-<script src="//cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
+<script src="https://cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
 </body>
 </html>
