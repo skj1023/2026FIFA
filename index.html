@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
                     <div class="log-item">
+              <div class="log-time">2026-07-06 09:16</div>
+              <div class="log-content"><span class="log-tag auto">巡检</span><strong>📋 全站一致性检查：R16 阶段 92/104 已完赛</strong> — 福福本轮全量交叉复核：ESPN 确认 R17-R20 全部 FT，QF1（法国 vs 摩洛哥）与 QF3（挪威 vs 英格兰）对阵已正确落位。SCORERS 新增贝林厄姆（2球）、凯恩累至3球。下一场 R21（葡萄牙 vs 西班牙）7/7 03:00。所有 Tab 状态与北京时间一致。</div>
+            </div>
+                    <div class="log-item">
               <div class="log-time">2026-07-06 13:42</div>
               <div class="log-content"><span class="log-tag auto">校正</span><strong>🔗 R19 hl 描述校正：QF3 待定→英格兰</strong> — R20 已由 ESPN 确认 FT，R19 hl 中"待定(R20胜者)"已更新为"英格兰"。</div>
             </div>
@@ -2766,7 +2770,7 @@ function renderFinalCountdown(){
 }
 
 // ===== SCORERS =====
-const SCORERS={"梅西":"阿根廷 5","姆巴佩":"法国 4","维尼修斯":"巴西 4","登贝莱":"法国 4","哈兰德":"挪威 4","Elijah Just":"新西兰 3","Ismaïla Sarr":"塞内加尔 3","Ismael Saibari":"摩洛哥 3","乔纳森·戴维":"加拿大 3","库尼亚":"巴西 3","布罗比":"荷兰 3","Johan Manzambi":"瑞士 3","昂达夫":"德国 3","镰田大地":"日本 2","加克波":"荷兰 2","Julián Quiñones":"墨西哥 2","上田綺世":"日本 2","特罗萨德":"比利时 2","哈弗茨":"德国 2","奥亚萨瓦尔":"西班牙 2","Pape Gueye":"塞内加尔 2","拉林":"加拿大 2","Nicolas Pépé":"科特迪瓦 2","萨默维尔":"荷兰 2","埃兰加":"瑞典 2","Daniel Muñoz":"哥伦比亚 2","凯恩":"英格兰 2","C罗":"葡萄牙 2","巴洛贡":"美国 2","萨拉赫":"埃及 2","阿亚里":"瑞典 2","伊萨克":"瑞典 2","雷扎扬":"伊朗 2","Maxi Araújo":"乌拉圭 2","Rubén Vargas":"瑞士 2","Ermin Mahmic":"波黑 2"};
+const SCORERS={"梅西":"阿根廷 5","姆巴佩":"法国 4","维尼修斯":"巴西 4","登贝莱":"法国 4","哈兰德":"挪威 4","Elijah Just":"新西兰 3","Ismaïla Sarr":"塞内加尔 3","Ismael Saibari":"摩洛哥 3","乔纳森·戴维":"加拿大 3","库尼亚":"巴西 3","布罗比":"荷兰 3","Johan Manzambi":"瑞士 3","昂达夫":"德国 3","镰田大地":"日本 2","加克波":"荷兰 2","Julián Quiñones":"墨西哥 2","上田綺世":"日本 2","特罗萨德":"比利时 2","哈弗茨":"德国 2","奥亚萨瓦尔":"西班牙 2","Pape Gueye":"塞内加尔 2","拉林":"加拿大 2","Nicolas Pépé":"科特迪瓦 2","萨默维尔":"荷兰 2","埃兰加":"瑞典 2","Daniel Muñoz":"哥伦比亚 2","凯恩":"英格兰 3","贝林厄姆":"英格兰 2","C罗":"葡萄牙 2","巴洛贡":"美国 2","萨拉赫":"埃及 2","阿亚里":"瑞典 2","伊萨克":"瑞典 2","雷扎扬":"伊朗 2","Maxi Araújo":"乌拉圭 2","Rubén Vargas":"瑞士 2","Ermin Mahmic":"波黑 2"};
 // ===== NEXT MATCH & HELPERS =====
 function render(){
   let done=ALL_MATCHES.filter(m=>m.st==="done");
