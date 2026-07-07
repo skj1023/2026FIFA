@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
                     <div class="log-item">
+              <div class="log-time">2026-07-07 20:34</div>
+              <div class="log-content"><span class="log-tag fix">巡检</span><strong>🧪 本地巡检静默化：赛程数据无变更，file 预览不再冒出统计脚本报错</strong> — 福福按北京时间复核 ESPN scoreboard 后确认当前仍是 94/104 已完赛、下一场为 7/8 00:00 阿根廷 vs 埃及，QF2 继续保持「西班牙 vs 比利时」。本轮未改动赛果/对阵/预测，仅收紧本地预览逻辑：file:// 校验时不再加载页脚访问统计脚本，避免巡检阶段出现无关报错。</div>
+            </div>
+                    <div class="log-item">
               <div class="log-time">2026-07-07 19:20</div>
               <div class="log-content"><span class="log-tag fix">校正</span><strong>ℹ️ 信息页参赛队文案校正：亚洲不是 6 队，是 9 队</strong> — 本轮全站巡检未发现新的赛果差异；ESPN/BBC 交叉复核后确认 R21、R22 与 QF2 落位均正确。同步修正信息页硬编码文案，将亚洲参赛队从漏写的 6 队更正为韩、日、伊、沙、乌、约、澳、卡共 9 队，避免阶段说明页误导。</div>
             </div>
@@ -3272,7 +3276,13 @@ document.addEventListener('click',function(e){let o=document.getElementById('det
   window.addEventListener('load',()=>setTimeout(ensureBusuanziFallback,2500),{once:true});
 })();
 
+if(location.protocol!=='file:'){
+  const bz=document.createElement('script');
+  bz.src='https://cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js';
+  bz.defer=true;
+  document.body.appendChild(bz);
+}
+
 </script>
-<script src="https://cdn.busuanzi.cc/busuanzi/3.6.9/busuanzi.min.js" defer></script>
 </body>
 </html>
