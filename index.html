@@ -100,7 +100,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .match-vs{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px 14px}
 .team{display:flex;align-items:center;gap:8px}
 .team.home{justify-content:flex-start}.team.away{justify-content:flex-end}
-.team .flag{font-size:1.3rem;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}.team .name{font-size:.95rem;font-weight:600;vertical-align:middle}
+.team .flag{font-size:1.3rem;line-height:1;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}.team .flag img{width:24px;height:18px;vertical-align:middle;display:inline-block;border-radius:2px}.team .name{font-size:.95rem;font-weight:600;vertical-align:middle}
 .team.home .flag{order:-1}.team.away .flag{order:1}.team.away .name{order:-1}
 .score{font-size:1.3rem;font-weight:800;text-align:center;min-width:48px;letter-spacing:.02em}
 .score.result{color:var(--text)}.light .score.result{color:var(--text)}.score.live-score{color:var(--red);display:flex;align-items:center;justify-content:center;gap:6px}.score.pre{color:var(--text-dim);font-weight:500;font-size:.95rem}
@@ -133,7 +133,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .nx-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.06em;color:var(--text-sec);font-weight:600;display:flex;align-items:center;gap:6px}
 .nx-label .pulse-dot{width:6px;height:6px}
 .nx-teams{display:flex;align-items:center;gap:10px;font-size:.95rem;font-weight:600;flex-wrap:wrap}
-.nx-teams .flag{font-size:1.2rem;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.nx-teams .flag{font-size:1.2rem;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}.nx-teams .flag img{width:22px;height:16px;vertical-align:middle;display:inline-block;border-radius:2px}
 .nx-vs{color:var(--text-dim);font-weight:400;font-size:.8rem}
 .nx-meta{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-left:auto}
 .nx-time{display:flex;flex-direction:column;align-items:center;min-width:80px}
@@ -340,7 +340,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .t3-row.out{opacity:.5}
 .t3-rk{width:24px;font-weight:600;color:var(--text-dim)}
 .t3-team{display:flex;align-items:center;gap:6px;flex:1}
-.t3-team .flag{font-size:1.1rem;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}
+.t3-team .flag{font-size:1.1rem;font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif}.t3-team .flag img{width:20px;height:15px;vertical-align:middle;display:inline-block;border-radius:2px}
 .t3-stats{display:flex;gap:12px;color:var(--text-dim);font-size:.72rem}
 .t3-stats strong{color:var(--text)}
 
@@ -368,7 +368,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .bc-node{background:var(--bg-card);border:1px solid var(--border);border-radius:7px;padding:5px 6px;font-size:.58rem;text-align:center;transition:all .15s;min-height:30px;display:flex;align-items:center;justify-content:center;gap:3px;line-height:1.25;overflow:hidden;text-overflow:ellipsis}
 .bc-node.confirmed{border-color:var(--accent);background:rgba(0,113,227,.06)}
 .bc-node.tbd{color:var(--text-dim);border-style:dashed;opacity:.6}
-.bc-node .bf{font-size:.72rem;flex-shrink:0}
+.bc-node .bf{font-size:.72rem;flex-shrink:0}.bc-node .bf img{width:14px;height:10px;vertical-align:middle;display:inline-block;border-radius:1px}
 .ko-list-wrap{margin-top:14px;text-align:left;border-top:1px solid var(--border);padding-top:14px}
 .ko-list-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap}
 .ko-list-title{font-size:.9rem;font-weight:800;color:var(--text)}
@@ -392,7 +392,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .cr-team{flex:1;text-align:center;display:flex;flex-direction:column;align-items:center;gap:2px}
 .cr-team-a{text-align:left;align-items:flex-start}
 .cr-team-b{text-align:right;align-items:flex-end}
-.cr-flag{font-size:2.2rem;line-height:1}
+.cr-flag{font-size:2.2rem;line-height:1}.cr-flag img{width:36px;height:27px;vertical-align:middle;display:inline-block;border-radius:3px}
 .cr-name{font-size:1.1rem;font-weight:700;margin-top:2px}
 .cr-meta{font-size:.68rem;color:var(--text-dim);display:flex;gap:4px;flex-wrap:wrap}
 .cr-meta-a{justify-content:flex-start}.cr-meta-b{justify-content:flex-end}
@@ -437,7 +437,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .scorer-table th{text-align:left;padding:8px 10px;font-weight:600;color:var(--text-dim);font-size:.68rem;text-transform:uppercase;border-bottom:1px solid var(--border)}
 .scorer-table td{padding:8px 10px;border-bottom:1px solid rgba(255,255,255,.03)}
 .scorer-table .sc-rank{width:24px;text-align:center;font-weight:700;color:var(--text-dim)}
-.scorer-table .sc-name{font-weight:600}.scorer-table .sc-team{color:var(--text-dim);font-size:.72rem}
+.scorer-table .sc-name{font-weight:600}.scorer-table .sc-team{color:var(--text-dim);font-size:.72rem}.scorer-table .sc-team img{width:16px;height:12px;vertical-align:middle;display:inline-block;border-radius:1px}
 .scorer-table .sc-goals{text-align:center;font-weight:800;color:var(--accent);font-size:1rem}
 .scorer-table .sc-medal{font-size:.85rem}
 /* TODAY PICK */
@@ -2057,16 +2057,26 @@ const RANK2022 = {
   "巴西": "八强", "葡萄牙": "八强"
 };
 
+// Flag emoji → flagcdn image URL
+function fl2url(e){
+  if(!e)return null;
+  let cp=[...e].map(c=>c.codePointAt(0)).filter(c=>c>=0x1F1E6&&c<=0x1F1FF);
+  if(cp.length<2)return null;
+  let cc=String.fromCharCode(cp[0]-0x1F1E6+65,cp[1]-0x1F1E6+65).toLowerCase();
+  return 'https://flagcdn.com/24x18/'+cc+'.png';
+}
+function flagHtml(e){let u=fl2url(e);return u?'<img src="'+u+'" alt="" loading="lazy">':e;}
+
 // Team display: map short name → {fl, nm} from GROUPS
 function td(n){
   // Check TM alias mapping first. teamMeta() returns {flag,name}, so normalize it to td()'s {fl,nm} contract.
   for(let [full,alias] of Object.entries(TM)){
-    if(alias===n){let m=teamMeta(full);return{fl:m.flag,nm:m.name};}
+    if(alias===n){let m=teamMeta(full);return{fl:flagHtml(m.flag),nm:m.name};}
   }
   for(let g of Object.values(GROUPS)){
     for(let t of g.teams){
       let nn=stripFlag(t);
-      if(nn===n)return{fl:t.slice(0,t.length-nn.length),nm:nn};
+      if(nn===n)return{fl:flagHtml(t.slice(0,t.length-nn.length)),nm:nn};
     }
   }
   return{fl:'',nm:n};
@@ -2432,7 +2442,7 @@ function renderTeam(teamName){
   if(!players){list.innerHTML='<div style="color:var(--text-dim);text-align:center;padding:20px">暂无该队球员数据</div>';return}
   
   // Build header
-  let html='<div style="margin-bottom:12px;font-size:1rem;font-weight:700"><span style="font-size:1.5rem">'+flag+'</span> '+nm+' · '+players.length+'名球员';
+  let html='<div style="margin-bottom:12px;font-size:1rem;font-weight:700"><span style="font-size:1.5rem">'+flagHtml(flag).replace('<img ','<img style="width:32px;height:24px;vertical-align:middle;border-radius:3px" ')+'</span> '+nm+' · '+players.length+'名球员';
   let coach=COACHES[teamName];if(coach)html+=' · 🎯 1名教练';
   html+='</div>';
   html+=renderTeamHistory(teamName);
