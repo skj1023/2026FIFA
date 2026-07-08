@@ -206,25 +206,25 @@ const ALL_MATCHES = [
   {id:"R09",g:"KO",r:4,t:"7/2 04:00",h:"比利时",a:"塞内加尔",s:"3-2",st:"done",hl:"⚽ 比利时3-2塞内加尔（加时）：ESPN API 与 FIFA 最新一致确认 FT AET，卢卡库 86'、蒂勒曼斯 89' 连追两球扳平 2-2 拖入加时后，加时赛比利时再入一球 3-2 逆转塞内加尔晋级。R22 已同步为\"待定(R10胜者) vs 比利时\"。",pred:{locked:true,ph:2,pa:1,confidence:59,tag:"比利时小胜",reason:"塞内加尔状态回升且对抗强，但比利时中前场经验和关键球处理仍更稳。",basis:["比利时经验","塞内加尔冲击","关键球"]}},
   {id:"R10",g:"KO",r:4,t:"7/2 08:00",h:"美国",a:"波黑",s:"2-0",st:"done",hl:"⚽ 美国2-0波黑：ESPN 与 BBC 最新一致确认 FT，美国在圣克拉拉零封晋级，R22 已同步更新为\"美国 vs 比利时\"。",pred:{locked:true,ph:2,pa:1,confidence:63,tag:"美国借主场晋级",reason:"美国转换速度和主场能量更足，波黑定位球与反击能制造麻烦，但整体节奏可能被美国拉快。",basis:["主场能量","转换速度","波黑定位球"]}},
   {id:"R11",g:"KO",r:4,t:"7/3 03:00",h:"西班牙",a:"奥地利",s:"3-0",st:"done",hl:"⚽ 西班牙3-0奥地利：ESPN 最新确认 FT，西班牙在洛杉矶 SoFi 球场3-0完胜奥地利晋级16强，R12（葡萄牙 vs 克罗地亚）胜者将是西班牙的下一轮对手。",pred:{locked:true,ph:2,pa:0,confidence:71,tag:"西班牙控局",reason:"西班牙控球和压迫质量更稳定，奥地利能跑能抢，但长期无球防守会消耗巨大。",basis:["控球压迫","边中结合","奥地利体能"]}},
-  {id:"R12",g:"KO",r:4,t:"7/3 07:00",h:"葡萄牙",a:"克罗地亚",s:"2-1",st:"done",hl:"⚽ 葡萄牙2-1克罗地亚：FIFA 与 BBC 最新一致确认 FT，葡萄牙在32强焦点战淘汰克罗地亚晋级16强，并将于7/7在R21对阵西班牙。",pred:{locked:true,ph:1,pa:1,confidence:55,tag:"拖入加时",reason:"葡萄牙个人能力更强，克罗地亚中场控制和淘汰赛韧性极高，90分钟很可能拉扯成平局。",basis:["葡萄牙前场","克罗地亚中场","淘汰赛韧性"]}},
+  {id:"R12",g:"KO",r:4,t:"7/3 07:00",h:"葡萄牙",a:"克罗地亚",s:"2-1",st:"done",hl:"⚽ 葡萄牙2-1克罗地亚：FIFA 与 BBC 最新一致确认 FT，葡萄牙在32强焦点战淘汰克罗地亚晋级16强，并将于7/7在R21对阵西班牙。",pred:{locked:true,ph:1,pa:1,winner:"h",confidence:55,tag:"拖入加时",reason:"葡萄牙个人能力更强，克罗地亚中场控制和淘汰赛韧性极高，90分钟很可能拉扯成平局，但最终更看好葡萄牙晋级。",basis:["葡萄牙前场","克罗地亚中场","淘汰赛韧性"]}},
   {id:"R13",g:"KO",r:4,t:"7/3 11:00",h:"瑞士",a:"阿尔及利亚",s:"2-0",st:"done",hl:"⚽ 瑞士2-0阿尔及利亚：BBC 最新确认 FT，瑞士在 BC Place 2-0 零封阿尔及利亚晋级 16 强，R24 已同步更新为\"瑞士 vs 待定(R16 胜者)\"。",pred:{locked:true,ph:2,pa:1,confidence:60,tag:"瑞士稳中有险",reason:"瑞士整体结构清晰、失误少，阿尔及利亚进攻情绪和对抗很强，但防守端波动较大。",basis:["瑞士稳定","阿尔及利亚火力","防守波动"]}},
-  {id:"R14",g:"KO",r:4,t:"7/4 02:00",h:"澳大利亚",a:"埃及",s:"1-1",st:"done",hl:"⚽ 澳大利亚1-1埃及（点球2-4）：Emam Ashour 13'首开纪录，Mohamed Hany 55'乌龙扳平，双方120分钟战平1-1；点球大战埃及4-2胜出，队史首次晋级世界杯淘汰赛16强。R23 已更新为「阿根廷 vs 埃及」。",pred:{locked:true,ph:1,pa:1,confidence:54,tag:"谨慎看平",reason:"澳大利亚身体和定位球优势明显，埃及依靠萨拉赫与边路速度有反击威胁，90分钟胜负很难拉开。",basis:["澳洲定位球","萨拉赫","低比分"]}},
+  {id:"R14",g:"KO",r:4,t:"7/4 02:00",h:"澳大利亚",a:"埃及",s:"1-1",st:"done",hl:"⚽ 澳大利亚1-1埃及（点球2-4）：Emam Ashour 13'首开纪录，Mohamed Hany 55'乌龙扳平，双方120分钟战平1-1；点球大战埃及4-2胜出，队史首次晋级世界杯淘汰赛16强。R23 已更新为「阿根廷 vs 埃及」。",pred:{locked:true,ph:1,pa:1,winner:"a",confidence:54,tag:"谨慎看平",reason:"澳大利亚身体和定位球优势明显，埃及依靠萨拉赫与边路速度有反击威胁，90分钟胜负很难拉开；若进入点球，埃及更值得高看。",basis:["澳洲定位球","萨拉赫","低比分"]}},
   {id:"R15",g:"KO",r:4,t:"7/4 06:00",h:"阿根廷",a:"佛得角",s:"3-2",st:"done",hl:"🐐 阿根廷3-2佛得角：FIFA API 确认 FT，梅西双响+劳塔罗制胜球，卫冕冠军有惊无险挺进16强。R23 已同步为「阿根廷 vs 埃及」。",pred:{locked:true,ph:3,pa:0,confidence:78,tag:"阿根廷优势明显",reason:"阿根廷攻防控制力和淘汰赛经验都高一档，佛得角需要完美防守才可能把悬念拖久。",basis:["梅西状态","卫冕冠军","比赛控制"]}},
   {id:"R16",g:"KO",r:4,t:"7/4 09:30",h:"哥伦比亚",a:"加纳",s:"1-0",st:"done",hl:"⚽ 哥伦比亚1-0加纳：ESPN 与 BBC 最新一致确认 FT，哥伦比亚在堪萨斯城箭头球场零封晋级，并将于 7/8 在 R24 对阵瑞士。",pred:{locked:true,ph:2,pa:1,confidence:62,tag:"哥伦比亚小胜",reason:"哥伦比亚小组赛稳定性更好，中前场衔接更顺；加纳速度和身体冲击足以制造威胁。",basis:["哥伦比亚稳定","加纳速度","南美节奏"]}}, 
   // ===== 16强 (7.5-7.8) =====
-  {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"摩洛哥",s:"0-3",st:"done",hl:"⚽ 摩洛哥3-0加拿大：ESPN 与 FIFA 最新一致确认 FT，FIFA 赛后头条点出 Ounahi 双响，摩洛哥在休斯敦完胜东道主挺进 1/4 决赛。",pred:{date:"2026-07-01",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["东道主气势","摩洛哥韧性","点球气焰"],reason:"加拿大淘汰赛首轮1-0绝杀南非士气正盛，东道主主场氛围不可小觑；摩洛哥点球淘汰荷兰韧劲十足，防守纪律性强。双方实力接近、风格各异，90分钟可能难分胜负。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"R17",g:"KO",r:5,t:"7/5 01:00",h:"加拿大",a:"摩洛哥",s:"0-3",st:"done",hl:"⚽ 摩洛哥3-0加拿大：ESPN 与 FIFA 最新一致确认 FT，FIFA 赛后头条点出 Ounahi 双响，摩洛哥在休斯敦完胜东道主挺进 1/4 决赛。",pred:{date:"2026-07-01",ph:1,pa:1,winner:"a",confidence:58,tag:"谨慎看平",basis:["东道主气势","摩洛哥韧性","点球气焰"],reason:"加拿大淘汰赛首轮1-0绝杀南非士气正盛，东道主主场氛围不可小觑；摩洛哥点球淘汰荷兰韧劲足，防守纪律性强。双方实力接近、风格各异，若90分钟难分胜负，最终更看好摩洛哥晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R18",g:"KO",r:5,t:"7/5 05:00",h:"巴拉圭",a:"法国",s:"0-1",st:"done",hl:"⚽ 法国1-0巴拉圭：ESPN FIFA World Cup scoreboard API 最新确认 FT，高卢军团以一球优势过关，7/10 将在 QF1 对阵摩洛哥。",pred:{date:"2026-07-01",ph:0,pa:2,winner:"a",confidence:75,tag:"法国晋级",basis:["姆巴佩状态","法国攻击群","巴拉圭消耗大"],reason:"法国小组赛三战全胜攻防俱佳，姆巴佩和登贝莱边路冲击力对巴拉圭防线构成绝对威胁；巴拉圭刚经历点球大战消耗巨大，面对高卢军团的持续压迫恐难招架。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R19",g:"KO",r:5,t:"7/5 20:00",h:"巴西",a:"挪威",s:"1-2",st:"done",hl:"⚽ 挪威2-1巴西：ESPN 确认 FT，挪威爆冷逆转淘汰巴西晋级，QF3 已同步为挪威 vs 英格兰",pred:{date:"2026-07-03",ph:2,pa:1,winner:"h",confidence:68,tag:"巴西过关",basis:["锋线爆点","挪威反击","淘汰赛经验"],reason:"巴西前场单点爆破和持续施压能力仍高于挪威，哈兰德领衔的反击会制造威胁，但若比赛进入阵地战与细节处理，桑巴军团更值得高看一线。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"R20",g:"KO",r:5,t:"7/6 09:00",h:"墨西哥",a:"英格兰",s:"2-3",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰3-2墨西哥：ESPN确认FT，贝林厄姆双响、凯恩锦上添花；三狮军团在墨西哥城力克东道主晋级，QF3已同步为挪威vs英格兰。",pred:{date:"2026-07-03",ph:1,pa:1,winner:"d",confidence:58,tag:"谨慎看平",basis:["高原主场","英格兰阵容厚度","胶着节奏"],reason:"墨西哥坐镇阿兹特克的主场与高原环境会明显抬高比赛强度，英格兰整体配置更深但未必能轻松提速，90分钟大概率是一场拉扯感很强的硬仗。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"R21",g:"KO",r:5,t:"7/7 03:00",h:"葡萄牙",a:"西班牙",s:"0-1",st:"done",hl:"⚽ 西班牙1-0葡萄牙：Merino 87'替补绝杀！ESPN 与 BBC 最新一致确认 FT，斗牛士在阿灵顿 AT&T 球场晋级 8 强；随着 R22 完赛，QF2 已最终补全为「西班牙 vs 比利时」。",pred:{date:"2026-07-04",ph:1,pa:1,winner:"d",confidence:57,tag:"伊比利亚德比看平",basis:["葡萄牙状态","西班牙传控","伊比利亚德比","淘汰赛谨慎"],reason:"伊比利亚德比向来胶着，葡萄牙有C罗和B费的个人能力，西班牙传控体系更成熟；淘汰赛阶段双方开局都会谨慎，90分钟打平进入加时的可能性较高。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"R20",g:"KO",r:5,t:"7/6 09:00",h:"墨西哥",a:"英格兰",s:"2-3",st:"done",hl:"🏴󠁧󠁢󠁥󠁮󠁧󠁿 英格兰3-2墨西哥：ESPN确认FT，贝林厄姆双响、凯恩锦上添花；三狮军团在墨西哥城力克东道主晋级，QF3已同步为挪威vs英格兰。",pred:{date:"2026-07-03",ph:1,pa:1,winner:"a",confidence:58,tag:"谨慎看平",basis:["高原主场","英格兰阵容厚度","胶着节奏"],reason:"墨西哥坐镇阿兹特克的主场与高原环境会明显抬高比赛强度，英格兰整体配置更深但未必能轻松提速；若90分钟拉成平局，最终更看好英格兰凭阵容厚度晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"R21",g:"KO",r:5,t:"7/7 03:00",h:"葡萄牙",a:"西班牙",s:"0-1",st:"done",hl:"⚽ 西班牙1-0葡萄牙：Merino 87'替补绝杀！ESPN 与 BBC 最新一致确认 FT，斗牛士在阿灵顿 AT&T 球场晋级 8 强；随着 R22 完赛，QF2 已最终补全为「西班牙 vs 比利时」。",pred:{date:"2026-07-04",ph:1,pa:1,winner:"a",confidence:57,tag:"伊比利亚德比看平",basis:["葡萄牙状态","西班牙传控","伊比利亚德比","淘汰赛谨慎"],reason:"伊比利亚德比向来胶着，葡萄牙有C罗和B费的个人能力，西班牙传控体系更成熟；若90分钟打平进入加时，最终更看好西班牙凭控球体系晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R22",g:"KO",r:5,t:"7/7 08:00",h:"美国",a:"比利时",s:"1-4",st:"done",hl:"⚽ 比利时4-1美国：ESPN scoreboard 与 BBC Scores & Fixtures 最新一致确认 FT，比利时在西雅图大胜东道主晋级 8 强，QF2 已同步落位为「西班牙 vs 比利时」。",pred:{date:"2026-07-04",ph:1,pa:2,winner:"a",confidence:63,tag:"比利时小胜",basis:["比利时经验","美国主场","德布劳内","转换节奏"],reason:"美国主场氛围和转换速度不容小觑，但比利时阵容经验和关键球处理能力更强；德布劳内领衔的中前场在淘汰赛阶段更有控场优势，看好比利时小胜晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"R23",g:"KO",r:5,t:"7/8 00:00",h:"阿根廷",a:"埃及",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · 阿根廷 vs 埃及 · 卫冕冠军阿根廷3-2淘汰佛得角后将于7/8对阵点球晋级的埃及",pred:{date:"2026-07-05",ph:2,pa:0,winner:"h",confidence:74,tag:"阿根廷稳进",basis:["卫冕冠军底蕴","梅西串联","埃及防反","淘汰赛经验"],reason:"阿根廷在淘汰赛阶段的控场和关键球处理仍明显高于埃及，梅西与中前场的连续串联有望持续压制比赛节奏，看好卫冕冠军以两球优势晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"R24",g:"KO",r:5,t:"7/8 04:00",h:"瑞士",a:"哥伦比亚",st:"upcoming",hl:"🏟️ BC Place·温哥华 · 瑞士 vs 哥伦比亚 · R13/R16 胜者已全部落位",pred:{date:"2026-07-05",ph:1,pa:1,winner:"d",confidence:59,tag:"谨慎看平",basis:["瑞士结构稳定","哥伦比亚硬度","中场缠斗","加时可能"],reason:"瑞士整体站位与防线层次更稳，哥伦比亚在对抗和推进端更有冲击力，这类强度接近的淘汰赛往往先比耐心与失误控制，90分钟打平的概率不低。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"R23",g:"KO",r:5,t:"7/8 00:00",h:"阿根廷",a:"埃及",s:"3-2",st:"done",hl:"⚽ 阿根廷3-2埃及：ESPN scoreboard 已确认 FT，卫冕冠军完成逆转晋级，并锁定 7/12 QF4 对阵瑞士。",pred:{date:"2026-07-05",ph:2,pa:0,winner:"h",confidence:74,tag:"阿根廷稳进",basis:["卫冕冠军底蕴","梅西串联","埃及防反","淘汰赛经验"],reason:"阿根廷在淘汰赛阶段的控场和关键球处理仍明显高于埃及，梅西与中前场的连续串联有望持续压制比赛节奏，看好卫冕冠军以两球优势晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"R24",g:"KO",r:5,t:"7/8 04:00",h:"瑞士",a:"哥伦比亚",s:"0-0",winner:"h",st:"done",hl:"⚽ 瑞士0-0哥伦比亚（点球4-3）：ESPN scoreboard 已确认 FT-Pens，双方 120 分钟互交白卷后，瑞士通过点球大战 4-3 晋级，并补全 QF4 为阿根廷 vs 瑞士。",pred:{date:"2026-07-08",ph:1,pa:2,winner:"a",confidence:60,tag:"哥伦比亚晋级",basis:["哥伦比亚推进硬度","瑞士结构稳定","淘汰赛必须决胜","点球备选"],reason:"瑞士结构稳定、失误少，哥伦比亚推进和对抗更有侵略性。淘汰赛不能以平局作为最终预测，本场倾向哥伦比亚在常规时间后段或加时阶段完成决胜；若90分钟胶着，点球端也更看好哥伦比亚晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 1/4决赛 (7.10-7.12) =====
-  {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"法国",a:"摩洛哥",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · 法国 vs 摩洛哥 · R17/R18 胜者已全部落位"},
-  {id:"QF2",g:"KO",r:6,t:"7/11 03:00",h:"西班牙",a:"比利时",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · 西班牙 vs 比利时 · R21/R22 胜者已全部落位"},
-  {id:"QF3",g:"KO",r:6,t:"7/12 05:00",h:"挪威",a:"英格兰",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 挪威 vs 英格兰 · R19 挪威 2-1 巴西爆冷落位，R20 英格兰 3-2 墨西哥晋级"},
-  {id:"QF4",g:"KO",r:6,t:"7/12 09:00",h:"待定(R23胜者)",a:"待定(R24胜者)",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · 下半区1/4决赛"},
+  {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"法国",a:"摩洛哥",st:"upcoming",hl:"🏟️ 吉列球场·福克斯堡 · 法国 vs 摩洛哥 · R17/R18 胜者已全部落位",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:66,tag:"法国险胜晋级",basis:["法国前场爆点","摩洛哥防守韧性","淘汰赛经验","必须决胜"],reason:"摩洛哥防守纪律和淘汰赛韧性足以把比赛拖得很紧，但法国前场爆点、替补深度和关键球处理仍更高一档。后续淘汰赛预测不再给最终平局，倾向法国小比分晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"QF2",g:"KO",r:6,t:"7/11 03:00",h:"西班牙",a:"比利时",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · 西班牙 vs 比利时 · R21/R22 胜者已全部落位",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:62,tag:"西班牙小胜",basis:["西班牙控球压制","比利时转换质量","中场控制权","必须决胜"],reason:"比利时刚大胜美国，转换和经验都很有威胁；但西班牙在控球压制、肋部渗透和比赛节奏管理上更稳定。淘汰赛预测必须给出晋级方，倾向西班牙一球优势过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"QF3",g:"KO",r:6,t:"7/12 05:00",h:"挪威",a:"英格兰",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 挪威 vs 英格兰 · R19 挪威 2-1 巴西爆冷落位，R20 英格兰 3-2 墨西哥晋级",pred:{date:"2026-07-08",ph:1,pa:2,winner:"a",confidence:64,tag:"英格兰险胜",basis:["哈兰德终结","英格兰阵容厚度","定位球威胁","必须决胜"],reason:"挪威淘汰巴西后士气极高，哈兰德任何一次机会都可能改变比赛；但英格兰阵容厚度、定位球和中场推进更均衡。后续淘汰赛不再预测最终平局，看好英格兰小胜晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"QF4",g:"KO",r:6,t:"7/12 09:00",h:"阿根廷",a:"瑞士",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · 阿根廷 vs 瑞士 · R23/R24 胜者已全部落位",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:67,tag:"阿根廷小胜晋级",basis:["梅西串联","瑞士结构稳定","淘汰赛经验","必须决胜"],reason:"瑞士防线层次与阵型纪律会让比赛保持胶着，但阿根廷中前场的创造力、卫冕冠军经验和关键球处理更高一档。后续淘汰赛不再给最终平局，倾向阿根廷小比分过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 半决赛 (7.15-7.16) =====
   {id:"SF1",g:"KO",r:7,t:"7/15 03:00",h:"待定(QF1胜者)",a:"待定(QF2胜者)",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · 上半区半决赛"},
   {id:"SF2",g:"KO",r:7,t:"7/16 03:00",h:"待定(QF3胜者)",a:"待定(QF4胜者)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · 下半区半决赛"},
@@ -868,11 +868,42 @@ function mc(m,isUpcoming=false){
 // ===== AI PREDICTION FUNCTIONS =====
 function predOf(m){return m&&m.pred&&m.pred.locked?m.pred:null}
 function outcome(h,a){return h>a?'h':(h<a?'a':'d')}
+function isKnockout(m){return m&&m.g==="KO"}
+function actualWinnerCode(m){
+  if(!m||!m.s)return null;
+  let [h,a]=m.s.split('-').map(Number);
+  let byScore=outcome(h,a);
+  if(byScore!=="d")return byScore;
+  if(isKnockout(m)&&m.winner&&m.winner!=="d")return m.winner;
+  return byScore;
+}
+function predWinnerCode(m,p){
+  if(!p)return null;
+  if(p.winner&&p.winner!=="d")return p.winner;
+  let byScore=outcome(p.ph,p.pa);
+  return byScore==="d"?null:byScore;
+}
+function predWinnerName(m,p){
+  let code=predWinnerCode(m,p);
+  if(code==="h")return td(m.h).nm;
+  if(code==="a")return td(m.a).nm;
+  return null;
+}
+function predScoreText(m,p){
+  let hd=td(m.h),ad=td(m.a);
+  let score=hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm;
+  let winner=predWinnerName(m,p);
+  if(isKnockout(m)){
+    if(winner)return score+' · 最终晋级：'+winner;
+    return score+' · 需补最终晋级方';
+  }
+  return score;
+}
 function predReview(m){
   let p=predOf(m);if(!p||m.st!=="done"||!m.s)return null;
   let [ah,aa]=m.s.split('-').map(Number);
   let score=0;
-  let predOut=outcome(p.ph,p.pa), actualOut=outcome(ah,aa);
+  let predOut=isKnockout(m)?(predWinnerCode(m,p)||outcome(p.ph,p.pa)):outcome(p.ph,p.pa), actualOut=actualWinnerCode(m);
   let resultHit=predOut===actualOut;
   let exactHit=p.ph===ah&&p.pa===aa;
   if(resultHit)score+=40;
@@ -894,7 +925,7 @@ function predSummary(){
 function renderPredictionBox(m){
   let p=predOf(m);if(!p)return '';
   let hd=td(m.h),ad=td(m.a),rv=predReview(m);
-  let out='<div class="pred-box"><div class="pred-line"><span class="pred-name">🔮 AI 赛前预言</span><span class="pred-score">'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm+' · 信心 '+p.confidence+'%</span></div>';
+  let out='<div class="pred-box"><div class="pred-line"><span class="pred-name">🔮 AI 赛前预言</span><span class="pred-score">'+predScoreText(m,p)+' · 信心 '+p.confidence+'%</span></div>';
   out+='<div class="pred-conf"><span style="width:'+Math.max(5,Math.min(100,p.confidence))+'%"></span></div>';
   out+='<div class="pred-reason"><strong>'+p.tag+'</strong>：'+p.reason+'</div>';
   if(p.basis&&p.basis.length)out+='<div class="pred-basis">'+p.basis.map(x=>'<span class="pred-chip">'+x+'</span>').join('')+'</div>';
@@ -910,13 +941,13 @@ function renderHomePredictions(){
   let main=allPreds.slice(0,4);
   let more=allPreds.slice(4);
   let stat=predSummary();
-  function cardHTML(m){let p=predOf(m),hd=td(m.h),ad=td(m.a);return '<div class="pred-mini"><div class="teams">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="pick">预测：<strong>'+hd.nm+' '+p.ph+'-'+p.pa+' '+ad.nm+'</strong> · '+p.tag+' · '+p.confidence+'%</div></div>';}
+  function cardHTML(m){let p=predOf(m),hd=td(m.h),ad=td(m.a);return '<div class="pred-mini"><div class="teams">'+hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+'</div><div class="pick">预测：<strong>'+predScoreText(m,p)+'</strong> · '+p.tag+' · '+p.confidence+'%</div></div>';}
   let mainCards=main.map(cardHTML).join('');
   let moreHTML='';
   if(more.length){
     moreHTML='<div class="pred-more"><button class="pred-more-btn" onclick="this.classList.toggle(\'open\');var b=this.nextElementSibling;if(b)b.classList.toggle(\'open\')"><span>查看更远预测 ('+more.length+' 场)</span><span class="arrow">▼</span></button><div class="pred-more-body"><div class="pred-grid">'+more.map(cardHTML).join('')+'</div></div></div>';
   }
-  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 赛前预言</div><div class="pred-sub">展示最近4场未赛预测；已赛比赛自动复盘。足球是圆的，福福也会翻车。</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(mainCards||'<div class="pred-mini"><div class="teams">暂无近期预测</div><div class="pick">下一批预测将在 00:05 后生成。</div></div>')+'</div>'+moreHTML+'<div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
+  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 赛前预言</div><div class="pred-sub">展示最近4场未赛预测；淘汰赛必须给出最终晋级方，不能以平局作为最终结果。足球是圆的，福福也会翻车。</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(mainCards||'<div class="pred-mini"><div class="teams">暂无近期预测</div><div class="pick">下一批预测将在 00:05 后生成。</div></div>')+'</div>'+moreHTML+'<div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
 }
 
 // Render group standings
@@ -1003,7 +1034,7 @@ function renderFinalCountdown(){
 }
 
 // ===== SCORERS =====
-const SCORERS={"Kylian Mbappé":"法国 7","Erling Haaland":"挪威 7","Lionel Messi":"阿根廷 7","Harry Kane":"英格兰 6","Vinícius Júnior":"巴西 4","Julián Quiñones":"墨西哥 4","Jude Bellingham":"英格兰 4","Ousmane Dembélé":"法国 4","Ismaïla Sarr":"塞内加尔 4","Mikel Oyarzabal":"西班牙 4","Jonathan David":"加拿大 3","Ismael Saibari":"摩洛哥 3","Matheus Cunha":"巴西 3","Cody Gakpo":"荷兰 3","Yoane Wissa":"刚果(金) 3","Kai Havertz":"德国 3","Cristiano Ronaldo":"葡萄牙 3","Raúl Jiménez":"墨西哥 3","Brian Brobbey":"荷兰 3","Johan Manzambi":"瑞士 3","Deniz Undav":"德国 3","Elijah Just":"新西兰 3","Folarin Balogun":"美国 3","Azzedine Ounahi":"摩洛哥 2","Youri Tielemans":"比利时 2","Leandro Trossard":"比利时 2","Breel Embolo":"瑞士 2","Daichi Kamada":"日本 2","Ayase Ueda":"日本 2","Daniel Muñoz":"哥伦比亚 2","Riyad Mahrez":"阿尔及利亚 2","Crysencio Summerville":"荷兰 2","Rubén Vargas":"瑞士 2","Pape Gueye":"塞内加尔 2","Nicolas Pépé":"科特迪瓦 2","Anthony Elanga":"瑞典 2","Cyle Larin":"加拿大 2","Romelu Lukaku":"比利时 2","Mohamed Salah":"埃及 2","Ramin Rezaeian":"伊朗 2","Maxi Araújo":"乌拉圭 2","Ermin Mahmic":"波黑 2"};
+const SCORERS={"梅西":"阿根廷 8","姆巴佩":"法国 7","哈兰德":"挪威 7","凯恩":"英格兰 6","维尼修斯":"巴西 4","基尼奥内斯":"墨西哥 4","贝林厄姆":"英格兰 4","登贝莱":"法国 4","伊斯梅拉·萨尔":"塞内加尔 4","奥亚萨瓦尔":"西班牙 4","乔纳森·戴维":"加拿大 3","赛巴里":"摩洛哥 3","库尼亚":"巴西 3","加克波":"荷兰 3","维萨":"刚果(金) 3","哈弗茨":"德国 3","C罗":"葡萄牙 3","希门尼斯":"墨西哥 3","布罗比":"荷兰 3","曼赞比":"瑞士 3","昂达夫":"德国 3","贾斯特":"新西兰 3","巴洛贡":"美国 3","欧纳希":"摩洛哥 2","蒂勒曼斯":"比利时 2","特罗萨德":"比利时 2","恩博洛":"瑞士 2","鎌田大地":"日本 2","上田綺世":"日本 2","穆尼奥斯":"哥伦比亚 2","马赫雷斯":"阿尔及利亚 2","萨默维尔":"荷兰 2","巴尔加斯":"瑞士 2","盖耶":"塞内加尔 2","佩佩":"科特迪瓦 2","埃兰加":"瑞典 2","拉林":"加拿大 2","卢卡库":"比利时 2","萨拉赫":"埃及 2","Mostafa Zico":"埃及 2","雷扎扬":"伊朗 2","阿劳霍":"乌拉圭 2","马赫米奇":"波黑 2"};
 // ===== NEXT MATCH & HELPERS =====
 function render(){
   let done=ALL_MATCHES.filter(m=>m.st==="done");
@@ -1031,7 +1062,7 @@ function render(){
     }else if(filter==='all'){
       matched=ALL_MATCHES;
     }else{
-      matched=ALL_MATCHES.filter(m=>m.st!=='done'&&m.t);
+      matched=ALL_MATCHES.filter(m=>m.st==='upcoming'&&m.t);
     }
     
     if(!matched.length){
@@ -1331,11 +1362,31 @@ function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)retu
   e.innerHTML='<div class="tp-badge"><span class="dot"></span>'+badge+'</div><div class="tp-main"><span class="tp-teams">'+hd.fl+hd.nm+' vs '+ad.fl+ad.nm+'</span><span class="tp-meta">'+best.t+' · '+best.g+'组 · 第'+best.r+'轮</span><a href="#" class="tp-go" data-tab="matches">查看详情 →</a></div><div class="tp-reason">'+reason+'</div>';
   e.querySelector('.tp-go').addEventListener('click',function(e2){e2.preventDefault();switchTab('matches');});
 }
+function getShanghaiNow(){
+  return new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
+}
+function getMatchStageKey(m){
+  if(m.g!=='KO')return 'g';
+  if(m.r===4)return 'r32';
+  if(m.r===5)return 'r16';
+  if(m.r===6)return 'qf';
+  if(m.r===7)return 'sf';
+  if(m.r===8)return 'third';
+  if(m.r===9)return 'final';
+  return 'g';
+}
+function getActiveTournamentStageKey(){
+  let live=ALL_MATCHES.filter(m=>m.st==='live');
+  if(live.length)return getMatchStageKey(live.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t))[0]);
+  let upcoming=ALL_MATCHES.filter(m=>m.st!=='done').sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
+  if(upcoming.length)return getMatchStageKey(upcoming[0]);
+  return 'final';
+}
 // ===== TIMELINE =====
 function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)return;
-  let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r4'},{l:'16强',k:'r5'},{l:'1/4',k:'r6'},{l:'半决赛',k:'r7'},{l:'7.20 决赛',k:'fin'}];
-  let dates={s:new Date(2026,5,11),g:new Date(2026,5,14),r4:new Date(2026,5,29),r5:new Date(2026,6,5),r6:new Date(2026,6,10),r7:new Date(2026,6,15),fin:new Date(2026,6,20)};
-  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'})),ai=-1;for(let i=stages.length-1;i>=0;i--){if(now>=dates[stages[i].k]){ai=i;break;}}
+  let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r32'},{l:'16强',k:'r16'},{l:'1/4',k:'qf'},{l:'半决赛',k:'sf'},{l:'7.20 决赛',k:'final'}];
+  let activeKey=getActiveTournamentStageKey();
+  let ai=Math.max(0,stages.findIndex(s=>s.k===activeKey));
   w.innerHTML='<div class="timeline">'+stages.map((s,i)=>{let c=i<ai?'past':(i===ai?'active':'');return '<div class="tl-node '+c+'"><div class="tl-dot"></div><div class="tl-label">'+s.l+'</div></div>';}).join('')+'</div>';}
 // ===== SCORERS =====
 function renderScorers(){let e=document.getElementById('scorerList');if(!e)return;
@@ -1346,20 +1397,11 @@ function renderScorers(){let e=document.getElementById('scorerList');if(!e)retur
 function updateBracketStageHighlight(){
   let nodes=[...document.querySelectorAll('.bracket-stage[data-stage]')];
   if(!nodes.length)return;
-  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
-  let stages=[
-    {k:'group',d:new Date(2026,5,11)},
-    {k:'r32',d:new Date(2026,5,29)},
-    {k:'r16',d:new Date(2026,6,5)},
-    {k:'qf',d:new Date(2026,6,10)},
-    {k:'sf',d:new Date(2026,6,15)},
-    {k:'third',d:new Date(2026,6,19)},
-    {k:'final',d:new Date(2026,6,20)}
-  ];
-  let ai=0;
-  for(let i=stages.length-1;i>=0;i--){if(now>=stages[i].d){ai=i;break;}}
+  let stages=['group','r32','r16','qf','sf','third','final'];
+  let activeKey=getActiveTournamentStageKey();
+  let ai=Math.max(0,stages.indexOf(activeKey));
   nodes.forEach(n=>{
-    let idx=stages.findIndex(s=>s.k===n.dataset.stage);
+    let idx=stages.indexOf(n.dataset.stage);
     n.classList.toggle('past',idx>-1&&idx<ai);
     n.classList.toggle('active',idx===ai);
   });
@@ -1379,9 +1421,11 @@ function getTeamStats(name){
   for(let m of ms){
     let [hs,as]=m.s.split('-').map(Number);
     let x=m.h===name?hs:as,y=m.h===name?as:hs;
+    let actual=actualWinnerCode(m);
+    let mine=m.h===name?'h':'a';
     gf+=x;ga+=y;
-    if(x===y){d++;pts++}
-    else if(x>y){w++;pts+=3;let mg=Math.abs(x-y);if(mg>mxW)mxW=mg}
+    if(actual==='d'){d++;pts++}
+    else if(actual===mine){w++;pts+=3;let mg=Math.abs(x-y);if(mg>mxW)mxW=mg}
     else{l++;let mg=Math.abs(x-y);if(mg>mxL)mxL=mg}
     if(y===0)cs++;
   }
@@ -1390,8 +1434,9 @@ function getTeamStats(name){
   let gks=sq.filter(p=>p.p==='门将').length,dfs=sq.filter(p=>p.p==='后卫').length,mds=sq.filter(p=>p.p==='中场').length,fws=sq.filter(p=>p.p==='前锋').length,stars=sq.filter(p=>(PP[p.n]||0)>=4).length;
   let fm=ms.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t)).slice(-5).map(m=>{
     let [hs,as]=m.s.split('-').map(Number);
-    if(hs===as)return'D';
-    return((m.h===name&&hs>as)||(m.a===name&&as>hs))?'W':'L';
+    let actual=actualWinnerCode(m);
+    if(actual==='d')return'D';
+    return((m.h===name&&actual==='h')||(m.a===name&&actual==='a'))?'W':'L';
   }).join('');
   let ct='';for(let[c,ts]of Object.entries(CONTINENTS)){if(ts.includes(name)){ct=c.split(' / ')[0];break}}
   let hst=TEAM_WORLD_CUP_HISTORY[name]||{},br=null,by=null;
