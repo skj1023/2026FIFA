@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+              <div class="log-time">2026-07-08 12:30</div>
+              <div class="log-content"><span class="log-tag fix">修复</span><strong>🔄 时间轴与阶段高亮逻辑修正：从日期硬编码改为动态匹配「下一场」</strong> — 福福巡检发现淘汰赛首轮已全部完赛，但时间轴与淘汰赛阶段高亮仍停留在「16强」（因旧逻辑只比较日历日期）。已将时间轴（首页赛事进度）与淘汰赛阶段高亮统一改用 <code>getActiveTournamentStageKey()</code>：按当前最早未赛比赛自动判定阶段，现正确显示 1/4 决赛为进行中阶段。赛果数据无变更、96/104 已完赛。</div>
+            </div>
+              <div class="log-item">
               <div class="log-time">2026-07-08 08:41</div>
               <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R24 完赛：瑞士点球4-3哥伦比亚，QF4 已补全为阿根廷 vs 瑞士</strong> — 福福按北京时间全站巡检并优先复核 ESPN scoreboard：<code>Switzerland 0-0 Colombia, FT-Pens</code>，赛事备注明确为瑞士点球 4-3 晋级；R23 也同步保持 <code>Argentina 3-2 Egypt</code> 完赛状态。本站已将 R24 从 <code>live</code> 切换为 <code>done</code>、补写点球晋级摘要，并把 QF4 从「阿根廷 vs 待定(R24胜者)」补全为「阿根廷 vs 瑞士」，同时新增该场 AI 预测。当前全站为 96/104 已完赛、0 场进行中，下一场为 7/10 04:00 法国 vs 摩洛哥。</div>
             </div>
@@ -3175,11 +3179,31 @@ function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)retu
   e.innerHTML='<div class="tp-badge"><span class="dot"></span>'+badge+'</div><div class="tp-main"><span class="tp-teams">'+hd.fl+hd.nm+' vs '+ad.fl+ad.nm+'</span><span class="tp-meta">'+best.t+' · '+best.g+'组 · 第'+best.r+'轮</span><a href="#" class="tp-go" data-tab="matches">查看详情 →</a></div><div class="tp-reason">'+reason+'</div>';
   e.querySelector('.tp-go').addEventListener('click',function(e2){e2.preventDefault();switchTab('matches');});
 }
+function getShanghaiNow(){
+  return new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
+}
+function getMatchStageKey(m){
+  if(m.g!=='KO')return 'g';
+  if(m.r===4)return 'r32';
+  if(m.r===5)return 'r16';
+  if(m.r===6)return 'qf';
+  if(m.r===7)return 'sf';
+  if(m.r===8)return 'third';
+  if(m.r===9)return 'final';
+  return 'g';
+}
+function getActiveTournamentStageKey(){
+  let live=ALL_MATCHES.filter(m=>m.st==='live');
+  if(live.length)return getMatchStageKey(live.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t))[0]);
+  let upcoming=ALL_MATCHES.filter(m=>m.st!=='done').sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t));
+  if(upcoming.length)return getMatchStageKey(upcoming[0]);
+  return 'final';
+}
 // ===== TIMELINE =====
 function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)return;
-  let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r4'},{l:'16强',k:'r5'},{l:'1/4',k:'r6'},{l:'半决赛',k:'r7'},{l:'7.20 决赛',k:'fin'}];
-  let dates={s:new Date(2026,5,11),g:new Date(2026,5,14),r4:new Date(2026,5,29),r5:new Date(2026,6,5),r6:new Date(2026,6,10),r7:new Date(2026,6,15),fin:new Date(2026,6,20)};
-  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'})),ai=-1;for(let i=stages.length-1;i>=0;i--){if(now>=dates[stages[i].k]){ai=i;break;}}
+  let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r32'},{l:'16强',k:'r16'},{l:'1/4',k:'qf'},{l:'半决赛',k:'sf'},{l:'7.20 决赛',k:'final'}];
+  let activeKey=getActiveTournamentStageKey();
+  let ai=Math.max(0,stages.findIndex(s=>s.k===activeKey));
   w.innerHTML='<div class="timeline">'+stages.map((s,i)=>{let c=i<ai?'past':(i===ai?'active':'');return '<div class="tl-node '+c+'"><div class="tl-dot"></div><div class="tl-label">'+s.l+'</div></div>';}).join('')+'</div>';}
 // ===== SCORERS =====
 function renderScorers(){let e=document.getElementById('scorerList');if(!e)return;
@@ -3190,20 +3214,11 @@ function renderScorers(){let e=document.getElementById('scorerList');if(!e)retur
 function updateBracketStageHighlight(){
   let nodes=[...document.querySelectorAll('.bracket-stage[data-stage]')];
   if(!nodes.length)return;
-  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
-  let stages=[
-    {k:'group',d:new Date(2026,5,11)},
-    {k:'r32',d:new Date(2026,5,29)},
-    {k:'r16',d:new Date(2026,6,5)},
-    {k:'qf',d:new Date(2026,6,10)},
-    {k:'sf',d:new Date(2026,6,15)},
-    {k:'third',d:new Date(2026,6,19)},
-    {k:'final',d:new Date(2026,6,20)}
-  ];
-  let ai=0;
-  for(let i=stages.length-1;i>=0;i--){if(now>=stages[i].d){ai=i;break;}}
+  let stages=['group','r32','r16','qf','sf','third','final'];
+  let activeKey=getActiveTournamentStageKey();
+  let ai=Math.max(0,stages.indexOf(activeKey));
   nodes.forEach(n=>{
-    let idx=stages.findIndex(s=>s.k===n.dataset.stage);
+    let idx=stages.indexOf(n.dataset.stage);
     n.classList.toggle('past',idx>-1&&idx<ai);
     n.classList.toggle('active',idx===ai);
   });
