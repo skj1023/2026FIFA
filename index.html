@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+              <div class="log-time">2026-07-09 14:39</div>
+              <div class="log-content"><span class="log-tag fix">校正</span><strong>📊 首页 AI 预测复盘回正：点球赛不再把准确度算成 NaN</strong> — 福福本轮按北京时间巡检并复核 1/4 决赛前站点状态：当前仍是 96/104 已完赛、0 场进行中，下一场为 7/10 04:00 法国 vs 摩洛哥。同步回正首页 AI 预测复盘统计与球队派生战绩，点球大战场次现在按常规时间比分复盘；日志列表也恢复按时间倒序展示，方便回看关键业务变更。</div>
+            </div>
+              <div class="log-item">
               <div class="log-time">2026-07-09 12:15</div>
               <div class="log-content"><span class="log-tag fix">校正</span><strong>⏱️ 信息页世界杯结束倒计时回正：改为跟随决赛赛程自动计算</strong> — 福福本轮按北京时间巡检并优先复核 ESPN 1/4 决赛赛程：当前仍是 96/104 已完赛、0 场进行中，下一场为 7/10 04:00 法国 vs 摩洛哥。同步修正信息页“距离世界杯结束”倒计时，不再写死错误时刻，现改为跟随 <code>FIN</code> 决赛时间自动推算，避免与北京时间决赛信息出现数小时偏差。</div>
             </div>
@@ -2608,8 +2612,19 @@ function searchMatches(keyword){
 }
 
 // Log filter function
+function sortUpdateLogList(){
+  let list=document.getElementById("updateLogList");if(!list)return;
+  let items=[...list.querySelectorAll(":scope > .log-item")];
+  items.sort((a,b)=>{
+    let ta=Date.parse((a.querySelector(".log-time")?.textContent||"").trim().replace(" ","T"));
+    let tb=Date.parse((b.querySelector(".log-time")?.textContent||"").trim().replace(" ","T"));
+    return (isNaN(tb)?0:tb)-(isNaN(ta)?0:ta);
+  });
+  items.forEach(item=>list.appendChild(item));
+}
 function initLogFilter(){
   let f=document.getElementById("logFilter");if(!f)return;
+  sortUpdateLogList();
   let tags=[{k:"all",l:"全部"},{k:"ui",l:"UI更新"},{k:"fix",l:"修复"},{k:"auto",l:"自动更新"}];
   f.innerHTML=tags.map(t=>'<span class="log-pill" data-fl="'+t.k+'">'+t.l+'</span>').join("");
   document.querySelectorAll(".log-pill").forEach(p=>p.classList.remove("active"));
@@ -2700,9 +2715,16 @@ function mc(m,isUpcoming=false){
 function predOf(m){return m&&m.pred&&m.pred.locked?m.pred:null}
 function outcome(h,a){return h>a?'h':(h<a?'a':'d')}
 function isKnockout(m){return m&&m.g==="KO"}
+function parseScorePair(score){
+  if(!score)return null;
+  let m=String(score).match(/(\d+)\s*-\s*(\d+)/);
+  if(!m)return null;
+  return [Number(m[1]),Number(m[2])];
+}
 function actualWinnerCode(m){
   if(!m||!m.s)return null;
-  let [h,a]=m.s.split('-').map(Number);
+  let pair=parseScorePair(m.s);if(!pair)return null;
+  let [h,a]=pair;
   let byScore=outcome(h,a);
   if(byScore!=="d")return byScore;
   if(isKnockout(m)&&m.winner&&m.winner!=="d")return m.winner;
@@ -2732,7 +2754,8 @@ function predScoreText(m,p){
 }
 function predReview(m){
   let p=predOf(m);if(!p||m.st!=="done"||!m.s)return null;
-  let [ah,aa]=m.s.split('-').map(Number);
+  let pair=parseScorePair(m.s);if(!pair)return null;
+  let [ah,aa]=pair;
   let score=0;
   let predOut=isKnockout(m)?(predWinnerCode(m,p)||outcome(p.ph,p.pa)):outcome(p.ph,p.pa), actualOut=actualWinnerCode(m);
   let resultHit=predOut===actualOut;
@@ -3250,10 +3273,11 @@ function renderBracketTree(){let e=document.getElementById('bracketTree');if(!e)
   html+='</div>';e.innerHTML=html;}
 // ===== COMPARE =====
 function getTeamStats(name){
-  let ms=ALL_MATCHES.filter(m=>m.st==='done'&&(m.h===name||m.a===name));
+  let ms=ALL_MATCHES.filter(m=>m.s&&m.st==="done"&&(m.h===name||m.a===name));
   let pl=ms.length,pts=0,w=0,d=0,l=0,gf=0,ga=0,cs=0,mxW=0,mxL=0;
   for(let m of ms){
-    let [hs,as]=m.s.split('-').map(Number);
+    let pair=parseScorePair(m.s);if(!pair)continue;
+    let [hs,as]=pair;
     let x=m.h===name?hs:as,y=m.h===name?as:hs;
     let actual=actualWinnerCode(m);
     let mine=m.h===name?'h':'a';
@@ -3267,7 +3291,8 @@ function getTeamStats(name){
   let sq=SQUADS[name]||[];
   let gks=sq.filter(p=>p.p==='门将').length,dfs=sq.filter(p=>p.p==='后卫').length,mds=sq.filter(p=>p.p==='中场').length,fws=sq.filter(p=>p.p==='前锋').length,stars=sq.filter(p=>(PP[p.n]||0)>=4).length;
   let fm=ms.sort((a,b)=>parseMatchTime(a.t)-parseMatchTime(b.t)).slice(-5).map(m=>{
-    let [hs,as]=m.s.split('-').map(Number);
+    let pair=parseScorePair(m.s);if(!pair)return'–';
+    let [hs,as]=pair;
     let actual=actualWinnerCode(m);
     if(actual==='d')return'D';
     return((m.h===name&&actual==='h')||(m.a===name&&actual==='a'))?'W':'L';
