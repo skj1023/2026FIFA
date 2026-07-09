@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+              <div class="log-time">2026-07-09 12:15</div>
+              <div class="log-content"><span class="log-tag fix">校正</span><strong>⏱️ 信息页世界杯结束倒计时回正：改为跟随决赛赛程自动计算</strong> — 福福本轮按北京时间巡检并优先复核 ESPN 1/4 决赛赛程：当前仍是 96/104 已完赛、0 场进行中，下一场为 7/10 04:00 法国 vs 摩洛哥。同步修正信息页“距离世界杯结束”倒计时，不再写死错误时刻，现改为跟随 <code>FIN</code> 决赛时间自动推算，避免与北京时间决赛信息出现数小时偏差。</div>
+            </div>
+              <div class="log-item">
               <div class="log-time">2026-07-08 12:30</div>
               <div class="log-content"><span class="log-tag fix">修复</span><strong>🔄 时间轴与阶段高亮逻辑修正：从日期硬编码改为动态匹配「下一场」</strong> — 福福巡检发现淘汰赛首轮已全部完赛，但时间轴与淘汰赛阶段高亮仍停留在「16强」（因旧逻辑只比较日历日期）。已将时间轴（首页赛事进度）与淘汰赛阶段高亮统一改用 <code>getActiveTournamentStageKey()</code>：按当前最早未赛比赛自动判定阶段，现正确显示 1/4 决赛为进行中阶段。赛果数据无变更、96/104 已完赛。</div>
             </div>
@@ -2841,12 +2845,15 @@ function computeStandings(){
 function renderFinalCountdown(){
   let box=document.getElementById('finalCountdownBox');
   if(!box)return;
-  // Approximate final kickoff/end marker in Beijing time. 2026-07-19 local evening ≈ 2026-07-20 Beijing morning.
-  let end=new Date(2026,6,20,10,0,0);
+  // Use the final match in ALL_MATCHES as the single source of truth, and count down to an
+  // approximate tournament-end marker (final kickoff + 2.5h) in Beijing time.
+  let fin=ALL_MATCHES.find(m=>m.id==='FIN'&&m.t);
+  let end=fin?new Date(parseMatchTime(fin.t).getTime()+2.5*60*60*1000):new Date(2026,6,20,5,30,0);
   let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
   let diff=end-now;
   let main=document.getElementById('finalCountdownMain');
   let units=document.getElementById('finalCountdownUnits');
+
   if(diff<=0){
     if(main)main.textContent='本届世界杯已结束';
     if(units)units.innerHTML='<div class="fc-unit"><strong>🏆</strong><span>完赛</span></div>';
