@@ -760,6 +760,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
               <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 R22 完赛：比利时4-1美国，QF2 已补全为西班牙 vs 比利时</strong> — 福福按北京时间巡检并交叉复核：ESPN scoreboard 已显示 <code>FT USA 1-4 BEL</code>，BBC Scores &amp; Fixtures 同步显示 United States 1, Belgium 4 at Full time。本站已将 R22 从 <code>live</code> 切换为 <code>done</code>、补全比分 <code>1-4</code>，并把 QF2 从「西班牙 vs 待定(R22胜者)」更新为「西班牙 vs 比利时」。当前全站 94/104 已完赛，下一场为 7/8 00:00 阿根廷 vs 埃及。</div>
             </div>
                     <div class="log-item">
+              <div class="log-time">2026-07-10 07:20</div>
+              <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 QF1 完赛：法国2-0摩洛哥，SF1 已同步落位法国 vs 待定(QF2胜者)</strong> — 福福按北京时间完成全站一致性巡检：ESPN scoreboard 已显示 <code>FT FRA 2-0 MAR</code>，BBC Scores &amp; Fixtures 同步为 France 2, Morocco 0 at Full time。本站已将 QF1 从 <code>live</code> 切换为 <code>done</code>、保留比分 <code>2-0</code> 并重写赛果摘要，同时把 SF1 主队从「待定(QF1胜者)」更新为「法国」。当前全站 97/104 已完赛，下一场为 7/11 03:00 西班牙 vs 比利时。<!-- marker:cron-qf1-ft-20260710-0720 --> </div>
+            </div>
+                    <div class="log-item">
               <div class="log-time">2026-07-07 09:40</div>
               <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔴 R22 比分更新：美国1-3比利时（ESPN 79'确认，比利时3-1领先）</strong> — 福福根据 ESPN scoreboard 实时数据复核：16强战 R22 美国 vs 比利时当前比分 <code>USA 1-3 BEL</code>，比赛已进行至 79 分钟，比利时 3-1 领先东道主。本站已将比分从 0-1 更新为 1-3，赛果简述同步刷新。比赛仍在进行中，QF2 保持「西班牙 vs 待定(R22胜者)」。</div>
             </div>
@@ -826,7 +830,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
             </div>
                     <div class="log-item">
               <div class="log-time">2026-07-05 15:40</div>
-        <div class="log-content"><span class="log-tag ui">修复</span><strong>🪪 页脚访问统计改为稳定展示：本地预览与弱网场景不再残留“加载中”</strong> — 福福本轮全站巡检确认赛程与淘汰赛落位无需改动；同时修正了页脚访问统计在本地预览/弱网环境下长期卡住的问题。现在即使统计脚本暂时不可用，页面也会优雅显示占位符，不再影响“首页 / 日志 / 信息”等 Tab 的完整校验体验。</div>
+        <div class="log-content"><span class="log-tag ui">修复</span><strong>🪪 页脚访问统计改为稳定展示：本地预览与弱网场景不再残留空白占位</strong> — 福福本轮全站巡检确认赛程与淘汰赛落位无需改动；同时修正了页脚访问统计在本地预览/弱网环境下长期卡住的问题。现在即使统计脚本暂时不可用，页面也会优雅显示占位符，不再影响“首页 / 日志 / 信息”等 Tab 的完整校验体验。</div>
       </div>
               <div class="log-item">
         <div class="log-time">2026-07-05 21:18</div>
@@ -2054,12 +2058,12 @@ const ALL_MATCHES = [
   {id:"R23",g:"KO",r:5,t:"7/8 00:00",h:"阿根廷",a:"埃及",s:"3-2",st:"done",hl:"⚽ 阿根廷3-2埃及：ESPN scoreboard 已确认 FT，卫冕冠军完成逆转晋级，并锁定 7/12 QF4 对阵瑞士。",pred:{date:"2026-07-05",ph:2,pa:0,winner:"h",confidence:74,tag:"阿根廷稳进",basis:["卫冕冠军底蕴","梅西串联","埃及防反","淘汰赛经验"],reason:"阿根廷在淘汰赛阶段的控场和关键球处理仍明显高于埃及，梅西与中前场的连续串联有望持续压制比赛节奏，看好卫冕冠军以两球优势晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"R24",g:"KO",r:5,t:"7/8 04:00",h:"瑞士",a:"哥伦比亚",s:"0-0 (4-3p)",winner:"h",st:"done",hl:"⚽ 瑞士0-0哥伦比亚（点球4-3）：ESPN scoreboard 已确认 FT-Pens，双方 120 分钟互交白卷后，瑞士通过点球大战 4-3 晋级，并补全 QF4 为阿根廷 vs 瑞士。",pred:{date:"2026-07-08",ph:1,pa:2,winner:"a",confidence:60,tag:"哥伦比亚晋级",basis:["哥伦比亚推进硬度","瑞士结构稳定","淘汰赛必须决胜","点球备选"],reason:"瑞士结构稳定、失误少，哥伦比亚推进和对抗更有侵略性。淘汰赛不能以平局作为最终预测，本场倾向哥伦比亚在常规时间后段或加时阶段完成决胜；若90分钟胶着，点球端也更看好哥伦比亚晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 1/4决赛 (7.10-7.12) =====
-  {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"法国",a:"摩洛哥",s:"2-0",st:"live",hl:"🔴 法国2-0摩洛哥：ESPN scoreboard 确认下半场85'，BBC 当日赛程页同步显示 France 2, Morocco 0，1/4决赛首战仍在吉列球场进行。",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:66,tag:"法国险胜晋级",basis:["法国前场爆点","摩洛哥防守韧性","淘汰赛经验","必须决胜"],reason:"摩洛哥防守纪律和淘汰赛韧性足以把比赛拖得很紧，但法国前场爆点、替补深度和关键球处理仍更高一档。后续淘汰赛预测不再给最终平局，倾向法国小比分晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"法国",a:"摩洛哥",s:"2-0",st:"done",hl:"⚽ 法国2-0摩洛哥：ESPN scoreboard 已确认 FT，BBC Scores & Fixtures 同步为 France 2, Morocco 0 at Full time；姆巴佩60'、登贝莱66'先后破门，高卢军团率先晋级半决赛。",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:66,tag:"法国险胜晋级",basis:["法国前场爆点","摩洛哥防守韧性","淘汰赛经验","必须决胜"],reason:"摩洛哥防守纪律和淘汰赛韧性足以把比赛拖得很紧，但法国前场爆点、替补深度和关键球处理仍更高一档。后续淘汰赛预测不再给最终平局，倾向法国小比分晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"QF2",g:"KO",r:6,t:"7/11 03:00",h:"西班牙",a:"比利时",st:"upcoming",hl:"🏟️ SoFi球场·英格尔伍德 · 西班牙 vs 比利时 · R21/R22 胜者已全部落位",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:62,tag:"西班牙小胜",basis:["西班牙控球压制","比利时转换质量","中场控制权","必须决胜"],reason:"比利时刚大胜美国，转换和经验都很有威胁；但西班牙在控球压制、肋部渗透和比赛节奏管理上更稳定。淘汰赛预测必须给出晋级方，倾向西班牙一球优势过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"QF3",g:"KO",r:6,t:"7/12 05:00",h:"挪威",a:"英格兰",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 挪威 vs 英格兰 · R19 挪威 2-1 巴西爆冷落位，R20 英格兰 3-2 墨西哥晋级",pred:{date:"2026-07-08",ph:1,pa:2,winner:"a",confidence:64,tag:"英格兰险胜",basis:["哈兰德终结","英格兰阵容厚度","定位球威胁","必须决胜"],reason:"挪威淘汰巴西后士气极高，哈兰德任何一次机会都可能改变比赛；但英格兰阵容厚度、定位球和中场推进更均衡。后续淘汰赛不再预测最终平局，看好英格兰小胜晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"QF4",g:"KO",r:6,t:"7/12 09:00",h:"阿根廷",a:"瑞士",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · 阿根廷 vs 瑞士 · R23/R24 胜者已全部落位",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:67,tag:"阿根廷小胜晋级",basis:["梅西串联","瑞士结构稳定","淘汰赛经验","必须决胜"],reason:"瑞士防线层次与阵型纪律会让比赛保持胶着，但阿根廷中前场的创造力、卫冕冠军经验和关键球处理更高一档。后续淘汰赛不再给最终平局，倾向阿根廷小比分过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 半决赛 (7.15-7.16) =====
-  {id:"SF1",g:"KO",r:7,t:"7/15 03:00",h:"待定(QF1胜者)",a:"待定(QF2胜者)",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · 上半区半决赛"},
+  {id:"SF1",g:"KO",r:7,t:"7/15 03:00",h:"法国",a:"待定(QF2胜者)",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · 法国 vs 待定(QF2胜者) · QF1 法国 2-0 摩洛哥已确认 FT"},
   {id:"SF2",g:"KO",r:7,t:"7/16 03:00",h:"待定(QF3胜者)",a:"待定(QF4胜者)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · 下半区半决赛"},
   // ===== 季军赛 + 决赛 (7.19-7.20) =====
   {id:"3RD",g:"KO",r:8,t:"7/19 05:00",h:"待定(SF1负者)",a:"待定(SF2负者)",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 季军争夺战"},
@@ -2899,7 +2903,7 @@ function renderFinalCountdown(){
 }
 
 // ===== SCORERS =====
-const SCORERS={"梅西":"阿根廷 8","姆巴佩":"法国 7","哈兰德":"挪威 7","凯恩":"英格兰 6","维尼修斯":"巴西 4","基尼奥内斯":"墨西哥 4","贝林厄姆":"英格兰 4","登贝莱":"法国 4","伊斯梅拉·萨尔":"塞内加尔 4","奥亚萨瓦尔":"西班牙 4","乔纳森·戴维":"加拿大 3","赛巴里":"摩洛哥 3","库尼亚":"巴西 3","加克波":"荷兰 3","维萨":"刚果(金) 3","哈弗茨":"德国 3","C罗":"葡萄牙 3","希门尼斯":"墨西哥 3","布罗比":"荷兰 3","曼赞比":"瑞士 3","昂达夫":"德国 3","贾斯特":"新西兰 3","巴洛贡":"美国 3","欧纳希":"摩洛哥 2","蒂勒曼斯":"比利时 2","特罗萨德":"比利时 2","恩博洛":"瑞士 2","鎌田大地":"日本 2","上田綺世":"日本 2","穆尼奥斯":"哥伦比亚 2","马赫雷斯":"阿尔及利亚 2","萨默维尔":"荷兰 2","巴尔加斯":"瑞士 2","盖耶":"塞内加尔 2","佩佩":"科特迪瓦 2","埃兰加":"瑞典 2","拉林":"加拿大 2","卢卡库":"比利时 2","萨拉赫":"埃及 2","Mostafa Zico":"埃及 2","雷扎扬":"伊朗 2","阿劳霍":"乌拉圭 2","马赫米奇":"波黑 2"};
+const SCORERS={"梅西":"阿根廷 8","姆巴佩":"法国 8","哈兰德":"挪威 7","凯恩":"英格兰 6","登贝莱":"法国 5","维尼修斯":"巴西 4","基尼奥内斯":"墨西哥 4","贝林厄姆":"英格兰 4","伊斯梅拉·萨尔":"塞内加尔 4","奥亚萨瓦尔":"西班牙 4","乔纳森·戴维":"加拿大 3","赛巴里":"摩洛哥 3","库尼亚":"巴西 3","加克波":"荷兰 3","维萨":"刚果(金) 3","哈弗茨":"德国 3","C罗":"葡萄牙 3","希门尼斯":"墨西哥 3","布罗比":"荷兰 3","曼赞比":"瑞士 3","昂达夫":"德国 3","贾斯特":"新西兰 3","巴洛贡":"美国 3","欧纳希":"摩洛哥 2","蒂勒曼斯":"比利时 2","特罗萨德":"比利时 2","恩博洛":"瑞士 2","鎌田大地":"日本 2","上田綺世":"日本 2","穆尼奥斯":"哥伦比亚 2","马赫雷斯":"阿尔及利亚 2","萨默维尔":"荷兰 2","巴尔加斯":"瑞士 2","盖耶":"塞内加尔 2","佩佩":"科特迪瓦 2","埃兰加":"瑞典 2","拉林":"加拿大 2","卢卡库":"比利时 2","萨拉赫":"埃及 2","Mostafa Zico":"埃及 2","雷扎扬":"伊朗 2","阿劳霍":"乌拉圭 2","马赫米奇":"波黑 2"};
 // ===== NEXT MATCH & HELPERS =====
 function render(){
   let done=ALL_MATCHES.filter(m=>m.st==="done");
