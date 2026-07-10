@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+              <div class="log-time">2026-07-10 15:34</div>
+              <div class="log-content"><span class="log-tag ui">修复</span><strong>🏷️ 首页下一场标签回正：淘汰赛不再显示「KO组」</strong> — 福福按北京时间完成全站一致性巡检：ESPN scoreboard 当前仅有 <code>Spain vs Belgium</code> 一场待赛，QF1 法国 2-0 摩洛哥的完赛状态与 SF1 落位保持正确。本站同步将首页“下一场”标签从泛化的 <code>KO组</code> 改为实际阶段文案 <code>1/4决赛</code>，避免首页/比赛页对淘汰赛阶段表述滞后。<!-- marker:cron-next-stage-label-20260710-1534 --> </div>
+            </div>
+              <div class="log-item">
               <div class="log-time">2026-07-10 13:12</div>
               <div class="log-content"><span class="log-tag ui">修复</span><strong>📍 1/4决赛场馆映射补全：QF2/QF4 不再显示「待定」</strong> — 福福按北京时间完成全站一致性巡检：ESPN scoreboard 仍显示 <code>France 2-0 Morocco, FT</code>，下一场仍为 7/11 03:00 西班牙 vs 比利时，暂无新的赛果或落位变化。本站补全了 <code>西班牙 vs 比利时</code> 与 <code>阿根廷 vs 瑞士</code> 的场馆映射，比赛页/球队页/日历导出现在统一显示官方场地名称。<!-- marker:cron-qf-venue-fix-20260710-1312 --> </div>
             </div>
@@ -2112,6 +2116,12 @@ function parseMatchTime(s){
   let [h,mi]=tm.split(':').map(Number);
   return new Date(2026,m-1,d,h,mi,0);
 }
+function matchStageLabel(m){
+  if(!m)return '';
+  if(m.g!=="KO")return m.g+"组";
+  const stageMap={4:"32强",5:"16强",6:"1/4决赛",7:"半决赛",8:"季军赛",9:"决赛"};
+  return stageMap[m.r]||"淘汰赛";
+}
 // Check if a match is currently in progress
 function isLive(m){
   if(m.st==="live")return true;
@@ -2204,7 +2214,7 @@ function renderNextMatch(){
   if(!nx){w.style.display='none';return}
   w.style.display='';
   let hd=td(nx.h),ad=td(nx.a);
-  t.innerHTML=hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+' · '+nx.g+'组';
+  t.innerHTML=hd.fl+' '+hd.nm+' vs '+ad.fl+' '+ad.nm+' · '+matchStageLabel(nx);
   e.textContent=matchStoryline(nx)||('第'+nx.r+'轮');
   let diff=nx.dt-now;
   let nm=document.querySelector('.nx-time .num');
