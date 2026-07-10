@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+              <div class="log-time">2026-07-10 13:12</div>
+              <div class="log-content"><span class="log-tag ui">修复</span><strong>📍 1/4决赛场馆映射补全：QF2/QF4 不再显示「待定」</strong> — 福福按北京时间完成全站一致性巡检：ESPN scoreboard 仍显示 <code>France 2-0 Morocco, FT</code>，下一场仍为 7/11 03:00 西班牙 vs 比利时，暂无新的赛果或落位变化。本站补全了 <code>西班牙 vs 比利时</code> 与 <code>阿根廷 vs 瑞士</code> 的场馆映射，比赛页/球队页/日历导出现在统一显示官方场地名称。<!-- marker:cron-qf-venue-fix-20260710-1312 --> </div>
+            </div>
+              <div class="log-item">
               <div class="log-time">2026-07-10 05:50</div>
               <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔄 QF1 比分刷新：法国2-0摩洛哥（ESPN 85' / BBC 2-0）</strong> — 福福按北京时间巡检并优先复核 ESPN World Cup scoreboard，当前显示 <code>France 2-0 Morocco</code>、<code>Second Half 85'</code>；BBC 当日 Scores &amp; Fixtures 同步可见 <code>France 2, Morocco 0</code>。本站已将 QF1 直播比分与简述同步刷新；当前全站 96/104 已完赛、1 场进行中，下一场仍为 7/11 03:00 西班牙 vs 比利时。</div>
             </div>
@@ -1953,8 +1957,8 @@ const LOCATIONS={
   "巴西vs挪威":"纽约/新泽西·大都会球场","墨西哥vs英格兰":"墨西哥城·阿兹特克球场",
   "葡萄牙vs西班牙":"阿灵顿·AT&T球场","美国vs比利时":"西雅图·流明球场",
   "阿根廷vs埃及":"亚特兰大·梅赛德斯-奔驰球场","瑞士vs哥伦比亚":"温哥华·BC Place",
-  "法国vs摩洛哥":"福克斯堡·吉列球场",
-  "挪威vs英格兰":"迈阿密花园·硬石球场"
+  "法国vs摩洛哥":"福克斯堡·吉列球场","西班牙vs比利时":"英格尔伍德·SoFi球场",
+  "挪威vs英格兰":"迈阿密花园·硬石球场","阿根廷vs瑞士":"堪萨斯城·箭头球场"
 };
 // All group matches
 const ALL_MATCHES = [
