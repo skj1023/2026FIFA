@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
             <div class="log-item">
+              <div class="log-time">2026-07-11 05:46</div>
+              <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 QF2 完赛：西班牙2-1比利时，SF1 已补全为法国 vs 西班牙</strong> — 福福按北京时间完成全站一致性巡检并优先复核 ESPN World Cup scoreboard，当前显示 <code>Belgium 1 @ Spain 2 | Full Time | FT</code>；BBC Scores &amp; Fixtures 同步显示 <code>Spain 2, Belgium 1 at Full time</code>，FIFA 官方赛程页也已补全半决赛落位为 <code>France vs Spain</code>。本站已将 QF2 从 <code>live</code> 切换为 <code>done</code>、比分更新为 <code>2-1</code>，并同步补全 SF1 对阵；当前全站为 98/104 已完赛、0 场进行中，下一场为 7/12 05:00 挪威 vs 英格兰。<!-- marker:cron-qf2-ft-20260711-0546 --> </div>
+            </div>
+            <div class="log-item">
               <div class="log-time">2026-07-11 04:37</div>
               <div class="log-content"><span class="log-tag auto">赛况</span><strong>🔄 QF2 比分刷新：西班牙1-1比利时（ESPN 75' / BBC 75'）</strong> — 福福按北京时间完成全站一致性巡检并优先复核 ESPN World Cup scoreboard，当前显示 <code>Spain 1-1 Belgium</code>、<code>Second Half 75'</code>；BBC 当日 Scores &amp; Fixtures 页面同步可见西班牙 vs 比利时仍在 1-1 进行中。本站已将 QF2 直播比分与简述从 <code>1-0 / 32'</code> 刷新为 <code>1-1 / 75'</code>；当前全站维持 97/104 已完赛、1 场进行中，下一场仍为 7/12 05:00 挪威 vs 英格兰。<!-- marker:cron-qf2-live-refresh-20260711-0437 --> </div>
             </div>
@@ -1974,7 +1978,8 @@ const LOCATIONS={
   "葡萄牙vs西班牙":"阿灵顿·AT&T球场","美国vs比利时":"西雅图·流明球场",
   "阿根廷vs埃及":"亚特兰大·梅赛德斯-奔驰球场","瑞士vs哥伦比亚":"温哥华·BC Place",
   "法国vs摩洛哥":"福克斯堡·吉列球场","西班牙vs比利时":"英格尔伍德·SoFi球场",
-  "挪威vs英格兰":"迈阿密花园·硬石球场","阿根廷vs瑞士":"堪萨斯城·箭头球场"
+  "挪威vs英格兰":"迈阿密花园·硬石球场","阿根廷vs瑞士":"堪萨斯城·箭头球场",
+  "法国vs西班牙":"阿灵顿·AT&T球场"
 };
 // All group matches
 const ALL_MATCHES = [
@@ -2079,11 +2084,11 @@ const ALL_MATCHES = [
   {id:"R24",g:"KO",r:5,t:"7/8 04:00",h:"瑞士",a:"哥伦比亚",s:"0-0 (4-3p)",winner:"h",st:"done",hl:"⚽ 瑞士0-0哥伦比亚（点球4-3）：ESPN scoreboard 已确认 FT-Pens，双方 120 分钟互交白卷后，瑞士通过点球大战 4-3 晋级，并补全 QF4 为阿根廷 vs 瑞士。",pred:{date:"2026-07-08",ph:1,pa:2,winner:"a",confidence:60,tag:"哥伦比亚晋级",basis:["哥伦比亚推进硬度","瑞士结构稳定","淘汰赛必须决胜","点球备选"],reason:"瑞士结构稳定、失误少，哥伦比亚推进和对抗更有侵略性。淘汰赛不能以平局作为最终预测，本场倾向哥伦比亚在常规时间后段或加时阶段完成决胜；若90分钟胶着，点球端也更看好哥伦比亚晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 1/4决赛 (7.10-7.12) =====
   {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"法国",a:"摩洛哥",s:"2-0",st:"done",hl:"⚽ 法国2-0摩洛哥：ESPN scoreboard 已确认 FT，BBC Scores & Fixtures 同步为 France 2, Morocco 0 at Full time；姆巴佩60'、登贝莱66'先后破门，高卢军团率先晋级半决赛。",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:66,tag:"法国险胜晋级",basis:["法国前场爆点","摩洛哥防守韧性","淘汰赛经验","必须决胜"],reason:"摩洛哥防守纪律和淘汰赛韧性足以把比赛拖得很紧，但法国前场爆点、替补深度和关键球处理仍更高一档。后续淘汰赛预测不再给最终平局，倾向法国小比分晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"QF2",g:"KO",r:6,t:"7/11 03:00",h:"西班牙",a:"比利时",s:"1-1",st:"live",hl:"🔴 西班牙1-1比利时：ESPN World Cup scoreboard 最新显示 Second Half 75'，QF2 在 SoFi 球场进入下半场后段，双方暂时战平。",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:62,tag:"西班牙小胜",basis:["西班牙控球压制","比利时转换质量","中场控制权","必须决胜"],reason:"比利时刚大胜美国，转换和经验都很有威胁；但西班牙在控球压制、肋部渗透和比赛节奏管理上更稳定。淘汰赛预测必须给出晋级方，倾向西班牙一球优势过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"QF2",g:"KO",r:6,t:"7/11 03:00",h:"西班牙",a:"比利时",s:"2-1",st:"done",hl:"⚽ 西班牙2-1比利时：ESPN World Cup scoreboard 已确认 FT，BBC Scores & Fixtures 同步显示 Spain 2, Belgium 1 at Full time；斗牛士军团在 SoFi 球场拿下 1/4 决赛后，与法国会师 7/15 半决赛。",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:62,tag:"西班牙小胜",basis:["西班牙控球压制","比利时转换质量","中场控制权","必须决胜"],reason:"比利时刚大胜美国，转换和经验都很有威胁；但西班牙在控球压制、肋部渗透和比赛节奏管理上更稳定。淘汰赛预测必须给出晋级方，倾向西班牙一球优势过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"QF3",g:"KO",r:6,t:"7/12 05:00",h:"挪威",a:"英格兰",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 挪威 vs 英格兰 · R19 挪威 2-1 巴西爆冷落位，R20 英格兰 3-2 墨西哥晋级",pred:{date:"2026-07-08",ph:1,pa:2,winner:"a",confidence:64,tag:"英格兰险胜",basis:["哈兰德终结","英格兰阵容厚度","定位球威胁","必须决胜"],reason:"挪威淘汰巴西后士气极高，哈兰德任何一次机会都可能改变比赛；但英格兰阵容厚度、定位球和中场推进更均衡。后续淘汰赛不再预测最终平局，看好英格兰小胜晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"QF4",g:"KO",r:6,t:"7/12 09:00",h:"阿根廷",a:"瑞士",st:"upcoming",hl:"🏟️ 箭头球场·堪萨斯城 · 阿根廷 vs 瑞士 · R23/R24 胜者已全部落位",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:67,tag:"阿根廷小胜晋级",basis:["梅西串联","瑞士结构稳定","淘汰赛经验","必须决胜"],reason:"瑞士防线层次与阵型纪律会让比赛保持胶着，但阿根廷中前场的创造力、卫冕冠军经验和关键球处理更高一档。后续淘汰赛不再给最终平局，倾向阿根廷小比分过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 半决赛 (7.15-7.16) =====
-  {id:"SF1",g:"KO",r:7,t:"7/15 03:00",h:"法国",a:"待定(QF2胜者)",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · 法国 vs 待定(QF2胜者) · QF1 法国 2-0 摩洛哥已确认 FT"},
+  {id:"SF1",g:"KO",r:7,t:"7/15 03:00",h:"法国",a:"西班牙",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · 法国 vs 西班牙 · QF1/QF2 胜者已全部落位"},
   {id:"SF2",g:"KO",r:7,t:"7/16 03:00",h:"待定(QF3胜者)",a:"待定(QF4胜者)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · 下半区半决赛"},
   // ===== 季军赛 + 决赛 (7.19-7.20) =====
   {id:"3RD",g:"KO",r:8,t:"7/19 05:00",h:"待定(SF1负者)",a:"待定(SF2负者)",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 季军争夺战"},
