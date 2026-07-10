@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
               <div class="log-item">
+              <div class="log-time">2026-07-10 15:40</div>
+              <div class="log-content"><span class="log-tag ui">修复</span><strong>🏷️ 比赛卡阶段标签回正：淘汰赛列表不再显示「KO组 第X轮」</strong> — 福福按北京时间完成全站一致性巡检后，补齐比赛/球队等卡片顶部阶段文案：淘汰赛现在统一显示 <code>32强</code>、<code>16强</code>、<code>1/4决赛</code>、<code>半决赛</code>、<code>季军赛</code>、<code>决赛</code>，避免与首页已修复的阶段标签出现口径分裂。<!-- marker:cron-match-stage-label-20260710-1128 --> </div>
+            </div>
+              <div class="log-item">
               <div class="log-time">2026-07-10 15:34</div>
               <div class="log-content"><span class="log-tag ui">修复</span><strong>🏷️ 首页下一场标签回正：淘汰赛不再显示「KO组」</strong> — 福福按北京时间完成全站一致性巡检：ESPN scoreboard 当前仅有 <code>Spain vs Belgium</code> 一场待赛，QF1 法国 2-0 摩洛哥的完赛状态与 SF1 落位保持正确。本站同步将首页“下一场”标签从泛化的 <code>KO组</code> 改为实际阶段文案 <code>1/4决赛</code>，避免首页/比赛页对淘汰赛阶段表述滞后。<!-- marker:cron-next-stage-label-20260710-1534 --> </div>
             </div>
@@ -2725,7 +2729,7 @@ function mc(m,isUpcoming=false){
   let ar=RANK2022[ad.nm]?`<span class="r22">22${RANK2022[ad.nm]}</span>`:'';
     let mid=m.id||m.g+m.r+'_'+m.h+'_'+m.a;
     return `<div class="match-card ${m.st} fade-in" data-match-id="${mid}">
-    <div class="match-meta"><span class="tag ${t}">${tl}</span><span>${m.g}组 第${m.r}轮</span><span>·</span><span>${m.t}</span></div>
+    <div class="match-meta"><span class="tag ${t}">${tl}</span><span>${m.g==='KO'?matchStageLabel(m):`${m.g}组 第${m.r}轮`}</span><span>·</span><span>${m.t}</span></div>
     <div class="match-vs">
       <div class="team home"><span class="flag">${hd.fl}</span><span class="name">${hd.nm}</span>${hr}</div>
       ${sc}
