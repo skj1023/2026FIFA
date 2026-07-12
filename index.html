@@ -373,7 +373,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
 .ko-list-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px;flex-wrap:wrap}
 .ko-list-title{font-size:.9rem;font-weight:800;color:var(--text)}
 .ko-toggle{border:1px solid var(--border);background:var(--bg-card);color:var(--text-sec);border-radius:999px;padding:7px 12px;font-size:.72rem;font-weight:650;cursor:pointer;transition:all .2s}.ko-toggle:hover{border-color:var(--accent);color:var(--accent);background:var(--bg-card-hover)}
-.ko-round{margin-top:10px}.ko-round-title{font-size:.78rem;font-weight:800;color:var(--text-sec);margin:8px 0 6px}.ko-round-grid{display:flex;flex-direction:column;gap:6px}.ko-match.ko-hidden{display:none}.ko-list-wrap.expanded .ko-match.ko-hidden{display:block}.ko-list-wrap.expanded .ko-round.ko-empty{display:none}
+.ko-round{margin-top:10px}.ko-round-title{font-size:.78rem;font-weight:800;color:var(--text-sec);margin:8px 0 6px}.ko-round-grid{display:flex;flex-direction:column;gap:6px}.ko-match.ko-hidden{display:none}.ko-list-wrap.expanded .ko-match.ko-hidden{display:block}.ko-list-wrap.collapsed .ko-round.ko-empty{display:none}
 @media(max-width:640px){.bracket-wrap{padding:14px 12px;text-align:left;overflow:hidden}.bracket-wrap h3{text-align:left}.bracket-wrap p{text-align:left}.bracket-stages{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.bracket-tree{display:flex;flex-direction:column;gap:10px;padding:8px 0;min-width:0;overflow:visible}.bracket-col{border:1px solid var(--border);border-radius:12px;background:rgba(255,255,255,.025);padding:9px;box-shadow:0 2px 12px rgba(0,0,0,.08)}.light .bracket-col{background:rgba(255,255,255,.72)}.bracket-col .bc-title{position:static;text-align:left;font-size:.72rem;font-weight:800;color:var(--text);padding:0 0 7px;margin-bottom:7px;border-bottom:1px solid var(--border);background:transparent}.bc-node{font-size:.74rem;min-height:34px;justify-content:flex-start;text-align:left;padding:7px 9px}.ko-list-head{align-items:flex-start}.ko-toggle{width:100%;justify-content:center}.ko-match{font-size:.74rem}.ko-match .ko-row{align-items:flex-start!important}.ko-match .ko-time{min-width:58px!important}.ko-match .ko-teams{justify-content:flex-start!important;flex-wrap:wrap}.ko-match .ko-hl{padding-left:0!important;margin-top:6px!important}}
 
 /* COMPARE */
@@ -719,6 +719,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+            <div class="log-item">
+              <div class="log-time">2026-07-12 16:38</div>
+              <div class="log-content"><span class="log-tag ui">修复</span><strong>🕒 北京时间口径回正：倒计时/淘汰赛默认列表改按当前阶段显示</strong> — 福福完成全站一致性巡检后，补齐本地预览的北京时间计算：下一场倒计时、比赛默认日期、今日推荐与淘汰赛默认折叠列表现统一按 <code>Asia/Shanghai</code> 判断，淘汰赛 Tab 收起时优先展示 1/4 决赛尾声与半决赛，而不是最早几场 32 强旧赛程。<!-- marker:cron-bj-time-ko-nearby-20260712-1638 --> </div>
+            </div>
             <div class="log-item">
               <div class="log-time">2026-07-12 11:52</div>
               <div class="log-content"><span class="log-tag auto">赛果</span><strong>🏁 QF4 完赛：阿根廷加时3-1瑞士，SF2 已补全为英格兰 vs 阿根廷</strong> — 福福按北京时间完成全站一致性巡检并优先复核 ESPN World Cup scoreboard：当前已显示 <code>Switzerland 1 @ Argentina 3 | Final Score - After Extra Time | AET</code>。本站已将 QF4 从 <code>live</code> 切换为 <code>done</code>、补全 <code>3-1 AET</code> 赛果文案，并把 SF2 客队同步更新为 <code>阿根廷</code>。当前全站为 100/104 已完赛、0 场进行中，下一场为 7/15 03:00 法国 vs 西班牙。<!-- marker:cron-qf4-ft-20260712-1152 --> </div>
@@ -2140,7 +2144,25 @@ function parseMatchTime(s){
   let [md,tm]=s.split(' ');
   let [m,d]=md.split('/').map(Number);
   let [h,mi]=tm.split(':').map(Number);
-  return new Date(2026,m-1,d,h,mi,0);
+  return new Date(Date.UTC(2026,m-1,d,h-8,mi,0));
+}
+function getShanghaiParts(base=new Date()){
+  let parts=new Intl.DateTimeFormat('en-CA',{
+    timeZone:'Asia/Shanghai',
+    year:'numeric',month:'2-digit',day:'2-digit',
+    hour:'2-digit',minute:'2-digit',second:'2-digit',
+    hour12:false
+  }).formatToParts(base);
+  let map={};
+  parts.forEach(p=>{if(p.type!=='literal')map[p.type]=p.value;});
+  return {
+    year:Number(map.year),
+    month:Number(map.month),
+    day:Number(map.day),
+    hour:Number(map.hour),
+    minute:Number(map.minute),
+    second:Number(map.second)
+  };
 }
 function matchStageLabel(m){
   if(!m)return '';
@@ -2163,10 +2185,11 @@ function renderProgress(){
   for(let m of ALL_MATCHES)if(m.st==="done")done++;
   let pct=Math.min(100,Math.round(done/total*100));
   // Tournament day, Beijing time: 2026-06-11 through 2026-07-20
-  let start=new Date(2026,5,11);
-  let end=new Date(2026,6,20);
+  let start=Date.UTC(2026,5,11);
+  let end=Date.UTC(2026,6,20);
   let totalDays=Math.floor((end-start)/86400000)+1;
-  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
+  let sh=getShanghaiParts();
+  let now=Date.UTC(sh.year,sh.month-1,sh.day);
   let day=Math.max(1,Math.min(totalDays,Math.floor((now-start)/86400000)+1));
   let dayPct=Math.min(100,Math.round((day/totalDays)*100));
   let fill=document.getElementById("progFill");
@@ -3016,12 +3039,13 @@ function render(){
     if(filter==='done'){
       firstDate=sortedDates.length?sortedDates[0]:null;
     }else{
-      let now=new Date();
-      let todayStr=String(now.getMonth()+1)+'/'+String(now.getDate());
+      let sh=getShanghaiParts();
+      let todayStr=String(sh.month)+'/'+String(sh.day);
+      let nowDay=Date.UTC(2026,sh.month-1,sh.day);
       for(let d of sortedDates){
         let [m,dm]=d.split("/").map(Number);
-        let dt=new Date(2026,m-1,dm);
-        if(dt>now||d===todayStr){firstDate=d;break}
+        let dt=Date.UTC(2026,m-1,dm);
+        if(dt>=nowDay||d===todayStr){firstDate=d;break}
       }
       if(!firstDate&&sortedDates.length)firstDate=sortedDates[0];
     }
@@ -3249,7 +3273,7 @@ function renderKnockoutMatches() {
 
 // ===== TODAY PICK =====
 function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)return;
-  let now=new Date(),today=now.getDate(),tM=now.getMonth()+1,ts=tM+'/'+today;
+  let sh=getShanghaiParts(),today=sh.day,tM=sh.month,ts=tM+'/'+today;
   let picks=ALL_MATCHES.filter(m=>m.t&&m.t.startsWith(ts)&&m.st!=='done');
   if(!picks.length){e.style.display='none';return;}
   let stars=['梅西','C罗','姆巴佩','内马尔','哈兰德','萨拉赫','孙兴慜','凯恩','德布劳内'];
@@ -3272,7 +3296,8 @@ function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)retu
   e.querySelector('.tp-go').addEventListener('click',function(e2){e2.preventDefault();switchTab('matches');});
 }
 function getShanghaiNow(){
-  return new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
+  let sh=getShanghaiParts();
+  return new Date(Date.UTC(sh.year,sh.month-1,sh.day,sh.hour-8,sh.minute,sh.second));
 }
 function getMatchStageKey(m){
   if(m.g!=='KO')return 'g';
