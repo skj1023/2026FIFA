@@ -627,7 +627,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
     <div class="info-grid">
       <div class="info-item"><span class="ic">🗓️</span><div><div class="il">赛期</div><div class="iv">6.12 – 7.20 · 北京时间</div></div></div>
       <div class="info-item"><span class="ic">🏟️</span><div><div class="il">场馆</div><div class="iv">16 城市 · 美国11/加拿大2/墨西哥3</div></div></div>
-      <div class="info-item"><span class="ic">🏆</span><div><div class="il">决赛</div><div class="iv">7.20 03:00 北京 / 7.19 纽约</div></div></div>
+      <div class="info-item"><span class="ic">🏆</span><div><div class="il">决赛</div><div class="iv">7.20 15:00 北京 / 7.19 纽约</div></div></div>
       <a class="info-item" href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" style="text-decoration:none;color:inherit"><span class="ic">📺</span><div><div class="il">直播</div><div class="iv">CCTV5 · 咪咕视频 · 抖音</div></div></a>
       <div class="info-item"><span class="ic">🇦🇸</span><div><div class="il">亚洲参赛</div><div class="iv">韩日伊沙乌约澳卡 9 队</div></div></div>
       <div class="info-item"><span class="ic">🕐</span><div><div class="il">时差</div><div class="iv">美东 = 京 −12h · 70% 场次 06–11点</div></div></div>
@@ -719,6 +719,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+            <div class="log-item">
+              <div class="log-time">2026-07-14 03:05</div>
+              <div class="log-content"><span class="log-tag fix">修正</span><strong>⏰ 半决赛/决赛/季军赛开球时间校正：ET→北京时间+12h</strong> — ESPN Bracket 页确认 SF1 = Jul 15 3:00 AM ET / SF2 = Jul 16 3:00 AM ET / 3RD = Jul 19 5:00 AM ET / FIN = Jul 20 3:00 AM ET，换算北京时间应为 SF1 7/15 15:00、SF2 7/16 15:00、季军赛 7/19 17:00、决赛 7/20 15:00。原文件误用 ET 原始时间当北京时间，本轮全部校正；同步修正信息页决赛时间（7.20 15:00）。ALL_MATCHES 赛果状态无变化（100/104 done），阶段高亮指向半决赛，倒计时将自动更新。<!-- marker:cron-sf-time-fix-20260714-0305 --> </div>
+            </div>
             <div class="log-item">
               <div class="log-time">2026-07-13 12:14</div>
               <div class="log-content"><span class="log-tag fix">巡检</span><strong>✅ 全站一致性复核：半决赛前数据无误</strong> — 福福按北京时间完成全站巡检并交叉复核 ESPN World Cup scoreboard（7/13 无赛事安排）与 BBC Scores & Fixtures（下一场 Semi-finals Tue 14th Jul UTC = 北京时间 7/15 03:00）。确认：ALL_MATCHES 100/104 已完赛、4 场 upcoming（SF1/SF2/3RD/FIN）对阵与预测均正确；淘汰赛 bracket 落位完整；首页/信息页计数 100 已正确；阶段高亮指向半决赛；射手榜暂无可靠更新来源保持现状。本轮无赛果/对阵/文案变更。<!-- marker:cron-routine-check-20260713-1214 --> </div>
@@ -2117,11 +2121,11 @@ const ALL_MATCHES = [
   {id:"QF3",g:"KO",r:6,t:"7/12 05:00",h:"挪威",a:"英格兰",s:"1-2 AET",st:"done",hl:"⚽ 英格兰2-1挪威（加时）：BBC Scores & Fixtures 已明确标注 After extra time，三狮军团在迈阿密花园完成加时晋级，并率先锁定 7/16 半决赛席位。",pred:{date:"2026-07-08",ph:1,pa:2,winner:"a",confidence:64,tag:"英格兰险胜",basis:["哈兰德终结","英格兰阵容厚度","定位球威胁","必须决胜"],reason:"挪威淘汰巴西后士气极高，哈兰德任何一次机会都可能改变比赛；但英格兰阵容厚度、定位球和中场推进更均衡。后续淘汰赛不再预测最终平局，看好英格兰小胜晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"QF4",g:"KO",r:6,t:"7/12 09:00",h:"阿根廷",a:"瑞士",s:"3-1 AET",st:"done",hl:"⚽ 阿根廷3-1瑞士（加时）：ESPN World Cup scoreboard 已确认 Final Score - After Extra Time，卫冕冠军在加时赛拉开比分晋级，并补全 SF2 为英格兰 vs 阿根廷。",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:67,tag:"阿根廷小胜晋级",basis:["梅西串联","瑞士结构稳定","淘汰赛经验","必须决胜"],reason:"瑞士防线层次与阵型纪律会让比赛保持胶着，但阿根廷中前场的创造力、卫冕冠军经验和关键球处理更高一档。后续淘汰赛不再给最终平局，倾向阿根廷小比分过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 半决赛 (7.15-7.16) =====
-  {id:"SF1",g:"KO",r:7,t:"7/15 03:00",h:"法国",a:"西班牙",st:"upcoming",hl:"🔥 SF1 · AT&T球场·阿灵顿 · 法国 vs 西班牙 · 7/15 03:00 北京时间",pred:{date:"2026-07-13",ph:2,pa:1,winner:"h",confidence:56,tag:"法国加时晋级",basis:["法国连续三届进四强","Mbappé巅峰状态","西班牙传控成熟","两队实力极为接近"],reason:"法国连续第三届世界杯进入四强，大赛经验极其丰富，Mbappé状态火热。西班牙传控体系成熟，淘汰比利时展现了韧性。两队实力极为接近，90分钟大概率1-1进入加时，但法国大赛关键时刻更冷静，Mbappé个人爆发力是决定性因素，最终晋级：法国（加时/点球）。",sources:["ESPN","FIFA"],locked:true}},
-  {id:"SF2",g:"KO",r:7,t:"7/16 03:00",h:"英格兰",a:"阿根廷",st:"upcoming",hl:"🔥 SF2 · 梅赛德斯-奔驰球场·亚特兰大 · 英格兰 vs 阿根廷 · 7/16 03:00 北京时间",pred:{date:"2026-07-13",ph:1,pa:2,winner:"a",confidence:58,tag:"阿根廷险胜",basis:["梅西最后的世界杯","Bellingham加时绝杀状态爆棚","阿根廷淘汰赛经验与底蕴","关键球处理能力"],reason:"英格兰凭借Bellingham加时绝杀淘汰挪威，士气正盛，阵容厚度和定位球威胁极强。但阿根廷在淘汰赛展现了极强的韧性和卫冕冠军底蕴，梅西仍在巅峰且串联能力无人能及。大赛关键时刻把握能力更强，预计一场激烈对决，最终晋级：阿根廷。",sources:["ESPN","FIFA"],locked:true}},
+  {id:"SF1",g:"KO",r:7,t:"7/15 15:00",h:"法国",a:"西班牙",st:"upcoming",hl:"🔥 SF1 · AT&T球场·阿灵顿 · 法国 vs 西班牙 · 7/15 15:00 北京时间",pred:{date:"2026-07-13",ph:2,pa:1,winner:"h",confidence:56,tag:"法国加时晋级",basis:["法国连续三届进四强","Mbappé巅峰状态","西班牙传控成熟","两队实力极为接近"],reason:"法国连续第三届世界杯进入四强，大赛经验极其丰富，Mbappé状态火热。西班牙传控体系成熟，淘汰比利时展现了韧性。两队实力极为接近，90分钟大概率1-1进入加时，但法国大赛关键时刻更冷静，Mbappé个人爆发力是决定性因素，最终晋级：法国（加时/点球）。",sources:["ESPN","FIFA"],locked:true}},
+  {id:"SF2",g:"KO",r:7,t:"7/16 15:00",h:"英格兰",a:"阿根廷",st:"upcoming",hl:"🔥 SF2 · 梅赛德斯-奔驰球场·亚特兰大 · 英格兰 vs 阿根廷 · 7/16 15:00 北京时间",pred:{date:"2026-07-13",ph:1,pa:2,winner:"a",confidence:58,tag:"阿根廷险胜",basis:["梅西最后的世界杯","Bellingham加时绝杀状态爆棚","阿根廷淘汰赛经验与底蕴","关键球处理能力"],reason:"英格兰凭借Bellingham加时绝杀淘汰挪威，士气正盛，阵容厚度和定位球威胁极强。但阿根廷在淘汰赛展现了极强的韧性和卫冕冠军底蕴，梅西仍在巅峰且串联能力无人能及。大赛关键时刻把握能力更强，预计一场激烈对决，最终晋级：阿根廷。",sources:["ESPN","FIFA"],locked:true}},
   // ===== 季军赛 + 决赛 (7.19-7.20) =====
-  {id:"3RD",g:"KO",r:8,t:"7/19 05:00",h:"待定(SF1负者)",a:"待定(SF2负者)",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 季军争夺战 · SF1负者 vs SF2负者"},
-  {id:"FIN",g:"KO",r:9,t:"7/20 03:00",h:"待定(SF1胜者)",a:"待定(SF2胜者)",st:"upcoming",hl:"🏆 大都会球场·东卢瑟福·纽约 · 2026世界杯决赛！ · SF1胜者 vs SF2胜者",pred:{date:"2026-07-13",ph:2,pa:1,winner:"h",confidence:54,tag:"🏆 预测冠军：法国",basis:["法国连续三届决赛经验","Mbappé巅峰状态","势均力敌的巅峰对决","阵容深度略占上风"],reason:"预测决赛：法国 vs 阿根廷。法国连续三届决赛经验+Mbappé巅峰期，阵容深度和大赛关键时刻处理能力略占上风；阿根廷有梅西最后之舞的极致动力，卫冕冠军底蕴深厚。势均力敌的巅峰对决，看好法国2-1小胜夺冠。",sources:["ESPN","FIFA"],locked:true}},
+  {id:"3RD",g:"KO",r:8,t:"7/19 17:00",h:"待定(SF1负者)",a:"待定(SF2负者)",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 季军争夺战 · SF1负者 vs SF2负者 · 7/19 17:00 北京时间"},
+  {id:"FIN",g:"KO",r:9,t:"7/20 15:00",h:"待定(SF1胜者)",a:"待定(SF2胜者)",st:"upcoming",hl:"🏆 大都会球场·东卢瑟福·纽约 · 2026世界杯决赛！ · SF1胜者 vs SF2胜者 · 7/20 15:00 北京时间",pred:{date:"2026-07-13",ph:2,pa:1,winner:"h",confidence:54,tag:"🏆 预测冠军：法国",basis:["法国连续三届决赛经验","Mbappé巅峰状态","势均力敌的巅峰对决","阵容深度略占上风"],reason:"预测决赛：法国 vs 阿根廷。法国连续三届决赛经验+Mbappé巅峰期，阵容深度和大赛关键时刻处理能力略占上风；阿根廷有梅西最后之舞的极致动力，卫冕冠军底蕴深厚。势均力敌的巅峰对决，看好法国2-1小胜夺冠。",sources:["ESPN","FIFA"],locked:true}},
 ];
 
 // 2022 World Cup top 8 rankings (for teams participating in 2026)
