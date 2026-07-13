@@ -484,7 +484,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <span>👥 <strong>48</strong> 球队 · <strong>104</strong> 场</span>
       <span>🏆 <strong>32</strong> 队晋级淘汰赛</span>
     </div>
-    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">96</strong> 场</div>
+    <div class="live-count"><span class="pulse-dot"></span>已完赛 <strong id="matchCount">100</strong> 场</div>
     <a href="https://tv.cctv.com/live/cctv5/m/index.shtml" target="_blank" class="hero-live-btn">📺 CCTV5 直播</a>
   </div>
   <div class="hero-flag-bar"><div class="bar usa"></div><div class="bar canada"></div><div class="bar mexico"></div></div>
@@ -638,7 +638,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="milestone-item"><div class="num">48</div><div class="lbl">参赛球队</div></div>
       <div class="milestone-item"><div class="num">72</div><div class="lbl">小组赛</div></div>
       <div class="milestone-item"><div class="num">32</div><div class="lbl">淘汰赛</div></div>
-      <div class="milestone-item"><div class="num" id="playedCount">96</div><div class="lbl">已完赛</div></div>
+      <div class="milestone-item"><div class="num" id="playedCount">100</div><div class="lbl">已完赛</div></div>
       <div class="milestone-item"><div class="num">🏆</div><div class="lbl">7.20 决赛（北京时间）</div></div>
     </div>
     <div class="rules-guide">
@@ -719,6 +719,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       </div>
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
+            <div class="log-item">
+              <div class="log-time">2026-07-13 01:44</div>
+              <div class="log-content"><span class="log-tag fix">巡检</span><strong>📊 首页/信息页完赛计数回正：96→100</strong> — 福福按北京时间完成全站一致性巡检并优先复核 ESPN World Cup scoreboard：7/13 无赛事安排，下一场为 7/15 03:00 法国 vs 西班牙（SF1），四强对阵与预测均无需再改。本轮将首页 hero 已完赛计数与信息页里程碑计数从硬编码 <code>96</code> 修正为 <code>100</code>，避免半决赛阶段展示滞后口径。<!-- marker:cron-done-count-100-20260713-0144 --> </div>
+            </div>
             <div class="log-item">
               <div class="log-time">2026-07-12 23:13</div>
               <div class="log-content"><span class="log-tag ui">修复</span><strong>🧭 北京时间口径补齐：下一场倒计时与赛事天数回正</strong> — 福福晚间巡检确认 QF1-QF4 赛果与半决赛落位均无需再改；本轮仅把首页倒计时/直播判定/赛事进度统一改为 <code>Asia/Shanghai</code> 计算，并将北京时间赛期文案回正为 <code>6.12–7.20</code>，避免本地预览出现 43 小时倒计时和 33/40 天这类滞后口径。<!-- marker:cron-bj-countdown-progress-20260712-2313 --> </div>

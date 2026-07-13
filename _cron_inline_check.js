@@ -1,3 +1,4 @@
+
 // ===== DATA ===== //
 const GROUPS = {
   A:{teams:["🇲🇽墨西哥","🇰🇷韩国","🇿🇦南非","🇨🇿捷克"]},
@@ -270,25 +271,7 @@ function parseMatchTime(s){
   let [md,tm]=s.split(' ');
   let [m,d]=md.split('/').map(Number);
   let [h,mi]=tm.split(':').map(Number);
-  return new Date(Date.UTC(2026,m-1,d,h-8,mi,0));
-}
-function getShanghaiParts(base=new Date()){
-  let parts=new Intl.DateTimeFormat('en-CA',{
-    timeZone:'Asia/Shanghai',
-    year:'numeric',month:'2-digit',day:'2-digit',
-    hour:'2-digit',minute:'2-digit',second:'2-digit',
-    hour12:false
-  }).formatToParts(base);
-  let map={};
-  parts.forEach(p=>{if(p.type!=='literal')map[p.type]=p.value;});
-  return {
-    year:Number(map.year),
-    month:Number(map.month),
-    day:Number(map.day),
-    hour:Number(map.hour),
-    minute:Number(map.minute),
-    second:Number(map.second)
-  };
+  return new Date(2026,m-1,d,h,mi,0);
 }
 function matchStageLabel(m){
   if(!m)return '';
@@ -300,7 +283,7 @@ function matchStageLabel(m){
 function isLive(m){
   if(m.st==="live")return true;
   if(m.st!=="upcoming"||!m.t)return false;
-  let now=getShanghaiNow();
+  let now=new Date();
   let dt=parseMatchTime(m.t);
   let end=dt.getTime()+2.5*60*60*1000;
   return dt<=now&&now<=end;
@@ -310,12 +293,11 @@ function renderProgress(){
   let total=104, done=0;
   for(let m of ALL_MATCHES)if(m.st==="done")done++;
   let pct=Math.min(100,Math.round(done/total*100));
-  // Tournament day, Beijing time: 2026-06-12 through 2026-07-20
-  let start=Date.UTC(2026,5,12);
-  let end=Date.UTC(2026,6,20);
+  // Tournament day, Beijing time: 2026-06-11 through 2026-07-20
+  let start=new Date(2026,5,11);
+  let end=new Date(2026,6,20);
   let totalDays=Math.floor((end-start)/86400000)+1;
-  let sh=getShanghaiParts();
-  let now=Date.UTC(sh.year,sh.month-1,sh.day);
+  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
   let day=Math.max(1,Math.min(totalDays,Math.floor((now-start)/86400000)+1));
   let dayPct=Math.min(100,Math.round((day/totalDays)*100));
   let fill=document.getElementById("progFill");
@@ -377,7 +359,7 @@ function renderMatchList(container,dateKeys,dateData,filterDate,isUpcoming){
 }
 // Find & render next match (allow matches starting within last 2.5h as "in progress")
 function renderNextMatch(){
-  let now=getShanghaiNow();
+  let now=new Date();
   let grace=2.5*60*60*1000; // 2.5 hours grace for matches in progress
   let candidates=ALL_MATCHES.filter(m=>m.st!=='done'&&m.t).map(m=>({...m,dt:parseMatchTime(m.t)})).filter(m=>m.dt>now-grace);
   let nx=candidates.length?candidates.reduce((a,b)=>a.dt<b.dt?a:b):null;
@@ -1165,13 +1147,12 @@ function render(){
     if(filter==='done'){
       firstDate=sortedDates.length?sortedDates[0]:null;
     }else{
-      let sh=getShanghaiParts();
-      let todayStr=String(sh.month)+'/'+String(sh.day);
-      let nowDay=Date.UTC(2026,sh.month-1,sh.day);
+      let now=new Date();
+      let todayStr=String(now.getMonth()+1)+'/'+String(now.getDate());
       for(let d of sortedDates){
         let [m,dm]=d.split("/").map(Number);
-        let dt=Date.UTC(2026,m-1,dm);
-        if(dt>=nowDay||d===todayStr){firstDate=d;break}
+        let dt=new Date(2026,m-1,dm);
+        if(dt>now||d===todayStr){firstDate=d;break}
       }
       if(!firstDate&&sortedDates.length)firstDate=sortedDates[0];
     }
@@ -1399,7 +1380,7 @@ function renderKnockoutMatches() {
 
 // ===== TODAY PICK =====
 function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)return;
-  let sh=getShanghaiParts(),today=sh.day,tM=sh.month,ts=tM+'/'+today;
+  let now=new Date(),today=now.getDate(),tM=now.getMonth()+1,ts=tM+'/'+today;
   let picks=ALL_MATCHES.filter(m=>m.t&&m.t.startsWith(ts)&&m.st!=='done');
   if(!picks.length){e.style.display='none';return;}
   let stars=['梅西','C罗','姆巴佩','内马尔','哈兰德','萨拉赫','孙兴慜','凯恩','德布劳内'];
@@ -1422,8 +1403,7 @@ function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)retu
   e.querySelector('.tp-go').addEventListener('click',function(e2){e2.preventDefault();switchTab('matches');});
 }
 function getShanghaiNow(){
-  let sh=getShanghaiParts();
-  return new Date(Date.UTC(sh.year,sh.month-1,sh.day,sh.hour-8,sh.minute,sh.second));
+  return new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
 }
 function getMatchStageKey(m){
   if(m.g!=='KO')return 'g';
@@ -1444,7 +1424,7 @@ function getActiveTournamentStageKey(){
 }
 // ===== TIMELINE =====
 function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)return;
-  let stages=[{l:'6.12 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r32'},{l:'16强',k:'r16'},{l:'1/4',k:'qf'},{l:'半决赛',k:'sf'},{l:'7.20 决赛',k:'final'}];
+  let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r32'},{l:'16强',k:'r16'},{l:'1/4',k:'qf'},{l:'半决赛',k:'sf'},{l:'7.20 决赛',k:'final'}];
   let activeKey=getActiveTournamentStageKey();
   let ai=Math.max(0,stages.findIndex(s=>s.k===activeKey));
   w.innerHTML='<div class="timeline">'+stages.map((s,i)=>{let c=i<ai?'past':(i===ai?'active':'');return '<div class="tl-node '+c+'"><div class="tl-dot"></div><div class="tl-label">'+s.l+'</div></div>';}).join('')+'</div>';}

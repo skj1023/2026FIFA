@@ -1,3 +1,4 @@
+
 // ===== DATA ===== //
 const GROUPS = {
   A:{teams:["🇲🇽墨西哥","🇰🇷韩国","🇿🇦南非","🇨🇿捷克"]},
@@ -117,8 +118,7 @@ const LOCATIONS={
   "阿根廷vs埃及":"亚特兰大·梅赛德斯-奔驰球场","瑞士vs哥伦比亚":"温哥华·BC Place",
   "法国vs摩洛哥":"福克斯堡·吉列球场","西班牙vs比利时":"英格尔伍德·SoFi球场",
   "挪威vs英格兰":"迈阿密花园·硬石球场","阿根廷vs瑞士":"堪萨斯城·箭头球场",
-  "法国vs西班牙":"阿灵顿·AT&T球场","英格兰vs阿根廷":"亚特兰大·梅赛德斯-奔驰球场",
-  "待定(SF1负者)vs待定(SF2负者)":"迈阿密花园·硬石球场","待定(SF1胜者)vs待定(SF2胜者)":"东卢瑟福·大都会球场"
+  "法国vs西班牙":"阿灵顿·AT&T球场"
 };
 // All group matches
 const ALL_MATCHES = [
@@ -225,10 +225,10 @@ const ALL_MATCHES = [
   {id:"QF1",g:"KO",r:6,t:"7/10 04:00",h:"法国",a:"摩洛哥",s:"2-0",st:"done",hl:"⚽ 法国2-0摩洛哥：ESPN scoreboard 已确认 FT，BBC Scores & Fixtures 同步为 France 2, Morocco 0 at Full time；姆巴佩60'、登贝莱66'先后破门，高卢军团率先晋级半决赛。",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:66,tag:"法国险胜晋级",basis:["法国前场爆点","摩洛哥防守韧性","淘汰赛经验","必须决胜"],reason:"摩洛哥防守纪律和淘汰赛韧性足以把比赛拖得很紧，但法国前场爆点、替补深度和关键球处理仍更高一档。后续淘汰赛预测不再给最终平局，倾向法国小比分晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"QF2",g:"KO",r:6,t:"7/11 03:00",h:"西班牙",a:"比利时",s:"2-1",st:"done",hl:"⚽ 西班牙2-1比利时：ESPN World Cup scoreboard 已确认 FT，BBC Scores & Fixtures 同步显示 Spain 2, Belgium 1 at Full time；斗牛士军团在 SoFi 球场拿下 1/4 决赛后，与法国会师 7/15 半决赛。",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:62,tag:"西班牙小胜",basis:["西班牙控球压制","比利时转换质量","中场控制权","必须决胜"],reason:"比利时刚大胜美国，转换和经验都很有威胁；但西班牙在控球压制、肋部渗透和比赛节奏管理上更稳定。淘汰赛预测必须给出晋级方，倾向西班牙一球优势过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   {id:"QF3",g:"KO",r:6,t:"7/12 05:00",h:"挪威",a:"英格兰",s:"1-2",st:"done",hl:"⚽ 英格兰2-1挪威（加时）：BBC Scores & Fixtures 已明确标注 After extra time，三狮军团在迈阿密花园完成加时晋级，并率先锁定 7/16 半决赛席位。",pred:{date:"2026-07-08",ph:1,pa:2,winner:"a",confidence:64,tag:"英格兰险胜",basis:["哈兰德终结","英格兰阵容厚度","定位球威胁","必须决胜"],reason:"挪威淘汰巴西后士气极高，哈兰德任何一次机会都可能改变比赛；但英格兰阵容厚度、定位球和中场推进更均衡。后续淘汰赛不再预测最终平局，看好英格兰小胜晋级。",sources:["FIFA","ESPN","Bing News"],locked:true}},
-  {id:"QF4",g:"KO",r:6,t:"7/12 09:00",h:"阿根廷",a:"瑞士",s:"3-1",st:"done",hl:"⚽ 阿根廷3-1瑞士（加时）：ESPN World Cup scoreboard 已确认 Final Score - After Extra Time，卫冕冠军在加时赛拉开比分晋级，并补全 SF2 为英格兰 vs 阿根廷。",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:67,tag:"阿根廷小胜晋级",basis:["梅西串联","瑞士结构稳定","淘汰赛经验","必须决胜"],reason:"瑞士防线层次与阵型纪律会让比赛保持胶着，但阿根廷中前场的创造力、卫冕冠军经验和关键球处理更高一档。后续淘汰赛不再给最终平局，倾向阿根廷小比分过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
+  {id:"QF4",g:"KO",r:6,t:"7/12 09:00",h:"阿根廷",a:"瑞士",s:"1-0",st:"live",hl:"🔴 阿根廷1-0瑞士（15'）：BBC Scores & Fixtures 当日赛程显示阿根廷开局领先，QF4 正在堪萨斯城箭头球场进行。",pred:{date:"2026-07-08",ph:2,pa:1,winner:"h",confidence:67,tag:"阿根廷小胜晋级",basis:["梅西串联","瑞士结构稳定","淘汰赛经验","必须决胜"],reason:"瑞士防线层次与阵型纪律会让比赛保持胶着，但阿根廷中前场的创造力、卫冕冠军经验和关键球处理更高一档。后续淘汰赛不再给最终平局，倾向阿根廷小比分过关。",sources:["FIFA","ESPN","Bing News"],locked:true}},
   // ===== 半决赛 (7.15-7.16) =====
   {id:"SF1",g:"KO",r:7,t:"7/15 03:00",h:"法国",a:"西班牙",st:"upcoming",hl:"🏟️ AT&T球场·阿灵顿 · 法国 vs 西班牙 · QF1/QF2 胜者已全部落位"},
-  {id:"SF2",g:"KO",r:7,t:"7/16 03:00",h:"英格兰",a:"阿根廷",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · 英格兰 vs 阿根廷 · QF3/QF4 胜者已全部落位"},
+  {id:"SF2",g:"KO",r:7,t:"7/16 03:00",h:"英格兰",a:"待定(QF4胜者)",st:"upcoming",hl:"🏟️ 梅赛德斯-奔驰球场·亚特兰大 · 英格兰 vs 待定(QF4胜者) · QF3 胜者已落位"},
   // ===== 季军赛 + 决赛 (7.19-7.20) =====
   {id:"3RD",g:"KO",r:8,t:"7/19 05:00",h:"待定(SF1负者)",a:"待定(SF2负者)",st:"upcoming",hl:"🏟️ 硬石球场·迈阿密花园 · 季军争夺战"},
   {id:"FIN",g:"KO",r:9,t:"7/20 03:00",h:"待定(SF1胜者)",a:"待定(SF2胜者)",st:"upcoming",hl:"🏆 大都会球场·东卢瑟福·纽约 · 2026世界杯决赛！"},
@@ -270,25 +270,7 @@ function parseMatchTime(s){
   let [md,tm]=s.split(' ');
   let [m,d]=md.split('/').map(Number);
   let [h,mi]=tm.split(':').map(Number);
-  return new Date(Date.UTC(2026,m-1,d,h-8,mi,0));
-}
-function getShanghaiParts(base=new Date()){
-  let parts=new Intl.DateTimeFormat('en-CA',{
-    timeZone:'Asia/Shanghai',
-    year:'numeric',month:'2-digit',day:'2-digit',
-    hour:'2-digit',minute:'2-digit',second:'2-digit',
-    hour12:false
-  }).formatToParts(base);
-  let map={};
-  parts.forEach(p=>{if(p.type!=='literal')map[p.type]=p.value;});
-  return {
-    year:Number(map.year),
-    month:Number(map.month),
-    day:Number(map.day),
-    hour:Number(map.hour),
-    minute:Number(map.minute),
-    second:Number(map.second)
-  };
+  return new Date(2026,m-1,d,h,mi,0);
 }
 function matchStageLabel(m){
   if(!m)return '';
@@ -300,7 +282,7 @@ function matchStageLabel(m){
 function isLive(m){
   if(m.st==="live")return true;
   if(m.st!=="upcoming"||!m.t)return false;
-  let now=getShanghaiNow();
+  let now=new Date();
   let dt=parseMatchTime(m.t);
   let end=dt.getTime()+2.5*60*60*1000;
   return dt<=now&&now<=end;
@@ -310,12 +292,11 @@ function renderProgress(){
   let total=104, done=0;
   for(let m of ALL_MATCHES)if(m.st==="done")done++;
   let pct=Math.min(100,Math.round(done/total*100));
-  // Tournament day, Beijing time: 2026-06-12 through 2026-07-20
-  let start=Date.UTC(2026,5,12);
-  let end=Date.UTC(2026,6,20);
+  // Tournament day, Beijing time: 2026-06-11 through 2026-07-20
+  let start=new Date(2026,5,11);
+  let end=new Date(2026,6,20);
   let totalDays=Math.floor((end-start)/86400000)+1;
-  let sh=getShanghaiParts();
-  let now=Date.UTC(sh.year,sh.month-1,sh.day);
+  let now=new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
   let day=Math.max(1,Math.min(totalDays,Math.floor((now-start)/86400000)+1));
   let dayPct=Math.min(100,Math.round((day/totalDays)*100));
   let fill=document.getElementById("progFill");
@@ -377,7 +358,7 @@ function renderMatchList(container,dateKeys,dateData,filterDate,isUpcoming){
 }
 // Find & render next match (allow matches starting within last 2.5h as "in progress")
 function renderNextMatch(){
-  let now=getShanghaiNow();
+  let now=new Date();
   let grace=2.5*60*60*1000; // 2.5 hours grace for matches in progress
   let candidates=ALL_MATCHES.filter(m=>m.st!=='done'&&m.t).map(m=>({...m,dt:parseMatchTime(m.t)})).filter(m=>m.dt>now-grace);
   let nx=candidates.length?candidates.reduce((a,b)=>a.dt<b.dt?a:b):null;
@@ -1165,13 +1146,12 @@ function render(){
     if(filter==='done'){
       firstDate=sortedDates.length?sortedDates[0]:null;
     }else{
-      let sh=getShanghaiParts();
-      let todayStr=String(sh.month)+'/'+String(sh.day);
-      let nowDay=Date.UTC(2026,sh.month-1,sh.day);
+      let now=new Date();
+      let todayStr=String(now.getMonth()+1)+'/'+String(now.getDate());
       for(let d of sortedDates){
         let [m,dm]=d.split("/").map(Number);
-        let dt=Date.UTC(2026,m-1,dm);
-        if(dt>=nowDay||d===todayStr){firstDate=d;break}
+        let dt=new Date(2026,m-1,dm);
+        if(dt>now||d===todayStr){firstDate=d;break}
       }
       if(!firstDate&&sortedDates.length)firstDate=sortedDates[0];
     }
@@ -1399,7 +1379,7 @@ function renderKnockoutMatches() {
 
 // ===== TODAY PICK =====
 function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)return;
-  let sh=getShanghaiParts(),today=sh.day,tM=sh.month,ts=tM+'/'+today;
+  let now=new Date(),today=now.getDate(),tM=now.getMonth()+1,ts=tM+'/'+today;
   let picks=ALL_MATCHES.filter(m=>m.t&&m.t.startsWith(ts)&&m.st!=='done');
   if(!picks.length){e.style.display='none';return;}
   let stars=['梅西','C罗','姆巴佩','内马尔','哈兰德','萨拉赫','孙兴慜','凯恩','德布劳内'];
@@ -1422,8 +1402,7 @@ function renderTodayPick(){let e=document.getElementById('todayPick');if(!e)retu
   e.querySelector('.tp-go').addEventListener('click',function(e2){e2.preventDefault();switchTab('matches');});
 }
 function getShanghaiNow(){
-  let sh=getShanghaiParts();
-  return new Date(Date.UTC(sh.year,sh.month-1,sh.day,sh.hour-8,sh.minute,sh.second));
+  return new Date(new Date().toLocaleString('en-US',{timeZone:'Asia/Shanghai'}));
 }
 function getMatchStageKey(m){
   if(m.g!=='KO')return 'g';
@@ -1444,7 +1423,7 @@ function getActiveTournamentStageKey(){
 }
 // ===== TIMELINE =====
 function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)return;
-  let stages=[{l:'6.12 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r32'},{l:'16强',k:'r16'},{l:'1/4',k:'qf'},{l:'半决赛',k:'sf'},{l:'7.20 决赛',k:'final'}];
+  let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r32'},{l:'16强',k:'r16'},{l:'1/4',k:'qf'},{l:'半决赛',k:'sf'},{l:'7.20 决赛',k:'final'}];
   let activeKey=getActiveTournamentStageKey();
   let ai=Math.max(0,stages.findIndex(s=>s.k===activeKey));
   w.innerHTML='<div class="timeline">'+stages.map((s,i)=>{let c=i<ai?'past':(i===ai?'active':'');return '<div class="tl-node '+c+'"><div class="tl-dot"></div><div class="tl-label">'+s.l+'</div></div>';}).join('')+'</div>';}

@@ -1,0 +1,4 @@
+Reading matches from: .\index.html
+Found 104 matches, 104 venues
+Written 34062 bytes to .\calendar.ics
+Done! 104 events in calendar.

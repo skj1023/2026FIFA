@@ -1,3 +1,4 @@
+
 // ===== DATA ===== //
 const GROUPS = {
   A:{teams:["🇲🇽墨西哥","🇰🇷韩国","🇿🇦南非","🇨🇿捷克"]},
@@ -300,7 +301,7 @@ function matchStageLabel(m){
 function isLive(m){
   if(m.st==="live")return true;
   if(m.st!=="upcoming"||!m.t)return false;
-  let now=getShanghaiNow();
+  let now=new Date();
   let dt=parseMatchTime(m.t);
   let end=dt.getTime()+2.5*60*60*1000;
   return dt<=now&&now<=end;
@@ -310,8 +311,8 @@ function renderProgress(){
   let total=104, done=0;
   for(let m of ALL_MATCHES)if(m.st==="done")done++;
   let pct=Math.min(100,Math.round(done/total*100));
-  // Tournament day, Beijing time: 2026-06-12 through 2026-07-20
-  let start=Date.UTC(2026,5,12);
+  // Tournament day, Beijing time: 2026-06-11 through 2026-07-20
+  let start=Date.UTC(2026,5,11);
   let end=Date.UTC(2026,6,20);
   let totalDays=Math.floor((end-start)/86400000)+1;
   let sh=getShanghaiParts();
@@ -377,7 +378,7 @@ function renderMatchList(container,dateKeys,dateData,filterDate,isUpcoming){
 }
 // Find & render next match (allow matches starting within last 2.5h as "in progress")
 function renderNextMatch(){
-  let now=getShanghaiNow();
+  let now=new Date();
   let grace=2.5*60*60*1000; // 2.5 hours grace for matches in progress
   let candidates=ALL_MATCHES.filter(m=>m.st!=='done'&&m.t).map(m=>({...m,dt:parseMatchTime(m.t)})).filter(m=>m.dt>now-grace);
   let nx=candidates.length?candidates.reduce((a,b)=>a.dt<b.dt?a:b):null;
@@ -1444,7 +1445,7 @@ function getActiveTournamentStageKey(){
 }
 // ===== TIMELINE =====
 function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)return;
-  let stages=[{l:'6.12 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r32'},{l:'16强',k:'r16'},{l:'1/4',k:'qf'},{l:'半决赛',k:'sf'},{l:'7.20 决赛',k:'final'}];
+  let stages=[{l:'6.11 开幕',k:'s'},{l:'小组赛',k:'g'},{l:'32强',k:'r32'},{l:'16强',k:'r16'},{l:'1/4',k:'qf'},{l:'半决赛',k:'sf'},{l:'7.20 决赛',k:'final'}];
   let activeKey=getActiveTournamentStageKey();
   let ai=Math.max(0,stages.findIndex(s=>s.k===activeKey));
   w.innerHTML='<div class="timeline">'+stages.map((s,i)=>{let c=i<ai?'past':(i===ai?'active':'');return '<div class="tl-node '+c+'"><div class="tl-dot"></div><div class="tl-label">'+s.l+'</div></div>';}).join('')+'</div>';}
