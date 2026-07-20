@@ -699,7 +699,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
           </ul>
         </div>
       </div>
-      <div class="rule-note"><strong>阅读建议：</strong>当前已进入淘汰赛阶段：看「比赛」追踪最近/即将开球场次，看「淘汰赛」确认晋级路径；「小组积分榜」与「最佳第3名」现在作为小组赛最终结果回看。</div>
+      <div class="rule-note"><strong>阅读建议：</strong>本届世界杯已结束：看「比赛」回顾全部 104 场赛果，看「淘汰赛」确认完整晋级路径；「小组积分榜」与「最佳第3名」作为小组赛最终结果回看。</div>
     </div>
   </section>
 </div>
@@ -2023,8 +2023,9 @@ const LOCATIONS={
   "阿根廷vs埃及":"亚特兰大·梅赛德斯-奔驰球场","瑞士vs哥伦比亚":"温哥华·BC Place",
   "法国vs摩洛哥":"福克斯堡·吉列球场","西班牙vs比利时":"英格尔伍德·SoFi球场",
   "挪威vs英格兰":"迈阿密花园·硬石球场","阿根廷vs瑞士":"堪萨斯城·箭头球场",
-  "法国vs西班牙":"阿灵顿·AT&T球场","英格兰vs阿根廷":"亚特兰大·梅赛德斯-奔驰球场",
-  "待定(SF1负者)vs待定(SF2负者)":"迈阿密花园·硬石球场","待定(SF1胜者)vs待定(SF2胜者)":"东卢瑟福·大都会球场"
+  "法国vs西班牙":"阿灵顿·AT&T球场", "英格兰vs阿根廷":"亚特兰大·梅赛德斯-奔驰球场",
+  "法国vs英格兰":"迈阿密花园·硬石球场", "西班牙vs阿根廷":"东卢瑟福·大都会球场",
+  "待定(SF1负者)vs待定(SF2负者)":"迈阿密花园·硬石球场", "待定(SF1胜者)vs待定(SF2胜者)":"东卢瑟福·大都会球场"
 };
 // All group matches
 const ALL_MATCHES = [
@@ -2137,7 +2138,7 @@ const ALL_MATCHES = [
   {id:"SF2",g:"KO",r:7,t:"7/16 03:00",h:"英格兰",a:"阿根廷",s:"1-2",st:"done",hl:"🏁 阿根廷2-1英格兰：ESPN确认 Full Time，阿根廷晋级决赛。",pred:{date:"2026-07-13",ph:1,pa:2,winner:"a",confidence:58,tag:"阿根廷险胜",basis:["梅西最后的世界杯","Bellingham加时绝杀状态爆棚","阿根廷淘汰赛经验与底蕴","关键球处理能力"],reason:"英格兰凭借Bellingham加时绝杀淘汰挪威，士气正盛，阵容厚度和定位球威胁极强。但阿根廷在淘汰赛展现了极强的韧性和卫冕冠军底蕴，梅西仍在巅峰且串联能力无人能及。大赛关键时刻把握能力更强，预计一场激烈对决，最终晋级：阿根廷。",sources:["ESPN","FIFA"],locked:true}},
   // ===== 季军赛 + 决赛 (7.19-7.20) =====
   {id:"3RD",g:"KO",r:8,t:"7/19 05:00",h:"法国",a:"英格兰",s:"4-6",st:"done",hl:"⚽ 季军赛：法国4-6英格兰（ESPN确认FT）· 英格兰凭借Rice 3'、18'，Saka 37'、45+1'、87'点球，Bellingham 90+8'取胜；法国由姆巴佩48'、66'，巴尔科拉54'，登贝莱90+6'进球。",pred:{locked:true,ph:2,pa:2,winner:"a",confidence:52,tag:"英格兰季军",basis:["关键球效率","英格兰终场韧性","法国防线消耗"],reason:"季军赛双方攻势开放，英格兰在关键球和终场阶段把握机会更好，最终取胜。",sources:["ESPN","FIFA"]}},
-  {id:"FIN",g:"KO",r:9,t:"7/20 03:00",h:"西班牙",a:"阿根廷",s:"1-0 AET",st:"done",hl:"🏆 西班牙1-0阿根廷（加时）：ESPN确认 Final Score - After Extra Time，西班牙夺得2026世界杯冠军。",pred:{date:"2026-07-15",ph:2,pa:1,winner:"h",confidence:55,tag:"🏆 预测冠军：西班牙",basis:["西班牙传控压制力","半决赛2-0法国","决赛级别中场控制","SF2胜者尚未确定"],reason:"预测决赛对阵：西班牙 vs SF2胜者。西班牙刚以2-0击败法国，传控、肋部渗透和比赛节奏管理都处于高位；另一侧无论英格兰还是阿根廷，都具备强力反击与关键球能力。当前信息下倾向西班牙以2-1取胜夺冠，待SF2结束后再根据最终对手复核。",sources:["ESPN","FIFA"],locked:true}},
+  {id:"FIN",g:"KO",r:9,t:"7/20 03:00",h:"西班牙",a:"阿根廷",s:"1-0 AET",st:"done",hl:"🏆 西班牙1-0阿根廷（加时）：ESPN确认 Final Score - After Extra Time，西班牙夺得2026世界杯冠军。",pred:{date:"2026-07-15",ph:2,pa:1,winner:"h",confidence:55,tag:"🏆 预测冠军：西班牙",basis:["西班牙传控压制力","半决赛2-0法国","决赛级别中场控制","决赛实际对阵已确认"],reason:"赛前预测西班牙以2-1取胜；决赛实际对阵已确认，西班牙最终在加时赛1-0击败阿根廷夺冠。本场预测方向正确，比分未命中。",sources:["ESPN","FIFA"],locked:true}},
 ];
 
 // 2022 World Cup top 8 rankings (for teams participating in 2026)
@@ -2908,7 +2909,7 @@ function renderHomePredictions(){
   if(more.length){
     moreHTML='<div class="pred-more"><button class="pred-more-btn" onclick="this.classList.toggle(\'open\');var b=this.nextElementSibling;if(b)b.classList.toggle(\'open\')"><span>查看更远预测 ('+more.length+' 场)</span><span class="arrow">▼</span></button><div class="pred-more-body"><div class="pred-grid">'+more.map(cardHTML).join('')+'</div></div></div>';
   }
-  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 赛前预言</div><div class="pred-sub">展示最近4场未赛预测；淘汰赛必须给出最终晋级方，不能以平局作为最终结果。足球是圆的，福福也会翻车。</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(mainCards||'<div class="pred-mini"><div class="teams">暂无近期预测</div><div class="pick">下一批预测将在 00:05 后生成。</div></div>')+'</div>'+moreHTML+'<div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
+  el.innerHTML='<div class="pred-home"><div class="pred-head"><div><div class="pred-title">🔮 AI 预测复盘</div><div class="pred-sub">本届世界杯已结束，展示已锁定预测的赛后复盘；淘汰赛预测均标明最终晋级方。足球是圆的，福福也会翻车。</div></div><div class="pred-disclaimer">仅供娱乐 · 不构成投注建议</div></div><div class="pred-grid">'+(mainCards||'<div class="pred-mini"><div class="teams">暂无近期预测</div><div class="pick">全部赛事已结束，暂无待复盘预测。</div></div>')+'</div>'+moreHTML+'<div class="pred-stats"><span class="pred-stat">已预测 '+stat.total+' 场</span><span class="pred-stat">已复盘 '+stat.reviewed+' 场</span><span class="pred-stat">平均准确度 '+(stat.reviewed?stat.avg+'%':'—')+'</span><span class="pred-stat">方向命中率 '+(stat.reviewed?stat.dir+'%':'—')+'</span><span class="pred-stat">神预测 '+stat.exact+' 场</span></div></div>';
 }
 
 // Render group standings
