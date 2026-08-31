@@ -557,7 +557,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
   <section class="section">
     <div class="section-header">
       <h2 class="section-title">⚽ 射手榜 & 数据</h2>
-      <span class="section-sub">基于已完赛场次统计</span>
+      <span class="section-sub">赛事已全部结束 · 最终射手榜</span>
     </div>
     <div id="scorerList"><div style="color:var(--text-dim);text-align:center;padding:24px">加载中…</div></div>
   </section>
@@ -720,7 +720,11 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
                         <div class="log-item">
-              <div class="log-time">2026-08-31 21:00</div>
+             <div class="log-time">2026-09-01 06:32</div>
+              <div class="log-content"><span class="log-tag fix">巡检</span><strong>✅ 赛后全站一致性复核：104/104 完赛 · 射手榜文案口径统一</strong> — 福福按北京时间完成赛后全站巡检（距决赛完赛已逾 7 周）。确认：ALL_MATCHES 104/104 已完赛、0 场进行中、0 场 upcoming；决赛 FIN 西班牙 1-0 阿根廷（AET）正确；首页 hero 冠军西班牙、已完赛 104 场正确；下一场倒计时与今日推荐已正确隐藏；信息页"本届世界杯已结束"正确；时间轴与淘汰赛阶段高亮指向决赛；小组积分榜与最佳第3名为"最终排序"口径；射手榜姆巴佩 10 球金靴数据完整。本轮将射手榜 section header 与渲染脚注从「基于已完赛场次统计 · 持续更新」统一为「赛事已全部结束 · 最终射手榜」，消除赛后误导性"更新中"字样。<!-- marker:cron-post-tournament-text-fix-20260901-0632 --></div>
+            </div>
+      <div class="log-item">
+             <div class="log-time">2026-08-31 21:00</div>
               <div class="log-content"><span class="log-tag auto">数据</span><strong>⚽ 射手榜校正：姆巴佩 10 球金靴 · 贝林厄姆/哈兰德 7 球并列 · 登贝莱 6 球</strong> — 福福基于多个赛后统计来源（sportpaedia/nflballs/leaguecricketschedule 均与 ESPN/FIFA 官方统计一致）校正 SCORERS：姆巴佩 8→10（季军赛梅开二度锁定金靴，生涯世界杯 22 球历史第一）、贝林厄姆 4→7（季军赛 90+8'进球）、登贝莱 5→6（季军赛 90+6'进球），梅西 8 球不变、哈兰德 7 球不变、凯恩 6 球不变。ALL_MATCHES 104/104 完赛状态与所有其他 Tab 无变更。<!-- marker:cron-scorers-update-20260831-2100 --></div>
             </div>
 <div class="log-item">
@@ -3367,7 +3371,7 @@ function renderTimeline(){let w=document.getElementById('timelineWrap');if(!w)re
 function renderScorers(){let e=document.getElementById('scorerList');if(!e)return;
   let arr=Object.entries(SCORERS).map(([n,v])=>{let p=v.split(' ');return{name:n,team:p[0],goals:parseInt(p[1])};}).sort((a,b)=>b.goals-a.goals);
   let m=['🥇','🥈','🥉'];
-  e.innerHTML='<table class="scorer-table"><thead><tr><th></th><th>球员</th><th>球队</th><th style="text-align:center">进球</th></tr></thead><tbody>'+arr.slice(0,30).map((p,i)=>{let r=i<3?'<span class="sc-medal">'+m[i]+'</span>':'<span class="sc-rank">'+(i+1)+'</span>';let mt=td(p.team);return '<tr><td>'+r+'</td><td class="sc-name">'+p.name+'</td><td class="sc-team">'+mt.fl+mt.nm+'</td><td class="sc-goals">'+p.goals+'</td></tr>';}).join('')+'</tbody></table><div style="margin-top:10px;font-size:.7rem;color:var(--text-dim);text-align:center">⚽ 基于已完赛场次统计 · 持续更新</div>';}
+  e.innerHTML='<table class="scorer-table"><thead><tr><th></th><th>球员</th><th>球队</th><th style="text-align:center">进球</th></tr></thead><tbody>'+arr.slice(0,30).map((p,i)=>{let r=i<3?'<span class="sc-medal">'+m[i]+'</span>':'<span class="sc-rank">'+(i+1)+'</span>';let mt=td(p.team);return '<tr><td>'+r+'</td><td class="sc-name">'+p.name+'</td><td class="sc-team">'+mt.fl+mt.nm+'</td><td class="sc-goals">'+p.goals+'</td></tr>';}).join('')+'</tbody></table><div style="margin-top:10px;font-size:.7rem;color:var(--text-dim);text-align:center">⚽ 赛事已全部结束 · 最终射手榜</div>';}
 // ===== BRACKET STAGE HIGHLIGHT =====
 function updateBracketStageHighlight(){
   let nodes=[...document.querySelectorAll('.bracket-stage[data-stage]')];
