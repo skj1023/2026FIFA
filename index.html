@@ -720,6 +720,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text"
       <div class="log-filter" id="logFilter"></div>
       <div class="log-list" id="updateLogList">
                                <div class="log-item">
+                               <div class="log-time">2026-09-04 06:49</div>
+                               <div class="log-content"><span class="log-tag fix">巡检</span><strong>✅ 赛后全站一致性复核：104/104 完赛 · ESPN/FIFA 赛后巡检</strong> — 福福按北京时间完成赛后巡检（距决赛完赛已逾 6 周）。确认：ALL_MATCHES 104/104 已完赛（st:done）、0 场进行中、0 场 upcoming；决赛 FIN 西班牙 1-0 阿根廷（AET, Ferran Torres 106'）与 ESPN、FIFA 官方一致；季军赛 法国 4-6 英格兰正确（Saka 帽子戏法、Mbappé 双响）；射手榜姆巴佩 10 球金靴（蝉联+历史射手王 22 球）、梅西 8 球、贝林厄姆/哈兰德 7 球、凯恩/登贝莱 6 球完整（SCORERS 44 人）；首页 hero 冠军西班牙、已完赛 104 场正确；下一场倒计时与今日推荐已正确隐藏；信息页"世界杯赛后回顾"与赛期 6.12–7.20 正确；淘汰赛 32 场全部落位完毕无 TBD；小组积分榜与最佳第3名 allGroupsComplete=true 运行时为"最终排序"口径；JS 语法校验通过（116K）。线上 live domain marker 与本地一致。本轮无赛果/对阵/文案变更。<!-- marker:cron-post-tournament-check-20260904-0649 --></div>
+                               </div>
+                               <div class="log-item">
                                <div class="log-time">2026-09-05 05:44</div>
                                <div class="log-content"><span class="log-tag fix">修复</span><strong>🔧 修复页面渲染中断：scrollIntoView 崩溃导致射手榜/淘汰赛树/今日推荐不渲染</strong> — 日期滑动选择器中 `act.scrollIntoView(...)` 在部分浏览器环境（旧版 Safari/Edge 及 jsdom）中抛 TypeError，导致整个 `render()` 中断退出，后续 renderScorers()、renderBracketTree()、renderTodayPick() 等均未执行。修复：用 try/catch 包裹该调用，渲染流程不再被阻断。本地 jsdom 验证：射手榜 31 行正常（姆巴佩 10 球）、淘汰赛树 32 场完整、阶段高亮指向决赛、下一场倒计时已隐藏、"本届世界杯已结束"正确显示。<!-- marker:cron-scrollinto-view-fix-20260905-0544 --></div>
                                </div>
